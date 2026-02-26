@@ -4,7 +4,7 @@
 **Phone:** [XXX-XXX-XXXX]  
 **Location:** Toronto, Ontario, Canada  
 **LinkedIn:** https://www.linkedin.com/in/rustygear/  
-**Portfolio:** https://thecanadian.space | Steam Workshop: https://steamcommunity.com/id/godimas/myworkshopfiles
+**Portfolio:** [The Canadian Space](https://thecanadian.space) | [Steam Workshop](https://steamcommunity.com/id/godimas/myworkshopfiles) | [GitHub](https://github.com/Godimas101)
 
 ---
 
