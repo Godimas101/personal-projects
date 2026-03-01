@@ -12,7 +12,6 @@ Reference `kitchen-inventory.md` for a full list of spices, sauces, always-on-ha
 
 ## About Me
 
-- **Allergies:** Gluten and cow dairy — all recipes must be free of both
 - **Located in Canada** — ingredient suggestions should be available at Canadian grocery stores, Costco, or Amazon.ca
 - **Budget conscious** — prefer cost-effective options
 
