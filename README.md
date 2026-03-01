@@ -10,6 +10,7 @@ My central hub for personal reference files — organized, version-controlled, a
 
 ### 🍳 Kitchen
 - **[kitchen-inventory/](kitchen-inventory/)** - Full inventory of ingredients, tools, and appliances. Feed to an LLM for meal planning and recipe suggestions.
+- **[favorite-recipes/](favorite-recipes/)** - Recipes we've tried and liked, saved for easy reference and reuse.
 
 ### 💪 Health & Fitness
 - **[health-tracking/](health-tracking/)** - Exercise schedule, weekly meal plan, supplement stack, and weight log. Feed to an LLM for nutrition and fitness advice.
@@ -29,6 +30,7 @@ My central hub for personal reference files — organized, version-controlled, a
 ```
 personal-projects/
 ├── kitchen-inventory/   # Ingredients, tools, and appliances
+├── favorite-recipes/    # Recipes we've tried and liked
 ├── health-tracking/     # Exercise, meals, supplements, weight log
 └── resumes/             # Career documents
 ```
