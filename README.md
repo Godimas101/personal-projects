@@ -1,51 +1,37 @@
 # 📁 Personal Projects
 
-> **Private repository for personal documents, resources, and backups.**
+> **Personal documents and data, structured in markdown for easy LLM consumption and version control.**
 
 ## What's This?
 
-My central hub for personal files that benefit from version control and cloud backup. This repo keeps important documents organized, tracked, and accessible from anywhere.
+My central hub for personal reference files — organized, version-controlled, and formatted so I can drop them into any LLM conversation for personalized advice. Everything is in plain markdown so it's easy to read and edit directly on GitHub.
 
 ## What Lives Here?
 
-### 📄 Documents
-- **Resumes** - Professional documents and career materials
-- **Contact Lists** - Important contacts and professional networks
-- **Templates** - Reusable document templates
+### 🍳 Kitchen
+- **[kitchen-inventory/](kitchen-inventory/)** - Full inventory of ingredients, tools, and appliances. Feed to an LLM for meal planning and recipe suggestions.
 
-### 🍳 Personal Resources  
-- **Recipes** - Favorite recipes and cooking notes
-- **Reference Materials** - Guides, checklists, and how-tos
-- **Project Notes** - Planning docs and brainstorming
+### 💪 Health & Fitness
+- **[health-tracking/](health-tracking/)** - Exercise schedule, weekly meal plan, supplement stack, and weight log. Feed to an LLM for nutrition and fitness advice.
 
-### 💾 Backups
-- **Spreadsheets** - Important data and calculations
-- **Configurations** - Settings and preferences worth preserving
-- **Archives** - Historical versions of important files
+### 📄 Career
+- **[resumes/](resumes/)** - Full master resume with complete work history. Not a final send-ready document — used as a reference to tailor targeted applications.
 
 ## Why Git for Personal Files?
 
 - ✅ **Version History** - Never lose a previous version
-- ✅ **Cloud Backup** - Safe on GitHub, accessible anywhere
-- ✅ **Organization** - Structured folders instead of chaos
-- ✅ **Private** - Only I can see this content
-- ✅ **Searchable** - Easy to find what I need
+- ✅ **Cloud Backup** - Accessible from anywhere
+- ✅ **LLM-Ready** - Plain markdown works in any AI chat
+- ✅ **Easy to Edit** - Update directly on GitHub
 
 ## Folder Structure
 
 ```
 personal-projects/
-├── resumes/           # Career documents
-├── recipes/           # Cooking and food (coming soon)
-├── contacts/          # Important contacts (coming soon)
-├── spreadsheets/      # Data backups (coming soon)
-├── templates/         # Reusable templates (coming soon)
-└── misc/              # Everything else (coming soon)
+├── kitchen-inventory/   # Ingredients, tools, and appliances
+├── health-tracking/     # Exercise, meals, supplements, weight log
+└── resumes/             # Career documents
 ```
-
-## Privacy Note
-
-This is a **private repository**. All sensitive information (passwords, API keys, personal contact details) should remain in `.gitignore` or encrypted.
 
 ---
 
