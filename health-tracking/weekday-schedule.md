@@ -8,8 +8,9 @@ Overview of a typical weekday from morning to bedtime. References meals.md and s
 
 - Morning shake — see [supplements.md](supplements.md#morning-shake)
 - 750ml water
-- 5 dates
-- 5 dried apricots
+- 2 figs
+- 3 dates
+- 6 dried apricots
 
 ## Breakfast
 
@@ -22,9 +23,5 @@ Overview of a typical weekday from morning to bedtime. References meals.md and s
 
 ## Dinner
 
-- Dinner shake — see [supplements.md](supplements.md#dinner-shake)
 - Wraps with rotating filling — see [meals.md](meals.md#weekday-supper)
-
-## Bedtime
-
 - Dinner vitamins — see [supplements.md](supplements.md#dinner-vitamins)
