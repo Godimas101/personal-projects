@@ -1,5 +1,8 @@
 # Tuna Salad Wraps
 
+📊 Protein: 23g | Fat: 15g | Carbs: 28g | Calories: 342 | Protein Rating: 6/10
+*(Per wrap, ~5 wraps, includes tortilla)*
+
 Flexible tuna salad that works with whatever flavour direction you're feeling. Makes enough for 4–6 wraps depending on how full you stuff them.
 
 ## Core Ingredients (serves 4–6 wraps, using 2 cans tuna)

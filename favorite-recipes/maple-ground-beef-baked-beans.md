@@ -1,5 +1,8 @@
 # Maple Ground Beef Baked Beans
 
+📊 Protein: 24g | Fat: 17g | Carbs: 37g | Calories: 388 | Protein Rating: 5/10
+*(Per serving, ~7 servings)*
+
 Hearty, saucy baked beans with ground beef. Serves 6–8 as a main or side. Total time ~1–2 hours, mostly hands-off.
 
 ## Ingredients

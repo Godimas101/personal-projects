@@ -1,5 +1,8 @@
 # Air Fryer Chicken Drumsticks with Roasted Veggies
 
+📊 Protein: 41g | Fat: 22g | Carbs: 15g | Calories: 424 | Protein Rating: 7/10
+*(Per serving, ~4 servings, includes veggies)*
+
 Crispy drumsticks with caramelized veggies, all in the air fryer. Total time ~30–40 minutes.
 
 ## Ingredients

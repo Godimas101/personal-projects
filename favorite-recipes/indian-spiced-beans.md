@@ -1,5 +1,8 @@
 # Simple Indian-Style Spiced Beans
 
+📊 Protein: 10g | Fat: 6g | Carbs: 30g | Calories: 215 | Protein Rating: 4/10
+*(Per serving, ~4 servings, beans only — add ~206 cal if served over 1 cup cooked rice)*
+
 Warm, aromatic curry-style beans. Easy weeknight meal — great over rice or with flatbread.
 
 ## Ingredients
