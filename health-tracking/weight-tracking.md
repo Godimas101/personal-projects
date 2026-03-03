@@ -3,7 +3,7 @@
 Periodic weigh-ins. Weight in lbs, body fat % measured by scale.
 
 | Date | Weight | BMI | Body Fat | Muscle | Body Water | Bone Mineral | Protein | Metabolic Age | BMR | Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 2025-08-19 | 215 | 26.1 | | | | | | | | | | | | | | | | | |
 | 2025-09-22 | 208 | 24.7 | | | | | | | | | | | | | | | | | |
 | 2025-09-29 | 211 | 25.5 | | | | | | | | | | | | | | | | | |
