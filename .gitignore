@@ -19,3 +19,6 @@ desktop.ini
 # Backup files
 *.bak
 *.backup
+
+# Local credentials — never commit
+credentials.py

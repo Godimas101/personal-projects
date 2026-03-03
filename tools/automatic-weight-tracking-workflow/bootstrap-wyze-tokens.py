@@ -16,12 +16,12 @@ import subprocess
 import sys
 from wyze_sdk import Client
 
-EMAIL   = 'thecanadianspace.contact@gmail.com'
-PASSWORD = 'WyzeP@ssword'
-KEY_ID  = '623277ae-5569-42b5-8f52-eb963add4ea6'
-API_KEY = 'SrVxxg1FZ79lHSEvfKOZ182sz8NHiku59vqbMZupvUvMmI0keu6qBjgBIp2k'
-
-SERVER  = 'root@n8n.thecanadian.space'
+try:
+    from credentials import EMAIL, PASSWORD, KEY_ID, API_KEY, SERVER
+except ImportError:
+    print("ERROR: credentials.py not found.")
+    print("Copy credentials.example.py to credentials.py and fill in your values.")
+    sys.exit(1)
 ENV_FILE = '/root/n8n-docker-caddy/.env'
 
 def main():

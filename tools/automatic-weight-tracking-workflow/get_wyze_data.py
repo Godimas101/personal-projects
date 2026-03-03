@@ -26,30 +26,27 @@ from wyze_sdk import Client
 
 ENV_FILE = '/root/n8n-docker-caddy/.env'
 
-KEY_ID  = '623277ae-5569-42b5-8f52-eb963add4ea6'
-API_KEY = 'SrVxxg1FZ79lHSEvfKOZ182sz8NHiku59vqbMZupvUvMmI0keu6qBjgBIp2k'
-
 
 def load_env_tokens():
-    """Read WYZE_ACCESS_TOKEN and WYZE_REFRESH_TOKEN from the .env file."""
-    tokens = {}
+    """Read all required Wyze credentials from the .env file."""
+    keys = {}
     try:
         with open(ENV_FILE, 'r') as f:
             for line in f:
                 line = line.strip()
-                if line.startswith('WYZE_ACCESS_TOKEN='):
-                    tokens['access'] = line.split('=', 1)[1].strip()
-                elif line.startswith('WYZE_REFRESH_TOKEN='):
-                    tokens['refresh'] = line.split('=', 1)[1].strip()
+                for key in ('WYZE_ACCESS_TOKEN', 'WYZE_REFRESH_TOKEN', 'WYZE_KEY_ID', 'WYZE_API_KEY'):
+                    if line.startswith(key + '='):
+                        keys[key] = line.split('=', 1)[1].strip()
     except Exception as e:
         print(json.dumps({"error": f"Could not read {ENV_FILE}: {e}"}))
         sys.exit(1)
 
-    if not tokens.get('access') or not tokens.get('refresh'):
-        print(json.dumps({"error": "WYZE_ACCESS_TOKEN or WYZE_REFRESH_TOKEN missing from .env"}))
+    missing = [k for k in ('WYZE_ACCESS_TOKEN', 'WYZE_REFRESH_TOKEN', 'WYZE_KEY_ID', 'WYZE_API_KEY') if not keys.get(k)]
+    if missing:
+        print(json.dumps({"error": f"Missing from .env: {', '.join(missing)}"}))
         sys.exit(1)
 
-    return tokens['access'], tokens['refresh']
+    return keys['WYZE_ACCESS_TOKEN'], keys['WYZE_REFRESH_TOKEN'], keys['WYZE_KEY_ID'], keys['WYZE_API_KEY']
 
 
 def save_env_tokens(new_access, new_refresh):
@@ -75,11 +72,11 @@ def save_env_tokens(new_access, new_refresh):
 
 
 def main():
-    access_token, refresh_token = load_env_tokens()
+    access_token, refresh_token, key_id, api_key = load_env_tokens()
 
     # Init client with stored tokens — no login call, not blocked from server
     client = Client(token=access_token, refresh_token=refresh_token,
-                    key_id=KEY_ID, api_key=API_KEY)
+                    key_id=key_id, api_key=api_key)
 
     # Refresh the token (uses /app/user/refresh_token — not IP-blocked)
     # Also rotates the refresh_token itself, so the chain never expires
