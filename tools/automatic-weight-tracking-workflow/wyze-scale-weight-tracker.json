@@ -1,105 +1,103 @@
 {
-  "name": "Wyze Scale → Weight Tracking",
+  "updatedAt": "2026-03-03T21:02:33.624Z",
+  "createdAt": "2026-03-01T20:30:51.748Z",
+  "id": "TvCaU2mu0rR41383",
+  "name": "Tool - Wyze Data Sync",
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
-      "id": "a1b2c3d4-1111-1111-1111-000000000001",
-      "name": "Manual Trigger",
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
-      "position": [
-        20,
-        360
-      ],
-      "parameters": {}
-    },
-    {
-      "id": "a1b2c3d4-1111-1111-1111-000000000002",
-      "name": "Schedule Trigger",
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2,
-      "position": [
-        20,
-        560
-      ],
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "field": "hours",
-              "triggerAtHour": 8
-            }
-          ]
-        }
-      }
-    },
-    {
-      "id": "a1b2c3d4-1111-1111-1111-000000000003",
-      "name": "Setup Instructions",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        20,
-        20
-      ],
-      "parameters": {
-        "content": "## ⚙️ Wyze Scale → Weight Tracking\n\n**Server .env — required variables:**\n```\nWYZE_KEY_ID=<from Wyze developer portal>\nWYZE_API_KEY=<from Wyze developer portal>\nWYZE_PHONE_ID=n8n-wyze-scale-sync-01ab\nWYZE_ACCESS_TOKEN=<from bootstrap-wyze-tokens.py>\nWYZE_REFRESH_TOKEN=<from bootstrap-wyze-tokens.py>\nGITHUB_PAT=<GitHub PAT with repo scope>\n```\n\n**How authentication works:**\n`get_wyze_data.py` on the server calls the Wyze refresh endpoint on every run and writes updated tokens back to `.env` automatically. The chain never expires as long as the workflow runs at least once every 28 days. If broken (server offline > 28 days), run `bootstrap-wyze-tokens.py` locally.\n\n**Annual key rotation:**\n1. Generate new Key ID + API Key at developer-api-console.wyze.com\n2. Update `WYZE_KEY_ID` and `WYZE_API_KEY` in server `.env`\n3. No restart needed — script reads `.env` on each run\n\n**Runs:** Daily at 10 AM, or trigger manually",
-        "height": 420,
-        "width": 760,
-        "color": 4
-      }
-    },
-    {
-      "id": "a1b2c3d4-1111-1111-1111-000000000004",
-      "name": "Execute Wyze Script",
-      "type": "n8n-nodes-base.ssh",
-      "typeVersion": 1,
-      "position": [
-        280,
-        440
-      ],
       "parameters": {
         "authentication": "privateKey",
         "command": "python3 /root/n8n-docker-caddy/get_wyze_data.py"
       },
+      "id": "788a286a-a7fa-4f36-9242-594af8fa52d1",
+      "name": "Execute Wyze Script",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        2768,
+        1392
+      ],
       "credentials": {
         "sshPrivateKey": {
-          "id": "",
+          "id": "pvpqGancOeOpZxsf",
           "name": "SSH Private Key account"
         }
       }
     },
     {
-      "id": "a1b2c3d4-1111-1111-1111-000000000007",
-      "name": "Parse & Check",
+      "parameters": {
+        "jsCode": "const stdout = items[0].json.stdout;\nif (!stdout) throw new Error('No stdout from SSH node.');\n\nlet parsed;\ntry { parsed = JSON.parse(stdout); } catch(e) { throw new Error('Failed to parse Python output: ' + stdout); }\nif (parsed.error) throw new Error('Python script error: ' + parsed.error);\n\nconst d = parsed.data;\nif (!d || d.weight == null) throw new Error('No weight data in response: ' + stdout);\n\n// Check if reading is from today (Toronto time)\nconst measureDate = new Date(d.measure_ts);\nconst todayStr = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Toronto' });\nconst recordDateStr = measureDate.toLocaleDateString('en-CA', { timeZone: 'America/Toronto' });\n\nif (recordDateStr !== todayStr) {\n  // Return shouldLog: false — the If node will stop the chain here\n  return [{ json: { shouldLog: false, reason: 'Reading from ' + recordDateStr + ', not today (' + todayStr + ').' } }];\n}\n\n// Dedup: skip if this exact measurement was already logged\nconst staticData = $getWorkflowStaticData('global');\nif (staticData.lastLoggedTs === d.measure_ts) {\n  return [{ json: { shouldLog: false, reason: 'Already logged ts: ' + d.measure_ts } }];\n}\n\n// wyze_sdk already returns weight in lbs — do NOT multiply by 2.20462\nconst weightLbs = Math.round(parseFloat(d.weight));\nconst bodyFat = (d.body_fat != null && d.body_fat !== 0) ? parseFloat(d.body_fat).toFixed(1) : '';\n\nreturn [{ json: {\n  shouldLog: true,\n  measure_ts: d.measure_ts,\n  todayStr,\n  weightLbs,\n  bodyFat,\n  bmi: d.bmi,\n  bmr: d.bmr,\n  muscle: d.muscle,\n  body_water: d.body_water,\n  bone_mineral: d.bone_mineral,\n  protein: d.protein,\n  metabolic_age: d.metabolic_age,\n  newRow: '| ' + todayStr + ' | ' + weightLbs + ' | ' + bodyFat + ' | |'\n} }];"
+      },
+      "id": "63d977df-3350-400e-ab06-16f37c27ac82",
+      "name": "Parse Python Output",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        900,
-        440
-      ],
-      "parameters": {
-        "jsCode": "// Parse SSH stdout\nconst stdout = items[0].json.stdout;\nif (!stdout) throw new Error('No stdout from SSH node. Is get_wyze_data.py present on the server?');\n\nlet parsed;\ntry { parsed = JSON.parse(stdout); } catch(e) { throw new Error('Failed to parse Python output: ' + stdout); }\n\nif (parsed.error) throw new Error('Python script error: ' + parsed.error);\n\nconst d = parsed.data;\nif (!d || d.weight == null) throw new Error('No weight data in response: ' + stdout);\n\n// Check if reading is from today (Toronto time)\nconst measureDate = new Date(d.measure_ts);\nconst todayStr = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Toronto' });\nconst recordDateStr = measureDate.toLocaleDateString('en-CA', { timeZone: 'America/Toronto' });\n\nif (recordDateStr !== todayStr) {\n  return [{ json: {\n    shouldLog: false,\n    reason: `Latest reading is from ${recordDateStr}, not today (${todayStr}). Step on the scale!`\n  } }];\n}\n\n// Dedup: skip if already logged this exact measurement\nconst staticData = $getWorkflowStaticData('global');\nif (staticData.lastLoggedTs === d.measure_ts) {\n  return [{ json: { shouldLog: false, reason: `Already logged ts: ${d.measure_ts}` } }];\n}\n\n// wyze_sdk already returns weight in lbs — do NOT multiply by 2.20462\nconst weightLbs = Math.round(parseFloat(d.weight));\nconst bodyFat = (d.body_fat != null && d.body_fat !== 0) ? parseFloat(d.body_fat).toFixed(1) : '';\n\nreturn [{ json: {\n  shouldLog: true,\n  measure_ts: d.measure_ts,\n  todayStr,\n  weightLbs,\n  bodyFat,\n  bmi: d.bmi,\n  bmr: d.bmr,\n  muscle: d.muscle,\n  body_water: d.body_water,\n  bone_mineral: d.bone_mineral,\n  protein: d.protein,\n  metabolic_age: d.metabolic_age,\n  newRow: `| ${todayStr} | ${weightLbs} | ${bodyFat} | |`\n} }];"
-      }
+        2992,
+        1392
+      ]
     },
     {
-      "id": "a1b2c3d4-1111-1111-1111-000000000010",
-      "name": "New Data Today?",
-      "type": "n8n-nodes-base.if",
+      "parameters": {
+        "content": "## ⚙️ Wyze Scale → Weight Tracking\n\n**Server .env — required variables:**\n```\nWYZE_KEY_ID=<from Wyze developer portal>\nWYZE_API_KEY=<from Wyze developer portal>\nWYZE_PHONE_ID=n8n-wyze-scale-sync-01ab\nWYZE_ACCESS_TOKEN=<from bootstrap-wyze-tokens.py>\nWYZE_REFRESH_TOKEN=<from bootstrap-wyze-tokens.py>\nGITHUB_PAT=<GitHub PAT with repo scope>\n```\n\n**How authentication works:**\nget_wyze_data.py on the server calls the Wyze refresh endpoint on every run and writes updated tokens back to .env automatically. The chain never expires as long as the workflow runs at least once every 28 days.\n\nIf broken (server offline > 28 days), run bootstrap-wyze-tokens.py locally to do a fresh login from a residential IP and push new tokens.\n\n**Annual key rotation:**\n1. Generate new Key ID + API Key at developer-api-console.wyze.com\n2. Update WYZE_KEY_ID and WYZE_API_KEY in server .env\n3. No restart needed — script reads .env on each run\n\n**Runs:** Daily at 10 AM, or trigger manually",
+        "height": 832,
+        "width": 768
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2224,
+        1568
+      ],
+      "id": "9bb6068f-3b57-45a2-b9c1-c0e2cb610a8f",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "id": "b01da549-c8f2-427a-b58e-1b640e04326b",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        2544,
+        1392
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Passthrough — dedup and date check already done in Parse Python Output\nreturn [{ json: items[0].json }];"
+      },
+      "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1680,
-        440
+        3200,
+        1392
       ],
+      "id": "3e501ee7-2da7-4d18-8c04-a49ab34894c5",
+      "name": "New Data Check"
+    },
+    {
       "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
             "leftValue": "",
-            "typeValidation": "strict"
+            "typeValidation": "strict",
+            "version": 3
           },
           "conditions": [
             {
-              "id": "cond-001",
+              "id": "e40782df-5d91-42c7-a131-37fb9e43d4e9",
               "leftValue": "={{ $json.shouldLog }}",
               "rightValue": true,
               "operator": {
@@ -111,137 +109,148 @@
           "combinator": "and"
         },
         "options": {}
-      }
-    },
-    {
-      "id": "a1b2c3d4-1111-1111-1111-000000000011",
-      "name": "GitHub Get File",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
       "position": [
-        1940,
-        340
+        3408,
+        1392
       ],
-      "parameters": {
-        "method": "GET",
-        "url": "https://api.github.com/repos/Godimas101/personal-projects/contents/health-tracking/weight-tracking.md",
-        "authentication": "none",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "={{ 'Bearer ' + $env.GITHUB_PAT }}"
-            },
-            {
-              "name": "Accept",
-              "value": "application/vnd.github+json"
-            },
-            {
-              "name": "X-GitHub-Api-Version",
-              "value": "2022-11-28"
-            }
-          ]
-        },
-        "options": {
-          "response": {
-            "response": {
-              "responseFormat": "json"
-            }
-          }
-        }
-      }
+      "id": "0baf29b8-1dfd-4f0f-8c30-cb167e884d32",
+      "name": "If"
     },
     {
-      "id": "a1b2c3d4-1111-1111-1111-000000000012",
-      "name": "Build Updated File",
+      "parameters": {
+        "jsCode": "const staticData = $getWorkflowStaticData('global');\nstaticData.lastProcessedId = items[0].json.id;\nreturn { success: true };"
+      },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2200,
-        340
+        3616,
+        1296
       ],
-      "parameters": {
-        "jsCode": "const processedData = $('Parse & Check').first().json;\nconst githubData = $input.first().json;\n\n// Decode base64 content from GitHub API response\n// GitHub wraps content in base64 with \\n every 60 chars\nconst currentContent = Buffer.from(\n  githubData.content.replace(/\\n/g, ''),\n  'base64'\n).toString('utf-8');\n\nconst sha = githubData.sha;\n\n// Append new row before trailing whitespace\nconst trimmedContent = currentContent.trimEnd();\nconst newContent = trimmedContent + '\\n' + processedData.newRow + '\\n';\n\n// Encode back to base64 for GitHub API PUT\nconst newContentBase64 = Buffer.from(newContent, 'utf-8').toString('base64');\n\nreturn [{\n  json: {\n    sha,\n    newContentBase64,\n    commitMessage: `chore: auto-log weight ${processedData.todayStr} — ${processedData.weightLbs} lbs`,\n    todayStr: processedData.todayStr,\n    weightLbs: processedData.weightLbs,\n    bodyFat: processedData.bodyFat\n  }\n}];"
-      }
+      "id": "7ec42314-51b5-4579-ad10-35dea4331eb3",
+      "name": "Handle Results"
     },
     {
-      "id": "a1b2c3d4-1111-1111-1111-000000000013",
-      "name": "GitHub Update File",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        2460,
-        340
-      ],
       "parameters": {
-        "method": "PUT",
-        "url": "https://api.github.com/repos/Godimas101/personal-projects/contents/health-tracking/weight-tracking.md",
-        "authentication": "none",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "={{ 'Bearer ' + $env.GITHUB_PAT }}"
-            },
-            {
-              "name": "Accept",
-              "value": "application/vnd.github+json"
-            },
-            {
-              "name": "X-GitHub-Api-Version",
-              "value": "2022-11-28"
-            }
-          ]
+        "operation": "text",
+        "destinationKey": "content",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        4032,
+        1296
+      ],
+      "id": "eb38b080-d755-4766-a664-c166ba027dc6",
+      "name": "Extract Data"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "get",
+        "owner": {
+          "__rl": true,
+          "value": "Godimas101",
+          "mode": "name"
         },
-        "sendBody": true,
-        "contentType": "json",
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "message",
-              "value": "={{ $json.commitMessage }}"
-            },
-            {
-              "name": "content",
-              "value": "={{ $json.newContentBase64 }}"
-            },
-            {
-              "name": "sha",
-              "value": "={{ $json.sha }}"
-            }
-          ]
+        "repository": {
+          "__rl": true,
+          "value": "personal-projects",
+          "mode": "list",
+          "cachedResultName": "personal-projects",
+          "cachedResultUrl": "https://github.com/Godimas101/personal-projects"
         },
-        "options": {
-          "response": {
-            "response": {
-              "responseFormat": "json"
-            }
-          }
+        "filePath": "health-tracking/weight-tracking.md",
+        "additionalParameters": {}
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        3824,
+        1296
+      ],
+      "id": "cac5a2df-a0de-445f-b92a-e40e53d82e13",
+      "name": "Get File",
+      "webhookId": "6c19cb8a-8a49-4107-be8b-152c5883ac72",
+      "credentials": {
+        "githubApi": {
+          "id": "ONxeAPswtGfVHwtY",
+          "name": "GitHub account"
         }
       }
     },
     {
-      "id": "a1b2c3d4-1111-1111-1111-000000000014",
+      "parameters": {
+        "jsCode": "const currentContent = $('Extract Data').first().json.content;\nconst sha = $('Get File').first().json.sha;\nconst health = $('Parse Python Output').first().json;\n\nif (!currentContent) throw new Error(\"Extract Data returned no content\");\nif (!sha) throw new Error(\"Get File returned no sha\");\n\n// Append new row, keeping exactly one trailing newline\nconst newContent = currentContent.trimEnd() + '\\n' + health.newRow + '\\n';\n\n// Encode for GitHub API PUT\nconst newContentBase64 = Buffer.from(newContent, 'utf-8').toString('base64');\n\nreturn [{ json: {\n  sha,\n  newContentBase64,\n  commitMessage: 'chore: auto-log weight ' + health.todayStr + ' — ' + health.weightLbs + ' lbs',\n  todayStr: health.todayStr,\n  weightLbs: health.weightLbs\n} }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4224,
+        1296
+      ],
+      "id": "f87d3c94-c2e6-423b-8056-56601fa0377b",
+      "name": "Append New Info"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "edit",
+        "owner": {
+          "__rl": true,
+          "value": "Godimas101",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "personal-projects",
+          "mode": "list",
+          "cachedResultName": "personal-projects",
+          "cachedResultUrl": "https://github.com/Godimas101/personal-projects"
+        },
+        "filePath": "health-tracking/weight-tracking.md",
+        "fileContent": "={{ $json.newContentBase64 }}",
+        "commitMessage": "={{ $json.commitMessage }}"
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        4432,
+        1296
+      ],
+      "id": "31bcdd14-2262-4441-afca-30f61e39b891",
+      "name": "Edit a file",
+      "webhookId": "4958b7d9-31be-449e-abcd-1cd2b3498680",
+      "credentials": {
+        "githubApi": {
+          "id": "ONxeAPswtGfVHwtY",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const staticData = $getWorkflowStaticData('global');\nstaticData.lastLoggedTs = $('Parse Python Output').first().json.measure_ts;\nreturn [{ json: { success: true, logged: true } }];"
+      },
+      "id": "a1b2c3d4-dead-beef-cafe-000000000099",
       "name": "Mark As Logged",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2980,
-        340
-      ],
-      "parameters": {
-        "jsCode": "// Persist the measure_ts so re-runs today don't double-log\nconst staticData = $getWorkflowStaticData('global');\nstaticData.lastLoggedTs = $('Parse & Check').first().json.measure_ts;\n\nreturn [{ json: {\n  success: true,\n  logged: true,\n  weightLbs: $('Build Updated File').first().json.weightLbs,\n  date: $('Build Updated File').first().json.todayStr\n} }];"
-      }
+        4640,
+        1296
+      ]
     }
   ],
   "connections": {
-    "Manual Trigger": {
+    "Execute Wyze Script": {
       "main": [
         [
           {
-            "node": "Execute Wyze Script",
+            "node": "Parse Python Output",
             "type": "main",
             "index": 0
           }
@@ -259,63 +268,84 @@
         ]
       ]
     },
-    "Execute Wyze Script": {
+    "Parse Python Output": {
       "main": [
         [
           {
-            "node": "Parse & Check",
+            "node": "New Data Check",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Parse & Check": {
+    "New Data Check": {
       "main": [
         [
           {
-            "node": "New Data Today?",
+            "node": "If",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "New Data Today?": {
+    "If": {
       "main": [
         [
           {
-            "node": "GitHub Get File",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        []
-      ]
-    },
-    "GitHub Get File": {
-      "main": [
-        [
-          {
-            "node": "Build Updated File",
+            "node": "Handle Results",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Build Updated File": {
+    "Handle Results": {
       "main": [
         [
           {
-            "node": "GitHub Update File",
+            "node": "Get File",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "GitHub Update File": {
+    "Extract Data": {
+      "main": [
+        [
+          {
+            "node": "Append New Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get File": {
+      "main": [
+        [
+          {
+            "node": "Extract Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append New Info": {
+      "main": [
+        [
+          {
+            "node": "Edit a file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit a file": {
       "main": [
         [
           {
@@ -327,12 +357,35 @@
       ]
     }
   },
-  "active": false,
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
   },
+  "staticData": null,
   "meta": {
-    "templateCredsSetupCompleted": false,
-    "instanceId": ""
-  }
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "b7d143ee-6131-4a63-bf64-79914d829b2a",
+  "activeVersionId": null,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2026-03-01T20:30:51.753Z",
+      "createdAt": "2026-03-01T20:30:51.753Z",
+      "role": "workflow:owner",
+      "workflowId": "TvCaU2mu0rR41383",
+      "projectId": "QcLQe1qao7xNATnW"
+    }
+  ],
+  "activeVersion": null,
+  "tags": [
+    {
+      "updatedAt": "2026-03-03T21:02:30.559Z",
+      "createdAt": "2026-03-03T21:02:30.559Z",
+      "id": "7ghEhbgi8pjwrIjS",
+      "name": "Tools"
+    }
+  ]
 }
