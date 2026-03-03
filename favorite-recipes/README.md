@@ -49,5 +49,5 @@ When using an AI to suggest new recipes or meals, include this in your prompt:
 | [air-fryer-chicken-drumsticks.md](air-fryer-chicken-drumsticks.md) | Crispy drumsticks with roasted veggies, all in the air fryer | 🍗 Chicken |
 | [maple-ground-beef-baked-beans.md](maple-ground-beef-baked-beans.md) | Hearty maple baked beans with ground beef | 🥩 Beef |
 | [tuna-salad-wraps.md](tuna-salad-wraps.md) | Flexible tuna salad with customizable flavour twists | 🐟 Seafood |
-| [healthy-yogurt-egg-salad-wraps.md](healthy-yogurt-egg-salad-wraps.md) | High-protein egg salad with yogurt instead of mayo, for wraps | 🌱 Veggie |
+| [healthy-yogurt-egg-salad-wraps.md](healthy-yogurt-egg-salad-wraps.md) | High-protein egg salad with yogurt instead of mayo, for wraps | 🥚 Egg |
 | [indian-spiced-beans.md](indian-spiced-beans.md) | Warm curry-style spiced beans — great over rice or with flatbread | 🌱 Veggie |
