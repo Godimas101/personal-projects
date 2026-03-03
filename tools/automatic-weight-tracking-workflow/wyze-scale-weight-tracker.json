@@ -184,7 +184,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// items[0].json comes from Extract Data (which reads the GitHub node output).\n// .sha     = file SHA from GitHub API\n// .content = either plain text (if Extract Data decoded binary) OR base64 (if GitHub node returns raw API response)\nconst item = items[0].json;\nconst sha = item.sha;\nif (!sha) throw new Error('No sha found. Available keys: ' + Object.keys(item).join(', '));\n\nconst rawContent = item.content;\nif (!rawContent) throw new Error('No content found. Available keys: ' + Object.keys(item).join(', '));\n\n// Detect whether content is still base64 (GitHub API format) or already plain text.\n// Base64 content from GitHub only contains [A-Za-z0-9+/=\\n] — no spaces,\n// hyphens, pipes, etc. Plain markdown will have those immediately.\nlet currentContent;\nif (/^[A-Za-z0-9+/=\\n]+$/.test(rawContent)) {\n  // Still base64 — GitHub node returned raw API response; decode it\n  currentContent = Buffer.from(rawContent.replace(/\\n/g, ''), 'base64').toString('utf-8');\n} else {\n  // Already plain text — Extract Data decoded the binary for us\n  currentContent = rawContent;\n}\n\nconst health = $('Parse Python Output').first().json;\n\n// Append new row, keeping exactly one trailing newline\nconst newContent = currentContent.trimEnd() + '\\n' + health.newRow + '\\n';\n\n// Encode for GitHub API PUT\nconst newContentBase64 = Buffer.from(newContent, 'utf-8').toString('base64');\n\nreturn [{ json: {\n  sha,\n  newContentBase64,\n  commitMessage: 'chore: auto-log weight ' + health.todayStr + ' — ' + health.weightLbs + ' lbs',\n  todayStr: health.todayStr,\n  weightLbs: health.weightLbs\n} }];"
+        "jsCode": "// items[0].json is the raw GitHub API response from Get File.\n// It contains both .sha and .content (base64-encoded file text).\nconst item = items[0].json;\n\nconst sha = item.sha;\nif (!sha) throw new Error('No sha in Get File response. Keys: ' + Object.keys(item).join(', '));\n\nconst rawContent = item.content;\nif (!rawContent) throw new Error('No content in Get File response. Keys: ' + Object.keys(item).join(', '));\n\n// GitHub returns content as base64 with \\n every 60 chars — strip and decode\nconst currentContent = Buffer.from(rawContent.replace(/\\n/g, ''), 'base64').toString('utf-8');\n\nconst health = $('Parse Python Output').first().json;\n\n// Append new row, keeping exactly one trailing newline\nconst newContent = currentContent.trimEnd() + '\\n' + health.newRow + '\\n';\n\nreturn [{ json: {\n  sha,\n  fileContent: Buffer.from(newContent, 'utf-8').toString('base64'),\n  commitMessage: 'chore: auto-log weight ' + health.todayStr + ' — ' + health.weightLbs + ' lbs',\n  todayStr: health.todayStr,\n  weightLbs: health.weightLbs\n} }];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -212,7 +212,7 @@
           "cachedResultUrl": "https://github.com/Godimas101/personal-projects"
         },
         "filePath": "health-tracking/weight-tracking.md",
-        "fileContent": "={{ $json.newContentBase64 }}",
+        "fileContent": "={{ $json.fileContent }}",
         "commitMessage": "={{ $json.commitMessage }}"
       },
       "type": "n8n-nodes-base.github",
@@ -312,22 +312,11 @@
         ]
       ]
     },
-    "Extract Data": {
-      "main": [
-        [
-          {
-            "node": "Append New Info",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Get File": {
       "main": [
         [
           {
-            "node": "Extract Data",
+            "node": "Append New Info",
             "type": "main",
             "index": 0
           }
