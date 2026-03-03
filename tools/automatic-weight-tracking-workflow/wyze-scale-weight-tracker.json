@@ -149,38 +149,43 @@
     },
     {
       "parameters": {
-        "resource": "file",
-        "operation": "get",
-        "owner": {
-          "__rl": true,
-          "value": "Godimas101",
-          "mode": "name"
+        "method": "GET",
+        "url": "https://api.github.com/repos/Godimas101/personal-projects/contents/health-tracking/weight-tracking.md",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ 'Bearer ' + $env.GITHUB_PAT }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2022-11-28"
+            }
+          ]
         },
-        "repository": {
-          "__rl": true,
-          "value": "personal-projects",
-          "mode": "list",
-          "cachedResultName": "personal-projects",
-          "cachedResultUrl": "https://github.com/Godimas101/personal-projects"
-        },
-        "filePath": "health-tracking/weight-tracking.md",
-        "additionalParameters": {}
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
       },
-      "type": "n8n-nodes-base.github",
-      "typeVersion": 1.1,
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
       "position": [
         3824,
         1296
       ],
       "id": "cac5a2df-a0de-445f-b92a-e40e53d82e13",
       "name": "Get File",
-      "webhookId": "6c19cb8a-8a49-4107-be8b-152c5883ac72",
-      "credentials": {
-        "githubApi": {
-          "id": "ONxeAPswtGfVHwtY",
-          "name": "GitHub account"
-        }
-      }
+      "webhookId": "6c19cb8a-8a49-4107-be8b-152c5883ac72"
     },
     {
       "parameters": {
@@ -291,17 +296,6 @@
       ]
     },
     "If": {
-      "main": [
-        [
-          {
-            "node": "Handle Results",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Handle Results": {
       "main": [
         [
           {
