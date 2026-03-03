@@ -75,7 +75,7 @@
 
 ### Prodigy Education | Toronto, ON | Feb 2019 - Present
 
-#### Staff Quality Assurance | Feb 2026 - Present
+#### Staff Quality Assurance - RPG / Atlassian Admin | Feb 2026 - Present
 Returned to RPG team with focus on AI-powered QA and automation in lean team environment.
 - **Leading Prodigy RPG Localization QA:** Creating comprehensive test plans, managing outsource testing teams, running bug triage process, collaborating cross-functionally with stakeholders for project status, and helping plan/manage initial public release
 - Leveraging AI tools (Claude, Grok) and advanced automation (n8n, Automation for Jira, GitHub Actions) to handle workloads previously requiring larger teams
@@ -84,7 +84,7 @@ Returned to RPG team with focus on AI-powered QA and automation in lean team env
 
 **Skills:** Atlassian Admin • n8n • AI Integration • Claude • Grok • Automation for Jira • Automation for Confluence
 
-#### Central QA | Oct 2025 - Feb 2026
+#### Central QA / Atlassian Admin | Oct 2025 - Feb 2026
 Selected as one of only two QA for elite Central QA team supporting company-wide initiatives.
 - Led company-wide test management tool migration from TestRail to AIO Tests through comprehensive analysis and implementation
 - Supported multiple game squads with Jira/Confluence setups, workflow changes, and automation implementations
@@ -94,8 +94,10 @@ Selected as one of only two QA for elite Central QA team supporting company-wide
 
 **Skills:** Atlassian Admin • TestRail • AIO Tests • AI Integration • Workflow Automation • n8n • Outsourcer Management
 
-#### Quality Assurance III / Atlassian Admin - RPG | Nov 2024 - Oct 2025
-Rejoined RPG team working on core combat systems with continued Atlassian administration responsibilities.
+#### Quality Assurance III - RPG / Atlassian Admin | Nov 2024 - Oct 2025
+Rejoined RPG team working on core combat systems with continued Atlassian administration responsibilities
+- Streamlined and automated workflows for multiple RPG teams
+- Onboarded new QA hires, and mentored one from a contractor to a full time employee, all the way through to them getting a promotion!
 
 **Skills:** Atlassian Admin • Automation for Jira • TestRail • Workflow Automation • Mobile Game Development
 
@@ -119,8 +121,6 @@ First experience with true live service product, including leadership on major e
 **Skills:** Jira • Confluence • Workflow Automation • Manual Testing • UAT • Functional Testing • Integration Testing
 
 ### Big Viking Games | London/Toronto, ON | Oct 2013 - Feb 2019
-
-Progressed through multiple roles: QA Team Lead → Game Designer → Associate Producer → Sr. QA Analyst
 
 #### Sr. QA Analyst | Toronto | Jul 2016 - Feb 2019
 - Lead QA on Facebook Messenger game Galatron using new platform technology
@@ -222,8 +222,8 @@ High marks in all classes | Focus: Life drawing, sculpting, and drafting
 ## GAME CREDITS
 
 **Prodigy Education**
-- Prodigy English - Sr QA Analyst
-- Prodigy Math - Sr QA Analyst
+- Prodigy RPG - Staff QA Analyst
+- Prodigy Village Builder - Sr QA Analyst
 
 **Big Viking Games**
 - Fish World - Sr QA Analyst
