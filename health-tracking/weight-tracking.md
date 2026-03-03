@@ -1,4 +1,18 @@
-Periodic weigh-ins. Weight in lbs, body fat % measured by scale.
+## 📊 Health Metrics Glossary
+
+| Metric | Definition |
+|--------|------------|
+| **Weight** | Total body mass in pounds. |
+| **BMI** | *Body Mass Index* — weight relative to height (kg/m²). A general obesity screening tool, but doesn't distinguish fat from muscle. |
+| **Body Fat %** | Percentage of total mass that is fat tissue. Includes essential fat (organs, nerves) and storage fat. |
+| **Muscle %** | Percentage of total mass that is skeletal muscle. Higher is generally better for metabolism and strength. |
+| **Body Water %** | Percentage of total mass that is water. Healthy range is ~50–65% for adults. Fluctuates daily based on hydration, food, and activity. |
+| **Bone Mineral** | Estimated mass of minerals (primarily calcium) in your bones, in kg. An indicator of bone density. |
+| **Protein %** | Percentage of total mass made up of protein (found in muscle, organs, and connective tissue). |
+| **Metabolic Age** | Compares your BMR to the average BMR for age groups — gives you the age whose average metabolism yours most closely matches. Lower than your actual age = good. |
+| **BMR** | *Basal Metabolic Rate* — calories your body burns at complete rest just to sustain basic functions (breathing, circulation, cell repair). Everything else you burn is on top of this. |
+
+> ⚖️ **Note on Wyze scale accuracy:** Bioelectrical impedance measurements (body fat, muscle, water, etc.) are estimates and can vary significantly based on hydration, time of day, and foot placement. Track trends over weeks, not individual readings.
 
 | Date | Weight | BMI | Body Fat | Muscle | Body Water | Bone Mineral | Protein | Metabolic Age | BMR | Notes |
 | ---------- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
