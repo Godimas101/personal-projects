@@ -12,7 +12,9 @@
 | **Metabolic Age** | Compares your BMR to the average BMR for age groups — gives you the age whose average metabolism yours most closely matches. Lower than your actual age = good. |
 | **BMR** | *Basal Metabolic Rate* — calories your body burns at complete rest just to sustain basic functions (breathing, circulation, cell repair). Everything else you burn is on top of this. |
 
+
 > ⚖️ **Note on Wyze scale accuracy:** Bioelectrical impedance measurements (body fat, muscle, water, etc.) are estimates and can vary significantly based on hydration, time of day, and foot placement. Track trends over weeks, not individual readings.
+
 
 | Date | Weight | BMI | Body Fat | Muscle | Body Water | Bone Mineral | Protein | Metabolic Age | BMR | Notes |
 | ---------- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
