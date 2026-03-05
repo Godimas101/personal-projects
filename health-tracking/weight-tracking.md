@@ -11,11 +11,9 @@
 | **Protein %** | Percentage of total mass made up of protein (found in muscle, organs, and connective tissue). |
 | **Metabolic Age** | Compares your BMR to the average BMR for age groups — gives you the age whose average metabolism yours most closely matches. Lower than your actual age = good. |
 | **BMR** | *Basal Metabolic Rate* — calories your body burns at complete rest just to sustain basic functions (breathing, circulation, cell repair). Everything else you burn is on top of this. |
-
-
+<br>
 > ⚖️ **Note on Wyze scale accuracy:** Bioelectrical impedance measurements (body fat, muscle, water, etc.) are estimates and can vary significantly based on hydration, time of day, and foot placement. Track trends over weeks, not individual readings.
-
-
+<br8>
 | Date | Weight | BMI | Body Fat | Muscle | Body Water | Bone Mineral | Protein | Metabolic Age | BMR | Notes |
 | ---------- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 2025-08-19 | 215 | 26.1 | | | | | | | | |
