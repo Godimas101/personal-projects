@@ -1,6 +1,6 @@
 # Kitchen Inventory
 
-## Spices
+## Dried Spices And Herbs
 
 - Allspice
 - Bang Bang (Clubhouse)
@@ -8,7 +8,7 @@
 - Bay Leaves
 - Black Cumin Seeds
 - Black Peppercorns
-- Chili
+- Chili Powder
 - Chipotle Mango (Clubhouse)
 - Cinnamon
 - Cinnamon Sticks
@@ -22,6 +22,7 @@
 - Ground Black Pepper
 - Ground Cayenne Pepper
 - Ground Cumin
+- Ground Ginger
 - Ground Nutmeg
 - Jerk Seasoning (Cool Runnings)
 - Kebab Halabi Spice (Zara)
