@@ -8,9 +8,9 @@ Overview of a typical weekday from morning to bedtime. References meals.md and s
 
 - Morning shake — see [supplements.md](supplements.md#morning-shake)
 - 750ml water
-- 2 figs (stopped Par 9 2025)
-- 3 dates (stopped Par 9 2025)
-- 6 dried apricots (stopped Par 9 2025)
+- 2 figs (stopped Mar 9 2025)
+- 3 dates (stopped Mar 9 2025)
+- 6 dried apricots (stopped Mar 9 2025)
 
 ## Breakfast
 
