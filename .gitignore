@@ -1,3 +1,19 @@
+# AI assistant instruction files — private, not for commit
+CLAUDE.md
+
+# Environment and secrets
+.env
+.env.local
+*.key
+*secret*
+*credential*
+*password*
+.mcp.json
+
+# Keep example/template credential files
+!*credentials.example*
+!*credentials.template*
+
 # OS files
 .DS_Store
 Thumbs.db
@@ -5,20 +21,10 @@ desktop.ini
 
 # Editor files
 .vscode/
-.idea/
 *.swp
 *.swo
-*~
 
-# Temporary files
+# Temp/logs
 *.tmp
-*.temp
 *.log
 .cache/
-
-# Backup files
-*.bak
-*.backup
-
-# Local credentials — never commit
-credentials.py
