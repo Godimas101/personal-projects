@@ -19,6 +19,8 @@
 **AI-Powered QA Innovation**
 - Pioneered AI integration into QA workflows using Claude, Grok, and n8n, automating test documentation, release notes, and ticket management through GitHub Actions and Automation for Jira
 - Built workflow automation tools enabling one person to accomplish workloads previously requiring entire teams
+- Developed a **Localization QA Claude Skill** that analyzes localization pull requests for translation errors, string length violations, grammar issues, and glossary compliance — and autonomously files bugs for every issue it finds
+- Developed a **Prodigy QA Claude Skill** trained on all Prodigy games and infrastructure: performs pull request analysis, flags bugs and risk areas, collects details from PRs and linked Jira tickets, generates test plans, writes AIO Tests test cases with suggested folder structures, produces Slack release messaging, and performs risk analysis on release candidates — handling the full QA release workflow from a single prompt
 
 **Major Project Leadership**
 - Leading QA effort for Prodigy RPG localization: creating test plans, managing outsourcers, running bug triage, coordinating cross-department stakeholders, and planning initial public release
@@ -78,11 +80,11 @@
 #### Staff Quality Assurance - RPG / Atlassian Admin | Feb 2026 - Present
 Returned to RPG team with focus on AI-powered QA and automation in lean team environment.
 - **Leading Prodigy RPG Localization QA:** Creating comprehensive test plans, managing outsource testing teams, running bug triage process, collaborating cross-functionally with stakeholders for project status, and helping plan/manage initial public release
+- **Built Localization QA Claude Skill:** Analyzes localization pull requests against a custom glossary and grammar/syntax reference, flags translation errors and string length violations, and autonomously files bugs for every issue it finds — dramatically accelerating localization review cycle
+- **Built Prodigy QA Claude Skill:** A comprehensive QA assistant trained on all Prodigy games and infrastructure; performs pull request analysis, identifies bugs and problem areas, collects details from PRs and associated Jira tickets, generates test plans, performs release risk analysis, produces Slack release messaging, and writes AIO Tests test cases with suggested folder structures — effectively collapsing hours of QA release prep into a single prompt
 - Leveraging AI tools (Claude, Grok) and advanced automation (n8n, Automation for Jira, GitHub Actions) to handle workloads previously requiring larger teams
-- Implementing automated testing, AI-powered test generation, and streamlined outsourcer workflows
-- Building on years of Atlassian admin and workflow automation experience to maximize efficiency
 
-**Skills:** Atlassian Admin • n8n • AI Integration • Claude • Grok • Automation for Jira • Automation for Confluence
+**Skills:** Atlassian Admin • n8n • AI Integration • Claude • AIO Tests • Automation for Jira • Automation for Confluence • Localization QA
 
 #### Central QA / Atlassian Admin | Oct 2025 - Feb 2026
 Selected as one of only two QA for elite Central QA team supporting company-wide initiatives.
