@@ -1,12 +1,14 @@
-# Favorite Recipes
+# 🍽️ Favorite Recipes
+
+> **"Life is too short for bad recipes — or ones you can't remember."**
 
 Recipes we've tried and liked, saved for easy reference and reuse.
 
-## Purpose
+## Purpose 🎯
 
 A growing collection of go-to recipes, formatted in markdown for easy LLM use. When asking an AI for new recipe suggestions, reference this folder alongside the [kitchen inventory](../kitchen-inventory/) so it understands my cooking style and flavour preferences.
 
-## Macro & Protein Rating Format
+## Macro & Protein Rating Format 📊
 
 Every recipe in this collection includes a macro summary line immediately after the title:
 
@@ -26,7 +28,7 @@ Every recipe in this collection includes a macro summary line immediately after 
 | 0.50–0.64 | 5/10 |
 | < 0.50 | 4/10 |
 
-## LLM Instructions
+## LLM Instructions 🤖
 
 When using an AI to suggest new recipes or meals, include this in your prompt:
 
@@ -42,7 +44,7 @@ When using an AI to suggest new recipes or meals, include this in your prompt:
 >
 > Base all estimates on the full serving size as described in the recipe. If a range is possible, use the midpoint. Do not skip this block for any meal, regardless of how simple or incomplete the recipe details are — estimate if necessary and note it.
 
-## Recipes
+## Recipes 🥘
 
 | File | Description | Category |
 |------|-------------|----------|
@@ -51,3 +53,7 @@ When using an AI to suggest new recipes or meals, include this in your prompt:
 | [tuna-salad-wraps.md](tuna-salad-wraps.md) | Flexible tuna salad with customizable flavour twists | 🐟 Seafood |
 | [healthy-yogurt-egg-salad-wraps.md](healthy-yogurt-egg-salad-wraps.md) | High-protein egg salad with yogurt instead of mayo, for wraps | 🥚 Egg |
 | [indian-spiced-beans.md](indian-spiced-beans.md) | Warm curry-style spiced beans — great over rice or with flatbread | 🌱 Veggie |
+
+---
+
+*"The best meal is the one you already know how to make."*

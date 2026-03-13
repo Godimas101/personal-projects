@@ -1,12 +1,14 @@
-# Health Tracking
+# 💪 Health Tracking
+
+> **"What gets measured, gets managed — and what gets managed, gets improved."**
 
 Structured health and fitness data maintained as markdown for easy editing and LLM consumption.
 
-## Purpose
+## Purpose 🎯
 
 Provide an LLM with an accurate, up-to-date snapshot of diet, exercise, supplementation, and weight trends so it can give relevant, personalized advice on fitness, nutrition, and health goals.
 
-## Files
+## Files 📂
 
 | File | Contents |
 |------|----------|
@@ -16,8 +18,12 @@ Provide an LLM with an accurate, up-to-date snapshot of diet, exercise, suppleme
 | [exercise.md](exercise.md) | Weekly recurring workout schedule |
 | [weight-tracking.md](weight-tracking.md) | Periodic weigh-in log (weight in lbs, body fat %) |
 
-## Maintenance
+## Maintenance 🔄
 
 - Update `weight-tracking.md` after each weigh-in
 - Update `meals.md` or `supplements.md` when the routine changes
 - Keep all amounts in metric
+
+---
+
+*"Consistency is the only cheat code."*
