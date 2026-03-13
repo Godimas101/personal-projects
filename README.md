@@ -1,10 +1,10 @@
 # 📁 Personal Projects
 
-> **Personal documents and data, structured in markdown for easy LLM consumption and version control.**
+> **My brain, but version controlled.**
 
 ## What's This?
 
-My central hub for personal reference files — organized, version-controlled, and formatted so I can drop them into any LLM conversation for personalized advice. Everything is in plain markdown so it's easy to read and edit directly on GitHub.
+My personal hub for the stuff that actually matters — recipes, health data, career docs, and anything else worth keeping organized. Everything lives in plain markdown so I can drop it into any AI conversation, edit it directly on GitHub, or just feel smug about having my life in a git repo.
 
 ## What Lives Here?
 
@@ -18,12 +18,12 @@ My central hub for personal reference files — organized, version-controlled, a
 ### 📄 Career
 - **[resumes/](resumes/)** - Full master resume with complete work history. Not a final send-ready document — used as a reference to tailor targeted applications.
 
-## Why Git for Personal Files?
+## Why Git for Personal Files? 🤔
 
-- ✅ **Version History** - Never lose a previous version
-- ✅ **Cloud Backup** - Accessible from anywhere
-- ✅ **LLM-Ready** - Plain markdown works in any AI chat
-- ✅ **Easy to Edit** - Update directly on GitHub
+- ✅ **Version History** — Never lose a previous version ("I liked my old recipe better" is now a `git revert`)
+- ✅ **Cloud Backup** — Accessible from anywhere, on any device, at any hour
+- ✅ **LLM-Ready** — Drop any file into an AI conversation for instant personalized advice
+- ✅ **Easy to Edit** — Update directly on GitHub, no special tools needed
 
 ## Folder Structure
 
@@ -37,4 +37,4 @@ personal-projects/
 
 ---
 
-*"Stay organized, stay backed up."*
+*"Commit to the process — literally."*

@@ -1,12 +1,14 @@
-# Automatic Weight Tracking Workflow
+# ⚖️ Automatic Weight Tracking Workflow
 
-An n8n workflow that automatically reads the latest weight measurement from a Wyze Scale and appends it to [`health-tracking/weight-tracking.md`](../../health-tracking/weight-tracking.md) on GitHub.
+> **"You can't manage what you don't measure — so I automated the measuring."**
+
+An n8n workflow that automatically reads the latest weight measurement from a Wyze Scale and appends it to [`health-tracking/weight-tracking.md`](../../health-tracking/weight-tracking.md) on GitHub. Step on the scale, walk away, and it's already logged. Very lazy. Very effective.
 
 The key design challenge: DigitalOcean IPs are blocked from the Wyze login endpoint, so the server can never call `/api/user/login`. This is solved with a **self-refreshing token chain** — you log in once from a residential IP, store both tokens on the server, and `get_wyze_data.py` calls the refresh endpoint (which is NOT IP-blocked) on every run. As long as it runs at least once every 28 days the chain never breaks.
 
 ---
 
-## How It Works
+## How It Works 🔄
 
 ```
 Schedule Trigger (daily)
@@ -27,7 +29,7 @@ Schedule Trigger (daily)
 
 ---
 
-## Files
+## Files 📂
 
 | File | Purpose |
 |------|---------|
@@ -40,7 +42,7 @@ Schedule Trigger (daily)
 
 ---
 
-## First-Time Setup
+## First-Time Setup 🚀
 
 ### 1. Wyze Prerequisites
 
@@ -134,7 +136,7 @@ Import `wyze-scale-weight-tracker.json` into your n8n instance, configure creden
 
 ---
 
-## Normal Operation
+## Normal Operation ✅
 
 Once set up, nothing needs to be touched. `get_wyze_data.py` calls Wyze's refresh endpoint on every run and writes the new tokens back to `.env` automatically. The rolling 28-day refresh window means the chain stays live indefinitely as long as the workflow runs at least weekly.
 
@@ -144,7 +146,7 @@ To log a reading that happened after the scheduled run time, click **Test workfl
 
 ---
 
-## Break-Glass: Token Chain Broken
+## 🚨 Break-Glass: Token Chain Broken
 
 If the server was offline for > 28 days, the refresh token will have expired. Fix it by running `bootstrap-wyze-tokens.py` again from your local machine:
 
@@ -156,7 +158,7 @@ This does a fresh login from your residential IP (bypassing the datacenter block
 
 ---
 
-## Scale Data Fields
+## Scale Data Fields 📊
 
 `get_wyze_data.py` returns all available fields from the Wyze `ScaleRecord` object:
 
@@ -181,8 +183,12 @@ This does a fresh login from your residential IP (bypassing the datacenter block
 
 ---
 
-## Architecture Notes
+## Architecture Notes 🏗️
 
 - **Why SSH instead of a direct HTTP call?** Wyze's internal scale API requires HMAC-MD5 signed requests with a hardcoded signing secret. Using the `wyze_sdk` Python library is far simpler and more maintainable than reimplementing the signing in JavaScript inside an n8n Code node.
 - **Why not store tokens in n8n credentials?** The tokens need to be updated on every run. Writing back to `.env` and reloading is straightforward; n8n's credential store doesn't support programmatic updates from within a workflow.
 - **Weight is already in lbs.** The `wyze_sdk` library converts from the scale's raw kg value before returning. Do not multiply by 2.20462 in the `Process Record` node.
+
+---
+
+*"Automate the boring stuff — especially the part where you write down your weight."*
