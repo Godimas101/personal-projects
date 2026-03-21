@@ -1,0 +1,342 @@
+# widget.py — FloatingWidget and TaskbarWidget
+
+import threading
+import tkinter as tk
+
+import theme as T
+import usage_reader
+import win_utils
+
+# ── Floating layout constants ──────────────────────────────────────────────────
+W        = 262
+H        = 92
+PAD      = 8
+HEADER_H = 22
+SEP_Y1   = HEADER_H
+SEP_Y2   = HEADER_H + 1 + 33
+BAR_H    = 11
+RIGHT_W  = 70
+BAR_W    = W - 2 * PAD - RIGHT_W
+
+# ── Taskbar layout constants ───────────────────────────────────────────────────
+W_EMBED    = 285
+VSEP_1     = 66
+VSEP_2     = 163
+VSEP_3     = 260
+BAR_W_E    = 48
+BAR_SEGS_E = 10
+
+
+# ── Shared polling mixin ───────────────────────────────────────────────────────
+
+class _PollMixin:
+    """Provides fetch/poll loop and data storage. Subclass must set self._win and self._settings."""
+
+    def _poll_init(self):
+        self._poll()
+
+    def _poll(self):
+        if win_utils.should_pause():
+            self._paused = True
+            self._redraw()
+            self._win.after(10_000, self._poll)
+            return
+        self._paused = False
+        threading.Thread(target=self._fetch, daemon=True).start()
+
+    def _fetch(self):
+        rate  = usage_reader.fetch_rate_limits()
+        local = usage_reader.scan_local()
+        self._win.after(0, lambda: self._on_data(rate, local))
+
+    def _on_data(self, rate, local):
+        self._rate_data = rate
+        self._local     = local
+        self._redraw()
+        interval = self._settings.get("poll_interval_ms", 15 * 60 * 1000)
+        self._win.after(interval, self._poll)
+
+    def _open_options(self):
+        import options
+        options.open_panel(
+            self._win, self._settings,
+            self._rate_data, self._local,
+            on_settings_change=None,
+        )
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# Floating Widget
+# ══════════════════════════════════════════════════════════════════════════════
+
+class FloatingWidget(_PollMixin):
+
+    def __init__(self, root: tk.Tk, settings: dict):
+        self._settings   = settings
+        self._cursor_on  = True
+        self._drag_ox    = 0
+        self._drag_oy    = 0
+        self._rate_data  = None
+        self._local      = None
+        self._paused     = False
+
+        self._win = tk.Toplevel(root)
+        self._win.overrideredirect(True)
+        self._win.attributes("-topmost", True)
+        self._win.configure(bg=T.BG)
+        self._win.geometry(f"{W}x{H}")
+        self._win.resizable(False, False)
+
+        self._canvas = tk.Canvas(self._win, width=W, height=H,
+                                  bg=T.BG, highlightthickness=0)
+        self._canvas.pack()
+        self._canvas.bind("<ButtonPress-1>",  self._on_press)
+        self._canvas.bind("<B1-Motion>",       self._on_drag)
+        self._canvas.bind("<ButtonRelease-1>", self._on_release)
+        self._canvas.bind("<Button-3>",        lambda e: self._open_options())
+        self._canvas.bind("<Double-Button-1>", lambda e: self._open_options())
+
+        self._apply_win32()
+        self._position()
+        self._blink()
+        self._poll_init()
+
+    def _apply_win32(self):
+        try:
+            self._win.update_idletasks()
+            win_utils.set_tool_window(self._win.winfo_id())
+        except Exception:
+            pass
+
+    def _position(self):
+        saved = self._settings.get("position")
+        if saved:
+            self._win.geometry(f"{W}x{H}+{saved['x']}+{saved['y']}")
+            return
+        try:
+            rect = win_utils.get_tray_rect()
+            x = rect.right - W - 4
+            y = rect.top   - H - 4
+            self._win.geometry(f"{W}x{H}+{x}+{y}")
+        except Exception:
+            sw = self._win.winfo_screenwidth()
+            sh = self._win.winfo_screenheight()
+            self._win.geometry(f"{W}x{H}+{sw - W - 8}+{sh - H - 48}")
+
+    def _blink(self):
+        self._cursor_on = not self._cursor_on
+        self._redraw()
+        self._win.after(900, self._blink)
+
+    def _redraw(self):
+        c = self._canvas
+        c.delete("all")
+
+        rate  = self._rate_data
+        five_h_pct  = rate.five_hour_pct  / 100 if rate else 0.0
+        seven_d_pct = rate.seven_day_pct  / 100 if rate else 0.0
+        five_h_cd   = rate.five_hour_countdown  if rate else "---"
+        seven_d_cd  = rate.seven_day_countdown  if rate else "---"
+
+        f_title = T.best_font(9, bold=True)
+        f_value = T.best_font(9, bold=True)
+
+        c.create_rectangle(0, 0, W, H, fill=T.BG, outline="")
+        T.draw_bevel(c, 0, 0, W - 1, H - 1)
+
+        # Header
+        dot_fill = T.AMBER_GLOW if self._cursor_on else T.AMBER_DIM
+        c.create_oval(PAD, HEADER_H // 2 - 4, PAD + 8, HEADER_H // 2 + 4,
+                      fill=dot_fill, outline="")
+        c.create_text(PAD + 14, HEADER_H // 2, text="CLAUDE", anchor="w",
+                      fill=T.AMBER_BRIGHT, font=f_title)
+        status_text  = "PAUSED" if self._paused else "LIVE"
+        status_color = T.AMBER_DIM if self._paused else T.GREEN
+        c.create_text(W - PAD - 28, HEADER_H // 2, text=status_text, anchor="e",
+                      fill=status_color, font=T.best_font(7))
+        c.create_text(W - PAD - 7, HEADER_H // 2, text="≡", anchor="center",
+                      fill=T.AMBER_DIM, font=f_title, tags="gear")
+        c.tag_bind("gear", "<Button-1>", lambda e: self._open_options())
+        c.create_line(0, SEP_Y1, W, SEP_Y1, fill=T.BORDER_DIM)
+
+        # SESSION bar
+        y0 = SEP_Y1 + 1
+        c.create_text(PAD, y0 + 5, text="SESSION", anchor="w",
+                      fill=T.AMBER_DIM, font=T.best_font(7))
+        bar_y = y0 + 17
+        T.draw_bar(c, PAD, bar_y, BAR_W, BAR_H, five_h_pct)
+        rx = PAD + BAR_W + 4
+        c.create_text(rx, bar_y, anchor="nw",
+                      text=f"{T.fmt_pct(five_h_pct):>4}",
+                      fill=T.usage_colour(five_h_pct), font=f_value)
+        c.create_text(rx, bar_y + 13, anchor="nw", text=five_h_cd[:7],
+                      fill=T.AMBER_DIM, font=T.best_font(7))
+        c.create_line(0, SEP_Y2, W, SEP_Y2, fill=T.BORDER_DIM)
+
+        # WEEKLY bar
+        y1 = SEP_Y2 + 1
+        c.create_text(PAD, y1 + 5, text="WEEKLY", anchor="w",
+                      fill=T.AMBER_DIM, font=T.best_font(7))
+        bar_y2 = y1 + 17
+        T.draw_bar(c, PAD, bar_y2, BAR_W, BAR_H, seven_d_pct)
+        c.create_text(rx, bar_y2, anchor="nw",
+                      text=f"{T.fmt_pct(seven_d_pct):>4}",
+                      fill=T.usage_colour(seven_d_pct), font=f_value)
+        c.create_text(rx, bar_y2 + 13, anchor="nw", text=seven_d_cd[:7],
+                      fill=T.AMBER_DIM, font=T.best_font(7))
+
+        T.draw_scanlines(c, W, H)
+
+    # ── Drag ──────────────────────────────────────────────────────────────────
+
+    def _on_press(self, e):
+        self._drag_ox = e.x_root - self._win.winfo_x()
+        self._drag_oy = e.y_root - self._win.winfo_y()
+
+    def _on_drag(self, e):
+        self._win.geometry(f"+{e.x_root - self._drag_ox}+{e.y_root - self._drag_oy}")
+
+    def _on_release(self, e):
+        self._settings["position"] = {
+            "x": self._win.winfo_x(),
+            "y": self._win.winfo_y(),
+        }
+
+    # ── Lifecycle ─────────────────────────────────────────────────────────────
+
+    def show(self):
+        self._win.deiconify()
+
+    def hide(self):
+        self._win.withdraw()
+
+    def destroy(self):
+        self._win.destroy()
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# Taskbar Widget (embedded)
+# ══════════════════════════════════════════════════════════════════════════════
+
+class TaskbarWidget(_PollMixin):
+
+    def __init__(self, root: tk.Tk, settings: dict):
+        self._settings  = settings
+        self._cursor_on = True
+        self._embed_h   = 48
+        self._embedded  = False
+        self._rate_data = None
+        self._local     = None
+        self._paused    = False
+
+        self._win = tk.Toplevel(root)
+        self._win.overrideredirect(True)
+        self._win.attributes("-topmost", True)
+        self._win.configure(bg=T.BG)
+        self._win.resizable(False, False)
+
+        self._canvas = tk.Canvas(self._win, width=W_EMBED, height=48,
+                                  bg=T.BG, highlightthickness=0)
+        self._canvas.pack()
+        self._canvas.bind("<Button-3>",        lambda e: self._open_options())
+        self._canvas.bind("<Double-Button-1>", lambda e: self._open_options())
+
+        self._win.update_idletasks()
+        self._apply_win32()
+        self._reposition()
+        self._reposition_loop()
+        self._topmost_loop()
+        self._blink()
+        self._poll_init()
+
+    def _apply_win32(self):
+        try:
+            self._win.update_idletasks()
+            win_utils.set_tool_window(self._win.winfo_id())
+        except Exception:
+            pass
+
+    def _reposition(self):
+        """Snap to taskbar coordinates, bottom-anchored."""
+        try:
+            pos = win_utils.get_taskbar_position(W_EMBED)
+            if pos:
+                x, taskbar_top, taskbar_h = pos
+                self._embed_h = max(taskbar_h - 1, 32)
+                # Anchor to bottom so the thin line at taskbar top stays visible
+                y = taskbar_top + taskbar_h - self._embed_h
+                self._win.geometry(f"{W_EMBED}x{self._embed_h}+{x}+{y}")
+                self._canvas.configure(height=self._embed_h)
+        except Exception:
+            pass
+
+    def _reposition_loop(self):
+        """Recheck taskbar position every 2s (handles taskbar moves/resize)."""
+        self._reposition()
+        self._win.after(2000, self._reposition_loop)
+
+    def _topmost_loop(self):
+        """Re-assert topmost every 300ms — survives flyouts, popups, focus changes."""
+        self._win.attributes("-topmost", True)
+        self._win.lift()
+        self._win.after(300, self._topmost_loop)
+
+    def _blink(self):
+        self._cursor_on = not self._cursor_on
+        self._redraw()
+        self._win.after(900, self._blink)
+
+    def _redraw(self):
+        c  = self._canvas
+        c.delete("all")
+        cw = W_EMBED
+        ch = self._embed_h
+        cy = ch // 2
+
+        rate = self._rate_data
+        five_h_pct  = rate.five_hour_pct  / 100 if rate else 0.0
+        seven_d_pct = rate.seven_day_pct  / 100 if rate else 0.0
+
+        f7  = T.best_font(7)
+        f7b = T.best_font(7, bold=True)
+        f8b = T.best_font(8, bold=True)
+
+        c.create_rectangle(0, 0, cw, ch, fill=T.BG, outline="")
+
+        dot_fill = T.AMBER_GLOW if self._cursor_on else T.AMBER_DIM
+        c.create_oval(5, cy - 4, 13, cy + 4, fill=dot_fill, outline="")
+        c.create_text(17, cy, text="CLAUDE", anchor="w",
+                      fill=T.AMBER_BRIGHT, font=f8b)
+
+        for vx in (VSEP_1, VSEP_2, VSEP_3):
+            c.create_line(vx, 4, vx, ch - 4, fill=T.BORDER_DIM)
+
+        # 5H bar
+        sx  = VSEP_1 + 6
+        b1x = sx + 18
+        c.create_text(sx, cy, text="5H", anchor="w", fill=T.AMBER_DIM, font=f7)
+        T.draw_bar(c, b1x, cy - 4, BAR_W_E, 8, five_h_pct, BAR_SEGS_E)
+        c.create_text(b1x + BAR_W_E + 3, cy, anchor="w",
+                      text=T.fmt_pct(five_h_pct),
+                      fill=T.usage_colour(five_h_pct), font=f7b)
+
+        # 7D bar
+        wx  = VSEP_2 + 6
+        b2x = wx + 18
+        c.create_text(wx, cy, text="7D", anchor="w", fill=T.AMBER_DIM, font=f7)
+        T.draw_bar(c, b2x, cy - 4, BAR_W_E, 8, seven_d_pct, BAR_SEGS_E)
+        c.create_text(b2x + BAR_W_E + 3, cy, anchor="w",
+                      text=T.fmt_pct(seven_d_pct),
+                      fill=T.usage_colour(seven_d_pct), font=f7b)
+
+        # Gear
+        c.create_text((VSEP_3 + cw) // 2, cy, text="≡", anchor="center",
+                      fill=T.AMBER_DIM, font=f8b, tags="gear")
+        c.tag_bind("gear", "<Button-1>", lambda e: self._open_options())
+
+        T.draw_scanlines(c, cw, ch)
+
+    # ── Lifecycle ─────────────────────────────────────────────────────────────
+
+    def destroy(self):
+        self._win.destroy()

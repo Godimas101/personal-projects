@@ -220,7 +220,7 @@ Standard Toplevel with chrome (this window gets a title bar).
 ┌─────────────────────────────────┐
 │  CLAUDE USAGE MONITOR  v0.1.0   │
 ├──────────┬──────────────────────┤
-│ GENERAL  │  STATS               │
+│ GENERAL  │  NERDS ONLY          │
 ├──────────┴──────────────────────┤
 │  (tab content)                  │
 └─────────────────────────────────┘

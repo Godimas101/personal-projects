@@ -2,6 +2,37 @@
 
 ---
 
+## THE BUG WE ARE FIXING
+
+**The original CodeZeno widget crashed or froze on screen unlock.**
+
+Root cause: it kept polling the Anthropic API while the Windows desktop was unavailable (workstation locked, screensaver active). When the user returned and unlocked, the widget was in a broken state requiring a kill and restart.
+
+**Our fix:** Before every poll, call `should_pause()`. If `True`, skip the API call entirely and reschedule a lightweight check in 10 seconds. The moment the screen is unlocked and `should_pause()` returns `False`, the next check fires an immediate data refresh. The widget wakes up cleanly every time.
+
+This is implemented in `win_utils.py` using two Win32 calls — no pywin32, no external dependencies:
+
+```python
+def is_screensaver_active() -> bool:
+    active = ctypes.c_bool()
+    ctypes.windll.user32.SystemParametersInfoA(0x0072, 0, ctypes.byref(active), 0)
+    return active.value
+
+def is_workstation_locked() -> bool:
+    hDesk = ctypes.windll.user32.OpenInputDesktop(0, False, 0x0100)
+    if hDesk:
+        ctypes.windll.user32.CloseDesktop(hDesk)
+        return False
+    return True
+
+def should_pause() -> bool:
+    return is_screensaver_active() or is_workstation_locked()
+```
+
+**All three reference repos (CodeZeno, Bortlesboat, Maciek) have zero screen lock handling. This is our key differentiator.**
+
+---
+
 ## 2026-03-20 — Project Start + Full Technical Research
 
 ### Why we're building this
@@ -173,19 +204,90 @@ Result: floats very close to the clock. Visually identical to the user — not e
 
 ---
 
-### Planned File Structure
+### Actual File Structure (as built)
 ```
 claude-usage-monitor/
-├── main.py           — entry point, startup registration
-├── widget.py         — main taskbar widget window
-├── options.py        — options/stats panel (tabbed)
-├── usage_reader.py   — JSONL parser + OAuth API calls
-├── win_utils.py      — Win32 positioning, screen lock detection
-├── theme.py          — all colour/font/style constants
+├── main.py           — entry point, single-instance mutex, load/save settings to %APPDATA%\ClaudeUsageMonitor\settings.json
+├── widget.py         — main widget: tries taskbar embedding, falls back to floating; horizontal/vertical layouts
+├── options.py        — options panel: GENERAL tab + NERDS ONLY tab (2-col fixed layout, no scroll)
+├── usage_reader.py   — OAuth API (fetch_rate_limits), JSONL parser (scan_local), model pricing, RateLimitData, LocalStats
+├── win_utils.py      — screen lock detection (should_pause), taskbar helpers, set_tool_window, embed_in_taskbar
+├── theme.py          — colour constants, best_font(), draw_bar(), draw_scanlines(), draw_bevel(), usage_colour(), fmt_*
 ├── STYLE_GUIDE.md
 ├── NOTES.md
 └── README.md
 ```
+
+---
+
+### Windows 11 Taskbar — Why True Embedding Doesn't Work
+
+**Windows 11's taskbar is WinUI3/XAML, not Win32 GDI.**
+(Source: [ramensoftware/windows-11-taskbar-styling-guide](https://github.com/ramensoftware/windows-11-taskbar-styling-guide))
+
+The taskbar renders via a XAML compositor layer on top of any Win32 child windows. `SetParent` into `Shell_TrayWnd` technically succeeds at the API level — the window IS embedded — but the XAML render layer paints over it. This is why our widget was invisible despite all Win32 calls returning success.
+
+**COM Deskband doesn't work on vanilla Windows 11 either.**
+(Source: [srwi/EverythingToolbar](https://github.com/srwi/EverythingToolbar))
+
+EverythingToolbar explicitly recommends the Launcher (non-embedded) approach for Windows 11. Deskband (COM toolbar) only works with ExplorerPatcher or StartAllBack installed — third-party tools that replace the taskbar with a classic Win32 one.
+
+**Our solution: HWND_TOPMOST floating window at taskbar screen coordinates.**
+Position the widget at `(tray_left - widget_w, taskbar_top)` as a `HWND_TOPMOST` / `overrideredirect` window. Re-assert topmost + reposition every 2 seconds to survive focus changes. This is visually identical to true embedding and works reliably on Windows 11.
+
+**YASB** ([amnweb/yasb](https://github.com/amnweb/yasb)) takes the same general approach — a Python-based always-on-top overlay bar rather than true taskbar embedding.
+
+---
+
+### Taskbar Embedding — UPDATED (actual implementation)
+
+The "float near the clock" plan was upgraded. We now do true Win32 `SetParent` embedding from Python via ctypes — same technique as CodeZeno's Rust implementation.
+
+**`win_utils.embed_in_taskbar(hwnd, widget_w)`:**
+1. `FindWindowA("Shell_TrayWnd")` — taskbar HWND
+2. `FindWindowExA(taskbar, "TrayNotifyWnd")` — clock/tray area
+3. `GetWindowRect` both → compute `widget_x = tray_left - widget_w` (just left of clock)
+4. `GetWindowLongW(hwnd, GWL_STYLE)` → strip `WS_POPUP`, add `WS_CHILD | WS_CLIPSIBLINGS | WS_VISIBLE`
+5. `SetParent(hwnd, taskbar)` — reparent widget into taskbar
+6. `SetWindowPos(hwnd, widget_x, 0, widget_w, taskbar_h, SWP_FRAMECHANGED | SWP_SHOWWINDOW)`
+7. Returns `(True, widget_x, taskbar_h)` on success, `(False, 0, 48)` on failure
+
+**In `widget.py`:**
+- `_try_embed()` called after `_apply_win32()` — runs `embed_in_taskbar(hwnd, W_EMBED=285)`
+- If `ok=True`: sets `self._embedded = True`, resizes canvas to `285 × taskbar_h`, uses `_draw_embedded()` layout
+- If `ok=False`: falls back to floating widget at `262 × 92` with `_draw_floating()` layout
+- Drag is disabled when embedded (position is owned by the taskbar)
+
+**Embedded horizontal layout (W=285, H=taskbar_h ~48px):**
+```
+● CLAUDE | 5H ▓▓▓▓▓░░░░░ 61% | 7D ▓▓░░░░░░░░ 20% | ≡
+```
+- Constants: `VSEP_1=66`, `VSEP_2=163`, `VSEP_3=260`, `BAR_W_E=48`, `BAR_SEGS_E=10`
+- Countdown not shown in embedded mode (visible in Nerds Only panel instead)
+
+---
+
+### Options Panel — Nerds Only tab (2-column fixed layout)
+
+No scrollbar. Window auto-sizes to fit Nerds Only content on first open, then locks size.
+
+**Left column:** RATE LIMITS (all API windows with mini-bars), BURN RATE (tok/min + velocity), MODEL BREAKDOWN
+
+**Right column:** TODAY (messages/output/input/cache/cost), SESSION (5H block), ALL TIME
+
+**Sizing trick:** in `_build()`, temporarily switches to Nerds Only tab, calls `update_idletasks()`, reads `winfo_reqwidth/height`, locks geometry, then switches back to General tab.
+
+**Panel positioning:** Uses `winfo_rootx()/rooty()` (not `winfo_x/y`) so it works correctly when the widget is embedded in the taskbar. Opens above the widget; falls back to below if off-screen.
+
+---
+
+### Known Bugs Fixed
+
+| Bug | Fix |
+|-----|-----|
+| `TypeError: float() argument... NoneType` | API returns `"utilization": null` for some windows. Fixed: `float(raw.get("utilization") or 0)` in `WindowData.__init__` |
+| Widget invisible after launch | `main.py` had `root.withdraw()` before widget built. Fixed: removed `withdraw()` entirely |
+| Single-instance mutex blocking re-launch after crash | Background thread crash left main thread's mutex held. Fixed: kill stuck PID via `Stop-Process` |
 
 ---
 
@@ -194,3 +296,6 @@ claude-usage-monitor/
 | Date | Work Done |
 |------|-----------|
 | 2026-03-20 | Project created, all three reference repos researched, aesthetic research completed, technical decisions made, NOTES + README + STYLE_GUIDE written |
+| 2026-03-20 | Built all 6 source files. Fixed 3 startup bugs. Widget working as floating amber phosphor widget. |
+| 2026-03-20 | Upgraded to true taskbar embedding via Win32 SetParent (embed_in_taskbar in win_utils.py). Rewrote widget.py with dual floating/embedded layouts. Rewrote options.py Nerds Only tab as 2-column fixed-size layout without scrollbar. Pending: reboot test to verify taskbar embedding works. |
+| 2026-03-21 | Discovered Windows 11 taskbar is WinUI3/XAML — SetParent embeds correctly at Win32 level but XAML layer paints over it. Switched to HWND_TOPMOST float-at-taskbar-coordinates approach. Added system tray icon (pystray, amber dot) with toggle menu for floating/taskbar widgets. Refactored widget.py into FloatingWidget + TaskbarWidget classes. Fixed vanish-on-options-close bug by re-asserting topmost every 2s in reposition loop. Both widgets now working. |
