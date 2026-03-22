@@ -58,6 +58,10 @@ def main():
 
     settings = load_settings()
 
+    import theme as T
+    if not settings.get("use_colours", True):
+        T.set_use_colours(False)
+
     root = tk.Tk()
     root.withdraw()  # invisible owner window — keeps mainloop alive
 
@@ -118,6 +122,13 @@ def main():
     })
     tray.start()
     settings["_on_data_cb"] = lambda rate, local: tray.update_usage(rate, local)
+
+    def on_colour_change():
+        if floating:
+            floating._redraw()
+        if taskbar:
+            taskbar._redraw()
+    settings["_on_colour_change_cb"] = on_colour_change
 
     try:
         root.mainloop()

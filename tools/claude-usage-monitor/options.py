@@ -94,6 +94,13 @@ class OptionsPanel(tk.Toplevel):
         self.geometry(f"{w}x{h}")
         self._switch_tab("GENERAL")
 
+    def _rebuild(self):
+        """Tear down and rebuild the panel with the current theme colours."""
+        for w in self.winfo_children():
+            w.destroy()
+        self._active_tab = tk.StringVar(value="GENERAL")
+        self._build()
+
     def _switch_tab(self, label: str):
         self._active_tab.set(label)
         self._tab_general.pack_forget()
@@ -159,13 +166,30 @@ class OptionsPanel(tk.Toplevel):
             def toggle():
                 _set_startup(self._startup_var.get())
             tk.Checkbutton(r, variable=self._startup_var, command=toggle,
-                           bg=T.BG, fg=T.AMBER,
+                           bg=T.BG, fg=T.AMBER_DIM,
                            activebackground=T.BG, activeforeground=T.AMBER,
-                           selectcolor=T.PANEL, font=T.best_font(8),
-                           text="LAUNCH ON STARTUP",
+                           selectcolor=T.PANEL,
                            relief="flat", bd=0).pack(side="left")
 
-        row("", make_startup_row)
+        row("LAUNCH ON STARTUP", make_startup_row)
+
+        self._colours_var = tk.BooleanVar(value=self._settings.get("use_colours", True))
+
+        def make_colours_row(r):
+            def toggle():
+                enabled = self._colours_var.get()
+                self._settings["use_colours"] = enabled
+                T.set_use_colours(enabled)
+                if cb := self._settings.get("_on_colour_change_cb"):
+                    cb()
+                self._rebuild()
+            tk.Checkbutton(r, variable=self._colours_var, command=toggle,
+                           bg=T.BG, fg=T.AMBER_DIM,
+                           activebackground=T.BG, activeforeground=T.AMBER,
+                           selectcolor=T.PANEL,
+                           relief="flat", bd=0).pack(side="left")
+
+        row("USE COLOURS", make_colours_row)
 
         # ABOUT
         section("ABOUT")
@@ -213,7 +237,7 @@ class OptionsPanel(tk.Toplevel):
         cols.pack(fill="both", expand=True)
 
         self._nerds_left = tk.Frame(cols, bg=T.BG)
-        self._nerds_left.pack(side="left", fill="y", padx=0)
+        self._nerds_left.pack(side="left", fill="both", expand=True, padx=0)
 
         tk.Frame(cols, bg=T.BORDER, width=1).pack(side="left", fill="y")
 
@@ -289,6 +313,17 @@ class OptionsPanel(tk.Toplevel):
                 stat(model.upper()[:14], f"{pct * 100:.1f}%")
         elif local:
             stat("STATUS", "NO DATA YET", T.AMBER_DIM)
+
+        # Claude Code mascot — centered in remaining space
+        _MASCOT = (
+            "   ▐▛███▜▌\n"
+            "   ▝▜██████▛▘\n"
+            "   ▘▘ ▝▝"
+        )
+        spacer = tk.Frame(frame, bg=T.BG)
+        spacer.pack(fill="both", expand=True)
+        tk.Label(spacer, text=_MASCOT, bg=T.BG, fg=T.AMBER_DIM,
+                 font=T.best_font(8), justify="center").pack(expand=True)
 
         # Bottom padding
         tk.Frame(frame, bg=T.BG, height=8).pack()

@@ -8,14 +8,14 @@ import usage_reader
 import win_utils
 
 # ── Floating layout constants ──────────────────────────────────────────────────
-W        = 262
+W        = 224
 H        = 92
 PAD      = 8
 HEADER_H = 22
 SEP_Y1   = HEADER_H
 SEP_Y2   = HEADER_H + 1 + 33
 BAR_H    = 11
-RIGHT_W  = 70
+RIGHT_W  = 32
 BAR_W    = W - 2 * PAD - RIGHT_W
 
 # ── Taskbar layout constants ───────────────────────────────────────────────────
@@ -160,8 +160,8 @@ class FloatingWidget(_PollMixin):
                       fill=T.AMBER_BRIGHT, font=f_title)
         status_text  = "PAUSED" if self._paused else "LIVE"
         status_color = T.AMBER_DIM if self._paused else T.GREEN
-        c.create_text(W - PAD - 28, HEADER_H // 2, text=status_text, anchor="e",
-                      fill=status_color, font=T.best_font(7))
+        c.create_text(W - PAD - 28, HEADER_H // 2, text=status_text, anchor="w",
+                      fill=status_color, font=f_title)
         c.create_line(0, SEP_Y1, W, SEP_Y1, fill=T.BORDER_DIM)
 
         five_h_tf  = rate.five_hour_time_frac  if rate else 0.0

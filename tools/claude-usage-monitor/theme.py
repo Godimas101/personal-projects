@@ -19,6 +19,26 @@ GREEN        = "#00cc44"   # usage OK
 YELLOW       = "#ffbf00"   # usage warning
 RED          = "#cc2200"   # usage alert
 
+_COLOUR_PALETTE = dict(
+    BG="#090909", PANEL="#0f0e0c", BORDER_DIM="#2a1f0a", BORDER="#4a3510",
+    AMBER="#e8a020", AMBER_BRIGHT="#ffb300", AMBER_DIM="#7a5010", AMBER_GLOW="#ff9900",
+    BEVEL_LIGHT="#5a4020", BEVEL_DARK="#1a0e04", SCANLINE="#0d0c0a",
+    GREEN="#00cc44", YELLOW="#ffbf00", RED="#cc2200",
+)
+_GREY_PALETTE = dict(
+    BG="#090909", PANEL="#101010", BORDER_DIM="#202020", BORDER="#383838",
+    AMBER="#a0a0a0", AMBER_BRIGHT="#c0c0c0", AMBER_DIM="#555555", AMBER_GLOW="#a0a0a0",
+    BEVEL_LIGHT="#444444", BEVEL_DARK="#111111", SCANLINE="#0d0d0d",
+    GREEN="#888888", YELLOW="#aaaaaa", RED="#666666",
+)
+
+def set_use_colours(enabled: bool) -> None:
+    """Switch between the amber colour palette and greyscale."""
+    import sys
+    m = sys.modules[__name__]
+    for k, v in (_COLOUR_PALETTE if enabled else _GREY_PALETTE).items():
+        setattr(m, k, v)
+
 # ── Typography ────────────────────────────────────────────────────────────────
 _PREFERRED = ["Eurostile", "Microgramma", "Nasalization", "Courier New", "Consolas"]
 
