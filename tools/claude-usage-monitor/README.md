@@ -1,96 +1,79 @@
-# Claude Usage Monitor
+# 🟠 Claude Usage Monitor
 
-A lightweight Windows system tray + overlay widget that displays Claude Code usage at a glance — styled after the amber phosphor terminals of the Aliens franchise.
+> **"Never be surprised by a rate limit again — unless you deserve it."**
 
-> **Status: Feature-complete. In personal soak testing before public release.**
-
----
-
-## What It Does
-
-- Floating overlay widget near the system clock — always visible, draggable
-- Compact taskbar widget that sits flush against the Windows taskbar
-- System tray icon showing current session % at a glance
-- Pauses polling automatically when the screen is locked or screensaver is active
-- Hides the taskbar widget when a fullscreen app or game is running
-- Opens a full stats + settings panel via right-click on the tray icon
+A lightweight Windows widget that shows your Claude Code usage at a glance. Amber phosphor aesthetic. Always on top. Knows when you've locked your screen.
 
 ---
 
-## Features
+## 🚀 What It Does
 
-### Floating Widget
-- Draggable amber overlay, always on top, positioned near the clock
+- **Floating overlay** — draggable amber widget near the system clock, always visible
+- **Taskbar widget** — compact strip that lives flush against the Windows taskbar
+- **System tray icon** — shows current session % as a number on an amber dot
+- **Smart polling** — pauses automatically when screen is locked or screensaver is active
+- **Fullscreen-aware** — taskbar widget hides itself when a game or fullscreen app is running
+- **Right-click → settings** — full stats + configuration panel
+
+---
+
+## 📊 What It Shows
+
+### Floating & Taskbar Widgets
 - SESSION (5H) and WEEKLY (7D) usage bars with percentage labels
-- Depleting time line above each bar — green while time remains, dims as the window expires
-- Vertical pip cursor anchored to the right edge of the highest filled pip
-- Blinking LIVE / PAUSED status indicator
-- Position saved between sessions
-
-### Taskbar Widget
-- Compact strip that lives at the right end of the Windows taskbar
-- SESSION and WEEKLY bars with percentages
-- Same timer lines and pip cursors as the floating widget
-- Auto-hides when a fullscreen app (game, video, presentation) is in the foreground
-- Briefly flickers when the system tray hidden-icons flyout opens — cosmetic only, not fixable without WinEvent hooks
-
-### System Tray Icon
-- Amber dot in the notification area showing current session % as a number
-- Right-click menu: toggle floating widget, toggle taskbar widget, open settings, exit
-- Checkmarks reflect actual widget state, updated in real time
+- Depleting time line above each bar — green while time remains, dims as the window closes
+- Vertical pip cursor anchored to the right edge of the last filled pip
+- Blinking LIVE / PAUSED status
 
 ### Options Panel — General Tab
-- Poll frequency (1 min → 1 hour)
-- Launch on Windows startup toggle
-- Use Colours toggle — switches all widgets and the panel between amber phosphor and greyscale
-- Version, credits, repository link
+- **Tool Theme** — choose from Default (amber), Red, Blue, Green, Purple, Cyan, Orange, or White phosphor
+- **Poll Interval** — 1 min to 1 hour
+- **Launch on Startup** — Windows startup toggle
+- Per-widget settings: **Transparent Background** and **Text F/X** (scanlines + bevel on/off)
+- Version, credits, and repository link
 
 ### Options Panel — Nerds Only Tab
 - All rate limit windows with mini progress bars and reset countdowns
-- Today: messages, output tokens, input tokens, cache read/write, cost (USD)
-- Session (current 5H block): messages, tokens, cost
-- All time: totals, cost, first session date
-- Burn rate: tokens/min + velocity indicator (IDLE / SLOW / NORMAL / FAST / VERY FAST)
-- Model breakdown: usage % per model
+- Today / Session / All Time: messages, tokens, cost (USD)
+- Burn rate (tokens/min) + velocity indicator
+- Per-model usage breakdown
 - Refresh button
 - Claude Code mascot
 
 ---
 
-## Screen Lock / Screensaver Handling
+## 🔒 Screen Lock Handling
 
-The original motivation: most existing monitors keep polling when the Windows desktop is unavailable, causing freezes or crashes on screen unlock.
+Most existing monitors keep polling when Windows is locked, causing freezes or stale data on unlock. This one doesn't.
 
-This tool detects both lock states via Win32 API with no extra dependencies:
-- **Screen lock:** `OpenInputDesktop()` returns NULL when workstation is locked
-- **Screensaver:** `SystemParametersInfo(SPI_GETSCREENSAVERRUNNING)`
+Lock state is detected via Win32 API — no extra dependencies:
+- **Workstation locked:** `OpenInputDesktop()` returns NULL
+- **Screensaver active:** `SystemParametersInfo(SPI_GETSCREENSAVERRUNNING)`
 
-While either is active, polling is fully suspended. On unlock/wake the next lightweight check fires an immediate data refresh. The widget wakes up cleanly every time.
-
-All three major reference repos have zero screen lock handling. This is our key differentiator.
+While either is active, polling suspends entirely. On wake, the next check fires an immediate refresh. Clean every time.
 
 ---
 
-## Windows 11 Taskbar Note
+## 🖥️ Windows 11 Taskbar Note
 
-Windows 11's taskbar uses WinUI3/XAML rendering. True Win32 `SetParent` embedding technically works at the API level but the XAML compositor paints over any embedded child windows, making them invisible. COM deskband embedding also requires third-party tools (ExplorerPatcher, StartAllBack) to work on Windows 11.
+Windows 11's taskbar is WinUI3/XAML — `SetParent` embeds correctly at the Win32 level but the XAML compositor paints right over it. Deskband embedding also requires ExplorerPatcher or StartAllBack.
 
-Our approach: position the taskbar widget as a `HWND_TOPMOST` floating window at exact taskbar screen coordinates, bottom-anchored, re-asserted every 300ms. Visually identical to true embedding. No third-party tools required.
+Our approach: `HWND_TOPMOST` floating window positioned at exact taskbar screen coordinates, re-asserted every 300ms. Visually identical to true embedding, no third-party tools required.
 
 ---
 
-## Data Sources
+## 📡 Data Sources
 
 | Data | Source |
 |------|--------|
 | 5-hour and 7-day rate limits + reset countdowns | Anthropic OAuth API (`/api/oauth/usage`) |
-| Session history, token counts, cost | Local JSONL at `~/.claude/projects/**/*.jsonl` |
+| Session history, token counts, cost | Local JSONL files at `~/.claude/projects/**/*.jsonl` |
 
-No separate API key needed — reads existing Claude Code credentials from `~/.claude/.credentials.json`. Attempts a token refresh via `claude.cmd` if the token is expired.
+No separate API key needed — reads your existing Claude Code credentials from `~/.claude/.credentials.json`. Attempts a token refresh via `claude.cmd` if expired.
 
 ---
 
-## Installation
+## 📦 Installation
 
 ```
 pip install -r requirements.txt
@@ -101,19 +84,25 @@ Settings are stored at `%APPDATA%\ClaudeUsageMonitor\settings.json`.
 
 ---
 
-## Reference Projects
+## 🔩 Requirements
 
-| Repo | Notes |
-|------|-------|
-| [CodeZeno/Claude-Code-Usage-Monitor](https://github.com/CodeZeno/Claude-Code-Usage-Monitor) | Rust, Win32 native, true taskbar embedding via `WS_EX_LAYERED` + `UpdateLayeredWindow` |
-| [Bortlesboat/claude-usage-monitor](https://github.com/Bortlesboat/claude-usage-monitor) | Python, OAuth API + JSONL, most advanced stats |
-| [Maciek-roboblog/Claude-Code-Usage-Monitor](https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor) | Python, Rich terminal UI, JSONL only |
-| [amnweb/yasb](https://github.com/amnweb/yasb) | Python status bar, same TOPMOST float approach for Win11 |
-| [srwi/EverythingToolbar](https://github.com/srwi/EverythingToolbar) | C#/WPF, confirms deskband doesn't work on Win11 without ExplorerPatcher |
+- Windows 10 / 11
+- Python 3.10+
+- Claude Code installed (provides credentials)
 
 ---
 
-## Authors
+## 🙏 Credits & Reference Projects
 
-- Chris Carpenter
-- Claude Sonnet 4.6 (Anthropic)
+Built by **Chris Carpenter** and **Claude Sonnet 4.6**.
+
+| Repo | Notes |
+|------|-------|
+| [CodeZeno/Claude-Code-Usage-Monitor](https://github.com/CodeZeno/Claude-Code-Usage-Monitor) | Rust, Win32 native, true taskbar embedding |
+| [Bortlesboat/claude-usage-monitor](https://github.com/Bortlesboat/claude-usage-monitor) | Python, OAuth API + JSONL, advanced stats |
+| [Maciek-roboblog/Claude-Code-Usage-Monitor](https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor) | Python, Rich terminal UI, JSONL only |
+| [amnweb/yasb](https://github.com/amnweb/yasb) | Python status bar, same TOPMOST float approach for Win11 |
+
+---
+
+*Please poll responsibly.*

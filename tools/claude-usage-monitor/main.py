@@ -59,8 +59,7 @@ def main():
     settings = load_settings()
 
     import theme as T
-    if not settings.get("use_colours", True):
-        T.set_use_colours(False)
+    T.apply_theme(settings.get("theme", "Default"))
 
     root = tk.Tk()
     root.withdraw()  # invisible owner window — keeps mainloop alive

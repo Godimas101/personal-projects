@@ -19,24 +19,65 @@ GREEN        = "#00cc44"   # usage OK
 YELLOW       = "#ffbf00"   # usage warning
 RED          = "#cc2200"   # usage alert
 
-_COLOUR_PALETTE = dict(
-    BG="#090909", PANEL="#0f0e0c", BORDER_DIM="#2a1f0a", BORDER="#4a3510",
-    AMBER="#e8a020", AMBER_BRIGHT="#ffb300", AMBER_DIM="#7a5010", AMBER_GLOW="#ff9900",
-    BEVEL_LIGHT="#5a4020", BEVEL_DARK="#1a0e04", SCANLINE="#0d0c0a",
-    GREEN="#00cc44", YELLOW="#ffbf00", RED="#cc2200",
-)
-_GREY_PALETTE = dict(
-    BG="#090909", PANEL="#101010", BORDER_DIM="#202020", BORDER="#383838",
-    AMBER="#a0a0a0", AMBER_BRIGHT="#c0c0c0", AMBER_DIM="#555555", AMBER_GLOW="#a0a0a0",
-    BEVEL_LIGHT="#444444", BEVEL_DARK="#111111", SCANLINE="#0d0d0d",
-    GREEN="#888888", YELLOW="#aaaaaa", RED="#666666",
-)
+THEMES = {
+    "Default": dict(
+        BG="#090909", PANEL="#0f0e0c", BORDER_DIM="#2a1f0a", BORDER="#4a3510",
+        AMBER="#e8a020", AMBER_BRIGHT="#ffb300", AMBER_DIM="#7a5010", AMBER_GLOW="#ff9900",
+        BEVEL_LIGHT="#5a4020", BEVEL_DARK="#1a0e04", SCANLINE="#0d0c0a",
+        GREEN="#00cc44", YELLOW="#ffbf00", RED="#cc2200",
+    ),
+    "Red": dict(
+        BG="#090909", PANEL="#0f0d0d", BORDER_DIM="#2a0c0a", BORDER="#4a1410",
+        AMBER="#e83018", AMBER_BRIGHT="#ff3311", AMBER_DIM="#7a1808", AMBER_GLOW="#ff2200",
+        BEVEL_LIGHT="#5a2018", BEVEL_DARK="#1a0804", SCANLINE="#0d0a0a",
+        GREEN="#00cc44", YELLOW="#ffbf00", RED="#ff2200",
+    ),
+    "Blue": dict(
+        BG="#090909", PANEL="#0d0d10", BORDER_DIM="#0a1028", BORDER="#10184a",
+        AMBER="#2070e0", AMBER_BRIGHT="#3388ff", AMBER_DIM="#101870", AMBER_GLOW="#0066ff",
+        BEVEL_LIGHT="#103858", BEVEL_DARK="#04041a", SCANLINE="#0a0a0d",
+        GREEN="#00cc44", YELLOW="#ffbf00", RED="#cc2200",
+    ),
+    "Green": dict(
+        BG="#090909", PANEL="#0c0f0c", BORDER_DIM="#082008", BORDER="#0c4010",
+        AMBER="#20c840", AMBER_BRIGHT="#33ff55", AMBER_DIM="#086018", AMBER_GLOW="#00ee33",
+        BEVEL_LIGHT="#185828", BEVEL_DARK="#041204", SCANLINE="#0a0d0a",
+        GREEN="#33ff55", YELLOW="#ffbf00", RED="#cc2200",
+    ),
+    "Purple": dict(
+        BG="#090909", PANEL="#0e0d10", BORDER_DIM="#180a28", BORDER="#28104a",
+        AMBER="#b040d8", AMBER_BRIGHT="#cc55ff", AMBER_DIM="#581068", AMBER_GLOW="#aa00ff",
+        BEVEL_LIGHT="#481858", BEVEL_DARK="#10041a", SCANLINE="#0b0a0d",
+        GREEN="#00cc44", YELLOW="#ffbf00", RED="#cc2200",
+    ),
+    "Cyan": dict(
+        BG="#090909", PANEL="#0c0f10", BORDER_DIM="#082020", BORDER="#0c4040",
+        AMBER="#18c8cc", AMBER_BRIGHT="#22e8f0", AMBER_DIM="#086068", AMBER_GLOW="#00e0f0",
+        BEVEL_LIGHT="#105858", BEVEL_DARK="#041414", SCANLINE="#0a0c0d",
+        GREEN="#00cc44", YELLOW="#ffbf00", RED="#cc2200",
+    ),
+    "Orange": dict(
+        BG="#090909", PANEL="#0f0e0b", BORDER_DIM="#2a1808", BORDER="#4a2808",
+        AMBER="#f06010", AMBER_BRIGHT="#ff7700", AMBER_DIM="#803010", AMBER_GLOW="#ff5500",
+        BEVEL_LIGHT="#603020", BEVEL_DARK="#1a0804", SCANLINE="#0d0b0a",
+        GREEN="#00cc44", YELLOW="#ffbf00", RED="#cc2200",
+    ),
+    "White": dict(
+        BG="#090909", PANEL="#0e0e0e", BORDER_DIM="#282828", BORDER="#484848",
+        AMBER="#c8c8c8", AMBER_BRIGHT="#f0f0f0", AMBER_DIM="#606060", AMBER_GLOW="#ffffff",
+        BEVEL_LIGHT="#484848", BEVEL_DARK="#141414", SCANLINE="#0c0c0c",
+        GREEN="#00cc44", YELLOW="#ffbf00", RED="#cc2200",
+    ),
+}
 
-def set_use_colours(enabled: bool) -> None:
-    """Switch between the amber colour palette and greyscale."""
+THEME_NAMES = list(THEMES.keys())
+
+
+def apply_theme(name: str) -> None:
+    """Apply a named theme palette to this module's colour globals."""
     import sys
     m = sys.modules[__name__]
-    for k, v in (_COLOUR_PALETTE if enabled else _GREY_PALETTE).items():
+    for k, v in THEMES.get(name, THEMES["Default"]).items():
         setattr(m, k, v)
 
 # ── Typography ────────────────────────────────────────────────────────────────

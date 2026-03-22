@@ -10,7 +10,7 @@ import theme as T
 import usage_reader
 
 APP_NAME     = "ClaudeUsageMonitor"
-REPO_URL     = "https://github.com/Godimas101/personal-projects"
+REPO_URL     = "https://github.com/Godimas101/personal-projects/tree/main/tools/claude-usage-monitor"
 VERSION      = "0.1.0"
 
 POLL_OPTIONS = [
@@ -137,8 +137,28 @@ class OptionsPanel(tk.Toplevel):
                      font=T.best_font(8), width=18, anchor="w").pack(side="left")
             widget_cb(r)
 
-        # SETTINGS
-        section("SETTINGS")
+        # GENERAL SETTINGS
+        section("GENERAL SETTINGS")
+
+        current_theme = self._settings.get("theme", "Default")
+        self._theme_var = tk.StringVar(value=current_theme)
+
+        def make_theme_row(r):
+            mb = tk.Menubutton(r, textvariable=self._theme_var,
+                               bg=T.PANEL, fg=T.AMBER,
+                               activebackground=T.PANEL, activeforeground=T.AMBER_BRIGHT,
+                               font=T.best_font(8), relief="flat", bd=1,
+                               highlightthickness=1, highlightbackground=T.BORDER)
+            menu = tk.Menu(mb, tearoff=False, bg=T.PANEL, fg=T.AMBER,
+                           activebackground=T.BORDER_DIM, activeforeground=T.AMBER_BRIGHT,
+                           font=T.best_font(8))
+            for name in T.THEME_NAMES:
+                menu.add_command(label=name,
+                                 command=lambda n=name: self._set_theme(n))
+            mb.configure(menu=menu)
+            mb.pack(side="left")
+
+        row("TOOL THEME", make_theme_row)
 
         current_ms  = self._settings.get("poll_interval_ms", 15 * 60 * 1000)
         current_lbl = next((l for l, ms in POLL_OPTIONS if ms == current_ms), "15 MIN")
@@ -173,23 +193,30 @@ class OptionsPanel(tk.Toplevel):
 
         row("LAUNCH ON STARTUP", make_startup_row)
 
-        self._colours_var = tk.BooleanVar(value=self._settings.get("use_colours", True))
+        # Helper — creates a checkbox row callback bound to a settings key
+        def _ck(key, default):
+            def _make(r):
+                var = tk.BooleanVar(value=self._settings.get(key, default))
+                def toggle(k=key, v=var):
+                    self._settings[k] = v.get()
+                    if cb := self._settings.get("_on_colour_change_cb"):
+                        cb()
+                tk.Checkbutton(r, variable=var, command=toggle,
+                               bg=T.BG, fg=T.AMBER_DIM,
+                               activebackground=T.BG, activeforeground=T.AMBER,
+                               selectcolor=T.PANEL,
+                               relief="flat", bd=0).pack(side="left")
+            return _make
 
-        def make_colours_row(r):
-            def toggle():
-                enabled = self._colours_var.get()
-                self._settings["use_colours"] = enabled
-                T.set_use_colours(enabled)
-                if cb := self._settings.get("_on_colour_change_cb"):
-                    cb()
-                self._rebuild()
-            tk.Checkbutton(r, variable=self._colours_var, command=toggle,
-                           bg=T.BG, fg=T.AMBER_DIM,
-                           activebackground=T.BG, activeforeground=T.AMBER,
-                           selectcolor=T.PANEL,
-                           relief="flat", bd=0).pack(side="left")
+        # FLOATING WIDGET SETTINGS
+        section("FLOATING WIDGET SETTINGS")
+        row("TRANSPARENT BG", _ck("float_transparent_bg", False))
+        row("TEXT F/X",       _ck("float_text_fx",        True))
 
-        row("USE COLOURS", make_colours_row)
+        # TASKBAR WIDGET SETTINGS
+        section("TASKBAR WIDGET SETTINGS")
+        row("TRANSPARENT BG", _ck("taskbar_transparent_bg", False))
+        row("TEXT F/X",       _ck("taskbar_text_fx",        True))
 
         # ABOUT
         section("ABOUT")
@@ -211,7 +238,7 @@ class OptionsPanel(tk.Toplevel):
         r.pack(fill="x", padx=10, pady=1)
         tk.Label(r, text="REPOSITORY", bg=T.BG, fg=T.AMBER_DIM,
                  font=T.best_font(8), width=18, anchor="w").pack(side="left")
-        link = tk.Label(r, text=REPO_URL, bg=T.BG, fg=T.AMBER,
+        link = tk.Label(r, text="github: Godimas101/personal-projects", bg=T.BG, fg=T.AMBER,
                         font=T.best_font(8), cursor="hand2")
         link.pack(side="left")
         link.bind("<Button-1>", lambda _: _open_url(REPO_URL))
@@ -226,6 +253,14 @@ class OptionsPanel(tk.Toplevel):
         self._settings["poll_interval_ms"] = ms
         if self._on_change:
             self._on_change()
+
+    def _set_theme(self, name: str):
+        self._theme_var.set(name)
+        self._settings["theme"] = name
+        T.apply_theme(name)
+        if cb := self._settings.get("_on_colour_change_cb"):
+            cb()
+        self._rebuild()
 
     # ── Nerds Only tab — 2-column fixed layout ────────────────────────────────
 

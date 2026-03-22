@@ -139,6 +139,10 @@ class FloatingWidget(_PollMixin):
         c = self._canvas
         c.delete("all")
 
+        transparent = self._settings.get("float_transparent_bg", False)
+        text_fx     = self._settings.get("float_text_fx", True) and not transparent
+        self._win.attributes("-transparentcolor", T.BG if transparent else "")
+
         rate  = self._rate_data
         loading     = rate is None
         five_h_pct  = rate.five_hour_pct  / 100 if rate else 0.0
@@ -150,7 +154,8 @@ class FloatingWidget(_PollMixin):
         f_value = T.best_font(9, bold=True)
 
         c.create_rectangle(0, 0, W, H, fill=T.BG, outline="")
-        T.draw_bevel(c, 0, 0, W - 1, H - 1)
+        if text_fx:
+            T.draw_bevel(c, 0, 0, W - 1, H - 1)
 
         # Header
         dot_fill = T.AMBER_GLOW if self._cursor_on else T.AMBER_DIM
@@ -210,7 +215,8 @@ class FloatingWidget(_PollMixin):
                       text="..." if loading else f"{T.fmt_pct(seven_d_pct):>4}",
                       fill=T.AMBER_DIM if loading else T.usage_colour(seven_d_pct), font=f_value)
 
-        T.draw_scanlines(c, W, H)
+        if text_fx:
+            T.draw_scanlines(c, W, H)
 
     # ── Drag ──────────────────────────────────────────────────────────────────
 
@@ -323,6 +329,10 @@ class TaskbarWidget(_PollMixin):
         ch = self._embed_h
         cy = ch // 2
 
+        transparent = self._settings.get("taskbar_transparent_bg", False)
+        text_fx     = self._settings.get("taskbar_text_fx", True) and not transparent
+        self._win.attributes("-transparentcolor", T.BG if transparent else "")
+
         rate = self._rate_data
         five_h_pct  = rate.five_hour_pct      / 100 if rate else 0.0
         seven_d_pct = rate.seven_day_pct      / 100 if rate else 0.0
@@ -381,7 +391,8 @@ class TaskbarWidget(_PollMixin):
                       text=T.fmt_pct(seven_d_pct),
                       fill=T.usage_colour(seven_d_pct), font=f7b)
 
-        T.draw_scanlines(c, cw, ch)
+        if text_fx:
+            T.draw_scanlines(c, cw, ch)
 
     # ── Lifecycle ─────────────────────────────────────────────────────────────
 
