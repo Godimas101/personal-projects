@@ -158,6 +158,23 @@ class RateLimitData:
         w = self.seven_day
         return w.pct if w else 0.0
 
+    def _time_frac(self, window_key: str, total_seconds: float) -> float:
+        """Fraction of the time window elapsed (0=just reset, 1=about to reset)."""
+        w = self._w(window_key)
+        if not w or w.reset_at is None:
+            return 0.0
+        remaining = (w.reset_at - datetime.now(timezone.utc)).total_seconds()
+        elapsed   = total_seconds - remaining
+        return max(0.0, min(1.0, elapsed / total_seconds))
+
+    @property
+    def five_hour_time_frac(self) -> float:
+        return self._time_frac("five_hour", 5 * 3600)
+
+    @property
+    def seven_day_time_frac(self) -> float:
+        return self._time_frac("seven_day", 7 * 24 * 3600)
+
     @property
     def five_hour_countdown(self) -> str:
         w = self.five_hour

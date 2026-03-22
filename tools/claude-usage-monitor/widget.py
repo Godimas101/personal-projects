@@ -163,12 +163,18 @@ class FloatingWidget(_PollMixin):
         c.tag_bind("gear", "<Button-1>", lambda e: self._open_options())
         c.create_line(0, SEP_Y1, W, SEP_Y1, fill=T.BORDER_DIM)
 
+        five_h_tf  = rate.five_hour_time_frac  if rate else 0.0
+        seven_d_tf = rate.seven_day_time_frac  if rate else 0.0
+
         # SESSION bar
         y0 = SEP_Y1 + 1
         c.create_text(PAD, y0 + 5, text="SESSION", anchor="w",
                       fill=T.AMBER_DIM, font=T.best_font(7))
         bar_y = y0 + 17
         T.draw_bar(c, PAD, bar_y, BAR_W, BAR_H, five_h_pct)
+        if not loading:
+            tx = PAD + int(BAR_W * five_h_tf)
+            c.create_line(tx, bar_y - 2, tx, bar_y + BAR_H + 2, fill=T.GREEN, width=2)
         rx = PAD + BAR_W + 4
         c.create_text(rx, bar_y, anchor="nw",
                       text="..." if loading else f"{T.fmt_pct(five_h_pct):>4}",
@@ -183,11 +189,12 @@ class FloatingWidget(_PollMixin):
                       fill=T.AMBER_DIM, font=T.best_font(7))
         bar_y2 = y1 + 17
         T.draw_bar(c, PAD, bar_y2, BAR_W, BAR_H, seven_d_pct)
+        if not loading:
+            tx2 = PAD + int(BAR_W * seven_d_tf)
+            c.create_line(tx2, bar_y2 - 2, tx2, bar_y2 + BAR_H + 2, fill=T.GREEN, width=2)
         c.create_text(rx, bar_y2, anchor="nw",
                       text="..." if loading else f"{T.fmt_pct(seven_d_pct):>4}",
                       fill=T.AMBER_DIM if loading else T.usage_colour(seven_d_pct), font=f_value)
-        c.create_text(rx, bar_y2 + 13, anchor="nw", text=seven_d_cd[:7],
-                      fill=T.AMBER_DIM, font=T.best_font(7))
 
         T.draw_scanlines(c, W, H)
 
@@ -303,8 +310,10 @@ class TaskbarWidget(_PollMixin):
         cy = ch // 2
 
         rate = self._rate_data
-        five_h_pct  = rate.five_hour_pct  / 100 if rate else 0.0
-        seven_d_pct = rate.seven_day_pct  / 100 if rate else 0.0
+        five_h_pct  = rate.five_hour_pct      / 100 if rate else 0.0
+        seven_d_pct = rate.seven_day_pct      / 100 if rate else 0.0
+        five_h_tf   = rate.five_hour_time_frac      if rate else 0.0
+        seven_d_tf  = rate.seven_day_time_frac      if rate else 0.0
 
         f7  = T.best_font(7)
         f7b = T.best_font(7, bold=True)
@@ -325,6 +334,9 @@ class TaskbarWidget(_PollMixin):
         b1x = sx + 18
         c.create_text(sx, cy, text="5H", anchor="w", fill=T.AMBER_DIM, font=f7)
         T.draw_bar(c, b1x, cy - 4, BAR_W_E, 8, five_h_pct, BAR_SEGS_E)
+        if rate:
+            tx = b1x + int(BAR_W_E * five_h_tf)
+            c.create_line(tx, cy - 6, tx, cy + 6, fill=T.GREEN, width=2)
         c.create_text(b1x + BAR_W_E + 3, cy, anchor="w",
                       text=T.fmt_pct(five_h_pct),
                       fill=T.usage_colour(five_h_pct), font=f7b)
@@ -334,6 +346,9 @@ class TaskbarWidget(_PollMixin):
         b2x = wx + 18
         c.create_text(wx, cy, text="7D", anchor="w", fill=T.AMBER_DIM, font=f7)
         T.draw_bar(c, b2x, cy - 4, BAR_W_E, 8, seven_d_pct, BAR_SEGS_E)
+        if rate:
+            tx2 = b2x + int(BAR_W_E * seven_d_tf)
+            c.create_line(tx2, cy - 6, tx2, cy + 6, fill=T.GREEN, width=2)
         c.create_text(b2x + BAR_W_E + 3, cy, anchor="w",
                       text=T.fmt_pct(seven_d_pct),
                       fill=T.usage_colour(seven_d_pct), font=f7b)
