@@ -55,10 +55,12 @@ class Tray:
     def _toggle_floating(self, icon, item):
         if cb := self._callbacks.get("toggle_floating"):
             cb()
+        icon.update_menu()
 
     def _toggle_taskbar(self, icon, item):
         if cb := self._callbacks.get("toggle_taskbar"):
             cb()
+        icon.update_menu()
 
     def _open_settings(self, icon, item):
         if cb := self._callbacks.get("settings"):

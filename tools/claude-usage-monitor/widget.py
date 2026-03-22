@@ -280,9 +280,14 @@ class TaskbarWidget(_PollMixin):
         self._win.after(2000, self._reposition_loop)
 
     def _topmost_loop(self):
-        """Re-assert topmost every 300ms — survives flyouts, popups, focus changes."""
-        self._win.attributes("-topmost", True)
-        self._win.lift()
+        """Re-assert topmost every 300ms. Hide when a fullscreen app is running."""
+        if win_utils.is_fullscreen():
+            self._win.withdraw()
+        else:
+            if not self._win.winfo_viewable():
+                self._win.deiconify()
+            self._win.attributes("-topmost", True)
+            self._win.lift()
         self._win.after(300, self._topmost_loop)
 
     def _blink(self):

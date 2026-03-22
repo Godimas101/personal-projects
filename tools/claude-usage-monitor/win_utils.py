@@ -25,6 +25,28 @@ def is_workstation_locked() -> bool:
     return True
 
 
+def is_fullscreen() -> bool:
+    """Returns True if a fullscreen or borderless-fullscreen app is in the foreground."""
+    try:
+        # SHQueryUserNotificationState: 3=D3D fullscreen, 4=presentation mode
+        state = ctypes.c_int(0)
+        ctypes.windll.shell32.SHQueryUserNotificationState(ctypes.byref(state))
+        if state.value in (3, 4):
+            return True
+        # Also catch borderless fullscreen (covers entire screen rect)
+        hwnd = ctypes.windll.user32.GetForegroundWindow()
+        if hwnd:
+            rect = wintypes.RECT()
+            ctypes.windll.user32.GetWindowRect(hwnd, ctypes.byref(rect))
+            sw = ctypes.windll.user32.GetSystemMetrics(0)  # SM_CXSCREEN
+            sh = ctypes.windll.user32.GetSystemMetrics(1)  # SM_CYSCREEN
+            if rect.left <= 0 and rect.top <= 0 and rect.right >= sw and rect.bottom >= sh:
+                return True
+    except Exception:
+        pass
+    return False
+
+
 def should_pause() -> bool:
     """Returns True if the widget should pause all polling.
 
