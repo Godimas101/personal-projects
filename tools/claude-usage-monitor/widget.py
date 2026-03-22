@@ -178,7 +178,7 @@ class FloatingWidget(_PollMixin):
 
         def draw_usage_cursor(bx, by, bh, usage_frac):
             """Vertical line anchored to right edge of the highest filled pip."""
-            cx = bx + int(BAR_W * usage_frac)
+            cx = T.bar_pip_edge(bx, BAR_W, usage_frac)
             c.create_line(cx, by - 2, cx, by + bh + 2, fill=T.GREEN, width=2)
 
         # SESSION bar
@@ -359,7 +359,7 @@ class TaskbarWidget(_PollMixin):
         T.draw_bar(c, b1x, bar_top, BAR_W_E, bar_h_e, five_h_pct, BAR_SEGS_E)
         if rate:
             draw_time_line_e(b1x, 1.0 - five_h_tf)
-            ux = b1x + int(BAR_W_E * five_h_pct)
+            ux = T.bar_pip_edge(b1x, BAR_W_E, five_h_pct, BAR_SEGS_E)
             c.create_line(ux, bar_top - 2, ux, bar_top + bar_h_e + 2, fill=T.GREEN, width=2)
         c.create_text(b1x + BAR_W_E + 3, cy, anchor="w",
                       text=T.fmt_pct(five_h_pct),
@@ -372,7 +372,7 @@ class TaskbarWidget(_PollMixin):
         T.draw_bar(c, b2x, bar_top, BAR_W_E, bar_h_e, seven_d_pct, BAR_SEGS_E)
         if rate:
             draw_time_line_e(b2x, 1.0 - seven_d_tf)
-            ux2 = b2x + int(BAR_W_E * seven_d_pct)
+            ux2 = T.bar_pip_edge(b2x, BAR_W_E, seven_d_pct, BAR_SEGS_E)
             c.create_line(ux2, bar_top - 2, ux2, bar_top + bar_h_e + 2, fill=T.GREEN, width=2)
         c.create_text(b2x + BAR_W_E + 3, cy, anchor="w",
                       text=T.fmt_pct(seven_d_pct),

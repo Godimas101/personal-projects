@@ -63,6 +63,17 @@ def render_bar(pct: float, segments: int = 14) -> str:
     n = round(max(0.0, min(1.0, pct)) * segments)
     return "▓" * n + "░" * (segments - n)
 
+def bar_pip_edge(x: int, w: int, pct: float, segments: int = 14) -> int:
+    """Return x pixel of the right edge of the last filled pip (matches draw_bar math)."""
+    pct    = max(0.0, min(1.0, pct))
+    filled = round(pct * segments)
+    if filled == 0:
+        return x
+    gap   = 1
+    seg_w = max(2, (w - (segments - 1) * gap) // segments)
+    return x + filled * (seg_w + gap) - gap
+
+
 def draw_bar(canvas, x: int, y: int, w: int, h: int,
              pct: float, segments: int = 14) -> None:
     """Draw a segmented progress bar on a canvas."""
