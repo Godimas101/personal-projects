@@ -50,8 +50,11 @@ class _PollMixin:
         self._win.after(0, lambda: self._on_data(rate, local))
 
     def _on_data(self, rate, local):
-        self._rate_data = rate
-        self._local     = local
+        # Only overwrite with new data — never replace good data with None
+        if rate is not None:
+            self._rate_data = rate
+        if local is not None:
+            self._local = local
         self._redraw()
         interval = self._settings.get("poll_interval_ms", 15 * 60 * 1000)
         self._win.after(interval, self._poll)
@@ -133,10 +136,11 @@ class FloatingWidget(_PollMixin):
         c.delete("all")
 
         rate  = self._rate_data
+        loading     = rate is None
         five_h_pct  = rate.five_hour_pct  / 100 if rate else 0.0
         seven_d_pct = rate.seven_day_pct  / 100 if rate else 0.0
-        five_h_cd   = rate.five_hour_countdown  if rate else "---"
-        seven_d_cd  = rate.seven_day_countdown  if rate else "---"
+        five_h_cd   = rate.five_hour_countdown  if rate else "..."
+        seven_d_cd  = rate.seven_day_countdown  if rate else "..."
 
         f_title = T.best_font(9, bold=True)
         f_value = T.best_font(9, bold=True)
@@ -167,8 +171,8 @@ class FloatingWidget(_PollMixin):
         T.draw_bar(c, PAD, bar_y, BAR_W, BAR_H, five_h_pct)
         rx = PAD + BAR_W + 4
         c.create_text(rx, bar_y, anchor="nw",
-                      text=f"{T.fmt_pct(five_h_pct):>4}",
-                      fill=T.usage_colour(five_h_pct), font=f_value)
+                      text="..." if loading else f"{T.fmt_pct(five_h_pct):>4}",
+                      fill=T.AMBER_DIM if loading else T.usage_colour(five_h_pct), font=f_value)
         c.create_text(rx, bar_y + 13, anchor="nw", text=five_h_cd[:7],
                       fill=T.AMBER_DIM, font=T.best_font(7))
         c.create_line(0, SEP_Y2, W, SEP_Y2, fill=T.BORDER_DIM)
@@ -180,8 +184,8 @@ class FloatingWidget(_PollMixin):
         bar_y2 = y1 + 17
         T.draw_bar(c, PAD, bar_y2, BAR_W, BAR_H, seven_d_pct)
         c.create_text(rx, bar_y2, anchor="nw",
-                      text=f"{T.fmt_pct(seven_d_pct):>4}",
-                      fill=T.usage_colour(seven_d_pct), font=f_value)
+                      text="..." if loading else f"{T.fmt_pct(seven_d_pct):>4}",
+                      fill=T.AMBER_DIM if loading else T.usage_colour(seven_d_pct), font=f_value)
         c.create_text(rx, bar_y2 + 13, anchor="nw", text=seven_d_cd[:7],
                       fill=T.AMBER_DIM, font=T.best_font(7))
 
