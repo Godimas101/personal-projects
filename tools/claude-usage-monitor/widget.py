@@ -89,6 +89,7 @@ class FloatingWidget(_PollMixin):
 
         self._win = tk.Toplevel(root)
         self._win.overrideredirect(True)
+        self._win.attributes("-toolwindow", True)
         self._win.attributes("-topmost", True)
         self._win.configure(bg=T.BG)
         self._win.geometry(f"{W}x{H}")
@@ -262,6 +263,7 @@ class TaskbarWidget(_PollMixin):
 
         self._win = tk.Toplevel(root)
         self._win.overrideredirect(True)
+        self._win.attributes("-toolwindow", True)
         self._win.attributes("-topmost", True)
         self._win.configure(bg=T.BG)
         self._win.resizable(False, False)

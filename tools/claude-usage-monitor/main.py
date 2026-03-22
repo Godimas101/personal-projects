@@ -62,6 +62,7 @@ def main():
     T.apply_theme(settings.get("theme", "Default"))
 
     root = tk.Tk()
+    root.overrideredirect(True)  # no decorations, no taskbar button
     root.withdraw()  # invisible owner window — keeps mainloop alive
 
     import widget as W

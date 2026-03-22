@@ -36,6 +36,11 @@ def is_fullscreen() -> bool:
         # Also catch borderless fullscreen (covers entire screen rect)
         hwnd = ctypes.windll.user32.GetForegroundWindow()
         if hwnd:
+            # Exclude the Windows desktop itself (clicking desktop = Progman/WorkerW foreground)
+            cls_buf = ctypes.create_unicode_buffer(256)
+            ctypes.windll.user32.GetClassNameW(hwnd, cls_buf, 256)
+            if cls_buf.value in ("Progman", "WorkerW"):
+                return False
             rect = wintypes.RECT()
             ctypes.windll.user32.GetWindowRect(hwnd, ctypes.byref(rect))
             sw = ctypes.windll.user32.GetSystemMetrics(0)  # SM_CXSCREEN

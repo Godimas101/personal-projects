@@ -3,29 +3,38 @@
 import threading
 import pystray
 from PIL import Image, ImageDraw
+import theme as T
 
 
 def _make_icon(session_pct: float = 0.0) -> Image.Image:
-    """64×64 amber dot with session % text."""
-    img  = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
+    """64×64 pie chart showing session usage %."""
+    size = 64
+    pad  = 3
+    img  = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
-    draw.ellipse([4, 4, 60, 60], fill="#e8a020")
 
-    text = f"{int(session_pct)}%"
-    try:
-        from PIL import ImageFont
-        font = ImageFont.truetype("arialbd.ttf", 22)
-    except Exception:
-        try:
-            from PIL import ImageFont
-            font = ImageFont.truetype("arial.ttf", 22)
-        except Exception:
-            font = ImageFont.load_default()
+    # Dark background circle
+    draw.ellipse([pad, pad, size - pad, size - pad], fill="#0f0e0c")
 
-    bbox = draw.textbbox((0, 0), text, font=font)
-    tw = bbox[2] - bbox[0]
-    th = bbox[3] - bbox[1]
-    draw.text(((64 - tw) // 2, (64 - th) // 2 - 1), text, fill="#1a0e00", font=font)
+    # Filled pie slice — starts at 12 o'clock, sweeps clockwise
+    pct   = max(0.0, min(1.0, session_pct / 100))
+    color = T.usage_colour(pct)
+    inner = pad + 5
+    if pct >= 1.0:
+        draw.ellipse([inner, inner, size - inner, size - inner], fill=color)
+    elif pct > 0.0:
+        end_angle = -90 + pct * 360
+        draw.pieslice([inner, inner, size - inner, size - inner],
+                      start=-90, end=end_angle, fill=color)
+
+    # Dim ring showing the full circle boundary
+    draw.ellipse([inner, inner, size - inner, size - inner],
+                 outline=T.AMBER_DIM, width=1)
+
+    # Outer border
+    draw.ellipse([pad, pad, size - pad, size - pad],
+                 outline=T.BORDER, width=1)
+
     return img
 
 
