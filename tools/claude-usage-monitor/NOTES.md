@@ -239,31 +239,32 @@ Position the widget at `(tray_left - widget_w, taskbar_top)` as a `HWND_TOPMOST`
 
 ---
 
-### Taskbar Embedding — UPDATED (actual implementation)
+### Taskbar Widget — Final Implementation (HWND_TOPMOST float)
 
-The "float near the clock" plan was upgraded. We now do true Win32 `SetParent` embedding from Python via ctypes — same technique as CodeZeno's Rust implementation.
+`SetParent` into the taskbar was abandoned — see "Windows 11 Taskbar" section above.
 
-**`win_utils.embed_in_taskbar(hwnd, widget_w)`:**
-1. `FindWindowA("Shell_TrayWnd")` — taskbar HWND
-2. `FindWindowExA(taskbar, "TrayNotifyWnd")` — clock/tray area
-3. `GetWindowRect` both → compute `widget_x = tray_left - widget_w` (just left of clock)
-4. `GetWindowLongW(hwnd, GWL_STYLE)` → strip `WS_POPUP`, add `WS_CHILD | WS_CLIPSIBLINGS | WS_VISIBLE`
-5. `SetParent(hwnd, taskbar)` — reparent widget into taskbar
-6. `SetWindowPos(hwnd, widget_x, 0, widget_w, taskbar_h, SWP_FRAMECHANGED | SWP_SHOWWINDOW)`
-7. Returns `(True, widget_x, taskbar_h)` on success, `(False, 0, 48)` on failure
+**`win_utils.get_taskbar_position(widget_w)`:**
+1. `FindWindowA("Shell_TrayWnd")` → taskbar HWND
+2. `FindWindowExA(taskbar, "TrayNotifyWnd")` → clock/tray area
+3. `GetWindowRect` on both → `screen_x = tray_left - widget_w`, `taskbar_top`, `taskbar_h`
+4. Returns `(screen_x, taskbar_top, taskbar_h)`
 
-**In `widget.py`:**
-- `_try_embed()` called after `_apply_win32()` — runs `embed_in_taskbar(hwnd, W_EMBED=285)`
-- If `ok=True`: sets `self._embedded = True`, resizes canvas to `285 × taskbar_h`, uses `_draw_embedded()` layout
-- If `ok=False`: falls back to floating widget at `262 × 92` with `_draw_floating()` layout
-- Drag is disabled when embedded (position is owned by the taskbar)
+**`TaskbarWidget._reposition()`:**
+- `embed_h = taskbar_h - 1` (leaves 1px of taskbar visible at top)
+- `y = taskbar_top + taskbar_h - embed_h` — bottom-anchored
+- `win.geometry(f"{W_EMBED}x{embed_h}+{screen_x}+{y}")`
+- Re-runs every 300ms via `_topmost_loop` which also re-asserts `HWND_TOPMOST`
 
-**Embedded horizontal layout (W=285, H=taskbar_h ~48px):**
+**Fullscreen detection in `_topmost_loop`:**
+- `win_utils.is_fullscreen()` — checks `SHQueryUserNotificationState` (states 3/4 = D3D/presentation)
+  plus foreground window rect ≥ screen dimensions (borderless fullscreen games)
+- Widget hides itself when fullscreen; unhides when fullscreen ends
+
+**Taskbar layout (W=260, H=taskbar_h-1):**
 ```
-● CLAUDE | 5H ▓▓▓▓▓░░░░░ 61% | 7D ▓▓░░░░░░░░ 20% | ≡
+● CLAUDE | 5H ▓▓▓▓▓░░░░░ 61% | 7D ▓▓░░░░░░░░ 20%
 ```
-- Constants: `VSEP_1=66`, `VSEP_2=163`, `VSEP_3=260`, `BAR_W_E=48`, `BAR_SEGS_E=10`
-- Countdown not shown in embedded mode (visible in Nerds Only panel instead)
+- Constants: `VSEP_1=66`, `VSEP_2=163`, `BAR_W_E=48`, `BAR_SEGS_E=10`
 
 ---
 
@@ -298,4 +299,5 @@ No scrollbar. Window auto-sizes to fit Nerds Only content on first open, then lo
 | 2026-03-20 | Project created, all three reference repos researched, aesthetic research completed, technical decisions made, NOTES + README + STYLE_GUIDE written |
 | 2026-03-20 | Built all 6 source files. Fixed 3 startup bugs. Widget working as floating amber phosphor widget. |
 | 2026-03-20 | Upgraded to true taskbar embedding via Win32 SetParent (embed_in_taskbar in win_utils.py). Rewrote widget.py with dual floating/embedded layouts. Rewrote options.py Nerds Only tab as 2-column fixed-size layout without scrollbar. Pending: reboot test to verify taskbar embedding works. |
-| 2026-03-21 | Discovered Windows 11 taskbar is WinUI3/XAML — SetParent embeds correctly at Win32 level but XAML layer paints over it. Switched to HWND_TOPMOST float-at-taskbar-coordinates approach. Added system tray icon (pystray, amber dot) with toggle menu for floating/taskbar widgets. Refactored widget.py into FloatingWidget + TaskbarWidget classes. Fixed vanish-on-options-close bug by re-asserting topmost every 2s in reposition loop. Both widgets now working. |
+| 2026-03-21 | Discovered Windows 11 taskbar is WinUI3/XAML — SetParent embeds correctly at Win32 level but XAML layer paints over it. Switched to HWND_TOPMOST float-at-taskbar-coordinates approach. Added system tray icon (pystray, amber dot) with toggle menu for floating/taskbar widgets. Refactored widget.py into FloatingWidget + TaskbarWidget classes. Fixed vanish-on-options-close bug by re-asserting topmost every 300ms in reposition loop. Both widgets now working. |
+| 2026-03-21 | Fixed screen-unlock 0% bug (failed fetch no longer overwrites good data). Added fullscreen detection (SHQueryUserNotificationState + foreground rect check) — taskbar widget hides during games/fullscreen apps. Fixed tray checkmark timing bug (threading.Timer delay before update_menu). Added depleting time lines above usage bars (green→dim amber) and vertical pip-edge cursors anchored to highest filled pip. Removed session countdown text and gear buttons from both widgets. Tray icon now renders current session % as text on the amber dot. Fixed timer line and cursor widths to match exact draw_bar integer math (bar_actual_width, bar_pip_edge). Narrowed floating widget from 262→224px for equal left/right margins. LIVE/PAUSED status text aligned to percentage column, bumped to header font size. Options General tab: LAUNCH ON STARTUP moved to label column. Added USE COLOURS toggle — live greyscale mode via set_use_colours() in theme.py, rebuilds options panel in place. Added Claude Code mascot ASCII art to Nerds Only left column. |
