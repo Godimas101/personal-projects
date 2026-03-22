@@ -167,13 +167,13 @@ class FloatingWidget(_PollMixin):
         five_h_tf  = rate.five_hour_time_frac  if rate else 0.0
         seven_d_tf = rate.seven_day_time_frac  if rate else 0.0
 
-        def draw_time_line(bx, by, bw, remaining_frac):
+        actual_bar_w = T.bar_actual_width(BAR_W)
+
+        def draw_time_line(bx, by, remaining_frac):
             """Horizontal depleting line above a bar. Green=remaining, dull=elapsed."""
             ly = by - 4
-            # Full background in dull amber (elapsed portion)
-            c.create_rectangle(bx, ly, bx + bw, ly + 2, fill=T.AMBER_DIM, outline="")
-            # Green remaining portion (shrinks from the right as time passes)
-            rw = int(bw * remaining_frac)
+            c.create_rectangle(bx, ly, bx + actual_bar_w, ly + 2, fill=T.AMBER_DIM, outline="")
+            rw = int(actual_bar_w * remaining_frac)
             if rw > 0:
                 c.create_rectangle(bx, ly, bx + rw, ly + 2, fill=T.GREEN, outline="")
 
@@ -189,7 +189,7 @@ class FloatingWidget(_PollMixin):
         bar_y = y0 + 17
         T.draw_bar(c, PAD, bar_y, BAR_W, BAR_H, five_h_pct)
         if not loading:
-            draw_time_line(PAD, bar_y, BAR_W, 1.0 - five_h_tf)
+            draw_time_line(PAD, bar_y, 1.0 - five_h_tf)
             draw_usage_cursor(PAD, bar_y, BAR_H, five_h_pct)
         rx = PAD + BAR_W + 4
         c.create_text(rx, bar_y + (BAR_H // 2), anchor="w",
@@ -204,7 +204,7 @@ class FloatingWidget(_PollMixin):
         bar_y2 = y1 + 17
         T.draw_bar(c, PAD, bar_y2, BAR_W, BAR_H, seven_d_pct)
         if not loading:
-            draw_time_line(PAD, bar_y2, BAR_W, 1.0 - seven_d_tf)
+            draw_time_line(PAD, bar_y2, 1.0 - seven_d_tf)
             draw_usage_cursor(PAD, bar_y2, BAR_H, seven_d_pct)
         c.create_text(rx, bar_y2 + (BAR_H // 2), anchor="w",
                       text="..." if loading else f"{T.fmt_pct(seven_d_pct):>4}",
@@ -346,10 +346,12 @@ class TaskbarWidget(_PollMixin):
         bar_top = cy - 4
         bar_h_e = 8
 
+        actual_bar_w_e = T.bar_actual_width(BAR_W_E, BAR_SEGS_E)
+
         def draw_time_line_e(bx, remaining_frac):
             ly = bar_top - 3
-            c.create_rectangle(bx, ly, bx + BAR_W_E, ly + 2, fill=T.AMBER_DIM, outline="")
-            rw = int(BAR_W_E * remaining_frac)
+            c.create_rectangle(bx, ly, bx + actual_bar_w_e, ly + 2, fill=T.AMBER_DIM, outline="")
+            rw = int(actual_bar_w_e * remaining_frac)
             if rw > 0:
                 c.create_rectangle(bx, ly, bx + rw, ly + 2, fill=T.GREEN, outline="")
 

@@ -63,6 +63,13 @@ def render_bar(pct: float, segments: int = 14) -> str:
     n = round(max(0.0, min(1.0, pct)) * segments)
     return "▓" * n + "░" * (segments - n)
 
+def bar_actual_width(w: int, segments: int = 14) -> int:
+    """Actual pixel span of all pips in a draw_bar call (may be less than w)."""
+    gap   = 1
+    seg_w = max(2, (w - (segments - 1) * gap) // segments)
+    return segments * (seg_w + gap) - gap
+
+
 def bar_pip_edge(x: int, w: int, pct: float, segments: int = 14) -> int:
     """Return x pixel of the right edge of the last filled pip (matches draw_bar math)."""
     pct    = max(0.0, min(1.0, pct))
