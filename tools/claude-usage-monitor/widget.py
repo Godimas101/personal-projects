@@ -166,6 +166,21 @@ class FloatingWidget(_PollMixin):
         five_h_tf  = rate.five_hour_time_frac  if rate else 0.0
         seven_d_tf = rate.seven_day_time_frac  if rate else 0.0
 
+        def draw_time_line(bx, by, bw, remaining_frac):
+            """Horizontal depleting line above a bar. Green=remaining, dull=elapsed."""
+            ly = by - 4
+            # Full background in dull amber (elapsed portion)
+            c.create_rectangle(bx, ly, bx + bw, ly + 2, fill=T.AMBER_DIM, outline="")
+            # Green remaining portion (shrinks from the right as time passes)
+            rw = int(bw * remaining_frac)
+            if rw > 0:
+                c.create_rectangle(bx, ly, bx + rw, ly + 2, fill=T.GREEN, outline="")
+
+        def draw_usage_cursor(bx, by, bh, usage_frac):
+            """Vertical line anchored to right edge of the highest filled pip."""
+            cx = bx + int(BAR_W * usage_frac)
+            c.create_line(cx, by - 2, cx, by + bh + 2, fill=T.GREEN, width=2)
+
         # SESSION bar
         y0 = SEP_Y1 + 1
         c.create_text(PAD, y0 + 5, text="SESSION", anchor="w",
@@ -173,14 +188,12 @@ class FloatingWidget(_PollMixin):
         bar_y = y0 + 17
         T.draw_bar(c, PAD, bar_y, BAR_W, BAR_H, five_h_pct)
         if not loading:
-            tx = PAD + int(BAR_W * five_h_tf)
-            c.create_line(tx, bar_y - 2, tx, bar_y + BAR_H + 2, fill=T.GREEN, width=2)
+            draw_time_line(PAD, bar_y, BAR_W, 1.0 - five_h_tf)
+            draw_usage_cursor(PAD, bar_y, BAR_H, five_h_pct)
         rx = PAD + BAR_W + 4
-        c.create_text(rx, bar_y, anchor="nw",
+        c.create_text(rx, bar_y + (BAR_H // 2), anchor="w",
                       text="..." if loading else f"{T.fmt_pct(five_h_pct):>4}",
                       fill=T.AMBER_DIM if loading else T.usage_colour(five_h_pct), font=f_value)
-        c.create_text(rx, bar_y + 13, anchor="nw", text=five_h_cd[:7],
-                      fill=T.AMBER_DIM, font=T.best_font(7))
         c.create_line(0, SEP_Y2, W, SEP_Y2, fill=T.BORDER_DIM)
 
         # WEEKLY bar
@@ -190,9 +203,9 @@ class FloatingWidget(_PollMixin):
         bar_y2 = y1 + 17
         T.draw_bar(c, PAD, bar_y2, BAR_W, BAR_H, seven_d_pct)
         if not loading:
-            tx2 = PAD + int(BAR_W * seven_d_tf)
-            c.create_line(tx2, bar_y2 - 2, tx2, bar_y2 + BAR_H + 2, fill=T.GREEN, width=2)
-        c.create_text(rx, bar_y2, anchor="nw",
+            draw_time_line(PAD, bar_y2, BAR_W, 1.0 - seven_d_tf)
+            draw_usage_cursor(PAD, bar_y2, BAR_H, seven_d_pct)
+        c.create_text(rx, bar_y2 + (BAR_H // 2), anchor="w",
                       text="..." if loading else f"{T.fmt_pct(seven_d_pct):>4}",
                       fill=T.AMBER_DIM if loading else T.usage_colour(seven_d_pct), font=f_value)
 
@@ -329,14 +342,25 @@ class TaskbarWidget(_PollMixin):
         for vx in (VSEP_1, VSEP_2, VSEP_3):
             c.create_line(vx, 4, vx, ch - 4, fill=T.BORDER_DIM)
 
+        bar_top = cy - 4
+        bar_h_e = 8
+
+        def draw_time_line_e(bx, remaining_frac):
+            ly = bar_top - 3
+            c.create_rectangle(bx, ly, bx + BAR_W_E, ly + 2, fill=T.AMBER_DIM, outline="")
+            rw = int(BAR_W_E * remaining_frac)
+            if rw > 0:
+                c.create_rectangle(bx, ly, bx + rw, ly + 2, fill=T.GREEN, outline="")
+
         # 5H bar
         sx  = VSEP_1 + 6
         b1x = sx + 18
         c.create_text(sx, cy, text="5H", anchor="w", fill=T.AMBER_DIM, font=f7)
-        T.draw_bar(c, b1x, cy - 4, BAR_W_E, 8, five_h_pct, BAR_SEGS_E)
+        T.draw_bar(c, b1x, bar_top, BAR_W_E, bar_h_e, five_h_pct, BAR_SEGS_E)
         if rate:
-            tx = b1x + int(BAR_W_E * five_h_tf)
-            c.create_line(tx, cy - 6, tx, cy + 6, fill=T.GREEN, width=2)
+            draw_time_line_e(b1x, 1.0 - five_h_tf)
+            ux = b1x + int(BAR_W_E * five_h_pct)
+            c.create_line(ux, bar_top - 2, ux, bar_top + bar_h_e + 2, fill=T.GREEN, width=2)
         c.create_text(b1x + BAR_W_E + 3, cy, anchor="w",
                       text=T.fmt_pct(five_h_pct),
                       fill=T.usage_colour(five_h_pct), font=f7b)
@@ -345,10 +369,11 @@ class TaskbarWidget(_PollMixin):
         wx  = VSEP_2 + 6
         b2x = wx + 18
         c.create_text(wx, cy, text="7D", anchor="w", fill=T.AMBER_DIM, font=f7)
-        T.draw_bar(c, b2x, cy - 4, BAR_W_E, 8, seven_d_pct, BAR_SEGS_E)
+        T.draw_bar(c, b2x, bar_top, BAR_W_E, bar_h_e, seven_d_pct, BAR_SEGS_E)
         if rate:
-            tx2 = b2x + int(BAR_W_E * seven_d_tf)
-            c.create_line(tx2, cy - 6, tx2, cy + 6, fill=T.GREEN, width=2)
+            draw_time_line_e(b2x, 1.0 - seven_d_tf)
+            ux2 = b2x + int(BAR_W_E * seven_d_pct)
+            c.create_line(ux2, bar_top - 2, ux2, bar_top + bar_h_e + 2, fill=T.GREEN, width=2)
         c.create_text(b2x + BAR_W_E + 3, cy, anchor="w",
                       text=T.fmt_pct(seven_d_pct),
                       fill=T.usage_colour(seven_d_pct), font=f7b)
