@@ -19,10 +19,9 @@ RIGHT_W  = 70
 BAR_W    = W - 2 * PAD - RIGHT_W
 
 # ── Taskbar layout constants ───────────────────────────────────────────────────
-W_EMBED    = 285
+W_EMBED    = 260
 VSEP_1     = 66
 VSEP_2     = 163
-VSEP_3     = 260
 BAR_W_E    = 48
 BAR_SEGS_E = 10
 
@@ -56,6 +55,11 @@ class _PollMixin:
         if local is not None:
             self._local = local
         self._redraw()
+        if cb := self._settings.get("_on_data_cb"):
+            try:
+                cb(self._rate_data, self._local)
+            except Exception:
+                pass
         interval = self._settings.get("poll_interval_ms", 15 * 60 * 1000)
         self._win.after(interval, self._poll)
 
@@ -158,9 +162,6 @@ class FloatingWidget(_PollMixin):
         status_color = T.AMBER_DIM if self._paused else T.GREEN
         c.create_text(W - PAD - 28, HEADER_H // 2, text=status_text, anchor="e",
                       fill=status_color, font=T.best_font(7))
-        c.create_text(W - PAD - 7, HEADER_H // 2, text="≡", anchor="center",
-                      fill=T.AMBER_DIM, font=f_title, tags="gear")
-        c.tag_bind("gear", "<Button-1>", lambda e: self._open_options())
         c.create_line(0, SEP_Y1, W, SEP_Y1, fill=T.BORDER_DIM)
 
         five_h_tf  = rate.five_hour_time_frac  if rate else 0.0
@@ -339,7 +340,7 @@ class TaskbarWidget(_PollMixin):
         c.create_text(17, cy, text="CLAUDE", anchor="w",
                       fill=T.AMBER_BRIGHT, font=f8b)
 
-        for vx in (VSEP_1, VSEP_2, VSEP_3):
+        for vx in (VSEP_1, VSEP_2):
             c.create_line(vx, 4, vx, ch - 4, fill=T.BORDER_DIM)
 
         bar_top = cy - 4
@@ -377,11 +378,6 @@ class TaskbarWidget(_PollMixin):
         c.create_text(b2x + BAR_W_E + 3, cy, anchor="w",
                       text=T.fmt_pct(seven_d_pct),
                       fill=T.usage_colour(seven_d_pct), font=f7b)
-
-        # Gear
-        c.create_text((VSEP_3 + cw) // 2, cy, text="≡", anchor="center",
-                      fill=T.AMBER_DIM, font=f8b, tags="gear")
-        c.tag_bind("gear", "<Button-1>", lambda e: self._open_options())
 
         T.draw_scanlines(c, cw, ch)
 

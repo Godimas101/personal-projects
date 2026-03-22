@@ -5,11 +5,27 @@ import pystray
 from PIL import Image, ImageDraw
 
 
-def _make_amber_dot() -> Image.Image:
-    """64×64 amber dot on transparent background."""
+def _make_icon(session_pct: float = 0.0) -> Image.Image:
+    """64×64 amber dot with session % text."""
     img  = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
-    draw.ellipse([6, 6, 58, 58], fill="#e8a020")
+    draw.ellipse([4, 4, 60, 60], fill="#e8a020")
+
+    text = f"{int(session_pct)}%"
+    try:
+        from PIL import ImageFont
+        font = ImageFont.truetype("arialbd.ttf", 22)
+    except Exception:
+        try:
+            from PIL import ImageFont
+            font = ImageFont.truetype("arial.ttf", 22)
+        except Exception:
+            font = ImageFont.load_default()
+
+    bbox = draw.textbbox((0, 0), text, font=font)
+    tw = bbox[2] - bbox[0]
+    th = bbox[3] - bbox[1]
+    draw.text(((64 - tw) // 2, (64 - th) // 2 - 1), text, fill="#1a0e00", font=font)
     return img
 
 
@@ -26,10 +42,19 @@ class Tray:
         self._callbacks = callbacks
         self._icon = pystray.Icon(
             "ClaudeUsageMonitor",
-            _make_amber_dot(),
+            _make_icon(0.0),
             "Claude Usage Monitor",
             menu=self._build_menu(),
         )
+
+    def update_usage(self, rate_data, local_stats) -> None:
+        """Update tray icon with current session %."""
+        try:
+            pct = rate_data.five_hour_pct if rate_data else 0.0
+            self._icon.icon = _make_icon(pct)
+            self._icon.title = f"Claude Usage Monitor — Session {int(pct)}%"
+        except Exception:
+            pass
 
     def _build_menu(self) -> pystray.Menu:
         s = self._settings

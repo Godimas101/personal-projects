@@ -117,6 +117,7 @@ def main():
         "exit":            on_exit,
     })
     tray.start()
+    settings["_on_data_cb"] = lambda rate, local: tray.update_usage(rate, local)
 
     try:
         root.mainloop()
