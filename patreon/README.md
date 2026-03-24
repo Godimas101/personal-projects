@@ -27,4 +27,4 @@ Patreon branding assets (logo images) are also stored here for use in mod credit
 
 ---
 
-Support our mods and tools on [Patreon](https://www.patreon.com/Godimas) — 100% optional, no paywalls.
+Support our mods and tools on [Patreon](https://www.patreon.com/Godimas101) — 100% optional, no paywalls.
