@@ -1,12 +1,16 @@
-# Patreon Supporters
+# 🧡 Patreon Supporters
 
-This folder contains supporter data for the Godimas Patreon — covering all mods, tools, and projects including The Canadian Space.
+> The humans who keep the rockets flying and the mods shipping.
 
-## supporters.json
+This folder contains supporter data for the [Godimas101 Patreon](https://www.patreon.com/Godimas101) — covering all mods, tools, and projects including The Canadian Space.
 
-A machine-readable list of active Patreon supporters, grouped by tier and sorted alphabetically within each tier.
+Support is 100% optional. No paywalls, no gated content. Just good vibes and your name in the credits. 🚀
 
-Updated automatically once per day via n8n.
+---
+
+## 📄 supporters.json
+
+A machine-readable list of active Patreon supporters, grouped by tier and sorted alphabetically within each tier. Updated automatically once per day via n8n.
 
 ### Format
 
@@ -21,10 +25,12 @@ Updated automatically once per day via n8n.
 }
 ```
 
-## Assets
+---
 
-Patreon branding assets (logo images) are also stored here for use in mod credits screens and tool UIs.
+## 🖼️ Assets
+
+Patreon branding assets (logo images) for use in mod credits screens and tool UIs.
 
 ---
 
-Support our mods and tools on [Patreon](https://www.patreon.com/Godimas101) — 100% optional, no paywalls.
+*Powered by caffeine, community, and an alarming number of Space Engineers hours.* ☕
