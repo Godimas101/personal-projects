@@ -1,6 +1,6 @@
 # Patreon Supporters
 
-This folder contains supporter data for The Canadian Space Patreon.
+This folder contains supporter data for the Godimas Patreon — covering all mods, tools, and projects including The Canadian Space.
 
 ## supporters.json
 
@@ -27,4 +27,4 @@ Patreon branding assets (logo images) are also stored here for use in mod credit
 
 ---
 
-Support The Canadian Space on [Patreon](https://www.patreon.com/TheCanadianSpace) — 100% optional, no paywalls.
+Support our mods and tools on [Patreon](https://www.patreon.com/Godimas) — 100% optional, no paywalls.
