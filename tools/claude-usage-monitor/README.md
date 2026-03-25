@@ -79,6 +79,12 @@ No separate API key needed — reads your existing Claude Code credentials from 
 
 ## 📦 Installation
 
+**Easiest:** Download and run the installer — no Python required.
+
+👉 **[ClaudeUsageMonitorSetup-v1.0.0.exe](ClaudeUsageMonitorSetup-v1.0.0.exe)**
+
+**From source:**
+
 ```
 pip install -r requirements.txt
 pythonw main.py
