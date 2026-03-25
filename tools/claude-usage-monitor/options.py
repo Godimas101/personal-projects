@@ -15,7 +15,7 @@ REPO_URL        = "https://github.com/Godimas101/personal-projects/tree/main/too
 PATREON_URL     = "https://patreon.com/Godimas101"
 SUPPORTERS_URL  = ("https://raw.githubusercontent.com/Godimas101/"
                    "personal-projects/main/patreon/supporters.json")
-VERSION         = "0.1.0"
+VERSION         = "1.0.0"
 
 POLL_OPTIONS = [
     ("1 MIN",  1 * 60 * 1000),
@@ -56,6 +56,12 @@ class OptionsPanel(tk.Toplevel):
         self.configure(bg=T.BG)
         self.resizable(False, False)
         self.attributes("-topmost", True)
+        try:
+            import sys, os
+            base = sys._MEIPASS if getattr(sys, "frozen", False) else os.path.dirname(os.path.abspath(__file__))
+            self.iconbitmap(os.path.join(base, "usage_monitor.ico"))
+        except Exception:
+            pass
 
         # Title bar
         hdr = tk.Frame(self, bg=T.PANEL, height=32)

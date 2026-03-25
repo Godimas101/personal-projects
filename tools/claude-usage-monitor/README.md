@@ -109,7 +109,7 @@ Built by **Chris Carpenter** and **Claude Sonnet 4.6**.
 
 This tool is free and always will be. If it saves you from a surprise rate limit, consider supporting on Patreon — it helps keep the mods and tools coming.
 
-[![Support on Patreon](https://raw.githubusercontent.com/Godimas101/personal-projects/main/patreon/patreon-medium.png)](https://patreon.com/Godimas101)
+[![Support on Patreon](https://raw.githubusercontent.com/Godimas101/personal-projects/main/patreon/images/buttons/patreon-medium.png)](https://patreon.com/Godimas101)
 
 ---
 

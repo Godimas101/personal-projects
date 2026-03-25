@@ -175,11 +175,11 @@ class FloatingWidget(_PollMixin):
 
         actual_bar_w = T.bar_actual_width(BAR_W)
 
-        def draw_time_line(bx, by, remaining_frac):
-            """Horizontal depleting line above a bar. Green=remaining, dull=elapsed."""
+        def draw_time_line(bx, by, elapsed_frac):
+            """Horizontal filling line above a bar. Green=elapsed, dull=remaining."""
             ly = by - 4
             c.create_rectangle(bx, ly, bx + actual_bar_w, ly + 2, fill=T.AMBER_DIM, outline="")
-            rw = int(actual_bar_w * remaining_frac)
+            rw = int(actual_bar_w * elapsed_frac)
             if rw > 0:
                 c.create_rectangle(bx, ly, bx + rw, ly + 2, fill=T.GREEN, outline="")
 
@@ -195,7 +195,7 @@ class FloatingWidget(_PollMixin):
         bar_y = y0 + 17
         T.draw_bar(c, PAD, bar_y, BAR_W, BAR_H, five_h_pct)
         if not loading:
-            draw_time_line(PAD, bar_y, 1.0 - five_h_tf)
+            draw_time_line(PAD, bar_y, five_h_tf)
             draw_usage_cursor(PAD, bar_y, BAR_H, five_h_pct)
         rx = PAD + BAR_W + 4
         c.create_text(rx, bar_y + (BAR_H // 2), anchor="w",
@@ -210,7 +210,7 @@ class FloatingWidget(_PollMixin):
         bar_y2 = y1 + 17
         T.draw_bar(c, PAD, bar_y2, BAR_W, BAR_H, seven_d_pct)
         if not loading:
-            draw_time_line(PAD, bar_y2, 1.0 - seven_d_tf)
+            draw_time_line(PAD, bar_y2, seven_d_tf)
             draw_usage_cursor(PAD, bar_y2, BAR_H, seven_d_pct)
         c.create_text(rx, bar_y2 + (BAR_H // 2), anchor="w",
                       text="..." if loading else f"{T.fmt_pct(seven_d_pct):>4}",
@@ -360,10 +360,10 @@ class TaskbarWidget(_PollMixin):
 
         actual_bar_w_e = T.bar_actual_width(BAR_W_E, BAR_SEGS_E)
 
-        def draw_time_line_e(bx, remaining_frac):
+        def draw_time_line_e(bx, elapsed_frac):
             ly = bar_top - 3
             c.create_rectangle(bx, ly, bx + actual_bar_w_e, ly + 2, fill=T.AMBER_DIM, outline="")
-            rw = int(actual_bar_w_e * remaining_frac)
+            rw = int(actual_bar_w_e * elapsed_frac)
             if rw > 0:
                 c.create_rectangle(bx, ly, bx + rw, ly + 2, fill=T.GREEN, outline="")
 
@@ -373,7 +373,7 @@ class TaskbarWidget(_PollMixin):
         c.create_text(sx, cy, text="5H", anchor="w", fill=T.AMBER_DIM, font=f7)
         T.draw_bar(c, b1x, bar_top, BAR_W_E, bar_h_e, five_h_pct, BAR_SEGS_E)
         if rate:
-            draw_time_line_e(b1x, 1.0 - five_h_tf)
+            draw_time_line_e(b1x, five_h_tf)
             ux = T.bar_pip_edge(b1x, BAR_W_E, five_h_pct, BAR_SEGS_E)
             c.create_line(ux, bar_top - 2, ux, bar_top + bar_h_e + 2, fill=T.GREEN, width=2)
         c.create_text(b1x + BAR_W_E + 3, cy, anchor="w",
@@ -386,7 +386,7 @@ class TaskbarWidget(_PollMixin):
         c.create_text(wx, cy, text="7D", anchor="w", fill=T.AMBER_DIM, font=f7)
         T.draw_bar(c, b2x, bar_top, BAR_W_E, bar_h_e, seven_d_pct, BAR_SEGS_E)
         if rate:
-            draw_time_line_e(b2x, 1.0 - seven_d_tf)
+            draw_time_line_e(b2x, seven_d_tf)
             ux2 = T.bar_pip_edge(b2x, BAR_W_E, seven_d_pct, BAR_SEGS_E)
             c.create_line(ux2, bar_top - 2, ux2, bar_top + bar_h_e + 2, fill=T.GREEN, width=2)
         c.create_text(b2x + BAR_W_E + 3, cy, anchor="w",
