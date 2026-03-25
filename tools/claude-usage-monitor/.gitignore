@@ -12,11 +12,9 @@ ClaudeUsageMonitor/
 # Distribution / packaging
 dist/
 build/
-installer/
 *.egg-info/
 *.spec
 !ClaudeUsageMonitor.spec
-ClaudeUsageMonitorSetup*.exe
 
 # Virtual environments
 .venv/
