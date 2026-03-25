@@ -16,7 +16,6 @@ installer/
 *.egg-info/
 *.spec
 !ClaudeUsageMonitor.spec
-ClaudeUsageMonitorSetup*.exe
 
 # Virtual environments
 .venv/
