@@ -31,8 +31,9 @@ def load_settings() -> dict:
 def save_settings(settings: dict) -> None:
     try:
         APPDATA_DIR.mkdir(parents=True, exist_ok=True)
+        saveable = {k: v for k, v in settings.items() if not k.startswith("_")}
         with open(SETTINGS_FILE, "w", encoding="utf-8") as f:
-            json.dump(settings, f, indent=2)
+            json.dump(saveable, f, indent=2)
     except Exception:
         pass
 

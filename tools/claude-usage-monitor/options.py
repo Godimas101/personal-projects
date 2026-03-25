@@ -1,17 +1,21 @@
 # options.py — Settings and stats panel
 
+import json
 import threading
+import urllib.request
 import tkinter as tk
 import winreg
-import os
 import sys
 
 import theme as T
 import usage_reader
 
-APP_NAME     = "ClaudeUsageMonitor"
-REPO_URL     = "https://github.com/Godimas101/personal-projects/tree/main/tools/claude-usage-monitor"
-VERSION      = "0.1.0"
+APP_NAME        = "ClaudeUsageMonitor"
+REPO_URL        = "https://github.com/Godimas101/personal-projects/tree/main/tools/claude-usage-monitor"
+PATREON_URL     = "https://patreon.com/Godimas101"
+SUPPORTERS_URL  = ("https://raw.githubusercontent.com/Godimas101/"
+                   "personal-projects/main/patreon/supporters.json")
+VERSION         = "0.1.0"
 
 POLL_OPTIONS = [
     ("1 MIN",  1 * 60 * 1000),
@@ -66,7 +70,7 @@ class OptionsPanel(tk.Toplevel):
         # Tab row
         tab_row = tk.Frame(self, bg=T.BG)
         tab_row.pack(fill="x")
-        for label in ("GENERAL", "NERDS ONLY"):
+        for label in ("GENERAL", "NERDS ONLY", "SUPPORTERS"):
             b = tk.Button(tab_row, text=label,
                           font=T.best_font(8, bold=True),
                           bd=0, relief="flat", cursor="hand2",
@@ -83,8 +87,9 @@ class OptionsPanel(tk.Toplevel):
         self._content = tk.Frame(self, bg=T.BG)
         self._content.pack(fill="both", expand=True)
 
-        self._tab_general = self._build_general(self._content)
-        self._tab_nerds   = self._build_nerds(self._content)
+        self._tab_general    = self._build_general(self._content)
+        self._tab_nerds      = self._build_nerds(self._content)
+        self._tab_supporters = self._build_supporters(self._content)
 
         # Size window to fit Nerds Only tab, then switch to General
         self._switch_tab("NERDS ONLY")
@@ -105,8 +110,9 @@ class OptionsPanel(tk.Toplevel):
         self._active_tab.set(label)
         self._tab_general.pack_forget()
         self._tab_nerds.pack_forget()
+        self._tab_supporters.pack_forget()
 
-        for tab_label in ("GENERAL", "NERDS ONLY"):
+        for tab_label in ("GENERAL", "NERDS ONLY", "SUPPORTERS"):
             btn = getattr(self, f"_tab_btn_{tab_label.replace(' ', '_')}")
             if tab_label == label:
                 btn.configure(bg=T.PANEL, fg=T.AMBER_BRIGHT,
@@ -117,8 +123,10 @@ class OptionsPanel(tk.Toplevel):
 
         if label == "GENERAL":
             self._tab_general.pack(fill="both", expand=True)
-        else:
+        elif label == "NERDS ONLY":
             self._tab_nerds.pack(fill="both", expand=True)
+        else:
+            self._tab_supporters.pack(fill="both", expand=True)
 
     # ── General tab ───────────────────────────────────────────────────────────
 
@@ -247,6 +255,123 @@ class OptionsPanel(tk.Toplevel):
 
         tk.Frame(frame, bg=T.BG, height=12).pack()
         return frame
+
+    # ── Supporters tab ────────────────────────────────────────────────────────
+
+    def _build_supporters(self, parent) -> tk.Frame:
+        frame = tk.Frame(parent, bg=T.BG)
+
+        tk.Frame(frame, bg=T.BORDER, height=1).pack(fill="x", padx=10, pady=(10, 0))
+        tk.Label(frame, text="OUR SUPPORTERS", bg=T.BG, fg=T.AMBER,
+                 font=T.best_font(8, bold=True)).pack(anchor="w", padx=10, pady=(4, 0))
+        tk.Label(frame,
+                 text="These folks help keep the tools free. Thank you \u2665",
+                 bg=T.BG, fg=T.AMBER_DIM,
+                 font=T.best_font(8)).pack(anchor="w", padx=10, pady=(2, 6))
+
+        # Scrollable list
+        list_frame = tk.Frame(frame, bg=T.BG)
+        list_frame.pack(fill="both", expand=True, padx=(10, 0))
+
+        canvas = tk.Canvas(list_frame, bg=T.BG, bd=0, highlightthickness=0)
+
+        from tkinter import ttk as _ttk
+        _style = _ttk.Style(list_frame)
+        _style.theme_use("clam")
+        _style.configure("Monitor.Vertical.TScrollbar",
+            background=T.BORDER,
+            troughcolor=T.BG,
+            arrowcolor=T.AMBER_DIM,
+            darkcolor=T.PANEL,
+            lightcolor=T.BORDER,
+            bordercolor=T.BG,
+            gripcount=0)
+        _style.map("Monitor.Vertical.TScrollbar",
+            background=[("active", T.AMBER), ("!active", T.BORDER)])
+
+        vsb = _ttk.Scrollbar(list_frame, orient="vertical", command=canvas.yview,
+                             style="Monitor.Vertical.TScrollbar")
+        canvas.configure(yscrollcommand=vsb.set)
+        vsb.pack(side="right", fill="y", padx=(0, 6))
+        canvas.pack(side="left", fill="both", expand=True)
+
+        self._supporters_inner = tk.Frame(canvas, bg=T.BG)
+        self._supporters_win   = canvas.create_window(
+            (0, 0), window=self._supporters_inner, anchor="nw")
+
+        def _on_frame(*_):
+            canvas.configure(scrollregion=canvas.bbox("all"))
+
+        def _on_canvas(e):
+            canvas.itemconfig(self._supporters_win, width=e.width)
+
+        self._supporters_inner.bind("<Configure>", _on_frame)
+        canvas.bind("<Configure>", _on_canvas)
+
+        self._supporters_status = tk.Label(
+            self._supporters_inner,
+            text="Loading\u2026",
+            bg=T.BG, fg=T.AMBER_DIM,
+            font=T.best_font(8))
+        self._supporters_status.pack(anchor="w", padx=4, pady=4)
+
+        # Footer
+        tk.Frame(frame, bg=T.BORDER, height=1).pack(fill="x", padx=10, pady=(6, 0))
+        foot = tk.Frame(frame, bg=T.BG)
+        foot.pack(fill="x", padx=10, pady=(6, 10))
+        tk.Button(foot, text="SUPPORT ON PATREON",
+                  bg=T.PANEL, fg=T.AMBER_BRIGHT,
+                  activebackground=T.BORDER_DIM, activeforeground=T.AMBER_BRIGHT,
+                  font=T.best_font(8, bold=True),
+                  relief="flat", bd=0, padx=10, pady=4, cursor="hand2",
+                  highlightthickness=1, highlightbackground=T.AMBER,
+                  command=lambda: _open_url(PATREON_URL)).pack(side="left")
+
+        threading.Thread(target=self._fetch_supporters, daemon=True).start()
+        return frame
+
+    def _fetch_supporters(self):
+        try:
+            req = urllib.request.Request(
+                SUPPORTERS_URL,
+                headers={"Cache-Control": "no-cache",
+                         "User-Agent": "ClaudeUsageMonitor/1.0"})
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read().decode())
+            self.after(0, lambda: self._populate_supporters(data))
+        except Exception as exc:
+            self.after(0, lambda: self._supporters_status.configure(
+                text=f"Could not load: {exc}", fg=T.AMBER_DIM))
+
+    def _populate_supporters(self, data):
+        if not self.winfo_exists():
+            return
+        self._supporters_status.destroy()
+
+        tiers = data.get("tiers", [])
+        if not tiers or not any(t.get("members") for t in tiers):
+            tk.Label(self._supporters_inner,
+                     text="No supporters yet \u2014 be the first!",
+                     bg=T.BG, fg=T.AMBER_DIM,
+                     font=T.best_font(8)).pack(anchor="w", padx=4, pady=4)
+            return
+
+        for tier in tiers:
+            members = tier.get("members", [])
+            if not members:
+                continue
+            tk.Label(self._supporters_inner,
+                     text=tier.get("tier", "Supporters"),
+                     bg=T.BG, fg=T.AMBER_BRIGHT,
+                     font=T.best_font(8, bold=True)).pack(
+                         anchor="w", padx=4, pady=(8, 2))
+            tk.Frame(self._supporters_inner, bg=T.BORDER, height=1).pack(
+                fill="x", pady=(0, 4))
+            for name in members:
+                tk.Label(self._supporters_inner,
+                         text=f"  \u2713  {name}",
+                         bg=T.BG, fg=T.AMBER,
+                         font=T.best_font(8)).pack(anchor="w", padx=4)
 
     def _set_poll(self, label: str, ms: int):
         self._poll_var.set(label)
@@ -472,8 +597,16 @@ def _get_startup() -> bool:
 
 
 def _set_startup(enabled: bool) -> None:
-    exe    = sys.executable
-    script = os.path.abspath(os.path.join(os.path.dirname(__file__), "main.py"))
+    import pathlib
+    exe_path = pathlib.Path(sys.executable)
+    # Always use pythonw.exe — python.exe opens a console window at startup
+    # which kills the monitor when the user closes it
+    if exe_path.stem.lower() == "python":
+        pw = exe_path.parent / "pythonw.exe"
+        if pw.exists():
+            exe_path = pw
+    exe    = str(exe_path)
+    script = str(pathlib.Path(__file__).resolve().parent / "main.py")
     cmd    = f'"{exe}" "{script}"'
     try:
         with winreg.OpenKey(winreg.HKEY_CURRENT_USER, _REG_PATH,
