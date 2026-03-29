@@ -42,5 +42,5 @@ Daily supplement stack organized by when they are taken.
 |-------|-----------|------|-------|-------|
 | Webber Naturals | Magnesium Bisglycinate | 200mg (1 pill) | Relaxation + sleep; joint/muscle recovery; non-laxative form | Costco |
 | Webber Naturals | Ashwagandha | 3600mg (1 pill) | Stress + cortisol; sleep aid; KSM-66 preferred | Costco |
-| Webber Naturals | Melatonin | 5mg (1 pill) | Sleep only: Thu, Fri, Sun; cycle off if needed | Costco |
+| Webber Naturals | Melatonin | 2.5mg (1/2 pill) | Sleep only, and only if needed | Costco |
 | Just Glow | Spermidine | 5mg (1 pill) | | Amazon.ca |
