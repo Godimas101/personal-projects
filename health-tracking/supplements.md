@@ -19,19 +19,19 @@ Daily supplement stack organized by when they are taken.
 ---
 
 ## Morning Vitamins
-
-| Brand | Supplement | Dose | Notes | Store |
-|-------|-----------|------|-------|-------|
-| Bulk Supplements | Fisetin | 800mg (2 pills) | Senolytic blast: Days 1–3 of month only; anti-inflammatory for joints | bulksupplements.com |
-| Kirkland | Calcium Plus | 600mg (1 pill) | Bone health; take with D3; avoid with zinc | Costco |
-| Kirkland | Alaskan Salmon Whole Fish Oil | 1200mg (1 pill) | 1g EPA/DHA; joint + heart; take with food | Costco |
-| Webber Naturals | K2+D3 | 2000 IU (1 pill) | Bone + immune; K2 directs calcium; winter essential | Costco |
-| Webber Naturals | Turmeric | 500mg (1 pill) | Anti-inflammatory (curcumin); pair with black pepper/fat | Costco |
-| Fresh Field | Black Seed Oil | 500mg (1 pill) | Immune + anti-inflammatory; take with food | Amazon.ca |
-| Nature's Way | Ginger | 550mg (1 pill) | Digestion + anti-nausea; joint support | Amazon.ca |
-| Nature's Bounty | Garlic | 2000mg (1 pill) | Heart + immune; odorless; take with food | Amazon.ca |
-| Organika | Korean Red Ginseng | 500mg (1 pill) | Energy + stress; avoid late in day if sensitive | Amazon.ca |
-| Just Glow | Spermidine | 5mg (1 pill) | | Amazon.ca |
+| Brand | Supplement | Dose | Notes | Link |
+|-------|-----------|------|-------|------|
+| Kirkland | Calcium Plus with D3 | 600mg / 800 IU (1 pill) | Supports bone density; take alongside K2 to ensure calcium is directed to bones rather than arterial walls; avoid pairing with zinc which competes for absorption | [Costco](https://www.costco.ca/p/-/kirkland-signature-calcium-plus-with-vitamin-d3-minerals-600-mg-800-iu-500-tablets/100291275) |
+| Kirkland | Alaskan Salmon Whole Fish Oil | 1200mg (1 pill) | Provides EPA and DHA omega-3s supporting cardiovascular health, joint lubrication, and systemic inflammation reduction; take with food for best absorption | [Costco](https://www.costco.ca/p/-/kirkland-signature-100-wild-alaskan-salmon-whole-fish-oil-320-softgels/100054345) |
+| Webber Naturals | Vitamin K2 + D3 | 120mcg / 1000 IU (1 pill) | D3 supports calcium absorption and immune function; K2 ensures calcium reaches bones rather than soft tissue; especially important in low-sunlight months | [Costco](https://www.costco.ca/p/-/webber-naturals-vitamin-k2d3-120-mcg-1000-iu-220-softgels/4000062820) |
+| Webber Naturals | Turmeric Advanced | 500mg (1 pill) | Curcumin-based anti-inflammatory supporting joint health, recovery, and longevity; bioavailability enhanced by piperine (black pepper) and dietary fat; take with food | [Costco](https://www.costco.ca/p/-/webber-naturals-turmeric-advanced-120-capsules/100427394) |
+| Freshfield | Black Seed Oil | 500mg (1 pill) | Thymoquinone-rich cold-pressed Nigella sativa oil supporting immune modulation, inflammation reduction, and cardiovascular health; vegan and third-party tested; take with food | [Amazon](https://www.amazon.ca/Freshfield-Black-Seed-Oil-Thymoquinone/dp/B08DP5HJ97/) |
+| Nature's Way | Ginger | 550mg (1 pill) | Supports digestion and reduces nausea; anti-inflammatory properties complement joint health and workout recovery | [Amazon](https://www.amazon.ca/Natures-Way-Ginger-Health-Supplement/dp/B00CP7TJ2Q) |
+| Nature's Bounty | Garlic | 2000mg (1 pill) | Supports cardiovascular health, healthy blood pressure, and immune function; odor-controlled coating; take with food | [Amazon](https://www.amazon.ca/NATURES-Elevated-Maintain-Cardiovascular-Tablets/dp/B00BMEHZ7E) |
+| Organika | Korean Red Ginseng | 500mg (1 pill) | Adaptogen supporting energy, stress resilience, and cognitive performance; avoid taking late in the day if sensitive to stimulants | [Amazon](https://www.amazon.ca/Organika-Korean-Red-Ginseng-Count/dp/B003FG887S/) |
+| Just Glow | Spermidine | 5mg (1 pill) | Promotes autophagy — the cellular self-cleaning process that declines with age; supports longevity and cellular renewal | [Amazon](https://www.amazon.ca/Just-Glow-Spermidine-Supplement-Capsules/dp/B0DJHM2BZ4/) |
+| Newco Natural Technology | BroccoGen 10 (Sulforaphane) | 500mg (1 pill) | Broccoli sprout extract delivering 15mg sulforaphane glucosinolate per capsule; activates the Nrf2 pathway for antioxidant defense, detoxification, and cellular protection; take with food | [Amazon](https://www.amazon.ca/dp/B00TAO1HZ4) |
+| Webber Naturals | Berberine | 500mg (1 pill) | Activates AMPK ("metabolic master switch") to support blood sugar regulation, insulin sensitivity, and fat metabolism; may also confer cardiovascular and longevity benefits | [Costco](https://www.costco.ca/p/-/webber-naturals-berberine-500-mg-180-vegetarian-capsules/4000270059) |
 
 ---
 
