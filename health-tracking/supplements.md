@@ -36,10 +36,17 @@ Daily supplement stack organized by when they are taken.
 ---
 
 ## Dinner Vitamins
+| Brand | Supplement | Dose | Notes | Link |
+|-------|-----------|------|-------|------|
+| Kirkland | Timed Release Vitamin C | 1000mg (1 pill) | Supports collagen synthesis, immune function, and connective tissue repair; timed release formula maintains sustained blood levels throughout the evening; pairs well with the collagen in the morning shake | [Costco](https://www.costco.ca/kirkland-signature-timed-release-vitamin-c-1000-mg---500-tablets.product.100338652.html) |
+| Webber Naturals | Magnesium Bisglycinate | 200mg (1 pill) | Supports muscle relaxation, recovery, and sleep quality; bisglycinate form is gentle on digestion and well-absorbed; involved in 300+ enzymatic reactions including energy production | [Costco](https://www.costco.ca/webber-naturals-magnesium-bisglycinate-200-mg---300-capsules.product.4000187689.html) |
+| Webber Naturals | Ashwagandha (KSM-66) | 3600mg equivalent / 300mg extract (1 pill) | Clinically studied KSM-66 root extract; reduces cortisol and stress response, supports sleep quality, and may improve testosterone and physical performance in men; non-habit-forming | [Costco](https://www.costco.ca/webber-naturals-ashwagandha-3,600-mg,-2-x-120-vegetarian-capsules.product.100510042.html) |
+| Just Glow | Spermidine | 5mg (1 pill) | Promotes autophagy — the cellular self-cleaning process that declines with age; supports longevity and cellular renewal; split dose with morning vitamins for sustained effect | [Amazon](https://www.amazon.ca/Just-Glow-Spermidine-Supplement-Capsules/dp/B0DJHM2BZ4/) |
+| Webber Naturals | Melatonin | 2.5mg (½ pill) | Use only when needed to fall asleep; low dose minimizes morning grogginess; avoid regular nightly use to prevent dependence and preserve natural melatonin production | [Costco](https://www.costco.ca/webber-naturals-melatonin-5-mg-extra-strength-easy-dissolve,-400-sublingual-tablets.product.4000190087.html) |
 
-| Brand | Supplement | Dose | Notes | Store |
-|-------|-----------|------|-------|-------|
-| Webber Naturals | Magnesium Bisglycinate | 200mg (1 pill) | Relaxation + sleep; joint/muscle recovery; non-laxative form | Costco |
-| Webber Naturals | Ashwagandha | 3600mg (1 pill) | Stress + cortisol; sleep aid; KSM-66 preferred | Costco |
-| Webber Naturals | Melatonin | 2.5mg (1/2 pill) | Sleep only, and only if needed | Costco |
-| Just Glow | Spermidine | 5mg (1 pill) | | Amazon.ca |
+---
+
+## Before Bed
+| Brand | Supplement | Dose | Notes | Link |
+|-------|-----------|------|-------|------|
+| Bulk Supplements | Glycine | 3g (½ tsp powder) | Inhibitory amino acid that lowers core body temperature and calms the nervous system to support sleep onset and slow-wave sleep quality; also contributes to collagen synthesis and joint recovery overnight; mix into a small amount of water; naturally sweet taste | [Bulk Supplements](https://www.bulksupplements.com/en-CA/products/glycine-pills) |
