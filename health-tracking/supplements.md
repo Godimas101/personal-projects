@@ -5,17 +5,16 @@ Daily supplement stack organized by when they are taken.
 ---
 
 ## Morning Shake
-
-| Brand | Supplement | Dose | Notes | Store |
-|-------|-----------|------|-------|-------|
-| Webber Naturals | All Greens Superfoods | 8.9g (1 scoop) | Antioxidant greens; mix with protein for absorption; ~$0.30/serving | Costco |
-| Bulk Supplements | Betaine Anhydrous (TMG) | 1.5g (1 scoop) | | bulksupplements.com |
-| Organika | Enhanced Collagen Protein | 10g (2 scoops) | Joint/skin support; gluten-free; pair with Vitamin C | Costco |
-| Leanfit | Plant-Based Protein | 28g (1 scoop) | ~25g protein; dairy-free; budget bulk (~$1/serving) | Costco |
-| Bulk Supplements | Nicotinamide Mononucleotide (NMN) | 1g (1 scoop) | Anti-aging NAD+ booster; take with fat; monthly cost ~$2/day | bulksupplements.com |
-| Bulk Supplements | Resveratrol | 1g (1 scoop) | Antioxidant; joint + longevity; take with fat (e.g., olive oil) | bulksupplements.com |
-| Bulk Supplements | Fisetin | 1600mg (1 scoop) | Senolytic blast: Days 1–3 of month only; same as morning dose | bulksupplements.com |
-| Leanfit | Creatine Monohydrate | 10g (2 scoops) | Muscle + strength; 3–4L water/day; no caffeine within 2–4 hrs | Costco |
+| Brand | Supplement | Dose | Notes | Link |
+|-------|-----------|------|-------|------|
+| Webber Naturals | All Greens Superfoods | 8.9g (1 scoop) | Broad-spectrum antioxidant greens blend for micronutrient coverage and cellular health; mix into shake with protein for better absorption | [Costco](https://www.costco.ca/webber-naturals-all-greens-superfood-100-servings-900-g-powder.product.100565243.html) |
+| Bulk Supplements | Betaine Anhydrous (TMG) | 1.5g (1 scoop) | Methyl donor supporting homocysteine metabolism, liver function, and DNA methylation; may also amplify creatine's effect on muscle output | [Bulk Supplements](https://www.bulksupplements.com/en-ca/products/betaine-anhydrous-trimethylglycine-tmg-powder) |
+| Organika | Enhanced Collagen | 10g (2 scoops) | Supports joint integrity, skin elasticity, and connective tissue repair — key for long-term mobility and healthspan; pair with Vitamin C to maximize synthesis; gluten-free | [Costco](https://www.costco.ca/organika-enhanced-collagen-2kg.product.4000239164.html) |
+| Vega | Organic Protein & Greens | 38g (1 scoop) | Plant-based complete protein (21g/serving) with added greens (kale, spinach, broccoli, spirulina) supporting muscle retention and body recomposition; organic, non-GMO, and dairy-free; no added sugar | [Costco](https://www.costco.ca/p/-/vega-organic-vanilla-protein-greens-powder-2-kg/4000236974) |
+| Bulk Supplements | Nicotinamide Mononucleotide (NMN) | 1g (1 scoop) | NAD+ precursor central to mitochondrial energy production, DNA repair, and cellular longevity; pairs synergistically with Resveratrol; take with dietary fat for absorption | [Bulk Supplements](https://www.bulksupplements.com/en-ca/products/nicotinamide-mononucleotide-nmn) |
+| Bulk Supplements | Resveratrol | 1g (1 scoop) | Activates sirtuin longevity pathways; antioxidant with cardiovascular and anti-aging benefits; synergizes with NMN; take with dietary fat | [Bulk Supplements](https://www.bulksupplements.com/en-ca/products/resveratrol-pure) |
+| Bulk Supplements | Fisetin | 1600mg (1 scoop) | Senolytic agent that clears senescent ("zombie") cells linked to aging and chronic inflammation; taken as a 3-day blast at the start of each month only; split dose with Morning Vitamins | [Bulk Supplements](https://www.bulksupplements.com/en-ca/products/fisetin-powder) |
+| Bulk Supplements | Creatine Monohydrate | 10g (2 scoops) | Supports muscle strength, power output, and lean mass retention; also has neuroprotective properties relevant to long-term brain health; stay well hydrated (3–4L/day) | [Bulk Supplements](https://www.bulksupplements.com/en-ca/products/creatine-monohydrate) |
 
 ---
 
