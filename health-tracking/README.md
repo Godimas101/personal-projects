@@ -8,20 +8,24 @@ Structured health and fitness data maintained as markdown for easy editing and L
 
 Provide an LLM with an accurate, up-to-date snapshot of diet, exercise, supplementation, and weight trends so it can give relevant, personalized advice on fitness, nutrition, and health goals.
 
+## Goals 🏆
+
+- Maximize healthspan
+- Maximize lifespan
+- Reduce body fat to 15% and maintain it
+
 ## Files 📂
 
 | File | Contents |
 |------|----------|
-| [weekday-schedule.md](weekday-schedule.md) | Daily routine overview — start here for the full picture |
-| [meals.md](meals.md) | Weekday meal plan with full ingredient breakdowns |
+| [average-week.md](average-week.md) | A typical week — exercise schedule and meals in one place |
 | [supplements.md](supplements.md) | Full supplement stack organized by time of day |
-| [exercise.md](exercise.md) | Weekly recurring workout schedule |
-| [weight-tracking.md](weight-tracking.md) | Periodic weigh-in log (weight in lbs, body fat %) |
+| [weight-tracking.md](weight-tracking.md) | Weight log with full body composition metrics (auto-updated daily at 10am when a new measurement is available) |
 
 ## Maintenance 🔄
 
-- Update `weight-tracking.md` after each weigh-in
-- Update `meals.md` or `supplements.md` when the routine changes
+- `weight-tracking.md` is auto-updated at 10am daily — only when a new measurement has been recorded by the scale
+- Update `average-week.md` or `supplements.md` when the routine changes
 - Keep all amounts in metric
 
 ---

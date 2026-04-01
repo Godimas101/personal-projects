@@ -27,23 +27,31 @@ Workouts programmed and tracked in [Swole](https://play.google.com/store/apps/de
 
 ## Meals
 
-### Morning
+### Weekday Morning
 
 - Morning shake — see [supplements.md › Morning Shake](supplements.md#morning-shake)
 - Morning vitamins — see [supplements.md › Morning Vitamins](supplements.md#morning-vitamins)
 - Breakfast: [Weekday Chia Pudding](../favorite-recipes/chia-pudding.md)
 
-### Lunch *(weekdays)*
+### Weekday Lunch
 
 - [Weekday Lunch](../favorite-recipes/weekday-lunch.md) — batch-prepped egg cups, spiced bean salad, frozen veg
 
-### Supper
+### Supper *(all days)*
 
-- Rotating recipe from the [favorite-recipes](../favorite-recipes/) folder
+- Rotating recipe from the [favorite-recipes](../favorite-recipes/) folder — excludes breakfast/lunch recipes ([pancakes](../favorite-recipes/pancakes.md), [chia pudding](../favorite-recipes/chia-pudding.md), [weekday lunch](../favorite-recipes/weekday-lunch.md))
 
 ### Saturday Breakfast
 
-- [Saturday Pancakes](../favorite-recipes/saturday-pancakes.md) — Flourish protein pancakes, blueberries, maple syrup
+- [Saturday Pancakes](../favorite-recipes/pancakes.md) — Flourish protein pancakes, blueberries, maple syrup
+
+### Sunday Breakfast
+
+- Too varied to track — usually edd heavy, with Turkish inspiration
+
+### Weekend Lunch
+
+- Too varied to track
 
 ### Evening
 
