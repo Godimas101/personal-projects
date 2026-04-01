@@ -14,6 +14,14 @@
 
 ---
 
+## 🛠️ Fitness Tracking Tools
+
+| Tool | Type | Purpose |
+|------|------|---------|
+| [Wyze Scale X](https://www.wyze.com/products/wyze-scale-x) | Smart Scale | Daily weigh-ins — weight, BMI, body fat %, muscle %, body water %, bone mineral, protein %, metabolic age, BMR |
+
+---
+
 > ⚖️ **Note on Wyze scale accuracy:** Bioelectrical impedance measurements (body fat, muscle, water, etc.) are estimates and can vary significantly based on hydration, time of day, and foot placement. Track trends over weeks, not individual readings.
 
 ---

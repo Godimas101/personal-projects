@@ -16,6 +16,21 @@ Daily supplement stack organized by when they are taken.
 | Bulk Supplements | Fisetin | 1600mg (1 scoop) | Senolytic agent that clears senescent ("zombie") cells linked to aging and chronic inflammation; taken as a 3-day blast at the start of each month only | [Bulk Supplements](https://www.bulksupplements.com/en-ca/products/fisetin-powder) |
 | Bulk Supplements | Creatine Monohydrate | 10g (2 scoops) | Supports muscle strength, power output, and lean mass retention; also has neuroprotective properties relevant to long-term brain health; stay well hydrated (3–4L/day) | [Bulk Supplements](https://www.bulksupplements.com/en-ca/products/creatine-monohydrate) |
 
+
+### Nutrient Breakdown
+
+| Supplement | Cal | Protein | Fat | Carbs | Key Nutrients / Bioactives |
+|---|---|---|---|---|---|
+| All Greens Superfoods | 40 | 1g | 1.5g | 6g | Vitamin C 500mg · Vitamin E 67mg · Vitamin A 150mcg · Iron 3mg · Calcium 25mg · Magnesium 10mg |
+| Betaine (TMG) | — | — | — | — | Betaine 1500mg |
+| Enhanced Collagen | ~40 | 9g | 0g | 0g | Glycine 2320mg · Proline 1400mg · Hydroxyproline 940mg · Glutamic acid 1040mg · Alanine 810mg |
+| Protein & Greens | 120 | 21g | 2g | 5g *(4g fiber)* | — |
+| NMN | — | — | — | — | NMN 1000mg |
+| Resveratrol | — | — | — | — | Trans-resveratrol 1000mg |
+| Fisetin *(monthly blast only)* | — | — | — | — | Fisetin 1600mg |
+| Creatine | — | — | — | — | Creatine monohydrate 10g |
+| **Shake Total** | **~200** | **~31g** | **~3.5g** | **~11g** | |
+
 ---
 
 ## Morning Vitamins
@@ -33,6 +48,24 @@ Daily supplement stack organized by when they are taken.
 | Newco Natural Technology | BroccoGen 10 (Sulforaphane) | 500mg (1 pill) | Broccoli sprout extract delivering 15mg sulforaphane glucosinolate per capsule; activates the Nrf2 pathway for antioxidant defense, detoxification, and cellular protection; take with food | [Amazon](https://www.amazon.ca/dp/B00TAO1HZ4) |
 | Webber Naturals | Berberine | 500mg (1 pill) | Activates AMPK ("metabolic master switch") to support blood sugar regulation, insulin sensitivity, and fat metabolism; may also confer cardiovascular and longevity benefits | [Costco](https://www.costco.ca/p/-/webber-naturals-berberine-500-mg-180-vegetarian-capsules/4000270059) |
 
+
+### Nutrient Breakdown
+
+| Supplement | Key Nutrients / Bioactives |
+|---|---|
+| Calcium + D3 | Calcium 600mg · Vitamin D3 800 IU · Magnesium 50mg · Vitamin K1 20mcg |
+| Salmon Fish Oil | EPA 90mg · DHA 110mg |
+| Vitamin K2 + D3 | Vitamin K2 (MK-7) 120mcg · Vitamin D3 1000 IU |
+| Turmeric Advanced | Curcuminoids ~165mg (Meriva phosphatidylcholine complex — no piperine) |
+| Black Seed Oil | Thymoquinone ~8mg · Linoleic acid (ω-6) ~175mg · Oleic acid (ω-9) ~70mg |
+| Ginger | Gingerols/shogaols ~8mg (1.5% essential oil) |
+| Garlic | Garlic extract 400mg *(allicin yield not disclosed)* |
+| Korean Red Ginseng | Ginsenosides ~25mg est. *(standardization not listed on label)* |
+| Spermidine | Spermidine 5mg |
+| BroccoGen 10 | Sulforaphane glucosinolate 15mg |
+| Berberine | Berberine HCl 500mg |
+| **Section Total** | **Vitamin D3 1800 IU · Calcium 600mg · Magnesium 50mg · EPA 90mg · DHA 110mg** |
+
 ---
 
 ## Dinner Vitamins
@@ -44,9 +77,27 @@ Daily supplement stack organized by when they are taken.
 | Just Glow | Spermidine | 5mg (1 pill) | Promotes autophagy — the cellular self-cleaning process that declines with age; supports longevity and cellular renewal; split dose with morning vitamins for sustained effect | [Amazon](https://www.amazon.ca/Just-Glow-Spermidine-Supplement-Capsules/dp/B0DJHM2BZ4/) |
 | Webber Naturals | Melatonin | 2.5mg (½ pill) | Use only when needed to fall asleep; low dose minimizes morning grogginess; avoid regular nightly use to prevent dependence and preserve natural melatonin production | [Costco](https://www.costco.ca/webber-naturals-melatonin-5-mg-extra-strength-easy-dissolve,-400-sublingual-tablets.product.4000190087.html) |
 
+
+### Nutrient Breakdown
+
+| Supplement | Key Nutrients / Bioactives |
+|---|---|
+| Vitamin C | Ascorbic acid 1000mg |
+| Magnesium Bisglycinate | Elemental magnesium 200mg |
+| Ashwagandha KSM-66 | Withanolides 15mg (5% standardization) |
+| Spermidine | Spermidine 5mg |
+| Melatonin | Melatonin 2.5mg |
+| **Daily Totals** | **Vitamin D3 ~1800 IU · Magnesium ~250mg · Spermidine ~10mg** |
+
 ---
 
 ## Before Bed
 | Brand | Supplement | Dose | Notes | Link |
 |-------|-----------|------|-------|------|
 | Bulk Supplements | Glycine | 3g (½ tsp powder) | Inhibitory amino acid that lowers core body temperature and calms the nervous system to support sleep onset and slow-wave sleep quality; also contributes to collagen synthesis and joint recovery overnight; mix into a small amount of water; naturally sweet taste | [Bulk Supplements](https://www.bulksupplements.com/en-CA/products/glycine-pills) |
+
+### Nutrient Breakdown
+
+| Supplement | Cal | Key Nutrients / Bioactives |
+|---|---|---|
+| Glycine | ~12 | Glycine 3000mg |

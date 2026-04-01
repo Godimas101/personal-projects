@@ -54,6 +54,9 @@ When using an AI to suggest new recipes or meals, include this in your prompt:
 | [healthy-yogurt-egg-salad-wraps.md](healthy-yogurt-egg-salad-wraps.md) | High-protein egg salad with yogurt instead of mayo, for wraps | 🥚 Egg |
 | [indian-spiced-beans.md](indian-spiced-beans.md) | Warm curry-style spiced beans — great over rice or with flatbread | 🌱 Veggie |
 | [quick-seafood-congee.md](quick-seafood-congee.md) | Creamy rice congee with tilapia, salmon, and fish balls — light but filling | 🐟 Seafood |
+| [chia-pudding.md](chia-pudding.md) | Overnight chia pudding with protein powder, hemp hearts, flax, and blueberries | 🌱 Veggie |
+| [weekday-lunch.md](weekday-lunch.md) | Batch-prepped egg cups, spiced bean salad, and frozen veg — meal-prep friendly | 🥚 Egg |
+| [saturday-pancakes.md](saturday-pancakes.md) | Flourish protein pancakes with blueberries and maple syrup — Saturday tradition | 🥞 Breakfast |
 
 ---
 
