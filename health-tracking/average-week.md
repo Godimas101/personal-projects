@@ -8,6 +8,16 @@ A typical week — exercise and meals in one place.
 
 Workouts programmed and tracked in [Swole](https://play.google.com/store/apps/details?id=app.getswole.train.own) by [Swoleaf](https://swoleaf.thinkific.com/).
 
+### Daily Noon Routine *(every day, before lunch)*
+
+| Exercise | Set |
+|----------|-----|
+| Push-ups | 1× max reps |
+| Weighted crunches | 1× max reps |
+| Half push-ups | 1× max reps |
+| Weighted flutter kicks | 1× max reps |
+| Stretching | — |
+
 ### Weekly Overview
 
 | Day | Activity | Details |
@@ -26,6 +36,8 @@ Workouts programmed and tracked in [Swole](https://play.google.com/store/apps/de
 ---
 
 ## Meals
+
+**Eating window: 10:00 AM – 6:30 PM** (intermittent fasting)
 
 ### Weekday Morning
 
