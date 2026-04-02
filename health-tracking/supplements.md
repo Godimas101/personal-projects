@@ -15,6 +15,7 @@ Daily supplement stack organized by when they are taken.
 | Bulk Supplements | Resveratrol | 1g (1 scoop) | Activates sirtuin longevity pathways; antioxidant with cardiovascular and anti-aging benefits; synergizes with NMN; take with dietary fat | [Bulk Supplements](https://www.bulksupplements.com/en-ca/products/resveratrol-pure) |
 | Bulk Supplements | Fisetin | 1600mg (1 scoop) | Senolytic agent that clears senescent ("zombie") cells linked to aging and chronic inflammation; taken as a 3-day blast at the start of each month only | [Bulk Supplements](https://www.bulksupplements.com/en-ca/products/fisetin-powder) |
 | Bulk Supplements | Creatine Monohydrate | 10g (2 scoops) | Supports muscle strength, power output, and lean mass retention; also has neuroprotective properties relevant to long-term brain health; stay well hydrated (3–4L/day) | [Bulk Supplements](https://www.bulksupplements.com/en-ca/products/creatine-monohydrate) |
+| — | Extra Virgin Olive Oil | 1 tbsp (14g) | Rich in oleic acid and polyphenols (oleocanthal, oleuropein) supporting cardiovascular health, inflammation reduction, and cellular longevity; also provides the dietary fat required for optimal NMN and Resveratrol absorption | — |
 
 
 ### Nutrient Breakdown
@@ -29,7 +30,8 @@ Daily supplement stack organized by when they are taken.
 | Resveratrol | — | — | — | — | Trans-resveratrol 1000mg |
 | Fisetin *(monthly blast only)* | — | — | — | — | Fisetin 1600mg |
 | Creatine | — | — | — | — | Creatine monohydrate 10g |
-| **Shake Total** | **~200** | **~31g** | **~3.5g** | **~11g** | |
+| Extra Virgin Olive Oil | 120 | 0g | 14g | 0g | Oleic acid (ω-9) ~10g · Polyphenols (oleocanthal, oleuropein) · Vitamin E ~1.9mg |
+| **Shake Total** | **~320** | **~31g** | **~17.5g** | **~11g** | |
 
 ---
 
