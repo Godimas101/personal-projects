@@ -70,6 +70,8 @@ Do **not** mix:
 #### README family rule
 Different **families of READMEs** should use different overall capsule-render patterns so the projects feel related-but-distinct.
 
+The canonical repo-to-family mapping lives in [`REPO_FAMILY.md`](REPO_FAMILY.md). If there is ever a mismatch between an older README and the current standard, follow `REPO_FAMILY.md`.
+
 Examples of families:
 - **tool repos**
 - **mod collections**
