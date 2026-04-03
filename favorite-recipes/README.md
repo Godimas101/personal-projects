@@ -1,4 +1,6 @@
-# 🍽️ Favorite Recipes
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=venom&height=180&color=0:2B1208,45:D97706,100:F59E0B&text=Favorite%20Recipes&fontColor=ffffff&fontSize=32&fontAlignY=36&desc=Go-to%20meals%20worth%20making%20again&descAlignY=60&descSize=18" />
+</p>
 
 > **"Life is too short for bad recipes — or ones you can't remember."**
 

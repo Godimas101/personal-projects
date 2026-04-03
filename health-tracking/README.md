@@ -1,4 +1,6 @@
-# 💪 Health Tracking
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=venom&height=180&color=0:052E16,45:15803D,100:10B981&text=Health%20Tracking&fontColor=ffffff&fontSize=32&fontAlignY=36&desc=Fitness,%20nutrition,%20and%20progress%20in%20plain%20markdown&descAlignY=60&descSize=18" />
+</p>
 
 > **"What gets measured, gets managed — and what gets managed, gets improved."**
 

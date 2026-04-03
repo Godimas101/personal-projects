@@ -1,4 +1,6 @@
-# 🍳 Kitchen Inventory
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=venom&height=180&color=0:3B1D0E,45:F97316,100:FACC15&text=Kitchen%20Inventory&fontColor=ffffff&fontSize=32&fontAlignY=36&desc=Ingredients,%20tools,%20and%20pantry%20reality%20checks&descAlignY=60&descSize=18" />
+</p>
 
 > **"The secret ingredient is knowing what you actually have."**
 

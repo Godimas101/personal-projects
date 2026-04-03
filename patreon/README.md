@@ -1,6 +1,8 @@
-# 🧡 Patreon Supporters
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=venom&height=180&color=0:3B0A2A,45:DB2777,100:F59E0B&text=Patreon%20Supporters&fontColor=ffffff&fontSize=32&fontAlignY=36&desc=Supporter%20data%20and%20branding%20assets&descAlignY=60&descSize=18" />
+</p>
 
-> The humans who keep the rockets flying and the mods shipping.
+> **"The humans who keep the rockets flying and the mods shipping."**
 
 This folder contains supporter data for the [Godimas101 Patreon](https://www.patreon.com/Godimas101) — covering all mods, tools, and projects including The Canadian Space.
 

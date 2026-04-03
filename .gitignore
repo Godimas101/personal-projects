@@ -1,6 +1,9 @@
 # AI assistant instruction files — private, not for commit
 CLAUDE.md
 
+# Standalone tools live outside this repo
+/tools/
+
 # Environment and secrets
 .env
 .env.local

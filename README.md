@@ -1,17 +1,19 @@
-# 📁 Personal Projects
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=venom&height=180&color=0:0F172A,45:475569,100:14B8A6&text=Personal%20Projects&fontColor=ffffff&fontSize=34&fontAlignY=36&desc=Docs,%20tracking,%20notes,%20and%20useful%20life%20systems&descAlignY=60&descSize=18" />
+</p>
 
-> **My brain, but version controlled.**
+> **"My brain, but version controlled."**
 
-A mix of personal life management files and public tools — all in plain markdown and open formats so they play nicely with AI, GitHub, and future-me.
+A mix of personal life management files, shared docs, and public tools — all in plain markdown and open formats so they play nicely with AI, GitHub, and future-me.
 
 ---
 
 ## 🛠️ Tools
 
-### Claude Usage Monitor
-A Windows system tray widget for tracking Claude Code API usage. Amber phosphor CRT aesthetic. Always on top. Fullscreen-aware.
+These tools now live in their **own standalone repos** so this repository can stay focused on personal docs and reference files.
 
-- **[tools/claude-usage-monitor/](tools/claude-usage-monitor/)** — source + build pipeline
+- **[claude-usage-monitor](https://github.com/Godimas101/claude-usage-monitor)** — Windows system tray widget for tracking Claude Code API usage
+- **[automatic-weight-recording](https://github.com/Godimas101/automatic-weight-recording)** — Wyze Scale + n8n automation for logging weight entries
 
 ---
 
@@ -32,8 +34,9 @@ Supporter data and branding assets for the [Godimas101 Patreon](https://www.patr
 ### 💪 Health & Fitness
 - **[health-tracking/](health-tracking/)** — Exercise schedule, meal plan, supplement stack, weight log.
 
-### 📄 Career
-- **[resumes/](resumes/)** — Master resume for tailoring targeted applications.
+### 📄 Docs & Career
+- **[docs/resumes/](docs/resumes/)** — Master resume for tailoring targeted applications.
+- **[docs/style-guides/](docs/style-guides/)** — Shared README and tool style guides for this workspace.
 
 ---
 
