@@ -14,6 +14,7 @@ This folder contains the shared documentation standards used across the public r
 |------|---------|
 | [`README_STYLE_GUIDE.md`](README_STYLE_GUIDE.md) | Source of truth for public README tone, structure, capsule-render usage, and visual consistency |
 | [`SE_TOOL_STYLE_GUIDE.md`](SE_TOOL_STYLE_GUIDE.md) | Space Engineers-specific visual/design rules for tool UIs and related presentation |
+| [`CLAUDE_USAGE_STYLE_GUIDE.md`](CLAUDE_USAGE_STYLE_GUIDE.md) | App-specific UI and aesthetic rules for the `claude-usage-monitor` project |
 
 ---
 
