@@ -191,6 +191,33 @@ style.map("SE.TCheckbutton",
     foreground=[("active", TEXT), ("disabled", BORDER)])
 ```
 
+### Scale / Slider (`SE.Horizontal.TScale`)
+
+```python
+style.configure("SE.Horizontal.TScale",
+    background=CYAN, troughcolor=PANEL,
+    bordercolor=BORDER, darkcolor=CYAN, lightcolor=CYAN,
+    sliderlength=16, sliderthickness=14)
+style.map("SE.Horizontal.TScale",
+    background=[("active", CYAN), ("disabled", BORDER)])
+```
+
+Pair with a muted percentage label to show the current value:
+```python
+self._slider_var = tk.DoubleVar(value=1.0)
+ttk.Scale(parent, from_=0.0, to=1.0, orient="horizontal",
+          variable=self._slider_var, length=160,
+          command=self._on_slider_change,
+          style="SE.Horizontal.TScale").pack(side="left", padx=(0, 8))
+self._slider_label = tk.StringVar(value="100%")
+ttk.Label(parent, textvariable=self._slider_label,
+          style="Muted.TLabel", width=5).pack(side="left")
+
+def _on_slider_change(self, _val=None) -> None:
+    pct = int(round(self._slider_var.get() * 100))
+    self._slider_label.set(f"{pct}%")
+```
+
 ### Progress Bar (`SE.Horizontal.TProgressbar`)
 
 ```python
