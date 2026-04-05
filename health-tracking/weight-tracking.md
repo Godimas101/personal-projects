@@ -26,6 +26,10 @@
 
 ---
 
+![Weight Chart](charts/weight-chart.svg)
+
+---
+
 | Date | Weight | BMI | Body Fat | Muscle | Body Water | Bone Mineral | Protein | Metabolic Age | BMR | Notes |
 | ---------- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 2025-08-19 | 215 | | 26.1% | | | | | | | |
