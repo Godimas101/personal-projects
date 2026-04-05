@@ -1,4 +1,4 @@
-# ── github-graphs: Weight Chart ───────────────────────────────────────────────
+# ── table-to-chart: Weight & Metrics Charts ───────────────────────────────────
 # Runs automatically when weight-tracking.md is pushed.
 # Trigger manually from the Actions tab to change the rolling window.
 
@@ -35,34 +35,42 @@ jobs:
       - name: Install dependencies
         run: pip install matplotlib numpy python-dateutil
 
-      - name: Generate chart
+      - name: Generate weight chart
         env:
-          # ── Window & paths ─────────────────────────────────────────────────
           MONTHS: ${{ github.event.inputs.months || '6' }}
-          INPUT_FILE:  health-tracking/weight-tracking.md
-          OUTPUT_FILE: health-tracking/charts/weight-chart.svg
-
-          # ── Column selection ───────────────────────────────────────────────
-          DATE_COL: 'Date'
-          Y1_COL:   'Weight'
-          Y2_COLS:   'Body Fat,Muscle,BMI'
-
-          # ── Labels & title ─────────────────────────────────────────────────
+          INPUT_FILE:    health-tracking/weight-tracking.md
+          OUTPUT_FILE:   health-tracking/charts/weight-chart.svg
+          DATE_COL:      'Date'
+          Y1_COL:        'Weight'
+          Y2_COLS:       ''
           Y1_LABEL:      'Weight (lbs)'
-          Y2_LABELS:     'Body Fat %,Muscle %,BMI'
-          Y2_AXIS_LABEL: '%'
-          TITLE:         'Weight Tracking'
-
-          # ── Value parsing ──────────────────────────────────────────────────
-          STRIP_CHARS: '%'
-          SHOW_TREND:  'true'
-
+          Y2_LABELS:     ''
+          Y2_AXIS_LABEL: ''
+          TITLE:         'Weight'
+          STRIP_CHARS:   '%'
+          SHOW_TREND:    'true'
         run: python health-tracking/generate_chart.py
 
-      - name: Commit chart
+      - name: Generate metrics chart
+        env:
+          MONTHS: ${{ github.event.inputs.months || '6' }}
+          INPUT_FILE:    health-tracking/weight-tracking.md
+          OUTPUT_FILE:   health-tracking/charts/metrics-chart.svg
+          DATE_COL:      'Date'
+          Y1_COL:        'Muscle'
+          Y2_COLS:       'Body Fat,BMI'
+          Y1_LABEL:      'Muscle %'
+          Y2_LABELS:     'Body Fat %,BMI'
+          Y2_AXIS_LABEL: ''
+          TITLE:         'Body Metrics'
+          STRIP_CHARS:   '%'
+          SHOW_TREND:    'true'
+        run: python health-tracking/generate_chart.py
+
+      - name: Commit charts
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add health-tracking/charts/weight-chart.svg
-          git diff --cached --quiet || git commit -m "chore: update weight chart [skip ci]"
+          git add health-tracking/charts/weight-chart.svg health-tracking/charts/metrics-chart.svg
+          git diff --cached --quiet || git commit -m "chore: update weight and metrics charts [skip ci]"
           git push

@@ -28,6 +28,8 @@
 
 ![Weight Chart](charts/weight-chart.svg)
 
+![Body Metrics Chart](charts/metrics-chart.svg)
+
 ---
 
 | Date | Weight | BMI | Body Fat | Muscle | Body Water | Bone Mineral | Protein | Metabolic Age | BMR | Notes |
