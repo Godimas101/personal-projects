@@ -45,12 +45,13 @@ jobs:
           # ── Column selection ───────────────────────────────────────────────
           DATE_COL: 'Date'
           Y1_COL:   'Weight'
-          Y2_COL:   'Body Fat'
+          Y2_COLS:   'Body Fat,Muscle,BMI'
 
           # ── Labels & title ─────────────────────────────────────────────────
-          Y1_LABEL: 'Weight (lbs)'
-          Y2_LABEL: 'Body Fat %'
-          TITLE:    'Weight Tracking'
+          Y1_LABEL:      'Weight (lbs)'
+          Y2_LABELS:     'Body Fat %,Muscle %,BMI'
+          Y2_AXIS_LABEL: '%'
+          TITLE:         'Weight Tracking'
 
           # ── Value parsing ──────────────────────────────────────────────────
           STRIP_CHARS: '%'

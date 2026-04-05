@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-github-graphs — Markdown Table → SVG Chart Generator
-Reads any markdown table and charts one or two numeric columns over time.
+table-to-chart — Markdown Table → SVG Chart Generator
+Reads any markdown table and charts one or more numeric columns over time.
 
 Config via environment variables:
   MONTHS        Rolling window in months (default: 6)
@@ -10,13 +10,14 @@ Config via environment variables:
 
   DATE_COL      Column index (0-based) or exact header name for the date column (default: 0)
   Y1_COL        Column index or header name for the primary (left) y-axis (default: 1)
-  Y2_COL        Column index or header name for the secondary (right) y-axis (optional)
+  Y2_COLS       Comma-separated column indices or header names for the right y-axis (optional)
 
   Y1_LABEL      Left axis label  (default: the column header name)
-  Y2_LABEL      Right axis label (default: the column header name)
-  TITLE         Chart title      (default: auto-generated from column names)
+  Y2_LABELS     Comma-separated right axis labels, matching Y2_COLS order (default: header names)
+  Y2_AXIS_LABEL Label for the right y-axis itself (default: blank)
+  TITLE         Chart title (default: auto-generated from Y1 column name)
   STRIP_CHARS   Characters to remove from values before parsing, e.g. "%" (default: "%")
-  SHOW_TREND    Whether to draw a linear trendline on Y1 — "true" or "false" (default: true)
+  SHOW_TREND    Draw a linear trendline on Y1 — "true" or "false" (default: true)
 """
 
 import os
@@ -39,13 +40,14 @@ OUTPUT_FILE =     os.environ.get("OUTPUT_FILE", "health-tracking/charts/weight-c
 
 DATE_COL    =     os.environ.get("DATE_COL",   "0")
 Y1_COL      =     os.environ.get("Y1_COL",     "1")
-Y2_COL      =     os.environ.get("Y2_COL",     "").strip()
+Y2_COLS     =    [c.strip() for c in os.environ.get("Y2_COLS", "").split(",") if c.strip()]
 
-Y1_LABEL    =     os.environ.get("Y1_LABEL",   "").strip()
-Y2_LABEL    =     os.environ.get("Y2_LABEL",   "").strip()
-TITLE       =     os.environ.get("TITLE",      "").strip()
-STRIP_CHARS =     os.environ.get("STRIP_CHARS", "%")
-SHOW_TREND  =     os.environ.get("SHOW_TREND", "true").strip().lower() == "true"
+Y1_LABEL      =  os.environ.get("Y1_LABEL",      "").strip()
+Y2_LABELS     = [l.strip() for l in os.environ.get("Y2_LABELS", "").split(",") if l.strip()]
+Y2_AXIS_LABEL =  os.environ.get("Y2_AXIS_LABEL", "").strip()
+TITLE         =  os.environ.get("TITLE",         "").strip()
+STRIP_CHARS   =  os.environ.get("STRIP_CHARS",   "%")
+SHOW_TREND    =  os.environ.get("SHOW_TREND",    "true").strip().lower() == "true"
 
 # ── GitHub dark theme palette ─────────────────────────────────────────────────
 
@@ -55,14 +57,16 @@ BORDER     = "#30363d"
 TEXT       = "#e6edf3"
 TEXT_MUTED = "#8b949e"
 BLUE       = "#58a6ff"
-ORANGE     = "#f97316"
 TREND_COL  = "#388bfd"
+
+# Color cycle for Y2 lines (assigned in order)
+Y2_COLORS  = ["#f97316", "#3fb950", "#bc8cff", "#e3b341", "#f85149", "#39d353"]
 
 # ── Markdown table parser ─────────────────────────────────────────────────────
 
-TABLE_ROW_RE  = re.compile(r"^\|(.+)\|$")
-SEPARATOR_RE  = re.compile(r"^\|[\s|:-]+\|$")
-DATE_FORMATS  = ["%Y-%m-%d %H:%M:%S", "%Y-%m-%d"]
+TABLE_ROW_RE = re.compile(r"^\|(.+)\|$")
+SEPARATOR_RE = re.compile(r"^\|[\s|:-]+\|$")
+DATE_FORMATS = ["%Y-%m-%d %H:%M:%S", "%Y-%m-%d"]
 
 
 def find_tables(content):
@@ -111,7 +115,6 @@ def resolve_col(headers, spec):
 
 def parse_date(raw):
     s = raw.strip().rstrip("Z")
-    # Try with just the first part if there's extra tokens
     for fmt in DATE_FORMATS:
         for candidate in [s, s.split()[0]]:
             try:
@@ -160,14 +163,16 @@ def load_data(path):
 
     date_idx = resolve_col(headers, DATE_COL)
     y1_idx   = resolve_col(headers, Y1_COL)
-    y2_idx   = resolve_col(headers, Y2_COL) if Y2_COL else None
+    y2_idxs  = [resolve_col(headers, col) for col in Y2_COLS]
 
-    col_name_y1 = headers[y1_idx]
-    col_name_y2 = headers[y2_idx] if y2_idx is not None else None
+    col_name_y1  = headers[y1_idx]
+    col_names_y2 = [headers[i] for i in y2_idxs]
 
     cutoff = datetime.now() - relativedelta(months=MONTHS)
 
-    dates, y1_vals, y2_vals = [], [], []
+    dates   = []
+    y1_vals = []
+    y2_vals = [[] for _ in y2_idxs]  # one list per Y2 column
 
     for cells in rows:
         date = parse_date(cells[date_idx])
@@ -176,21 +181,20 @@ def load_data(path):
 
         v1 = parse_value(cells[y1_idx])
         if v1 is None:
-            continue  # skip rows with no primary value
-
-        v2 = parse_value(cells[y2_idx]) if y2_idx is not None else None
+            continue
 
         dates.append(date)
         y1_vals.append(v1)
-        y2_vals.append(v2)
 
-    return dates, y1_vals, y2_vals, col_name_y1, col_name_y2
+        for i, idx in enumerate(y2_idxs):
+            y2_vals[i].append(parse_value(cells[idx]))
+
+    return dates, y1_vals, y2_vals, col_name_y1, col_names_y2
 
 # ── Chart generation ──────────────────────────────────────────────────────────
 
-def generate_chart(dates, y1_vals, y2_vals, col_name_y1, col_name_y2, output_path):
+def generate_chart(dates, y1_vals, y2_vals, col_name_y1, col_names_y2, output_path):
     label_y1 = Y1_LABEL or col_name_y1
-    label_y2 = Y2_LABEL or col_name_y2 or ""
     title    = TITLE or f"{col_name_y1} — Last {MONTHS} Months"
 
     fig, ax1 = plt.subplots(figsize=(13, 5))
@@ -212,19 +216,29 @@ def generate_chart(dates, y1_vals, y2_vals, col_name_y1, col_name_y2, output_pat
                  linestyle="--", color=TREND_COL, linewidth=1.5, alpha=0.75,
                  label=f"{label_y1} trend", zorder=2)
 
-    # ── Secondary axis ────────────────────────────────────────────────────────
-    valid = [(d, v) for d, v in zip(dates, y2_vals) if v is not None]
+    # ── Secondary axis lines ──────────────────────────────────────────────────
     lines2, labels2 = [], []
 
-    if valid and col_name_y2:
-        vdates, vvals = zip(*valid)
+    if y2_vals and col_names_y2:
         ax2 = ax1.twinx()
         ax2.set_facecolor(BG)
-        ax2.plot(vdates, vvals,
-                 color=ORANGE, linewidth=1.5, marker="s", markersize=3,
-                 alpha=0.85, label=label_y2)
-        ax2.set_ylabel(label_y2, color=ORANGE, fontsize=10)
-        ax2.tick_params(axis="y", colors=ORANGE, labelsize=9)
+
+        for i, (series, col_name) in enumerate(zip(y2_vals, col_names_y2)):
+            color = Y2_COLORS[i % len(Y2_COLORS)]
+            label = Y2_LABELS[i] if i < len(Y2_LABELS) else col_name
+
+            # Only plot points where we have data
+            valid_pairs = [(d, v) for d, v in zip(dates, series) if v is not None]
+            if not valid_pairs:
+                continue
+            vdates, vvals = zip(*valid_pairs)
+
+            ax2.plot(vdates, vvals,
+                     color=color, linewidth=1.5, marker="s", markersize=3,
+                     alpha=0.85, label=label)
+
+        ax2.set_ylabel(Y2_AXIS_LABEL, color=TEXT_MUTED, fontsize=10)
+        ax2.tick_params(axis="y", colors=TEXT_MUTED, labelsize=9)
         for spine in ax2.spines.values():
             spine.set_color(BORDER)
         lines2, labels2 = ax2.get_legend_handles_labels()
@@ -259,11 +273,11 @@ def generate_chart(dates, y1_vals, y2_vals, col_name_y1, col_name_y2, output_pat
 # ── Entry point ───────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    dates, y1_vals, y2_vals, col_name_y1, col_name_y2 = load_data(INPUT_FILE)
+    dates, y1_vals, y2_vals, col_name_y1, col_names_y2 = load_data(INPUT_FILE)
 
     if not dates:
         print(f"No data found in the last {MONTHS} months. Nothing to chart.")
         sys.exit(0)
 
     print(f"Charting {len(dates)} entries over the last {MONTHS} months.")
-    generate_chart(dates, y1_vals, y2_vals, col_name_y1, col_name_y2, OUTPUT_FILE)
+    generate_chart(dates, y1_vals, y2_vals, col_name_y1, col_names_y2, OUTPUT_FILE)
