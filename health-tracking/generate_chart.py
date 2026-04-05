@@ -65,12 +65,12 @@ SEPARATOR_RE  = re.compile(r"^\|[\s|:-]+\|$")
 DATE_FORMATS  = ["%Y-%m-%d %H:%M:%S", "%Y-%m-%d"]
 
 
-def find_table(content):
-    """Return (headers, data_rows) from the first valid markdown table found."""
+def find_tables(content):
+    """Return a list of (headers, data_rows) for every valid markdown table in the file."""
+    tables = []
     lines = content.splitlines()
     i = 0
     while i < len(lines):
-        # Look for a header row
         m = TABLE_ROW_RE.match(lines[i].strip())
         if m and i + 1 < len(lines) and SEPARATOR_RE.match(lines[i + 1].strip()):
             headers = [c.strip() for c in lines[i].split("|")[1:-1]]
@@ -81,15 +81,16 @@ def find_table(content):
                 if not row_m:
                     break
                 cells = [c.strip() for c in lines[j].split("|")[1:-1]]
-                # Pad if the row is shorter than the header (trailing empty cols)
                 while len(cells) < len(headers):
                     cells.append("")
                 data_rows.append(cells)
                 j += 1
             if data_rows:
-                return headers, data_rows
-        i += 1
-    return None, None
+                tables.append((headers, data_rows))
+            i = j
+        else:
+            i += 1
+    return tables
 
 
 def resolve_col(headers, spec):
@@ -138,9 +139,23 @@ def load_data(path):
     with open(path, encoding="utf-8") as f:
         content = f.read()
 
-    headers, rows = find_table(content)
-    if headers is None:
+    tables = find_tables(content)
+    if not tables:
         print("ERROR: No markdown table found in the file.")
+        sys.exit(1)
+
+    # Find the first table that contains the date column
+    headers, rows = None, None
+    for t_headers, t_rows in tables:
+        try:
+            resolve_col(t_headers, DATE_COL)
+            headers, rows = t_headers, t_rows
+            break
+        except ValueError:
+            continue
+
+    if headers is None:
+        print(f"ERROR: No table found containing date column '{DATE_COL}'.")
         sys.exit(1)
 
     date_idx = resolve_col(headers, DATE_COL)
