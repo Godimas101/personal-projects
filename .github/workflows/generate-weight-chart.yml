@@ -12,7 +12,7 @@ on:
     inputs:
       months:
         description: 'Rolling window in months'
-        default: '6'
+        default: '4'
         required: false
 
 jobs:
@@ -37,7 +37,7 @@ jobs:
 
       - name: Generate weight chart
         env:
-          MONTHS: ${{ github.event.inputs.months || '6' }}
+          MONTHS: ${{ github.event.inputs.months || '4' }}
           INPUT_FILE:    health-tracking/weight-tracking.md
           OUTPUT_FILE:   health-tracking/charts/weight-chart.svg
           DATE_COL:      'Date'
@@ -53,7 +53,7 @@ jobs:
 
       - name: Generate metrics chart
         env:
-          MONTHS: ${{ github.event.inputs.months || '6' }}
+          MONTHS: ${{ github.event.inputs.months || '4' }}
           INPUT_FILE:    health-tracking/weight-tracking.md
           OUTPUT_FILE:   health-tracking/charts/metrics-chart.svg
           DATE_COL:      'Date'
