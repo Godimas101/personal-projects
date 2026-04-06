@@ -57,10 +57,10 @@ jobs:
           INPUT_FILE:    health-tracking/weight-tracking.md
           OUTPUT_FILE:   health-tracking/charts/metrics-chart.svg
           DATE_COL:      'Date'
-          Y1_COL:        'Muscle'
-          Y2_COLS:       'Body Fat,BMI'
-          Y1_LABEL:      'Muscle %'
-          Y2_LABELS:     'Body Fat %,BMI'
+          Y1_COL:        'Body Fat'
+          Y2_COLS:       'Muscle,BMI'
+          Y1_LABEL:      'Body Fat %'
+          Y2_LABELS:     'Muscle %,BMI'
           Y2_AXIS_LABEL: ''
           TITLE:         'Body Metrics'
           STRIP_CHARS:   '%'
