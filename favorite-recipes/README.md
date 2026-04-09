@@ -60,6 +60,7 @@ When using an AI to suggest new recipes or meals, include this in your prompt:
 | [chia-pudding.md](chia-pudding.md) | Overnight chia pudding with protein powder, hemp hearts, flax, and blueberries | 🌱 Veggie |
 | [weekday-lunch.md](weekday-lunch.md) | Batch-prepped egg cups, spiced bean salad, and frozen veg — meal-prep friendly | 🥚 Egg |
 | [saturday-pancakes.md](saturday-pancakes.md) | Flourish protein pancakes with blueberries and maple syrup — Saturday tradition | 🥞 Breakfast |
+| [weekend-breakfast-shake.md](weekend-breakfast-shake.md) | Longevity stack + 1960s Hercules cocktail — dual-phase protein shake | 🥚 Egg |
 
 ---
 

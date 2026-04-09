@@ -31,7 +31,7 @@ Meal plan reference: [average-week.md](average-week.md)
 | 2026-04-06 | Mon | Chia Pudding | Weekday Lunch | Egg Salad + 3 wraps | 2161 | 185g | 107g | 133g | |
 | 2026-04-07 | Tue | Chia Pudding | Weekday Lunch | Chicken Salad + 3 wraps | 2261 | 219g | 105g | 139g | |
 | 2026-04-08 | Wed | Chia Pudding | Weekday Lunch | Wok Spiced Beef Stir-Fry (75%) + 3 wraps | 2721 | 229g | 144g | 158g | Chinese eggplant, broccoli, string beans |
-| 2026-04-09 | Thu | Chia Pudding | Weekday Lunch | | | | | | |
+| 2026-04-09 | Thu | Chia Pudding | Weekday Lunch | Air Fryer Spiced Tilapia + roasted broccoli, Brussels sprouts, mushrooms, beets + 3 wraps | 2341 | 199g | 108g | 153g | |
 | 2026-04-10 | Fri | Chia Pudding | Weekday Lunch | | | | | | |
 | 2026-04-11 | Sat | | | | | | | | |
 | 2026-04-12 | Sun | | | | | | | | |
