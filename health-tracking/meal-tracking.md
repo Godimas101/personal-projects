@@ -32,8 +32,8 @@ Meal plan reference: [average-week.md](average-week.md)
 | 2026-04-07 | Tue | Chia Pudding | Weekday Lunch | Chicken Salad + 3 wraps | 2261 | 219g | 105g | 139g | |
 | 2026-04-08 | Wed | Chia Pudding | Weekday Lunch | Wok Spiced Beef Stir-Fry (75%) + 3 wraps | 2721 | 229g | 144g | 158g | Chinese eggplant, broccoli, string beans |
 | 2026-04-09 | Thu | Chia Pudding | Weekday Lunch | Air Fryer Spiced Tilapia + roasted broccoli, Brussels sprouts, mushrooms, beets + 3 wraps | 2341 | 199g | 108g | 153g | |
-| 2026-04-10 | Fri | Chia Pudding | Weekday Lunch | | | | | | |
-| 2026-04-11 | Sat | | | | | | | | |
+| 2026-04-10 | Fri | Chia Pudding | Weekday Lunch | Tilapia (~1 serving) + 2 cups mixed veg (red onion, Brussels sprouts, mushrooms) + 3 wraps w/ strawberry jam | 2291 | 187g | 105g | 178g | ~1 tbsp Kirkland strawberry jam per wrap |
+| 2026-04-11 | Sat | Pancakes + blueberries + 32g Coeur de Savoie (2 slices) | Egg Salad (4 eggs) + 3 wraps | Spiced Chicken Bone Broth Soup (1 serving) + 3 chicken drumsticks | 2308 | 194g | 76g | 229g | Pancakes: 1 tbsp blueberry jam + 1 tbsp strawberry jam + 1 tbsp maple syrup (replaces ¼ cup syrup) |
 | 2026-04-12 | Sun | | | | | | | | |
 
 ### Week 1 Totals (Mon–Sun)
