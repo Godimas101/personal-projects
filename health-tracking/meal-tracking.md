@@ -34,14 +34,14 @@ Meal plan reference: [average-week.md](average-week.md)
 | 2026-04-09 | Thu | Chia Pudding | Weekday Lunch | Air Fryer Spiced Tilapia + roasted broccoli, Brussels sprouts, mushrooms, beets + 3 wraps | 2341 | 199g | 108g | 153g | |
 | 2026-04-10 | Fri | Chia Pudding | Weekday Lunch | Tilapia (~1 serving) + 2 cups mixed veg (red onion, Brussels sprouts, mushrooms) + 3 wraps w/ strawberry jam | 2291 | 187g | 105g | 178g | ~1 tbsp Kirkland strawberry jam per wrap |
 | 2026-04-11 | Sat | Pancakes + blueberries + 32g Coeur de Savoie (2 slices) | Egg Salad (4 eggs) + 3 wraps | Spiced Chicken Bone Broth Soup (1 serving) + 3 chicken drumsticks | 2308 | 194g | 76g | 229g | Pancakes: 1 tbsp blueberry jam + 1 tbsp strawberry jam + 1 tbsp maple syrup (replaces ¼ cup syrup) |
-| 2026-04-12 | Sun | | | | | | | | |
+| 2026-04-12 | Sun | French Toast (4 slices Carbonaut Seeded) + 29g Coeur de Savoie + 15g Parmigiano + 3 tbsp maple syrup | Tuna Salad (double batch) + 2 wraps | Bone Broth Soup (3.5 cups) + 350g ground beef — 65/35 split | 2987 | 220g | 139g | 260g | Wheeler's Pancake House syrup; GF made double batch tuna, had 1 wrap; supper split 65% Chris / 35% GF |
 
 ### Week 1 Totals (Mon–Sun)
 
 | | Cal | Protein | Fat | Carbs |
 |--|-----|---------|-----|-------|
-| **Total** | — | — | — | — |
-| **Daily Avg** | — | — | — | — |
+| **Total** | 17,070 | 1,433g | 784g | 1,250g |
+| **Daily Avg** | 2,439 | 205g | 112g | 179g |
 
 ### Week 1 Daily Micronutrients (from supplements)
 

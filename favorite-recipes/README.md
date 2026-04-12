@@ -51,16 +51,17 @@ When using an AI to suggest new recipes or meals, include this in your prompt:
 | File | Description | Category |
 |------|-------------|----------|
 | [air-fryer-chicken-drumsticks.md](air-fryer-chicken-drumsticks.md) | Crispy drumsticks with roasted veggies, all in the air fryer | 🍗 Chicken |
-| [maple-ground-beef-baked-beans.md](maple-ground-beef-baked-beans.md) | Hearty maple baked beans with ground beef | 🥩 Beef |
-| [tuna-salad-wraps.md](tuna-salad-wraps.md) | Flexible tuna salad with customizable flavour twists | 🐟 Seafood |
 | [chicken-salad-wraps.md](chicken-salad-wraps.md) | High-protein canned chicken salad with yogurt dressing — 10/10 protein rating | 🍗 Chicken |
+| [chicken-bone-broth-soup.md](chicken-bone-broth-soup.md) | Spiced pressure cooker soup with rice, chickpeas, red lentils & egg white powder | 🍗 Chicken |
+| [maple-ground-beef-baked-beans.md](maple-ground-beef-baked-beans.md) | Hearty maple baked beans with ground beef | 🥩 Beef |
 | [healthy-yogurt-egg-salad-wraps.md](healthy-yogurt-egg-salad-wraps.md) | High-protein egg salad with yogurt instead of mayo, for wraps | 🥚 Egg |
-| [indian-spiced-beans.md](indian-spiced-beans.md) | Warm curry-style spiced beans — great over rice or with flatbread | 🌱 Veggie |
-| [quick-seafood-congee.md](quick-seafood-congee.md) | Creamy rice congee with tilapia, salmon, and fish balls — light but filling | 🐟 Seafood |
-| [chia-pudding.md](chia-pudding.md) | Overnight chia pudding with protein powder, hemp hearts, flax, and blueberries | 🌱 Veggie |
-| [weekday-lunch.md](weekday-lunch.md) | Batch-prepped egg cups, spiced bean salad, and frozen veg — meal-prep friendly | 🥚 Egg |
-| [saturday-pancakes.md](saturday-pancakes.md) | Flourish protein pancakes with blueberries and maple syrup — Saturday tradition | 🥞 Breakfast |
 | [weekend-breakfast-shake.md](weekend-breakfast-shake.md) | Longevity stack + 1960s Hercules cocktail — dual-phase protein shake | 🥚 Egg |
+| [weekday-lunch.md](weekday-lunch.md) | Batch-prepped egg cups, spiced bean salad, and frozen veg — meal-prep friendly | 🥚 Egg |
+| [tuna-salad-wraps.md](tuna-salad-wraps.md) | Flexible tuna salad with customizable flavour twists | 🐟 Seafood |
+| [quick-seafood-congee.md](quick-seafood-congee.md) | Creamy rice congee with tilapia, salmon, and fish balls — light but filling | 🐟 Seafood |
+| [indian-spiced-beans.md](indian-spiced-beans.md) | Warm curry-style spiced beans — great over rice or with flatbread | 🌱 Veggie |
+| [chia-pudding.md](chia-pudding.md) | Overnight chia pudding with protein powder, hemp hearts, flax, and blueberries | 🌱 Veggie |
+| [saturday-pancakes.md](saturday-pancakes.md) | Flourish protein pancakes with blueberries and maple syrup — Saturday tradition | 🥞 Breakfast |
 
 ---
 
