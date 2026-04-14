@@ -89,8 +89,8 @@ Meal plan reference: [average-week.md](average-week.md)
 
 | Date | Day | Breakfast | Lunch | Supper | Cal | Protein | Fat | Carbs | Notes |
 |------|-----|-----------|-------|--------|-----|---------|-----|-------|-------|
-| 2026-04-13 | Mon | Chia Pudding | Weekday Lunch | | | | | | |
-| 2026-04-14 | Tue | Chia Pudding | Weekday Lunch | | | | | | |
+| 2026-04-13 | Mon | Chia Pudding | Weekday Lunch | Bone Broth Soup (1.5 cups, last of it) + 3 wraps + ½ broccoli crown + ½ cup yogurt | 2360 | 192g | 100g | 203g | |
+| 2026-04-14 | Tue | Chia Pudding | Weekday Lunch | Egg Salad (4 eggs) + 3 wraps + 32g Coeur de Savoie | 2294 | 193g | 119g | 133g | |
 | 2026-04-15 | Wed | Chia Pudding | Weekday Lunch | | | | | | |
 | 2026-04-16 | Thu | Chia Pudding | Weekday Lunch | | | | | | |
 | 2026-04-17 | Fri | Chia Pudding | Weekday Lunch | | | | | | |
