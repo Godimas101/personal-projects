@@ -93,32 +93,60 @@ Meal plan reference: [average-week.md](average-week.md)
 | 2026-04-14 | Tue | Chia Pudding | Weekday Lunch | Egg Salad (4 eggs) + 3 wraps + 32g Coeur de Savoie | 2294 | 193g | 119g | 133g | |
 | 2026-04-15 | Wed | Chia Pudding | Weekday Lunch | Chicken Salad + 11 Brussels sprouts + 4 mushrooms + 3 wraps | 2379 | 230g | 106g | 162g | |
 | 2026-04-16 | Thu | Chia Pudding | Weekday Lunch | 272g tilapia + ¼ cup yogurt + 3 wraps + 2 boiled beets + ¼ cup kimchi | 2327 | 220g | 100g | 147g | Need groceries |
-| 2026-04-17 | Fri | Chia Pudding | Weekday Lunch | | | | | | |
-| 2026-04-18 | Sat | | | | | | | | |
-| 2026-04-19 | Sun | | | | | | | | |
+| 2026-04-17 | Fri | Chia Pudding | Weekday Lunch | ½ Costco rotisserie chicken + ½ salad (arugula, cherry tomatoes, pumpkin seeds, red onion, feta, olive oil, pomegranate molasses) + 1 wrap w/ 1 tbsp PB + 1 banana | 2619 | 215g | 140g | 143g | Kirkland just-peanuts PB |
+| 2026-04-18 | Sat | Omelette (5 eggs, 70% filling: cherry tomatoes, mushrooms, red onion, cheese) | LAN party | LAN party | ~3111 | ~90g | — | — | LAN party: shawarma, chips, cheese plate (~2000 cal est.); filling split 70/30 Chris/GF |
+| 2026-04-19 | Sun | 2 bananas + 2 tbsp PB + 2 wraps | Bone Broth Soup (2 cups) + 1 banana + 1 wrap w/ strawberry jam | Tilapia (~1 serving) + 1 cup bulgur + 1 tbsp tomato paste | 1931 | 143g | 49g | 257g | Sick from LAN party; Kirkland strawberry jam |
 
 ### Week 2 Totals (Mon–Sun)
 
 | | Cal | Protein | Fat | Carbs |
 |--|-----|---------|-----|-------|
-| **Total** | — | — | — | — |
-| **Daily Avg** | — | — | — | — |
+| **Total** | 17,021 | 1,283g | 614g* | 1,045g* |
+| **Daily Avg** | 2,432 | 183g | 102g* | 174g* |
 
-### Week 2 Daily Micronutrients (from supplements)
+> *Fat and carb totals exclude Saturday (LAN party — macro breakdown not tracked).
 
-| Nutrient | Daily | Weekly (×7) |
-|----------|-------|-------------|
-| Vitamin D3 | 1800 IU | 12,600 IU |
-| Vitamin C | 1500mg | 10,500mg |
-| Calcium | 600mg | 4200mg |
-| Magnesium | 250mg | 1750mg |
-| EPA | 90mg | 630mg |
-| DHA | 110mg | 770mg |
-| Vitamin K2 (MK-7) | 120mcg | 840mcg |
-| Creatine | 10g | 70g |
-| Collagen (glycine) | 5320mg | 37,240mg |
-| NMN | 1000mg | 7000mg |
-| Resveratrol | 1000mg | 7000mg |
-| Betaine (TMG) | 1500mg | 10,500mg |
-| Berberine | 500mg | 3500mg |
-| Spermidine | 10mg | 70mg |
+### Week 2 Micronutrients (supplements + food estimates)
+
+> Food values are estimates based on USDA standard reference data. Saturday LAN party food is excluded from food-based estimates.
+
+| Nutrient | Supplements (weekly) | Food (weekly est.) | Combined | Daily Avg | RDA (M) | % RDA |
+|----------|---------------------|-------------------|----------|-----------|---------|-------|
+| **Vitamin D3** | 12,600 IU | ~500 IU | ~13,100 IU | ~1,871 IU | 600 IU | 312% |
+| **Vitamin C** | 10,500mg | ~425mg | ~10,925mg | ~1,561mg | 90mg | 1734% |
+| **Vitamin E** | ~483mg | — | ~483mg | ~69mg | 15mg | 460% |
+| **Vitamin A** | ~1,050mcg | ~2,945mcg | ~3,995mcg | ~571mcg | 900mcg | 63% |
+| **Vitamin K1** (food) | — | ~1,295mcg | ~1,295mcg | ~185mcg | 120mcg | 154% |
+| **Vitamin K2** (supps) | 840mcg | — | 840mcg | 120mcg | — | — |
+| **Calcium** | 4,200mg | ~3,390mg | ~7,590mg | ~1,084mg | 1,000mg | 108% |
+| **Magnesium** | 1,750mg | ~953mg | ~2,703mg | ~386mg | 400mg | 97% |
+| **Iron** | ~21mg | ~60mg | ~81mg | ~12mg | 8mg | 145% |
+| **Zinc** | — | ~39mg | ~39mg | ~6mg | 11mg | 51% |
+| **Potassium** | — | ~8,854mg | ~8,854mg | ~1,265mg | 3,400mg | 37% |
+| **Selenium** | — | ~587mcg | ~587mcg | ~84mcg | 55mcg | 153% |
+| **Folate** | — | ~1,478mcg | ~1,478mcg | ~211mcg | 400mcg | 53% |
+| **B12** | — | ~23mcg | ~23mcg | ~3.3mcg | 2.4mcg | 137% |
+| **Choline** | — | ~3,600mg | ~3,600mg | ~514mg | 550mg | 93% |
+| **Fiber** | — | ~214g | ~214g | ~31g | 38g | 80% |
+| **Omega-3 ALA** | — | ~27g | ~27g | ~3.9g | 1.6g | 241% |
+| **Omega-3 EPA** | 630mg | — | ~630mg | ~90mg | — | — |
+| **Omega-3 DHA** | 770mg | — | ~770mg | ~110mg | — | — |
+| **Creatine** | 70g | — | 70g | 10g | — | — |
+| **Collagen (glycine)** | 37,240mg | — | 37,240mg | 5,320mg | — | — |
+| **NMN** | 7,000mg | — | 7,000mg | 1,000mg | — | — |
+| **Resveratrol** | 7,000mg | — | 7,000mg | 1,000mg | — | — |
+| **Betaine (TMG)** | 10,500mg | — | 10,500mg | 1,500mg | — | — |
+| **Berberine** | 3,500mg | — | 3,500mg | 500mg | — | — |
+| **Spermidine** | 70mg | — | 70mg | 10mg | — | — |
+
+**Week 2 vs Week 1 comparison:**
+- **Protein avg** dropped 205g → 183g (LAN party + sick day pulled it down)
+- **Potassium** improved 23% → 37% RDA (more bananas this week)
+- **Zinc** dropped 75% → 51% RDA (no beef suppers this week)
+- **Choline** dropped 105% → 93% RDA (fewer egg-based suppers)
+- **Fiber** dropped 103% → 80% RDA (LAN party + lighter weekend meals)
+
+**Persistent gaps across both weeks:**
+- **Potassium** — still the biggest gap; needs intentional effort (potato, avocado, more bananas)
+- **Folate** — stuck around 51–53% RDA; leafy greens or fortified foods would help
+- **Vitamin A** — 61–63% RDA; sweet potato or carrots are the easiest fix
