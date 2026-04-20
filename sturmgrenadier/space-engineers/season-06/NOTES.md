@@ -109,7 +109,17 @@ Torch/
 - **Purpose:** Diagnostic tool for identifying causes of server lag
 - **Docs:** https://wiki.torchapi.com/index.php?title=Plugins/Profiler
 
-### 5. Multigrid Projector (`d9359ba0-9a69-41c3-971d-eb5170adb97e`)
+### 5. SEDiscordBridge (`3cd3ba7f-c47c-4efe-8cf1-bd3f618f5b9c`)
+- **Author:** Bishbash777
+- **Version:** v2.0.5.001
+- **Purpose:** Bridges in-game chat to Discord (chat only — status handled by DiscordGSM)
+- **Discord channel:** #se-in-game-chat
+- **Config:** `SEDiscordBridge.cfg` — chat-only, no lifecycle/status messages
+- **Bot:** Separate bot from DiscordGSM (two bots can't share a token)
+- **Note:** Bot needs full member permissions in Discord (not guest) to avoid echo loop
+- **Source:** https://github.com/Bishbash777/SEDB-RELOADED
+
+### 6. Multigrid Projector (`d9359ba0-9a69-41c3-971d-eb5170adb97e`)
 - **Author:** Viktor
 - **Version:** v0.8.7.0
 - **Purpose:** Enables building/repairing multi-grid structures (mechs, PDCs, subgrids) from projector blueprints
@@ -124,7 +134,7 @@ Torch/
   - Most welding works even without the client plugin, but full functionality requires it
 - **Source:** https://github.com/viktor-ferenczi/se-multigrid-projector
 
-### 6. Performance Improvements (`c2cf3ed2-c6ac-4dbd-ab9a-613a1ef67784`)
+### 7. Performance Improvements (`c2cf3ed2-c6ac-4dbd-ab9a-613a1ef67784`)
 - **Author:** Viktor
 - **Version:** v1.11.18.0
 - **Purpose:** Server-side performance patches for SE

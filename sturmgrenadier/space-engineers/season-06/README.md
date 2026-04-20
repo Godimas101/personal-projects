@@ -15,6 +15,7 @@
 - **Max grid size:** 15,000 blocks
 - **PCU per player:** 50,000
 - **Server Status:** <a href="https://discord.com/channels/257714976125353985/1495824736696012840">📣 #se-server-notifications</a> on Discord
+- **In-Game Chat:** <a href="https://discord.com/channels/257714976125353985/1495907300387455090">💬 #se-in-game-chat</a> on Discord
 
 ## 🧡 Support the Server
 
@@ -76,8 +77,9 @@ Think the server needs a reboot before the next scheduled restart? Call a vote.
 - Needs **50% of online players** to pass
 - Runs the full cleanup sequence before restarting
 
-### 💬 Discord Notifications
-Server status (online/offline) and player count monitored via DiscordGSM.
+### 💬 Discord Integration
+- **Server status** (online/offline) monitored in `#se-server-notifications` via DiscordGSM
+- **In-game chat** bridged to `#se-in-game-chat` — talk to players from Discord and vice versa
 
 ### 🧩 Multigrid Projector
 Build and weld multi-grid blueprints (mechs, subgrid turrets, etc.) from a single projector.
