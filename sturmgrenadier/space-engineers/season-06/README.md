@@ -8,7 +8,7 @@
 
 - **Server Name:** Sturmgrenadier Season 06
 - **Connect:** `64.20.48.139:29165`
-- **Host:** GTX Gaming (New York)
+- **Host:** GTX Gaming (New York) — [Control Panel](https://gamepanel.gtxgaming.co.uk/Service/Home/8269743) (admin only)
 - **Slots:** 10
 - **Access:** Private — you must be a member of the [SG Space Engineers Whitelist](https://steamcommunity.com/groups/SGSPE) Steam group to connect
 - **Status:** Pre-season (Creative testing)
