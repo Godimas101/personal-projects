@@ -14,6 +14,7 @@
 - **Status:** Pre-season (Creative testing)
 - **Max grid size:** 15,000 blocks
 - **PCU per player:** 50,000
+- **Server Status:** <a href="https://discord.com/channels/257714976125353985/1495824736696012840">📣 #se-server-notifications</a> on Discord
 
 ## 🧡 Support the Server
 
