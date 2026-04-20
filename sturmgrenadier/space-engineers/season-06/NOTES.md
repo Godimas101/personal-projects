@@ -2,13 +2,15 @@
 
 ## Server Setup
 
-- **Status:** In progress
+- **Status:** Online (Pre-season Creative testing)
 - **Host:** GTX Gaming (gtxgaming.co.uk)
+- **Control Panel:** https://gamepanel.gtxgaming.co.uk/Service/Home/8269743
 - **Type:** Dedicated Server running Torch API
 - **Server Software:** Torch (replaces vanilla `SpaceEngineersDedicated.exe`)
 
 ### Tools
 - **FTP Client:** WinSCP (sFTP access to GTX server files)
+- **Discord Monitoring:** Self-hosted DiscordGSM on OVH VPS (server status alerts via webhook)
 
 ### Our Server Specs
 | Setting | Value |
@@ -76,7 +78,7 @@ Torch/
 ### 2. Quantum Hangar (`24fc7724-0740-4a54-8bb3-1191fd3c8db4`)
 - **Author:** Casimir
 - **Version:** v3.2.69
-- **Purpose:** Server-side grid storage system — players can save/load/trade ships
+- **Purpose:** Server-side grid storage system — players can save/load ships
 - **Features:**
   - `!hangar save` — store the grid you're looking at
   - `!hangar load [Name/ID]` — retrieve a stored grid
@@ -86,7 +88,7 @@ Torch/
   - Cross-server hangar via shared directory
   - Auto dupe/loss prevention on crash
   - Different limits for Normal vs Scripter players
-- **Requires:** HangarMarket Mod for buy/sell functionality
+- **Requires:** HangarMarket Mod for buy/sell functionality (not enabled yet — future consideration)
 
 ### 3. ALE ShipFixer (`894d12eb-68e1-4eaa-b8c2-263f004629d7`)
 - **Author:** LordTylus
@@ -97,7 +99,7 @@ Torch/
   - `!fixship` — fix grid you're looking at
   - `!fixship <name>` — fix by name (must own the grid)
   - `!fixshipmod` / `!fixshipmod <name>` — moderator versions (no cooldown/ownership check)
-- **Config:** `ShipFixer.cfg` — cooldown (default 900s), confirmation timeout (30s)
+- **Config:** `ShipFixer.cfg` — cooldown (120s), confirmation timeout (30s)
 - **Restrictions:** Fails if connectors/landing gear attached or players in seats
 - **Source:** https://github.com/LordTylus/SE-Torch-Plugin-ALE-ShipFixer
 
@@ -107,10 +109,7 @@ Torch/
 - **Purpose:** Diagnostic tool for identifying causes of server lag
 - **Docs:** https://wiki.torchapi.com/index.php?title=Plugins/Profiler
 
-### ~~5. SEDiscordBridge~~ — REMOVED
-- **Reason:** Server startup message race condition — bot connects after the "Started" event fires, so the "Server Online" notification never reaches Discord. Replaced with DiscordGSM external monitoring.
-
-### 6. Multigrid Projector (`d9359ba0-9a69-41c3-971d-eb5170adb97e`)
+### 5. Multigrid Projector (`d9359ba0-9a69-41c3-971d-eb5170adb97e`)
 - **Author:** Viktor
 - **Version:** v0.8.7.0
 - **Purpose:** Enables building/repairing multi-grid structures (mechs, PDCs, subgrids) from projector blueprints
@@ -125,7 +124,7 @@ Torch/
   - Most welding works even without the client plugin, but full functionality requires it
 - **Source:** https://github.com/viktor-ferenczi/se-multigrid-projector
 
-### 7. Performance Improvements (`c2cf3ed2-c6ac-4dbd-ab9a-613a1ef67784`)
+### 6. Performance Improvements (`c2cf3ed2-c6ac-4dbd-ab9a-613a1ef67784`)
 - **Author:** Viktor
 - **Version:** v1.11.18.0
 - **Purpose:** Server-side performance patches for SE
@@ -141,8 +140,13 @@ Torch/
   - ~10% lower simulation CPU load from disabling mod API call stats
 - **Source:** https://github.com/viktor-ferenczi/se-performance-improvements
 
-### ~~8. ALE Restart Watchdog~~ — REMOVED
-- **Reason:** Incompatible with managed hosting (GTX). Could restart the server process but leave the admin panel unable to see it due to port conflicts. GTX has its own scheduled restart feature instead.
+## Discord Monitoring
+
+Server status is monitored by a self-hosted instance of [DiscordGSM](https://github.com/DiscordGSM/GameServerMonitor) running on the OVH VPS (`/opt/tcs/discordgsm`). It queries the SE server via A2S protocol every 60 seconds and posts status changes to Discord via webhook.
+
+- **Query port:** 29165 (same as game port)
+- **Discord channel:** #se-server-notifications
+- **Alerts:** Webhook fires on server online/offline status change
 
 ## GTX Knowledge Base
 
@@ -211,11 +215,6 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 | 38 | VCZ Elevator v2.0 | 3030780799 |
 | 39 | Faux Ship Lights | 637514816 |
 
-## Open Questions
-
-- [ ] World settings (map, mods, game rules)?
-- [ ] HangarMarket Mod — do we want the marketplace feature for Quantum Hangar?
-
 ## Directory Layout
 
 - `config/` — Local copies of server configuration files
@@ -223,11 +222,21 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 
 ## Setup Log
 
-### 2026-04-18 - Research & planning
+### 2026-04-18 - Initial setup & research
+- Created project directory and folder structure
 - Researched GTX Gaming hosting plans and features
 - Documented Torch API setup and folder structure
-- Documented all 4 Torch plugins: Essentials, Quantum Hangar, ALE ShipFixer, ALE Restart Watchdog
-- Flagged potential Restart Watchdog compatibility issue with managed hosting
+- Configured all Torch plugins: Essentials, Quantum Hangar, ALE ShipFixer, Profiler
+- Set up Essentials AutoCommands: auto-save (5 min), scheduled restart (4 hr), vote restart
+- Configured server settings: Creative mode, 10x inventory, PER_PLAYER PCU (50k), 15k block grid cap
+- Set up Steam group whitelist, admin access, MOTD with plugin info
+- Configured Block Restrictions mod: weapons, tools, production, utility block limits
+- Created AdditionalItems.ini for InfoLCD modded item support
 
-### 2026-04-18 - Initial setup
-- Created project directory and folder structure
+### 2026-04-20 - Discord monitoring & polish
+- Tried SEDiscordBridge — removed due to startup race condition (bot connects after "Started" event)
+- Deployed self-hosted DiscordGSM on OVH VPS via Docker
+- Server status alerts working via Discord webhook
+- Added Multigrid Projector and Performance Improvements plugins
+- Various config tweaks: weather damage, meteors, experimental mode, private mode
+- Updated README with Patreon, More Engineer Characters, Multigrid Projector client setup
