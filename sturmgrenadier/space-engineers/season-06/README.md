@@ -15,6 +15,12 @@
 - **Max grid size:** 15,000 blocks
 - **PCU per player:** 50,000
 
+## 🧡 Support the Server
+
+Server costs are covered by community contributions. The more subscribers we have, the more powerful our hardware gets. Not mandatory — but if you're having fun, consider chipping in.
+
+[![Support on Patreon](https://raw.githubusercontent.com/Godimas101/personal-projects/main/patreon/images/buttons/patreon-medium.png)](https://patreon.com/Godimas101)
+
 ## ⏰ Server Schedule
 
 - **Auto-save:** Every 5 minutes
@@ -69,8 +75,8 @@ Think the server needs a reboot before the next scheduled restart? Call a vote.
 - Needs **50% of online players** to pass
 - Runs the full cleanup sequence before restarting
 
-### 💬 Discord Bridge
-Server chat, restart notifications, and sim speed warnings are relayed to Discord via SEDiscordBridge.
+### 💬 Discord Notifications
+Server status (online/offline) and player count monitored via DiscordGSM.
 
 ### 🧩 Multigrid Projector
 Build and weld multi-grid blueprints (mechs, subgrid turrets, etc.) from a single projector.
@@ -159,8 +165,21 @@ Refineries, assemblers, and H2/O2 generators can only be placed on stations. You
 
 Flare launchers and searchlights are unlimited. Light 'em up.
 
+### 👤 More Engineer Characters
+
+Choose your suit at any medical room. Each has different strengths and trade-offs.
+
+| Suit | Strengths | Weaknesses |
+|------|-----------|------------|
+| **Fighter** | 2x health | Severely limited inventory |
+| **Builder** | 2x inventory capacity | Reduced jetpack efficiency |
+| **Explorer** | Better temperature tolerance, more hydrogen | Jetpack mainly works in space |
+| **NextGen** | Balanced — fighter durability + extra storage | Jack of all trades |
+
 ## 📦 Mod Collection
 
 [Steam Workshop Collection](https://steamcommunity.com/sharedfiles/filedetails?id=3356806280) (39 mods)
+
+---
 
 *May your sim speed stay above 0.9 and your Clang encounters stay below 1.*

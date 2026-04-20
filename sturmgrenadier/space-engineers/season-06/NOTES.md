@@ -107,24 +107,8 @@ Torch/
 - **Purpose:** Diagnostic tool for identifying causes of server lag
 - **Docs:** https://wiki.torchapi.com/index.php?title=Plugins/Profiler
 
-### 5. SEDiscordBridge (`3cd3ba7f-c47c-4efe-8cf1-bd3f618f5b9c`)
-- **Author:** Bishbash777 (maintainer), FabioZumbi12 (creator)
-- **Version:** v2.0.5.001
-- **Purpose:** Bridges SE server chat and events to Discord
-- **Features:**
-  - In-game chat relayed to Discord (and vice versa)
-  - Server start/restart/stop messages to Discord
-  - Sim speed warnings when sim drops below threshold
-  - Player join/leave notifications
-  - Death logs
-  - Multiple command and chat channels
-  - Static API for other plugins to send Discord messages
-- **Commands:**
-  - `!sedb reload` — reload config
-  - `!sedb enable` / `!sedb disable` — toggle bridge
-- **Setup:** Requires creating a Discord bot (bot token + channel IDs)
-- **Source:** https://github.com/Bishbash777/SEDB-RELOADED
-- **Note:** Essentials `!notify` restart warnings flow through game chat, so SEDB will relay them to Discord automatically
+### ~~5. SEDiscordBridge~~ — REMOVED
+- **Reason:** Server startup message race condition — bot connects after the "Started" event fires, so the "Server Online" notification never reaches Discord. Replaced with DiscordGSM external monitoring.
 
 ### 6. Multigrid Projector (`d9359ba0-9a69-41c3-971d-eb5170adb97e`)
 - **Author:** Viktor
