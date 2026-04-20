@@ -107,7 +107,57 @@ Torch/
 - **Purpose:** Diagnostic tool for identifying causes of server lag
 - **Docs:** https://wiki.torchapi.com/index.php?title=Plugins/Profiler
 
-### ~~5. ALE Restart Watchdog~~ — REMOVED
+### 5. SEDiscordBridge (`3cd3ba7f-c47c-4efe-8cf1-bd3f618f5b9c`)
+- **Author:** Bishbash777 (maintainer), FabioZumbi12 (creator)
+- **Version:** v2.0.5.001
+- **Purpose:** Bridges SE server chat and events to Discord
+- **Features:**
+  - In-game chat relayed to Discord (and vice versa)
+  - Server start/restart/stop messages to Discord
+  - Sim speed warnings when sim drops below threshold
+  - Player join/leave notifications
+  - Death logs
+  - Multiple command and chat channels
+  - Static API for other plugins to send Discord messages
+- **Commands:**
+  - `!sedb reload` — reload config
+  - `!sedb enable` / `!sedb disable` — toggle bridge
+- **Setup:** Requires creating a Discord bot (bot token + channel IDs)
+- **Source:** https://github.com/Bishbash777/SEDB-RELOADED
+- **Note:** Essentials `!notify` restart warnings flow through game chat, so SEDB will relay them to Discord automatically
+
+### 6. Multigrid Projector (`d9359ba0-9a69-41c3-971d-eb5170adb97e`)
+- **Author:** Viktor
+- **Version:** v0.8.7.0
+- **Purpose:** Enables building/repairing multi-grid structures (mechs, PDCs, subgrids) from projector blueprints
+- **Features:**
+  - Weld multi-grid blueprints in survival and creative
+  - Assembler integration to queue missing parts
+  - Block highlighting for projected components
+  - Works in single-player and multiplayer
+- **Client requirement:** Players need the Pulsar plugin loader + Multigrid Projector client plugin
+  - Install Pulsar: https://github.com/sepluginloader/SpaceEngineersLauncher
+  - Open SE → Plugins menu → enable Multigrid Projector → restart game
+  - Most welding works even without the client plugin, but full functionality requires it
+- **Source:** https://github.com/viktor-ferenczi/se-multigrid-projector
+
+### 7. Performance Improvements (`c2cf3ed2-c6ac-4dbd-ab9a-613a1ef67784`)
+- **Author:** Viktor
+- **Version:** v1.11.18.0
+- **Purpose:** Server-side performance patches for SE
+- **Key improvements:**
+  - Grid merging ~60-70% faster (disables conveyor updates during merge)
+  - Grid pasting optimized (suspends updates while pasting)
+  - EOS P2P stats overhead reduced by ~98%
+  - Explicit GC.Collect calls removed (eliminates long pauses on load/unload)
+  - Safe zone caching (IsSafe results cached for 2 seconds)
+  - Wind turbine atmosphere check caching
+  - Turret targeting memory allocation optimization
+  - Conveyor reachability calculation improvements
+  - ~10% lower simulation CPU load from disabling mod API call stats
+- **Source:** https://github.com/viktor-ferenczi/se-performance-improvements
+
+### ~~8. ALE Restart Watchdog~~ — REMOVED
 - **Reason:** Incompatible with managed hosting (GTX). Could restart the server process but leave the admin panel unable to see it due to port conflicts. GTX has its own scheduled restart feature instead.
 
 ## GTX Knowledge Base
