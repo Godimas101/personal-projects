@@ -98,12 +98,6 @@ Most multi-grid welding works without the client plugin, but assembler integrati
 ### ⚡ Performance Improvements
 Server-side performance patches — faster grid merging, safe zone caching, reduced CPU overhead, and more. No player action needed.
 
----
-
-<p align="center"><img src="../images/readme/steam-workshop.png" height="200" /></p>
-
-## 🧱 Mod Info
-
 ### 🚧 Block Limits
 
 Managed by the [BlockLimiter](https://torchapi.com/plugins/view/11fca5c4-01b6-4fc3-a215-602e2325be2b) Torch plugin. Blocks over the limit are shut off. Use `!blocklimit mylimit` in chat to check your status.
@@ -204,6 +198,12 @@ Prototech Refinery and Prototech Assembler are salvage items — no limits, but 
 | Projector | 5 | 1 | Disabled on restart |
 | Survival Kit | — | 1 | |
 | Medical Room | — | — | Static only |
+
+---
+
+<p align="center"><img src="../images/readme/steam-workshop.png" height="200" /></p>
+
+## 🧱 Mod Info
 
 ### 👤 [More Engineer Characters](https://steamcommunity.com/sharedfiles/filedetails/?id=2028943594)
 
