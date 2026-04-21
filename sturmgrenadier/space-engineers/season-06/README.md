@@ -7,15 +7,16 @@
 ## 🖥️ Server Info
 
 - **Server Name:** Sturmgrenadier Season 06
-- **Connect:** `64.20.48.139:29165`
-- **Host:** GTX Gaming (New York) — [Control Panel](https://gamepanel.gtxgaming.co.uk/Service/Home/8269743) (admin only)
-- **Slots:** 10
-- **Access:** Private — you must be a member of the [SG Space Engineers Whitelist](https://steamcommunity.com/groups/SGSPE) Steam group to connect
-- **Status:** Pre-season (Creative testing)
+- **IP Address:** `64.20.48.139:29165`
 - **Max grid size:** 15,000 blocks
 - **PCU per player:** 50,000
-- **Server Status:** <a href="https://discord.com/channels/257714976125353985/1495824736696012840">📣 #se-server-notifications</a> on Discord
+- **Max Players:** 10
+- **Access:** Private — you must be a member of the [SG Space Engineers Whitelist](https://steamcommunity.com/groups/SGSPE) Steam group to connect
+- **Status:** Pre-season (Creative testing)
+- **Server Status:** <a href="https://discord.com/channels/257714976125353985/1495906930068291717">📣 #se-server-status</a> on Discord
+- **Notifications:** <a href="https://discord.com/channels/257714976125353985/1495824736696012840">📣 #se-server-notifications</a> on Discord
 - **In-Game Chat:** <a href="https://discord.com/channels/257714976125353985/1495907300387455090">💬 #se-in-game-chat</a> on Discord
+- **Host:** GTX Gaming (New York) — [Control Panel](https://gamepanel.gtxgaming.co.uk/Service/Home/8269743) (admin only)
 
 ## 🧡 Support the Server
 
@@ -38,6 +39,8 @@ The following cleanup runs automatically:
 - Grids under 30 blocks deleted
 
 ---
+
+<p align="center"><img src="../images/readme/torch.png" height="200" /></p>
 
 ## 🔌 Torch Plugin Info
 
@@ -97,9 +100,11 @@ Server-side performance patches — faster grid merging, safe zone caching, redu
 
 ---
 
+<p align="center"><img src="../images/readme/steam-workshop.png" height="200" /></p>
+
 ## 🧱 Mod Info
 
-### 🚧 Block Restrictions
+### 🚧 [Block Restrictions](https://steamcommunity.com/sharedfiles/filedetails/?id=2053202808)
 
 #### 🛠️ Utility Blocks
 
@@ -168,7 +173,7 @@ Refineries, assemblers, and H2/O2 generators can only be placed on stations. You
 
 Flare launchers and searchlights are unlimited. Light 'em up.
 
-### 👤 More Engineer Characters
+### 👤 [More Engineer Characters](https://steamcommunity.com/sharedfiles/filedetails/?id=2028943594)
 
 Choose your suit at any medical room. Each has different strengths and trade-offs.
 
@@ -179,10 +184,79 @@ Choose your suit at any medical room. Each has different strengths and trade-off
 | **Explorer** | Better temperature tolerance, more hydrogen | Jetpack mainly works in space |
 | **NextGen** | Balanced — fighter durability + extra storage | Jack of all trades |
 
+### 📺 [HudLcd](https://steamcommunity.com/workshop/filedetails?id=911144486)
+
+Display LCD text directly on your HUD while piloting. Add `hudlcd` to an LCD panel's custom data to activate.
+
+**Syntax:** `hudlcd:{PosX}:{PosY}:{FontSize}:{Colour}:{Shadow}`
+
+Coordinates are screen-relative: `0:0` is center, `-1:-1` is bottom-left, `1:1` is top-right. Leave parameters blank for defaults.
+
+| Example | Effect |
+|---------|--------|
+| `hudlcd:-1:1` | Top-left corner |
+| `hudlcd:-0.35:-0.65` | Above hotbar |
+| `hudlcd:::0.5` | Half font size, default position |
+| `hudlcd::::red:1` | Red text with shadow |
+
+FontSize is a multiplier (1 = normal, 0.5 = half, 2 = double). Colour accepts names (`red`), RGB (`255,0,0`), or RGBA. Set Shadow to `1` to enable.
+
+### 🔍 [Build Info](https://steamcommunity.com/workshop/filedetails?id=514062285)
+
+Shows detailed block stats (mass, integrity, power draw, inventory capacity) when holding or aiming at blocks. Open settings with chat → F2.
+
+**Key commands:**
+
+| Command | What it does |
+|---------|-------------|
+| `/bi help` | Full feature list and hotkey reference |
+| `/bi conveyorvis` | Visualize conveyor networks — color-coded lines, red = unconnected, pink = cross-grid |
+| `/bi worldinfo` | Show world settings and active mods |
+| `/bi shipmods` | Show DLCs and mods used by the targeted ship |
+| `/bi reload` | Reload config mid-game |
+
+**Overlay hotkeys:**
+
+| Key | Action |
+|-----|--------|
+| Ctrl + Plus | Cycle through overlays (mount points, conveyor ports, airtightness) |
+| Shift + R | Lock overlay to aimed block |
+| Alt + R | View construction stage models |
+| Ctrl + R | Grab aimed block to toolbar |
+
+[Full command reference](https://gist.github.com/THDigi/4c59566005d0e1255ead543fdb90f16d)
+
+### 🔧 [AQD - Easy Tool Access](https://steamcommunity.com/workshop/filedetails?id=3707426899)
+
+Quick-switch between tools and weapons from a single hotbar slot. Hold the assigned hotbar key to open the tool wheel, mouse over your choice, release to equip. Customize bindings via F2 menu.
+
+### 🧪 [Improvised Experimentation](https://steamcommunity.com/sharedfiles/filedetails?id=2891367014)
+
+Grab, carry, rotate, and throw grids by hand. Works in singleplayer and on dedicated servers. Type `/IME` in chat for settings.
+
+| Action | Key |
+|--------|-----|
+| Grab / Drop | R |
+| Rotation Mode | LMB (hold or toggle) |
+| Change Grab Point | RMB (hit point vs center of mass) |
+| Throw | LMB + RMB held |
+| Adjust Distance | Scroll wheel |
+| Set Reference Grid | MMB |
+| Toggle Alignment | Shift (camera vs grid) |
+| Cycle Facing | Alt |
+| Cycle Up Face | Ctrl |
+
+### 🔩 [Advanced Welding](https://steamcommunity.com/sharedfiles/filedetails?id=510790477)
+
+Three features in one:
+- **Weld Pads** — ultra-slim single-use merge blocks, great for subgrid builds
+- **Detach Mode** — hold Ctrl while grinding to cleanly detach a block without losing components
+- **Precision Grind** — hold secondary action to focus grinder on a single block
+
 ## 📦 Mod Collection
 
 [Steam Workshop Collection](https://steamcommunity.com/sharedfiles/filedetails?id=3356806280) (39 mods)
 
 ---
 
-*May your sim speed stay above 0.9 and your Clang encounters stay below 1.*
+<p align="center"><img src="../images/readme/space-engineers.png" height="200" /></p>
