@@ -104,32 +104,20 @@ Server-side performance patches — faster grid merging, safe zone caching, redu
 
 ## 🧱 Mod Info
 
-### 🚧 [Block Restrictions](https://steamcommunity.com/sharedfiles/filedetails/?id=2053202808)
+### 🚧 Block Limits
 
-#### 🛠️ Utility Blocks
+Managed by the [BlockLimiter](https://torchapi.com/plugins/view/11fca5c4-01b6-4fc3-a215-602e2325be2b) Torch plugin. Blocks over the limit are shut off. Use `!blocklimit mylimit` in chat to check your status.
 
-| Block | Per Player | Per Grid | Notes |
-|-------|-----------|----------|-------|
-| Programmable Block | 3 | — | |
-| Self-Maintenance Unit | 3 | 1 | Static grids only |
-| Projector | 5 | 1 | Disabled on restart |
-| Survival Kit | — | 1 | |
-| Medical Room | — | — | Static grids only |
-| Farm Plot | — | — | Static grids only |
+#### 💥 Total Weapons Per Grid
+Includes all turrets (except interior), fixed weapons, and turret controllers.
 
-#### ⛏️ Ship Tools
-Excludes Resource Node drills and Welder Wall blocks — those are unlimited on stations.
+| Grid Type | Max Weapons |
+|-----------|------------|
+| Stations | 18 |
+| Large Ships | 8 |
+| Small Ships | 10 |
 
-| Block | Per Grid | Notes |
-|-------|----------|-------|
-| Drill | 10 | |
-| Welder | 5 | Disabled on restart |
-| Grinder | 5 | |
-
-#### 🏭 Production Blocks — Static Grids Only
-Refineries, assemblers, and H2/O2 generators can only be placed on stations. You build your factory, then you fly to it.
-
-#### 🔫 Weapons — Large Grid Turrets
+#### 🔫 Turrets (per player / per grid)
 
 | Turret | Per Player | Per Grid |
 |--------|-----------|----------|
@@ -144,34 +132,78 @@ Refineries, assemblers, and H2/O2 generators can only be placed on stations. You
 | Torpedo Turret (Elindis) | 5 | 2 |
 | Hailstorm Turret (Elindis) | 10 | 4 |
 
-#### 🔫 Weapons — Small Grid Turrets
-
-| Turret | Per Player | Per Grid |
-|--------|-----------|----------|
-| Gatling Turret | 25 | 8 |
-| Missile Turret | 15 | 6 |
-| Assault Turret | 10 | 4 |
-
-#### 🎯 Weapons — Large Grid Fixed
+#### 🎯 Fixed Weapons (per player / per grid)
 
 | Weapon | Per Player | Per Grid |
 |--------|-----------|----------|
-| Rocket Launcher | 10 | 6 |
-| Artillery | 6 | 2 |
+| Rocket Launcher (LG) | 10 | 6 |
+| Artillery (LG) | 6 | 2 |
 | Large Railgun | 2 | 1 |
 | Torpedo Launcher (Elindis) | 5 | 2 |
-
-#### 🎯 Weapons — Small Grid Fixed
-
-| Weapon | Per Player | Per Grid |
-|--------|-----------|----------|
-| Gatling Gun | 20 | 8 |
-| Autocannon | 10 | 5 |
-| Rocket Launcher | 10 | 5 |
-| Assault Cannon | 8 | 2 |
+| Gatling Gun (SG) | 20 | 8 |
+| Autocannon (SG) | 10 | 5 |
+| Rocket Launcher (SG) | 10 | 5 |
+| Assault Cannon (SG) | 8 | 2 |
 | Small Railgun | 8 | 3 |
 
-Flare launchers and searchlights are unlimited. Light 'em up.
+Flare launchers and searchlights are unlimited.
+
+#### ⛏️ Ship Tools — Ships Only
+Ship tools cannot be placed on stations. Use Welder Walls and Resource Nodes instead.
+
+| Tool | Per Grid |
+|------|----------|
+| Drill | 10 |
+| Welder | 5 |
+| Grinder | 5 |
+
+#### 🏗️ Static Grid Tools
+
+| Block | Per Player | Per Grid | Notes |
+|-------|-----------|----------|-------|
+| Welder Wall | — | 60 | Static only |
+| Resource Nodes | 10 | — | Static only |
+| Self-Maintenance Unit | 3 | 1 | Static only |
+| Ganymede Incinerator | — | 1 | Any grid |
+
+#### 🏭 Production — Static Grids Only
+Build your factory, then fly to it.
+
+| Block | Per Player | Notes |
+|-------|-----------|-------|
+| Refinery + Industrial | 4 | |
+| Blast Furnace | 6 | |
+| x10 Refinery | 1 | |
+| Assembler + Industrial | 4 | |
+| Basic Assembler | 5 | |
+| H2/O2 Generator | 12 | |
+| Food Processor / Kitchen | 4 | Any grid allowed |
+| Prototech Organic Assembler | 2 | |
+| Tissue Growth Vat | 4 | |
+| Aquaculture Farm | 4 | |
+| Bug Farm | 4 | |
+| Apiary | 6 | |
+| JS Labs | 4 | Any grid allowed |
+
+Prototech Refinery and Prototech Assembler are salvage items — no limits, but assembler is static only.
+
+#### 🌱 Farming
+
+| Block | Per Player | Per Grid | Notes |
+|-------|-----------|----------|-------|
+| Farm Plot (all variants) | 30 | 12 station / 4 ship | |
+| Oxygen Farm | — | 10 | Any grid |
+| Algae Farm | 6 | — | Any grid |
+| Irrigation System | 10 | 2 per station | |
+
+#### 🛠️ Utility Blocks
+
+| Block | Per Player | Per Grid | Notes |
+|-------|-----------|----------|-------|
+| Programmable Block | 3 | — | |
+| Projector | 5 | 1 | Disabled on restart |
+| Survival Kit | — | 1 | |
+| Medical Room | — | — | Static only |
 
 ### 👤 [More Engineer Characters](https://steamcommunity.com/sharedfiles/filedetails/?id=2028943594)
 

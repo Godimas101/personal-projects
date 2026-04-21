@@ -14,7 +14,7 @@
     <MaxBackupSaves>6</MaxBackupSaves>
     <MaxGridSize>15000</MaxGridSize>
     <MaxBlocksPerPlayer>0</MaxBlocksPerPlayer>
-    <TotalPCU>50000</TotalPCU>
+    <TotalPCU>500000</TotalPCU>
     <PiratePCU>50000</PiratePCU>
     <GlobalEncounterPCU>25000</GlobalEncounterPCU>
     <MaxFactionsCount>0</MaxFactionsCount>
@@ -102,7 +102,7 @@
     <EnableResearch>true</EnableResearch>
     <EnableGoodBotHints>true</EnableGoodBotHints>
     <OptimalSpawnDistance>4000</OptimalSpawnDistance>
-    <EnableAutorespawn>true</EnableAutorespawn>
+    <EnableAutorespawn>false</EnableAutorespawn>
     <EnableBountyContracts>true</EnableBountyContracts>
     <EnableSupergridding>false</EnableSupergridding>
     <EnableEconomy>true</EnableEconomy>
@@ -205,10 +205,6 @@
     <ModItem>
       <Name>3369236046.sbm</Name>
       <PublishedFileId>3369236046</PublishedFileId>
-    </ModItem>
-    <ModItem>
-      <Name>2053202808.sbm</Name>
-      <PublishedFileId>2053202808</PublishedFileId>
     </ModItem>
     <ModItem>
       <Name>2645964353.sbm</Name>

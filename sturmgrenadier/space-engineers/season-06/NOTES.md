@@ -181,7 +181,7 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 
 **Load order matters — this list is in the correct order. Do not reorder.**
 
-39 mods total:
+38 mods total:
 
 | # | Mod Name | Workshop ID |
 |---|----------|-------------|
@@ -190,40 +190,39 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 | 3 | Sturmgrenadier Core Power | 3362282194 |
 | 4 | Sturmgrenadier Core Vanilla Combat | 3364273324 |
 | 5 | Sturmgrenadier Core Production | 3369236046 |
-| 6 | Block Restrictions | 2053202808 |
-| 7 | Hubblegum Skybox | 2645964353 |
-| 8 | Say No To Scrap | 1146278097 |
-| 9 | Jargon Generator (Mod) | 2470184482 |
-| 10 | Sci Fi Button Images | 2324191331 |
-| 11 | AQD - LCD Image Extension | 1645942623 |
-| 12 | AQD - Concrete | 2298956701 |
-| 13 | Emissive Letters & Symbols | 3347016415 |
-| 14 | Improvised Experimentation | 2891367014 |
-| 15 | Advanced Welding | 510790477 |
-| 16 | Stone Yield Nerf | 2370668905 |
-| 17 | TBH - Heavier Containers | 2830050106 |
-| 18 | TBH - Heavier Tanks | 2936628930 |
-| 19 | Braced Conveyor Pipe | 2806327649 |
-| 20 | EDP - Thruster Covers | 3383813378 |
-| 21 | Slope LCD Panels Redux | 2206564401 |
-| 22 | Life'Tech Transparent LCD Variants | 3292090990 |
-| 23 | Grated Catwalks Expansion | 2503712170 |
-| 24 | Rebels Lights 1.2.01 | 2718175525 |
-| 25 | Aryx-Lynxon Drive Systems | 2394430829 |
-| 26 | Self-Maintenance Unit | 3515485609 |
-| 27 | AQD - Upgradeable Gyroscopes | 2621169600 |
-| 28 | AQD - Armor Expansion | 1939935505 |
-| 29 | ResourceNodes | 2493091475 |
-| 30 | Tank Tracks Framework & API | 3208995513 |
-| 31 | Tank Tracks Builder | 3209005014 |
-| 32 | Tank Tracks over Vanilla Wheels | 3209008231 |
-| 33 | AQD - Conveyor Expansion | 1864380341 |
-| 34 | Blast Door Sections Retextured | 1574837911 |
-| 35 | Rotary Airlock | 1359954841 |
-| 36 | WelderWall | 3370792625 |
-| 37 | Neon tubes + | 3373230204 |
-| 38 | VCZ Elevator v2.0 | 3030780799 |
-| 39 | Faux Ship Lights | 637514816 |
+| 6 | Hubblegum Skybox | 2645964353 |
+| 7 | Say No To Scrap | 1146278097 |
+| 8 | Jargon Generator (Mod) | 2470184482 |
+| 9 | Sci Fi Button Images | 2324191331 |
+| 10 | AQD - LCD Image Extension | 1645942623 |
+| 11 | AQD - Concrete | 2298956701 |
+| 12 | Emissive Letters & Symbols | 3347016415 |
+| 13 | Improvised Experimentation | 2891367014 |
+| 14 | Advanced Welding | 510790477 |
+| 15 | Stone Yield Nerf | 2370668905 |
+| 16 | TBH - Heavier Containers | 2830050106 |
+| 17 | TBH - Heavier Tanks | 2936628930 |
+| 18 | Braced Conveyor Pipe | 2806327649 |
+| 19 | EDP - Thruster Covers | 3383813378 |
+| 20 | Slope LCD Panels Redux | 2206564401 |
+| 21 | Life'Tech Transparent LCD Variants | 3292090990 |
+| 22 | Grated Catwalks Expansion | 2503712170 |
+| 23 | Rebels Lights 1.2.01 | 2718175525 |
+| 24 | Aryx-Lynxon Drive Systems | 2394430829 |
+| 25 | Self-Maintenance Unit | 3515485609 |
+| 26 | AQD - Upgradeable Gyroscopes | 2621169600 |
+| 27 | AQD - Armor Expansion | 1939935505 |
+| 28 | ResourceNodes | 2493091475 |
+| 29 | Tank Tracks Framework & API | 3208995513 |
+| 30 | Tank Tracks Builder | 3209005014 |
+| 31 | Tank Tracks over Vanilla Wheels | 3209008231 |
+| 32 | AQD - Conveyor Expansion | 1864380341 |
+| 33 | Blast Door Sections Retextured | 1574837911 |
+| 34 | Rotary Airlock | 1359954841 |
+| 35 | WelderWall | 3370792625 |
+| 36 | Neon tubes + | 3373230204 |
+| 37 | VCZ Elevator v2.0 | 3030780799 |
+| 38 | Faux Ship Lights | 637514816 |
 
 ## Directory Layout
 
