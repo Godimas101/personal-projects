@@ -200,6 +200,21 @@ Prototech Refinery and Prototech Assembler are salvage items — no limits, but 
 | Projector | 5 | 1 | Disabled on restart |
 | Survival Kit | — | 1 | |
 | Medical Room | — | — | Static only |
+| AI Blocks (combined) | 30 | — | Basic / Flight / Offensive / Defensive / Recorder — for drones + player-made weapons |
+| Event Controller | 30 | 5 | Performance-sensitive, keep counts reasonable |
+
+#### ⚙️ Performance-Sensitive Blocks
+
+These cap the blocks most likely to hurt sim speed. Be reasonable — the server runs better for everyone.
+
+| Block | Per Player | Per Grid | Notes |
+|-------|-----------|----------|-------|
+| Conveyor Sorter | 100 | 20 | Routing pathfinding scales with count |
+| Mechanical Blocks (combined) | 50 | — | Rotors + pistons + hinges; subgrid physics is expensive, spend them how you like |
+| Safe Zone | 1 | — | Each active zone burns sim time |
+| Sensor | — | 10 | Periodic raycasts |
+| Gravity Generator | — | 5 | Flat + sphere combined |
+| Jump Drive | — | 3 | |
 
 ---
 

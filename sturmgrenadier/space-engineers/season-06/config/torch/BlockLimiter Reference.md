@@ -265,9 +265,9 @@ BlockNames:
 | Pair Name | Description |
 |-----------|-------------|
 | GatlingTurret | Gatling turrets (vanilla) |
-| GatlingTurretReskin | Gatling turret reskin (dep mod) |
+| GatlingTurretReskin | Gatling turret reskin (Warfare 1 DLC — **upgraded by NJFL**, LG + SG) |
 | MissileTurret | Missile turrets (vanilla) |
-| MissileTurretReskin | Missile turret reskin (dep mod) |
+| MissileTurretReskin | Missile turret reskin (Warfare 1 DLC — **upgraded by NJFL**, LG + SG) |
 | AutoCannonTurret | Autocannon turret |
 | LargeCalibreTurret | Artillery turret |
 | MediumCalibreTurret | Assault turret |
@@ -277,12 +277,12 @@ BlockNames:
 
 | Pair Name | Description |
 |-----------|-------------|
-| GatlingGun | Gatling gun (vanilla) |
-| GatlingGunWarfare2 | Gatling gun warfare2 (dep mod) |
+| GatlingGun | Gatling gun (vanilla, small grid) |
+| GatlingGunWarfare2 | Gatling gun Warfare 2 DLC — **SG only**, upgraded by NJFL |
 | Autocannon | Autocannon (small grid) |
-| RocketLauncher | Rocket launcher (large grid) |
-| RocketLauncherWarfare2 | Rocket launcher warfare2 (dep mod) |
-| SmallRocketLauncherReload | Rocket launcher reload (small grid) |
+| RocketLauncher | Rocket launcher (large grid, vanilla) |
+| RocketLauncherWarfare2 | Rocket launcher Warfare 2 DLC — **SG only**, upgraded by NJFL |
+| SmallRocketLauncherReload | Rocket launcher reload (small grid, vanilla) |
 | LargeCalibreGun | Artillery cannon (fixed) |
 | MediumCalibreGun | Assault cannon (fixed) |
 | Railgun | Railgun (large + small — may need SubtypeId for different limits) |
@@ -302,11 +302,11 @@ Pair names TBD — verify in-game. Use SubtypeId matching:
 | Pair Name | Description | Limit? |
 |-----------|-------------|--------|
 | Drill | Ship drills | Yes — 10 per grid |
-| DrillReskin | Drill reskin (dep mod) | Group with Drill |
+| DrillReskin | Drill reskin (Warfare 1 DLC — **upgraded by NJFL**) | Group with Drill |
 | ShipWelder | Ship welders | Yes — 5 per grid |
-| ShipWelderReskin | Welder reskin (dep mod) | Group with ShipWelder |
+| ShipWelderReskin | Welder reskin (Warfare 1 DLC — **upgraded by NJFL**) | Group with ShipWelder |
 | ShipGrinder | Ship grinders | Yes — 5 per grid |
-| ShipGrinderReskin | Grinder reskin (dep mod) | Group with ShipGrinder |
+| ShipGrinderReskin | Grinder reskin (Warfare 1 DLC — **upgraded by NJFL**) | Group with ShipGrinder |
 | StaticDrill | ResourceNode drills | NO — do not limit |
 | BY_ZWWHDY | Self-Maintenance Unit | Yes — 1/grid, 3/player, static only |
 
@@ -315,13 +315,13 @@ Pair names TBD — verify in-game. Use SubtypeId matching:
 | Pair Name | Description |
 |-----------|-------------|
 | Refinery | Refinery |
-| RefineryIndustrial | Industrial refinery (dep mod) |
+| RefineryIndustrial | Industrial refinery (Industrial DLC — **upgraded by NJFL**) |
 | Blast Furnace | Basic refinery |
 | Assembler | Assembler |
-| AssemblerIndustrial | Industrial assembler (dep mod) |
+| AssemblerIndustrial | Industrial assembler (Industrial DLC — **upgraded by NJFL**) |
 | BasicAssembler | Basic assembler (CANNOT be restricted) |
 | OxygenGenerator | H2/O2 generator |
-| OxygenGeneratorLab | Lab H2/O2 generator (dep mod) |
+| OxygenGeneratorLab | Lab H2/O2 generator (Contact DLC — **upgraded by NJFL**) |
 | H2 O2 Generator Large | Federal Industrial generator (dep mod) |
 | FoodProcessor | Food processor (vanilla) |
 | ApexSurvivalAdditionsFoodProcessor | ASA food processor (dep mod) |
@@ -413,7 +413,9 @@ Currently unlimited.
 ---
 
 ## Notes
-- Reskin pair names (from dep mod 3572467804) must be listed alongside vanilla in BlockList
+- **NJFL coverage**: `Not Just For Looks` (SG Core Mod, [Godimas101/se-mods](https://github.com/Godimas101/se-mods/tree/main/Mods/Not%20Just%20For%20Looks)) upgrades the stats of existing Keen DLC reskin SubtypeIds (Warfare 1, Warfare 2, Industrial, Contact) without changing their `BlockPairName`. So `SearchType=PairNames` automatically groups NJFL-upgraded blocks with their vanilla counterparts in BlockList — no separate entries needed.
+- `RocketLauncherWarfare2` and `GatlingGunWarfare2` are **small-grid only** — must go in SG limits, not LG
+- `GatlingTurretReskin` and `MissileTurretReskin` pair names cover **both LG and SG** variants (Warfare 1 DLC adds both sizes)
 - Railgun pair name covers BOTH large and small — use SubtypeId for different limits
 - Elindis weapons need SubtypeId matching (pair names not confirmed)
 - ClangKitchen has 8 variants — list all or use SubtypeId
