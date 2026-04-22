@@ -109,7 +109,7 @@
     <DepositsCountCoefficient>1</DepositsCountCoefficient>
     <DepositSizeDenominator>60</DepositSizeDenominator>
     <WeatherSystem>true</WeatherSystem>
-    <WeatherLightingDamage>true</WeatherLightingDamage>
+    <WeatherLightingDamage>false</WeatherLightingDamage>
     <HarvestRatioMultiplier>0.8</HarvestRatioMultiplier>
     <TradeFactionsCount>32</TradeFactionsCount>
     <StationsDistanceInnerRadius>10000000</StationsDistanceInnerRadius>
