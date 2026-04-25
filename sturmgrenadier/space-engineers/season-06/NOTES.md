@@ -205,24 +205,24 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 | 18 | Braced Conveyor Pipe | 2806327649 |
 | 19 | EDP - Thruster Covers | 3383813378 |
 | 20 | Slope LCD Panels Redux | 2206564401 |
-| 21 | Life'Tech Transparent LCD Variants | 3292090990 |
-| 22 | Grated Catwalks Expansion | 2503712170 |
-| 23 | Rebels Lights 1.2.01 | 2718175525 |
-| 24 | Aryx-Lynxon Drive Systems | 2394430829 |
-| 25 | Self-Maintenance Unit | 3515485609 |
-| 26 | AQD - Upgradeable Gyroscopes | 2621169600 |
-| 27 | AQD - Armor Expansion | 1939935505 |
-| 28 | ResourceNodes | 2493091475 |
-| 29 | Tank Tracks Framework & API | 3208995513 |
-| 30 | Tank Tracks Builder | 3209005014 |
-| 31 | Tank Tracks over Vanilla Wheels | 3209008231 |
-| 32 | AQD - Conveyor Expansion | 1864380341 |
-| 33 | Blast Door Sections Retextured | 1574837911 |
-| 34 | Rotary Airlock | 1359954841 |
-| 35 | WelderWall | 3370792625 |
-| 36 | Neon tubes + | 3373230204 |
-| 37 | VCZ Elevator v2.0 | 3030780799 |
-| 38 | Faux Ship Lights | 637514816 |
+| 21 | Grated Catwalks Expansion | 2503712170 |
+| 22 | Rebels Lights 1.2.01 | 2718175525 |
+| 23 | Aryx-Lynxon Drive Systems | 2394430829 |
+| 24 | Self-Maintenance Unit | 3515485609 |
+| 25 | AQD - Upgradeable Gyroscopes | 2621169600 |
+| 26 | AQD - Armor Expansion | 1939935505 |
+| 27 | ResourceNodes | 2493091475 |
+| 28 | Tank Tracks Framework & API | 3208995513 |
+| 29 | Tank Tracks Builder | 3209005014 |
+| 30 | Tank Tracks over Vanilla Wheels | 3209008231 |
+| 31 | AQD - Conveyor Expansion | 1864380341 |
+| 32 | Blast Door Sections Retextured | 1574837911 |
+| 33 | Rotary Airlock | 1359954841 |
+| 34 | WelderWall | 3370792625 |
+| 35 | Neon tubes + | 3373230204 |
+| 36 | VCZ Elevator v2.0 | 3030780799 |
+| 37 | Faux Ship Lights | 637514816 |
+| 38 | ARC Truss System | 3701176691 |
 
 ## Directory Layout
 
