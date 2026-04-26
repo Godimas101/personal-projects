@@ -181,7 +181,7 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 
 **Load order matters — this list is in the correct order. Do not reorder.**
 
-38 mods total:
+39 mods total:
 
 | # | Mod Name | Workshop ID |
 |---|----------|-------------|
@@ -223,6 +223,7 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 | 36 | VCZ Elevator v2.0 | 3030780799 |
 | 37 | Faux Ship Lights | 637514816 |
 | 38 | ARC Truss System | 3701176691 |
+| 39 | TSO - More Corridor Blocks | 3611423853 |
 
 ## Directory Layout
 
