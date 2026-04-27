@@ -44,20 +44,6 @@ The following cleanup runs automatically:
 
 ## 🔌 Torch Plugin Info
 
-### 📦 Quantum Hangar
-Store ships server-side to free up resources. Out of sight, out of sim.
-
-| Command | Description |
-|---------|-------------|
-| `!hangar save` | Save the grid you are looking at |
-| `!hangar load` | Load a stored grid near you |
-| `!hangar list` | View your stored grids |
-
-- **10 hangar slots** per player
-- Grid must be **100+ blocks** to hangar
-- Mobile grids from inactive players are **auto-hangared after 7 days**
-- Stations are not auto-hangared
-
 ### 🔧 Ship Fixer
 Fix bugged grids that won't move, stop, or rotate. The engineering equivalent of "turn it off and on again."
 
@@ -143,10 +129,10 @@ Includes all turrets (except interior), fixed weapons, and turret controllers.
 Flare launchers and searchlights are unlimited.
 
 #### ⛏️ Ship Tools — Ships Only
-Ship tools cannot be placed on stations. Use Welder Walls and Resource Nodes instead.
+Ship tools cannot be placed on stations. Use Welder Walls and Resource Nodes instead. Capped per player (across all your grids) — share a mining ship or specialize your fleet.
 
-| Tool | Per Grid |
-|------|----------|
+| Tool | Per Player |
+|------|-----------|
 | Drill | 10 |
 | Welder | 5 |
 | Grinder | 5 |
@@ -155,7 +141,7 @@ Ship tools cannot be placed on stations. Use Welder Walls and Resource Nodes ins
 
 | Block | Per Player | Per Grid | Notes |
 |-------|-----------|----------|-------|
-| Welder Wall | — | 60 | Static only |
+| Welder Wall | 60 | — | Static only |
 | Resource Nodes | 10 | — | Static only |
 | Self-Maintenance Unit | 3 | 1 | Static only |
 | Ganymede Incinerator | — | 1 | Any grid |
@@ -304,7 +290,7 @@ Three features in one:
 
 ## 📦 Mod Collection
 
-[Steam Workshop Collection](https://steamcommunity.com/sharedfiles/filedetails?id=3356806280) (39 mods)
+[Steam Workshop Collection](https://steamcommunity.com/sharedfiles/filedetails?id=3356806280) (41 mods)
 
 ---
 
