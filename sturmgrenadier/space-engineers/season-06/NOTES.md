@@ -75,7 +75,9 @@ Torch/
 - **Purpose:** Official utility plugin — adds admin chat commands and server management tools
 - **Docs:** https://wiki.torchapi.com/en/Plugins/Essentials
 
-### 2. Quantum Hangar (`24fc7724-0740-4a54-8bb3-1191fd3c8db4`)
+### 2. Quantum Hangar (`24fc7724-0740-4a54-8bb3-1191fd3c8db4`) — REMOVED 2026-04-26
+> Functionality is being added to the vanilla game, plugin no longer needed. Section kept for historical reference.
+
 - **Author:** Casimir
 - **Version:** v3.2.69
 - **Purpose:** Server-side grid storage system — players can save/load ships
@@ -224,6 +226,8 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 | 37 | Faux Ship Lights | 637514816 |
 | 38 | ARC Truss System | 3701176691 |
 | 39 | TSO - More Corridor Blocks | 3611423853 |
+| 40 | Tank Track Overlay (Variant) | 3225398014 |
+| 41 | Zkillerproxy Client | 1469072169 |
 
 ## Directory Layout
 
@@ -250,3 +254,8 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 - Added Multigrid Projector and Performance Improvements plugins
 - Various config tweaks: weather damage, meteors, experimental mode, private mode
 - Updated README with Patreon, More Engineer Characters, Multigrid Projector client setup
+
+### 2026-04-26 - Mod additions, Quantum Hangar retired
+- Removed Quantum Hangar plugin (functionality being added to vanilla game)
+- Deleted `config/torch/QuantumHangar.cfg`
+- Added Tank Track Overlay (Variant) `3225398014` (#40) and Zkillerproxy Client `1469072169` (#41) to mod list
