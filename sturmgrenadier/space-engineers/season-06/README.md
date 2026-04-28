@@ -156,6 +156,8 @@ Build your factory, then fly to it.
 | Refinery + Industrial | 4 | |
 | Blast Furnace | 6 | |
 | x10 Refinery | 1 | |
+| Ore Mill | 4 | LG only |
+| Ore Compactor | 8 | LG + SG combined, any grid |
 | Assembler + Industrial | 4 | |
 | Basic Assembler | 5 | |
 | H2/O2 Generator | 12 | |

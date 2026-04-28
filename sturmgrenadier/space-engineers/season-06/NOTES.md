@@ -264,3 +264,7 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 ### 2026-04-28 - Inventory tuning + Compressed Ores
 - Inventory multiplier reduced from 10x to 6x (both Sandbox_config.sbc and SpaceEngineers-Dedicated.cfg)
 - Added Compressed Ores `2825470671` (#42) — adds compressed ore items/blueprints to make the lower inventory cap more workable for cargo logistics
+- Added block limits for Compressed Ores production blocks:
+  - Ore Mill: 4 per player, station only (matches refinery cap; LG only by SBC)
+  - Ore Compactors: 8 per player TOTAL across both LG + SG variants, any grid
+- Limits applied in both BlockLimiter Torch plugin and BlockRestrictions mod (belt-and-suspenders)
