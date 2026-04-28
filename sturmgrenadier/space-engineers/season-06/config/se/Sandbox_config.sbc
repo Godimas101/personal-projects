@@ -2,7 +2,7 @@
 <MyObjectBuilder_WorldConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Settings xsi:type="MyObjectBuilder_SessionSettings">
     <GameMode>Creative</GameMode>
-    <InventorySizeMultiplier>10</InventorySizeMultiplier>
+    <InventorySizeMultiplier>6</InventorySizeMultiplier>
     <BlocksInventorySizeMultiplier>1</BlocksInventorySizeMultiplier>
     <AssemblerSpeedMultiplier>3</AssemblerSpeedMultiplier>
     <AssemblerEfficiencyMultiplier>3</AssemblerEfficiencyMultiplier>
@@ -349,6 +349,10 @@
     <ModItem>
       <Name>1469072169.sbm</Name>
       <PublishedFileId>1469072169</PublishedFileId>
+    </ModItem>
+    <ModItem>
+      <Name>2825470671.sbm</Name>
+      <PublishedFileId>2825470671</PublishedFileId>
     </ModItem>
   </Mods>
   <SessionName>Sturmgrenadier Season 06</SessionName>

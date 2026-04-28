@@ -290,7 +290,7 @@ Three features in one:
 
 ## 📦 Mod Collection
 
-[Steam Workshop Collection](https://steamcommunity.com/sharedfiles/filedetails?id=3356806280) (41 mods)
+[Steam Workshop Collection](https://steamcommunity.com/sharedfiles/filedetails?id=3356806280) (42 mods)
 
 ---
 

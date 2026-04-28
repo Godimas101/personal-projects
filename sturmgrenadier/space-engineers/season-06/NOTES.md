@@ -228,6 +228,7 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 | 39 | TSO - More Corridor Blocks | 3611423853 |
 | 40 | Tank Track Overlay (Variant) | 3225398014 |
 | 41 | Zkillerproxy Client | 1469072169 |
+| 42 | Compressed Ores | 2825470671 |
 
 ## Directory Layout
 
@@ -259,3 +260,7 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 - Removed Quantum Hangar plugin (functionality being added to vanilla game)
 - Deleted `config/torch/QuantumHangar.cfg`
 - Added Tank Track Overlay (Variant) `3225398014` (#40) and Zkillerproxy Client `1469072169` (#41) to mod list
+
+### 2026-04-28 - Inventory tuning + Compressed Ores
+- Inventory multiplier reduced from 10x to 6x (both Sandbox_config.sbc and SpaceEngineers-Dedicated.cfg)
+- Added Compressed Ores `2825470671` (#42) — adds compressed ore items/blueprints to make the lower inventory cap more workable for cargo logistics
