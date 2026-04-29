@@ -120,6 +120,7 @@ Torch/
 - **Bot:** Separate bot from DiscordGSM (two bots can't share a token)
 - **Note:** Bot needs full member permissions in Discord (not guest) to avoid echo loop
 - **Source:** https://github.com/Bishbash777/SEDB-RELOADED
+- **⚠ Known issue:** Bot WebSocket dies when the server pauses (no players online) and never auto-reconnects. Plugin reload required. Plugin is also delisted from torchapi.com (likely abandoned). See "Open Items" below for proposed auto-reload solution.
 
 ### 6. Multigrid Projector (`d9359ba0-9a69-41c3-971d-eb5170adb97e`)
 - **Author:** Viktor
@@ -234,6 +235,51 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 
 - `config/` — Local copies of server configuration files
 - `NOTES.md` — This file; setup notes and decisions
+
+## Open Items
+
+### TODO: Auto-reload SEDiscordBridge after a player joins
+
+**Symptom:** Discord chat bridge stops working in both directions after the server has been empty for a while. Players joining later find their chat doesn't reach Discord, and Discord messages don't reach the game. Only fix that's worked so far is restarting Torch.
+
+**Root cause** (confirmed via Torch log analysis on 2026-04-28):
+- Server pauses when no players online (default SE behavior).
+- Paused main thread blocks DSharpPlus's WebSocket heartbeat to Discord.
+- Discord drops the gateway connection (`SocketClose Event` warning in Torch log).
+- The plugin's auto-reconnect logic doesn't recover. Bot stays dead until plugin is reloaded.
+- Pattern observed multiple times in one day: each `SocketClose Event` was the last SEDiscordBridge entry until a server restart.
+
+**Plan:** Add an Essentials AutoCommand that runs `!plugin reload SEDiscordBridge` when a player joins the server. Server resumes on player connect, so this is the natural moment to revive the bot.
+
+**Approach 1 — Player-join trigger (preferred):**
+```xml
+<AutoCommand>
+  <Enabled>true</Enabled>
+  <CommandTrigger>Connect</CommandTrigger>
+  <Name>ReloadSEDBOnJoin</Name>
+  <OnStart>false</OnStart>
+  <DayOfWeek>All</DayOfWeek>
+  <Steps>
+    <CommandStep>
+      <Delay>00:00:10</Delay>
+      <Command>!plugin reload SEDiscordBridge</Command>
+    </CommandStep>
+  </Steps>
+</AutoCommand>
+```
+The 10-second delay lets the server fully wake and the player finish connecting before the reload fires.
+
+**Approach 2 — Periodic reload (fallback if Approach 1 doesn't work):**
+A `Timed` AutoCommand running `!plugin reload SEDiscordBridge` every 30 minutes. Works regardless of trigger support, costs almost nothing, but adds a worst-case 30-min lag before a dead bot recovers.
+
+**To verify before / after deploying:**
+1. Confirm Essentials in this build supports `Connect` as a CommandTrigger. If not, try `Join`. If neither works (server logs `Unknown command trigger: ...` at startup), fall back to Approach 2.
+2. Confirm the Torch reload command is `!plugin reload <Name>` vs `!plugins reload` vs the GUID form. Test from Torch console.
+3. After deployment: disconnect everyone, wait for server to pause, reconnect, watch Torch log for `Server is running command '!plugin reload SEDiscordBridge'` — this confirms the trigger fires correctly.
+
+**Caveat:** First player's join announcement may not reach Discord because the bot is mid-reload during their connect. Acceptable trade-off vs total chat outage.
+
+**Long-term:** SEDiscordBridge is delisted from torchapi.com (author appears to have abandoned it). Once a chat-bridge replacement is identified or a working fork is found, this auto-reload workaround can be removed.
 
 ## Setup Log
 
