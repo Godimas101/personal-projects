@@ -172,7 +172,7 @@
     <PlanetaryEncounterDespawnTimeout>120</PlanetaryEncounterDespawnTimeout>
     <LimitBlocksBy>BlockPairName</LimitBlocksBy>
     <MaxHudChatMessageCount>100</MaxHudChatMessageCount>
-    <EnableShareInertiaTensor>false</EnableShareInertiaTensor>
+    <EnableShareInertiaTensor>true</EnableShareInertiaTensor>
     <EnableUnsafePistonImpulses>false</EnableUnsafePistonImpulses>
     <EnableUnsafeRotorTorques>false</EnableUnsafeRotorTorques>
     <EnableRadiation>true</EnableRadiation>
