@@ -1,6 +1,9 @@
 # AI assistant instruction files — private, not for commit
 CLAUDE.md
 
+# Tailored resumes for specific job applications — local only
+docs/resumes/applications/
+
 # Standalone tools live outside this repo
 /tools/
 

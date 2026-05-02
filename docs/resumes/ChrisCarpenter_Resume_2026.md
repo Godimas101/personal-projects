@@ -16,11 +16,29 @@
 
 ## KEY ACCOMPLISHMENTS
 
-**AI-Powered QA Innovation**
-- Pioneered AI integration into QA workflows using Claude, Grok, and n8n, automating test documentation, release notes, and ticket management through GitHub Actions and Automation for Jira
-- Built workflow automation tools enabling one person to accomplish workloads previously requiring entire teams
-- Developed **prodigy-qa-skills**, a suite of Claude Code skills covering the full QA workflow — PR analysis, bug filing, release test cycle setup, localization review (with autonomous bug filing against a custom glossary), Sentry triage, and feature-context bundling. Collapses multi-hour or multi-day tasks into 15–30 minutes of focused review while raising output quality
-- Built **QA Test Case Viewer**, a custom VS Code extension that renders the structured test-case JSON and markdown notes the skills produce into human-readable, searchable, inline-editable views — split-view markdown editor with live preview, heading TOC sidebar, in-source search with synced preview highlighting. Closes the loop so non-technical reviewers can proof generated content without touching the raw files
+**AI-Powered QA Force-Multiplication at Prodigy**
+- Built **prodigy-qa-skills** — a complete AI-assisted QA workflow as a suite of 7 Claude Code slash-command skills (6 production, 1 in development). Created solo in response to a company-wide layoff, designed to maintain QA velocity with reduced headcount.
+- **The 7 skills:** `/qa-pr-analysis` (PR risk + bug surfacing), `/qa-release-rpg` (find release PR → analyze → create AIO Tests cycles for Stage and Prod → post Slack release summary with threaded squad breakdowns), `/qa-file-bug` (cross-skill bug-filing helper), `/qa-translation-analysis` (pt-BR/es/fr/de/ja against custom Prodigy glossary, autonomous bug filing for misses), `/qa-sentry-analysis` (pull errors/stack traces/breadcrumbs by user or issue ID, classify against known patterns, offer to file), `/qa-test-cases` (read Jira/Confluence/Figma → write structured test cases → import to AIO Tests via API with traceability links), `/qa-feature-context` (in dev — bootstrap a feature folder by pulling epic + child tickets + PRs + Figma + Confluence).
+- **Quantified impact:**
+  - **Test case writing:** 2–3 days per feature collapsed to ~30 minutes of focused review
+  - **PR review + bug filing:** ≥5 hours saved per QAer per week
+  - **3 major Prodigy RPG releases** run end-to-end through `/qa-release-rpg`
+  - **Several P1 issues caught and stopped** via `/qa-pr-analysis` before they ever reached QA
+  - **Localization testing standard:** `/qa-translation-analysis` is now the team's standard process for in-game localization QA
+  - **Bug filing fully delegated:** I no longer write bug reports manually. I describe the issue in a few lines; the suite — informed by shared product context — files complete bugs with localization keys, suspected API calls, related server issues, and pattern-matched root cause hypotheses
+- **Architectural decisions that scale:**
+  - **Multi-product context system** — supports 6 Prodigy products (RPG, Village Builder, Pet Races, Arcadia, Teacher Portal, shared platform); each has its own context files
+  - **Index-based routing** — RPG's `rpg-index.md` routes skills to load only the files they need (architecture/risk for PR analysis, release/checklists for releases, overview/zone reference for test cases) — keeps Claude's context window lean
+  - **Cross-session journal** — local-only, gitignored, captures in-progress work between Claude Code sessions
+  - **Self-staleness awareness** — Repo Library Refresh Tracker flags entries due for refresh and offers to update them
+  - **Cross-skill orchestration** — `/qa-file-bug` is a callable subroutine other skills invoke
+  - **Production-grade error handling** — 401/403/404 dispatch, OAuth expiry detection, GitHub pagination, MCP tool failure recovery
+  - **Symlink-based deployment** — `git pull` is the entire update mechanism, no re-installation
+- **Adoption path:** suite is now being introduced to the broader Prodigy QA org via my manager. I am leading the rollout — teaching QAers on Village Builder, Pet Races, and Arcadia how to author the product-specific context files their teams need so the suite scales beyond me.
+
+**QA Test Case Viewer (VS Code Extension)**
+- Built a custom VS Code extension that renders the structured JSON + markdown notes prodigy-qa-skills produces into a human-readable, searchable, inline-editable interface — split-view markdown editor with live preview, heading TOC sidebar, in-source search with synced preview highlighting, document undo integration via WorkspaceEdit.
+- Closes the loop on the AI workflow for non-technical QA reviewers — lets them proof and tweak generated test cases without ever opening raw JSON.
 
 **Major Project Leadership**
 - Leading QA effort for Prodigy RPG localization: creating test plans, managing outsourcers, running bug triage, coordinating cross-department stakeholders, and planning initial public release
@@ -47,9 +65,11 @@
 ## TECHNICAL SKILLS
 
 **AI & Automation**
-- **AI Tools:** Claude (Anthropic), Grok (xAI), Qwen, DeepSeek - AI orchestration and workflow integration
-- **Workflow Automation:** n8n (advanced), Automation for Jira, Automation for Confluence, GitHub Actions
-- **Self-Hosting:** Digital Ocean VPS management, 24/7 production automation systems
+- **AI Orchestration:** Claude (Anthropic) primary, plus Grok (xAI), Qwen, DeepSeek — multi-stage agent workflow design, prompt engineering for production agents, agent verification and pre-return scan patterns
+- **Claude Code Skill Development:** Authoring custom slash-command skills; index-based context routing; cross-session journal patterns; cross-skill orchestration; production-grade error handling and graceful degradation; security guardrails (no-paste-tokens-in-chat enforcement, fine-grained PAT model)
+- **Integrations leveraged:** Atlassian MCP (Jira, Confluence), Figma MCP, Sentry MCP, GitHub API (gh CLI), AIO Tests REST API, Slack API, WordPress REST API
+- **Workflow Automation:** n8n (advanced, self-hosted), Automation for Jira, Automation for Confluence, GitHub Actions
+- **Self-Hosting:** Production VPS management on OVH (migrated from DigitalOcean), 24/7 automation systems with weekly automated maintenance
 
 **Atlassian Suite (Expert)**
 - **Administration:** Jira Admin, Confluence Admin, company-wide implementations and training
@@ -78,14 +98,16 @@
 
 ### Prodigy Education | Toronto, ON | Feb 2019 - Present
 
-#### Staff Quality Assurance - RPG / Atlassian Admin | Feb 2026 - Present
-Returned to RPG team with focus on AI-powered QA and automation in lean team environment.
-- **Leading Prodigy RPG Localization QA:** Creating comprehensive test plans, managing outsource testing teams, running bug triage process, collaborating cross-functionally with stakeholders for project status, and helping plan/manage initial public release
-- **Built prodigy-qa-skills:** A suite of Claude Code skills covering most of the day-to-day QA workflow — PR analysis, bug filing, release test cycle setup, localization review (with autonomous bug filing against a custom glossary), Sentry triage, and feature-context bundling. Each skill collapses multi-hour or multi-day tasks into 15–30 minutes of focused review
-- **Built QA Test Case Viewer (VS Code extension):** Custom-built extension that renders the test-case JSON and markdown notes the skills produce into a human-readable, inline-editable interface, with a split-view markdown editor (live preview, TOC sidebar, two-pane synced search). Lets the team — including non-technical reviewers — proof and tweak generated content without ever opening raw JSON
-- Leveraging AI tools (Claude, Grok) and advanced automation (n8n, Automation for Jira, GitHub Actions) to handle workloads previously requiring larger teams
+#### Staff Quality Assurance / IC4 - RPG / Atlassian Admin | Feb 2026 - Present
+Returned to RPG team with focus on AI-powered QA and automation in lean team environment following company-wide layoff.
+- **Built prodigy-qa-skills**, a suite of 7 Claude Code slash-command skills forming a complete AI-assisted QA workflow (PR analysis, bug filing, release cycle setup, localization, Sentry triage, structured test case authoring with AIO Tests import, feature context bundling). See KEY ACCOMPLISHMENTS for impact details and architecture.
+- **Leading rollout to broader Prodigy QA org** — teaching QAers on Village Builder, Pet Races, and Arcadia how to author the product-specific context files their teams need so the suite scales beyond me. The suite has been passed to QA leadership and is being introduced company-wide.
+- **Built QA Test Case Viewer (VS Code extension)** — companion tool that renders the suite's structured outputs into a human-readable, inline-editable interface for non-technical reviewers (split-view markdown editor, live preview, TOC sidebar, synced search).
+- **Leading Prodigy RPG Localization QA:** Creating test plans, managing outsource testing teams, running bug triage, collaborating cross-functionally for project status, and helping plan/manage initial public release.
+- **Day-to-day workflow shift:** I no longer file bug reports manually — describe the issue in a few lines, the suite (informed by shared product context) writes the complete report with localization keys, API call hypotheses, and root cause notes. Bug-attached imagery is the one remaining manual step (MCP server limitation).
+- Leveraging AI tools (Claude, Grok) and advanced automation (n8n, Automation for Jira, GitHub Actions) to handle workloads previously requiring larger teams.
 
-**Skills:** Atlassian Admin • n8n • AI Integration • Claude • AIO Tests • Automation for Jira • Automation for Confluence • Localization QA • VS Code Extension Development • TypeScript
+**Skills:** Claude Code Skill Development • AI Orchestration • Atlassian Admin (Jira, Confluence) • n8n • AIO Tests REST API • GitHub API • Sentry MCP • Figma MCP • Slack API • Automation for Jira • Localization QA • VS Code Extension Development • TypeScript
 
 #### Central QA / Atlassian Admin | Oct 2025 - Feb 2026
 Selected as one of only two QA for elite Central QA team supporting company-wide initiatives.
