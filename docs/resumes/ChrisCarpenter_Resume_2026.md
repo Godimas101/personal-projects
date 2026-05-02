@@ -47,8 +47,10 @@
 - Key QA contributor on Prodigy's second-ever game launch, building workflow tools still used company-wide 5+ years later
 
 **Atlassian Excellence**
-- Company Atlassian Admin at both Big Viking Games and Prodigy Education (6+ years)
-- Created training programs, internal help desk, and automated workflows integrating Jira with Confluence, Git, and Slack
+- **Company Atlassian Admin** at both Big Viking Games and Prodigy Education (6+ years) — sole/primary owner of company-wide workflows and the majority of Automation for Jira bots
+- Wrote and implemented the company's **Jira Admin and Project Admin training program**; founded and ran the internal Jira help desk that grew from a side project into a critical company-wide function
+- Designed integrated Jira ↔ Confluence ↔ Git ↔ Slack automations still in use today
+- **Notable deliverable — custom patch notes bot:** built an Automation for Jira bot that fires on every `fixVersion` release, queries resolved tickets, and generates formatted patch notes in Confluence. Outperformed the paid patch notes extensions the team had evaluated — more focused information, easier customization of distribution, and runs reliably without intervention
 - Established QA best practices and workflow standards used across multiple teams and projects
 
 **Community Impact**
@@ -77,9 +79,11 @@
 - **Workflow Design:** Custom workflows, automation rules, cross-tool integrations
 
 **QA & Test Management**
-- **Tools:** TestRail, AIO Tests, Zephyr Scale, XRay
-- **Testing:** Manual Testing, User Acceptance Testing, Functional Testing, Integration Testing
+- **Tools:** TestRail, AIO Tests, Zephyr Scale, XRay, Qase
+- **Testing:** Manual Testing, User Acceptance Testing, Functional Testing, Integration Testing, regression testing (Base + Full regression suite design at Prodigy RPG)
+- **Methodology:** Impact analysis for test coverage scoping (feature-by-feature mapping of touched components → targeted test design); release-readiness reporting; verification metrics with traceability
 - **Documentation:** Test plans, test cases, bug reporting, QA standards establishment
+- **Test Automation Partnerships:** Vendor management with QA Wolf (third-party automated test execution); in-flight cross-skill orchestration with company's Playwright-based test execution skill (links my test-case authoring skill to automated execution → end-to-end AI-assisted test pipeline)
 
 **Development & Technical**
 - **Programming:** C# (self-taught with AI assistance), TypeScript, XML configuration
@@ -241,6 +245,12 @@ Major: Glass with focus on cold shop | Also studied glassblowing and furniture m
 **Art Fundamentals**  
 Sheridan College | Oakville, ON | 2002 - 2003  
 High marks in all classes | Focus: Life drawing, sculpting, and drafting
+
+---
+
+## INTERESTS
+
+Avid rocket launch viewer; podcast co-host; lead organizer for community gaming groups; cyclist.
 
 ---
 
