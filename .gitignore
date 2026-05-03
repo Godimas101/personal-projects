@@ -34,3 +34,7 @@ desktop.ini
 *.tmp
 *.log
 .cache/
+
+# SE season-06: local-only "current state from live server" snapshots
+# Pulled fresh from the server before each settings change. Never committed.
+sturmgrenadier/space-engineers/season-06/OLD SETTINGS/

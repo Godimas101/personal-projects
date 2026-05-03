@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <MyObjectBuilder_WorldConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Settings xsi:type="MyObjectBuilder_SessionSettings">
     <GameMode>Creative</GameMode>
@@ -46,7 +46,6 @@
     <DestructibleBlocks>true</DestructibleBlocks>
     <EnableIngameScripts>true</EnableIngameScripts>
     <ViewDistance>15000</ViewDistance>
-    <EnableToolShake>false</EnableToolShake>
     <VoxelGeneratorVersion>4</VoxelGeneratorVersion>
     <EnableOxygen>true</EnableOxygen>
     <EnableOxygenPressurization>true</EnableOxygenPressurization>
@@ -186,175 +185,607 @@
     <RandomizeSeed>false</RandomizeSeed>
   </Settings>
   <Mods>
-    <ModItem>
+    <ModItem FriendlyName="Sturmgrenadier Core Mod">
       <Name>2799678177.sbm</Name>
       <PublishedFileId>2799678177</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Sturmgrenadier Core Survival">
       <Name>3361326081.sbm</Name>
       <PublishedFileId>3361326081</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Sturmgrenadier Core Power">
       <Name>3362282194.sbm</Name>
       <PublishedFileId>3362282194</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Sturmgrenadier Core Vanilla Combat">
       <Name>3364273324.sbm</Name>
       <PublishedFileId>3364273324</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Sturmgrenadier Core Production">
       <Name>3369236046.sbm</Name>
       <PublishedFileId>3369236046</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Hubblegum Skybox">
       <Name>2645964353.sbm</Name>
       <PublishedFileId>2645964353</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Say No To Scrap">
       <Name>1146278097.sbm</Name>
       <PublishedFileId>1146278097</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Jargon Generator (Mod)">
       <Name>2470184482.sbm</Name>
       <PublishedFileId>2470184482</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Sci Fi Button Images">
       <Name>2324191331.sbm</Name>
       <PublishedFileId>2324191331</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="AQD - LCD Image Extension">
       <Name>1645942623.sbm</Name>
       <PublishedFileId>1645942623</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="AQD - Concrete">
       <Name>2298956701.sbm</Name>
       <PublishedFileId>2298956701</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Emissive Letters &amp; Symbols">
       <Name>3347016415.sbm</Name>
       <PublishedFileId>3347016415</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Improvised Experimentation">
       <Name>2891367014.sbm</Name>
       <PublishedFileId>2891367014</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Advanced Welding - detaching and reattaching blocks!">
       <Name>510790477.sbm</Name>
       <PublishedFileId>510790477</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Stone Yield Nerf">
       <Name>2370668905.sbm</Name>
       <PublishedFileId>2370668905</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="TBH - Heavier Containers">
       <Name>2830050106.sbm</Name>
       <PublishedFileId>2830050106</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="TBH - Heavier Tanks">
       <Name>2936628930.sbm</Name>
       <PublishedFileId>2936628930</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Braced Conveyor Pipe">
       <Name>2806327649.sbm</Name>
       <PublishedFileId>2806327649</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="EDP - Thruster Covers">
       <Name>3383813378.sbm</Name>
       <PublishedFileId>3383813378</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Slope LCD Panels Redux">
       <Name>2206564401.sbm</Name>
       <PublishedFileId>2206564401</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Grated Catwalks Expansion">
       <Name>2503712170.sbm</Name>
       <PublishedFileId>2503712170</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Rebels Lights 1.2.01">
       <Name>2718175525.sbm</Name>
       <PublishedFileId>2718175525</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Aryx-Lynxon Drive Systems">
       <Name>2394430829.sbm</Name>
       <PublishedFileId>2394430829</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Self-Maintenance Unit">
       <Name>3515485609.sbm</Name>
       <PublishedFileId>3515485609</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="AQD - Upgradeable Gyroscopes">
       <Name>2621169600.sbm</Name>
       <PublishedFileId>2621169600</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="AQD - Armor Expansion">
       <Name>1939935505.sbm</Name>
       <PublishedFileId>1939935505</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="ResourceNodes">
       <Name>2493091475.sbm</Name>
       <PublishedFileId>2493091475</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Tank Tracks Framework &amp; API">
       <Name>3208995513.sbm</Name>
       <PublishedFileId>3208995513</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Tank Tracks Builder">
       <Name>3209005014.sbm</Name>
       <PublishedFileId>3209005014</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Tank Tracks over Vanilla Wheels">
       <Name>3209008231.sbm</Name>
       <PublishedFileId>3209008231</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="AQD - Conveyor Expansion">
       <Name>1864380341.sbm</Name>
       <PublishedFileId>1864380341</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Blast Door Sections Retextured">
       <Name>1574837911.sbm</Name>
       <PublishedFileId>1574837911</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Rotary Airlock">
       <Name>1359954841.sbm</Name>
       <PublishedFileId>1359954841</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="WelderWall">
       <Name>3370792625.sbm</Name>
       <PublishedFileId>3370792625</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Neon tubes +">
       <Name>3373230204.sbm</Name>
       <PublishedFileId>3373230204</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="VCZ Elevator v2.0">
       <Name>3030780799.sbm</Name>
       <PublishedFileId>3030780799</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Faux Ship Lights (New Block Shapes Added)">
       <Name>637514816.sbm</Name>
       <PublishedFileId>637514816</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="ARC Truss System">
       <Name>3701176691.sbm</Name>
       <PublishedFileId>3701176691</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="TSO - More Corridor Blocks">
       <Name>3611423853.sbm</Name>
       <PublishedFileId>3611423853</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="Tank Track Pack: Morue">
       <Name>3225398014.sbm</Name>
       <PublishedFileId>3225398014</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="HUD Compass">
       <Name>1469072169.sbm</Name>
       <PublishedFileId>1469072169</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem>
+    <ModItem FriendlyName="TBH - Compressed Ores">
       <Name>2825470671.sbm</Name>
       <PublishedFileId>2825470671</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+    </ModItem>
+    <ModItem FriendlyName="Leak Finder">
+      <Name>3170315974.sbm</Name>
+      <PublishedFileId>3170315974</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Dense Colorable Solar Panels">
+      <Name>3287240260.sbm</Name>
+      <PublishedFileId>3287240260</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Isy's Dense Solar Panels">
+      <Name>2424526274.sbm</Name>
+      <PublishedFileId>2424526274</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="More Wind Turbines (Update)">
+      <Name>1728125712.sbm</Name>
+      <PublishedFileId>1728125712</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="[Mafoo] More Batteries">
+      <Name>2275681005.sbm</Name>
+      <PublishedFileId>2275681005</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Federal Industrial - Utilites">
+      <Name>2330491803.sbm</Name>
+      <PublishedFileId>2330491803</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Artillery MKII Turret -Goliath-">
+      <Name>3326935220.sbm</Name>
+      <PublishedFileId>3326935220</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="ModCubeBlocks Upgrade Module">
+      <Name>1663553929.sbm</Name>
+      <PublishedFileId>1663553929</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="ModAdjusterV2">
+      <Name>3017795356.sbm</Name>
+      <PublishedFileId>3017795356</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="ModCubeBlocks Refinery x10">
+      <Name>1663528057.sbm</Name>
+      <PublishedFileId>1663528057</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="ModCubeBlocks Refinery x10 [Mod Adjuster For SG]">
+      <Name>3369254538.sbm</Name>
+      <PublishedFileId>3369254538</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="ModCubeBlocks Upgrade Module [Mod Adjuster For SG]">
+      <Name>3369254384.sbm</Name>
+      <PublishedFileId>3369254384</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Pipelines">
+      <Name>2499720849.sbm</Name>
+      <PublishedFileId>2499720849</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Ganymede Incinerator">
+      <Name>2413537313.sbm</Name>
+      <PublishedFileId>2413537313</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Artillery MKII Turret -Goliath- [Mod Adjuster For SG]">
+      <Name>3621015746.sbm</Name>
+      <PublishedFileId>3621015746</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="(Vanilla) Assault Cannon Ammo Expansion (Sabot/HE/APHE)">
+      <Name>3421894187.sbm</Name>
+      <PublishedFileId>3421894187</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Weapons Targeting Group - Exclude Interior Turret for [Improved Interior Turrets]">
+      <Name>3232180946.sbm</Name>
+      <PublishedFileId>3232180946</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Coilgun Turret">
+      <Name>3072090172.sbm</Name>
+      <PublishedFileId>3072090172</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Torpedo Launcher">
+      <Name>3056537192.sbm</Name>
+      <PublishedFileId>3056537192</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Torpedo Turret">
+      <Name>3047124387.sbm</Name>
+      <PublishedFileId>3047124387</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Hailstorm Rocket Turret">
+      <Name>3033742549.sbm</Name>
+      <PublishedFileId>3033742549</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Improved Interior Turrets">
+      <Name>2780615880.sbm</Name>
+      <PublishedFileId>2780615880</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="AQD - Combat Balance - Core">
+      <Name>2180804144.sbm</Name>
+      <PublishedFileId>2180804144</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Federal Industrial - Utilites [Mod Adjuster For SG]">
+      <Name>3376841882.sbm</Name>
+      <PublishedFileId>3376841882</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="[Mafoo] More Batteries [Mod Adjuster For SG]">
+      <Name>3363402980.sbm</Name>
+      <PublishedFileId>3363402980</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="More Wind Turbines [Mod Adjuster For SG]">
+      <Name>3363402742.sbm</Name>
+      <PublishedFileId>3363402742</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Isy's Dense Solar Panels [Mod Adjuster For SG]">
+      <Name>3363402596.sbm</Name>
+      <PublishedFileId>3363402596</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Dense Colorable Solar Panels [Mod Adjuster For SG]">
+      <Name>3363402453.sbm</Name>
+      <PublishedFileId>3363402453</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="SmartRotors: Solar">
+      <Name>1728457223.sbm</Name>
+      <PublishedFileId>1728457223</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="MA Stackable Wind Turbine">
+      <Name>1668945384.sbm</Name>
+      <PublishedFileId>1668945384</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Apex Survival Additions (Final Update)">
+      <Name>3601050312.sbm</Name>
+      <PublishedFileId>3601050312</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="JejeServeur - ApexThings - Laboratories">
+      <Name>3566504208.sbm</Name>
+      <PublishedFileId>3566504208</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Vertical (wall) Farm Plot and Inset Farm Plot">
+      <Name>3562249355.sbm</Name>
+      <PublishedFileId>3562249355</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="JejeServeur - Clang Kitchen - Apex 1.207 Updated">
+      <Name>3500253399.sbm</Name>
+      <PublishedFileId>3500253399</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Lockers with suit change">
+      <Name>2294559988.sbm</Name>
+      <PublishedFileId>2294559988</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="More engineer characters">
+      <Name>2028943594.sbm</Name>
+      <PublishedFileId>2028943594</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Not Just For Looks - Additions">
+      <Name>3715057534.sbm</Name>
+      <PublishedFileId>3715057534</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="AQD - Easy Tool Access">
+      <Name>3707426899.sbm</Name>
+      <PublishedFileId>3707426899</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="No More Tears! - Weather is blocked inside of grids!">
+      <Name>3648498289.sbm</Name>
+      <PublishedFileId>3648498289</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="CSE - Personal Shield">
+      <Name>3635345284.sbm</Name>
+      <PublishedFileId>3635345284</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="More LCD Apps (No Pb) - Advanced Cockpit Displays">
+      <Name>3603869710.sbm</Name>
+      <PublishedFileId>3603869710</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="InfoLCD - Apex Update">
+      <Name>3580736330.sbm</Name>
+      <PublishedFileId>3580736330</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Not Just For Looks">
+      <Name>3572467804.sbm</Name>
+      <PublishedFileId>3572467804</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Lighting Profiles">
+      <Name>2859880237.sbm</Name>
+      <PublishedFileId>2859880237</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Binoculars">
+      <Name>2777644246.sbm</Name>
+      <PublishedFileId>2777644246</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Definition Extension API">
+      <Name>2756894170.sbm</Name>
+      <PublishedFileId>2756894170</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Scope Framework">
+      <Name>2754014019.sbm</Name>
+      <PublishedFileId>2754014019</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="HUD - Modern and Fancy (Color)">
+      <Name>2626756831.sbm</Name>
+      <PublishedFileId>2626756831</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Welder Eyestrain Reduction">
+      <Name>2360788836.sbm</Name>
+      <PublishedFileId>2360788836</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Autofill Bottles">
+      <Name>2308085590.sbm</Name>
+      <PublishedFileId>2308085590</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Color Replacer Blocks - V2">
+      <Name>2110682720.sbm</Name>
+      <PublishedFileId>2110682720</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Easy Block Renaming">
+      <Name>2077166496.sbm</Name>
+      <PublishedFileId>2077166496</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Rich HUD Master">
+      <Name>1965654081.sbm</Name>
+      <PublishedFileId>1965654081</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="AQD - No Armor Edges">
+      <Name>1825460112.sbm</Name>
+      <PublishedFileId>1825460112</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="LCD Signs Pack [UPDATED]">
+      <Name>1749684384.sbm</Name>
+      <PublishedFileId>1749684384</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Build Vision 3.0">
+      <Name>1697184408.sbm</Name>
+      <PublishedFileId>1697184408</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Build Colors">
+      <Name>1475392343.sbm</Name>
+      <PublishedFileId>1475392343</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Faction Ownership Helper">
+      <Name>1370072627.sbm</Name>
+      <PublishedFileId>1370072627</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="HudLcd - Display your LCD text on your HUD!">
+      <Name>911144486.sbm</Name>
+      <PublishedFileId>911144486</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Colorful Icons">
+      <Name>801185519.sbm</Name>
+      <PublishedFileId>801185519</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Text HUD API">
+      <Name>758597413.sbm</Name>
+      <PublishedFileId>758597413</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Build Info">
+      <Name>514062285.sbm</Name>
+      <PublishedFileId>514062285</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Paint Gun - realistic painting for survival + special creative features">
+      <Name>500818376.sbm</Name>
+      <PublishedFileId>500818376</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Modular Powercore Batteries">
+      <Name>3622757513.sbm</Name>
+      <PublishedFileId>3622757513</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Modular Powercore Batteries [Mod Adjuster For SG]">
+      <Name>3716756425.sbm</Name>
+      <PublishedFileId>3716756425</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
     </ModItem>
   </Mods>
   <SessionName>Sturmgrenadier Season 06</SessionName>
-  <LastSaveTime>2026-04-17T22:27:01.6931968-04:00</LastSaveTime>
+  <LastSaveTime>2026-05-03T00:14:07.8108363-04:00</LastSaveTime>
 </MyObjectBuilder_WorldConfiguration>
