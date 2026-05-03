@@ -120,8 +120,8 @@ Torch/
 - **Bot:** Separate bot from DiscordGSM (two bots can't share a token)
 - **Note:** Bot needs full member permissions in Discord (not guest) to avoid echo loop
 - **Source:** https://github.com/Bishbash777/SEDB-RELOADED
-- **Plugin listing:** https://torchapi.com/plugins/view/3cd3ba7f-c47c-4efe-8cf1-bd3f618f5b9c (still listed; v2.0.5.001, ~24k downloads)
-- **Resolved 2026-05-03:** Bot used to die when the server paused (no players online) — DSharpPlus heartbeat was blocked by the paused main thread. **Fixed by setting `<PauseGameWhenEmpty>false</PauseGameWhenEmpty>`** in `SpaceEngineers-Dedicated.cfg`. Server now keeps ticking when empty, heartbeat stays alive, no manual reload needed. Side bonus: works around a known SE bug where auto-save doesn't fire while the server is paused.
+- **Plugin listing:** https://torchapi.com/plugins/view/3cd3ba7f-c47c-4efe-8cf1-bd3f618f5b9c (v2.0.5.001, ~24k downloads)
+- **⚠ Known issue (still unresolved):** Bot WebSocket dies when the server pauses (no players online) and never auto-reconnects. Plugin reload required. Tried `PauseGameWhenEmpty=false` as a workaround but had to revert (see 2026-05-03 setup log entry — caused boot loop with FSZ). **Plan:** fork the plugin and fix at the source. See "Open Items".
 
 ### 6. Multigrid Projector (`d9359ba0-9a69-41c3-971d-eb5170adb97e`)
 - **Author:** Viktor
@@ -231,7 +231,6 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 | 40 | Tank Track Overlay (Variant) | 3225398014 |
 | 41 | Zkillerproxy Client | 1469072169 |
 | 42 | Compressed Ores | 2825470671 |
-| 43 | FSZ - Faction Safe Zones | 1507368483 |
 
 ## Directory Layout
 
@@ -240,22 +239,31 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 
 ## Open Items
 
-### Verify after first boot with new server settings
+### TODO: Fork SEDiscordBridge and fix the heartbeat bug at the source
 
-After the server boots with `PauseGameWhenEmpty=false`, FSZ mod, and `SolarRadiationIntensity=5`:
+**Goal:** Self-healing Discord bridge that survives server pauses without manual reloads, without the architectural fragility of forcing the server to keep ticking.
 
-1. **Confirm SEDB stays alive across an idle period.** Empty the server, wait 10+ minutes, rejoin, send a chat message — should appear in #se-in-game-chat without a manual reload. If the bot still dies, fall back to the Essentials AutoCommand workaround captured below.
-2. **Confirm FSZ defaults are sane in practice.** Log off with one faction member online to test the safe zone spawn delay; log back in to test removal. Run `/checkzones` before logoff to verify eligibility logic. Any issues → tune via `DynamicSafeZones_Settings.xml` in world storage.
-3. **Consider flipping `disableProduction` to `true`** in FSZ settings after first boot if free offline production feels too generous. (Default is `false` — refineries/assemblers run while the safe zone is up.)
-4. **Verify auto-save is firing.** The pause-when-empty fix should also resolve a known SE bug where auto-save skips while paused. Spot-check the world's last-modified timestamp during idle periods.
+**Background:** The bot dies because DSharpPlus's heartbeat thread can't process incoming acks when the SE main thread (which the plugin processes Discord events on) is paused. Tried `PauseGameWhenEmpty=false` as a workaround on 2026-05-03 — that worked in principle but had a bad interaction with FSZ mod that boot-looped the server. Workaround reverted. Real fix is to make the plugin self-healing.
 
-### Resolved 2026-05-03: SEDiscordBridge auto-reload workaround → no longer needed
+**Fix sketch (lowest risk first):**
+1. **Watchdog timer** — background thread that polls the DSharpPlus client's gateway connection state every 30s and triggers a full reconnect if it's dropped. Plugin keeps existing architecture, we bolt on self-healing.
+2. **Decouple Discord I/O** — move the DSharpPlus client to a dedicated worker thread with its own message queue. Heartbeat then runs unaffected by SE pause. Bigger change but more robust.
+3. **Last resort** — full rewrite. Probably overkill.
 
-The proposed Essentials AutoCommand workaround was made unnecessary by setting `PauseGameWhenEmpty=false`. Keeping the design notes here for reference in case the pause fix has unforeseen side effects:
+Start with #1.
 
-- **Approach considered:** `<CommandTrigger>PlayerCount</CommandTrigger>` with `Compare=GreaterThan, TriggerCount=0, Interval=01:00:00`, running `!plugin reload SEDiscordBridge`. The earlier "`Connect` trigger" idea in the original TODO was wrong — Essentials' `Trigger` enum only has `Disabled, GridCount, OnStart, PlayerCount, Scheduled, SimSpeed, Timed, Vote` (verified in [TorchAPI/Essentials AutoCommand.cs:252-262](https://github.com/TorchAPI/Essentials/blob/master/Essentials/AutoCommand.cs#L252-L262)). `PlayerCount > 0` is the closest equivalent — fires immediately on idle→active transition because `_nextRun` is already in the past.
-- **Why not needed now:** The bot only dies because the main thread is paused. With pause disabled, the heartbeat keeps firing.
-- **Research artifacts:** see Setup Log entry 2026-05-03 below.
+**Steps:**
+1. Fork [Bishbash777/SEDB-RELOADED](https://github.com/Bishbash777/SEDB-RELOADED)
+2. Set up build env — Torch plugin = .NET Framework, references to `Torch.dll`, `Sandbox.Game.dll`, `DSharpPlus.dll` from local Torch install
+3. Find connection lifecycle code — likely in `SEDiscordBridgePlugin.cs` or similar
+4. Add the watchdog
+5. Build, drop DLL into Torch plugins folder, deploy to test server first
+
+**Acceptance:** empty the server for 10+ minutes, rejoin, chat both directions works without a manual `!plugin reload`.
+
+### Closed: tried PauseGameWhenEmpty=false as a workaround
+
+See 2026-05-03 setup log entry for the post-mortem. Short version: it caused FSZ to spawn safe zones at world load before any player connected, which broke NPC weapon-position state in pre-existing cargo ship / encounter characters and killed the server with a parallel-update NRE 200ms after FSZ initialization. Reverted both PauseGameWhenEmpty and FSZ. SEDB reload-on-demand remains the manual workaround until the fork lands.
 
 ## Setup Log
 
@@ -291,10 +299,49 @@ The proposed Essentials AutoCommand workaround was made unnecessary by setting `
   - Ore Compactors: 8 per player TOTAL across both LG + SG variants, any grid
 - Limits applied in both BlockLimiter Torch plugin and BlockRestrictions mod (belt-and-suspenders)
 
-### 2026-05-03 - Share Inertia Tensor, Solar Radiation, FSZ + SEDB pause fix
-- Enabled `EnableShareInertiaTensor` (was false, now true) across all 3 SE configs
-- Enabled solar radiation: `SolarRadiationIntensity` 0 → 5 (LIGHT preset). Verified preset values via reflection on `Sandbox.Game.dll`: enum `MySolarRadiationIntensity` uses int values DISABLED=0, LIGHT=5, MEDIUM=10, HEAVY=20. Damage mechanics from `Stats.sbc`: 0-100 stat, critical at 74.5 (2 dmg/tick), damage at 100 (10 dmg/tick), decay 0.694/sec when sheltered. Atmospheres still protect.
-- **Fixed SEDB auto-reconnect issue** by disabling `PauseGameWhenEmpty`. Previous workaround idea (Essentials AutoCommand with `Connect` trigger) was technically infeasible — Connect isn't in the Essentials Trigger enum. Even `PlayerCount > 0` would have been a band-aid. Disabling pause solves it at the root and bonuses an auto-save bugfix.
-- Added FSZ - Faction Safe Zones `1507368483` (#43) — auto-spawns safe zones around faction stations when all members offline. Compensates for "no NPC pause" risk from disabling PauseGameWhenEmpty. Default settings: 60s add/remove delay, 800m enemy proximity check, 30+ block grid floor.
-- Updated MOTD with FSZ key player commands (`/checkzones`, `/factionId`, `/ownership`)
-- Added full FSZ command reference + admin commands to README under Mod Info section
+### 2026-05-03 - Share Inertia Tensor, Solar Radiation (kept). FSZ + PauseGameWhenEmpty (reverted, post-mortem below)
+- Enabled `EnableShareInertiaTensor` (was false, now true) across all 3 SE configs — kept
+- Enabled solar radiation: `SolarRadiationIntensity` 0 → 5 (LIGHT preset) — kept. Verified preset values via reflection on `Sandbox.Game.dll`: enum `MySolarRadiationIntensity` uses int values DISABLED=0, LIGHT=5, MEDIUM=10, HEAVY=20. Damage mechanics from `Stats.sbc`: 0-100 stat, critical at 74.5 (2 dmg/tick), damage at 100 (10 dmg/tick), decay 0.694/sec when sheltered. Atmospheres still protect.
+- Tried disabling `PauseGameWhenEmpty` to fix the SEDB pause-bot-dies issue + added FSZ Faction Safe Zones `1507368483` to compensate for "no idle pause = NPCs grief unattended bases" → **both reverted same day, see post-mortem.**
+
+#### Post-mortem: PauseGameWhenEmpty=false + FSZ deployment failure
+
+**Symptom:** Five consecutive boot attempts after deploy crashed with the same fatal `ParallelTasks.TaskException` wrapping a NRE in `MyCharacterWeaponPositionComponent.Update`. Server never reached "ready" — Torch generated a minidump, Steam auto-restart kicked in, same crash repeated. Took ~6 minutes of crash-loop before the user pulled the plug.
+
+**Diagnosis from logs:** Every single boot attempt followed the same pattern:
+```
+... [INFO]   Loading session
+... [INFO]   Session loaded
+... [INFO]   ANTIGRIEF: Got All Safe Zones!     ← FSZ initialization
+... 200ms later ...
+... [DEBUG]  Exception: NullReferenceException at MyCharacterWeaponPositionComponent.Update
+... 200ms later ...
+... [FATAL]  ParallelTasks.TaskException → minidump → restart
+```
+
+The 200ms gap between "Got All Safe Zones!" and the NRE was suspicious. Then deterministic across 5 boots — that's the smoking gun.
+
+**Root cause:** Combined trigger from BOTH new settings, neither alone:
+- `PauseGameWhenEmpty=false` made the world tick from the moment it loaded — before any player connected
+- FSZ saw all factions as "offline" (no players logged in), began creating safe zones around faction stations
+- Existing NPC characters in the save (cargo ship crew, global encounter NPCs that had previously docked or wandered near faction stations) ended up inside those zones
+- The zone-creation flow broke the NPCs' weapon-position component state
+- Next parallel character update tick: NRE → fatal exception → crash
+
+The `checkEnemyGrids = true / distanceCheckEnemyGrids = 800m` setting in FSZ should have prevented zone spawning near NPCs, but evidently doesn't catch loose NPC characters or specific NPC types in this codepath.
+
+**Fix:** Reverted both:
+- `PauseGameWhenEmpty` true → false → **back to true**
+- Removed FSZ ModItem from `Sandbox_config.sbc`
+
+Solar radiation kept (different subsystem, not implicated). Share-inertia kept.
+
+**Lessons:**
+1. Never deploy two interacting mods/settings simultaneously when both are untested. Should have deployed `PauseGameWhenEmpty=false` alone first to confirm no bot-stays-alive regressions, THEN added FSZ.
+2. SEDB pause-bot-dies bug remains unresolved. Real fix is to fork the plugin and add a watchdog reconnect — see Open Items.
+3. FSZ may still be viable in a fresh-world scenario (no legacy NPC clutter near where player factions form). Not retrying on this world.
+
+**Deploy timeline:**
+- Initial deploy: commit 40b5770
+- Revert: commit 181d19a
+- Cleanup pass (this commit): MOTD/README/NOTES tidied

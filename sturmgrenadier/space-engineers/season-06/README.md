@@ -290,43 +290,9 @@ Three features in one:
 - **Detach Mode** — hold Ctrl while grinding to cleanly detach a block without losing components
 - **Precision Grind** — hold secondary action to focus grinder on a single block
 
-### 🛡️ [FSZ - Faction Safe Zones](https://steamcommunity.com/sharedfiles/filedetails/?id=1507368483)
-
-Auto-spawns a vanilla Safe Zone around your faction's stations when **all members of the faction are offline**. Removes the zone shortly after a member rejoins. Designed for small-faction PvE servers where you don't want NPC encounters or pirates smashing your base while you sleep.
-
-**How it works:**
-- Stations 30+ blocks are eligible. Smaller grids (drones, debris) are skipped.
-- Won't spawn a zone if an enemy grid is within 800m — you can't log off mid-fight to dodge.
-- 60 second delay both for adding the zone after the last member logs off and for removing the zone when a member returns.
-- Production, refineries, and timer blocks keep running while the zone is up.
-
-**Player commands:**
-
-| Command | What it does |
-|---------|-------------|
-| `/checkzones` | Verify if your faction's grids are eligible for protection. Run this before logging off. |
-| `/factionId` | Show your faction info |
-| `/ownership` | Show ownership info on the grid you're aiming at |
-| `/rename <name>` | Rename a grid you own |
-| `/convert` | Convert the small ship you're piloting into a station |
-| `/pasteconvert` or `/convertpaste` | Paste a blueprint and immediately convert to station |
-| `/forceremovezone` | Manually remove the zone protecting your faction (e.g. before transferring grids) |
-| `/yes` | Confirm a pending action that requires confirmation |
-
-**Admin commands:**
-
-| Command | What it does |
-|---------|-------------|
-| `/disablezones` | Disable safe zone spawning server-wide |
-| `/enablezones` | Re-enable safe zone spawning |
-| `/removeallzones` | Force-remove every active safe zone |
-| `/config.<setting>.<value>` | Change a setting at runtime (e.g. `/config.enablesafezones.false`) |
-
-Settings persist to the world's `Storage/.../DynamicSafeZones_Settings.xml` after first boot.
-
 ## 📦 Mod Collection
 
-[Steam Workshop Collection](https://steamcommunity.com/sharedfiles/filedetails?id=3356806280) (43 mods)
+[Steam Workshop Collection](https://steamcommunity.com/sharedfiles/filedetails?id=3356806280) (42 mods)
 
 ---
 
