@@ -176,7 +176,7 @@
     <EnableUnsafePistonImpulses>false</EnableUnsafePistonImpulses>
     <EnableUnsafeRotorTorques>false</EnableUnsafeRotorTorques>
     <EnableRadiation>true</EnableRadiation>
-    <SolarRadiationIntensity>0</SolarRadiationIntensity>
+    <SolarRadiationIntensity>5</SolarRadiationIntensity>
     <ResetForageableItems>true</ResetForageableItems>
     <ResetForageableItemsTimeM>30</ResetForageableItemsTimeM>
     <ResetForageableItemsDistance>3000</ResetForageableItemsDistance>
@@ -353,6 +353,10 @@
     <ModItem>
       <Name>2825470671.sbm</Name>
       <PublishedFileId>2825470671</PublishedFileId>
+    </ModItem>
+    <ModItem>
+      <Name>1507368483.sbm</Name>
+      <PublishedFileId>1507368483</PublishedFileId>
     </ModItem>
   </Mods>
   <SessionName>Sturmgrenadier Season 06</SessionName>

@@ -120,7 +120,8 @@ Torch/
 - **Bot:** Separate bot from DiscordGSM (two bots can't share a token)
 - **Note:** Bot needs full member permissions in Discord (not guest) to avoid echo loop
 - **Source:** https://github.com/Bishbash777/SEDB-RELOADED
-- **⚠ Known issue:** Bot WebSocket dies when the server pauses (no players online) and never auto-reconnects. Plugin reload required. Plugin is also delisted from torchapi.com (likely abandoned). See "Open Items" below for proposed auto-reload solution.
+- **Plugin listing:** https://torchapi.com/plugins/view/3cd3ba7f-c47c-4efe-8cf1-bd3f618f5b9c (still listed; v2.0.5.001, ~24k downloads)
+- **Resolved 2026-05-03:** Bot used to die when the server paused (no players online) — DSharpPlus heartbeat was blocked by the paused main thread. **Fixed by setting `<PauseGameWhenEmpty>false</PauseGameWhenEmpty>`** in `SpaceEngineers-Dedicated.cfg`. Server now keeps ticking when empty, heartbeat stays alive, no manual reload needed. Side bonus: works around a known SE bug where auto-save doesn't fire while the server is paused.
 
 ### 6. Multigrid Projector (`d9359ba0-9a69-41c3-971d-eb5170adb97e`)
 - **Author:** Viktor
@@ -230,6 +231,7 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 | 40 | Tank Track Overlay (Variant) | 3225398014 |
 | 41 | Zkillerproxy Client | 1469072169 |
 | 42 | Compressed Ores | 2825470671 |
+| 43 | FSZ - Faction Safe Zones | 1507368483 |
 
 ## Directory Layout
 
@@ -238,48 +240,22 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 
 ## Open Items
 
-### TODO: Auto-reload SEDiscordBridge after a player joins
+### Verify after first boot with new server settings
 
-**Symptom:** Discord chat bridge stops working in both directions after the server has been empty for a while. Players joining later find their chat doesn't reach Discord, and Discord messages don't reach the game. Only fix that's worked so far is restarting Torch.
+After the server boots with `PauseGameWhenEmpty=false`, FSZ mod, and `SolarRadiationIntensity=5`:
 
-**Root cause** (confirmed via Torch log analysis on 2026-04-28):
-- Server pauses when no players online (default SE behavior).
-- Paused main thread blocks DSharpPlus's WebSocket heartbeat to Discord.
-- Discord drops the gateway connection (`SocketClose Event` warning in Torch log).
-- The plugin's auto-reconnect logic doesn't recover. Bot stays dead until plugin is reloaded.
-- Pattern observed multiple times in one day: each `SocketClose Event` was the last SEDiscordBridge entry until a server restart.
+1. **Confirm SEDB stays alive across an idle period.** Empty the server, wait 10+ minutes, rejoin, send a chat message — should appear in #se-in-game-chat without a manual reload. If the bot still dies, fall back to the Essentials AutoCommand workaround captured below.
+2. **Confirm FSZ defaults are sane in practice.** Log off with one faction member online to test the safe zone spawn delay; log back in to test removal. Run `/checkzones` before logoff to verify eligibility logic. Any issues → tune via `DynamicSafeZones_Settings.xml` in world storage.
+3. **Consider flipping `disableProduction` to `true`** in FSZ settings after first boot if free offline production feels too generous. (Default is `false` — refineries/assemblers run while the safe zone is up.)
+4. **Verify auto-save is firing.** The pause-when-empty fix should also resolve a known SE bug where auto-save skips while paused. Spot-check the world's last-modified timestamp during idle periods.
 
-**Plan:** Add an Essentials AutoCommand that runs `!plugin reload SEDiscordBridge` when a player joins the server. Server resumes on player connect, so this is the natural moment to revive the bot.
+### Resolved 2026-05-03: SEDiscordBridge auto-reload workaround → no longer needed
 
-**Approach 1 — Player-join trigger (preferred):**
-```xml
-<AutoCommand>
-  <Enabled>true</Enabled>
-  <CommandTrigger>Connect</CommandTrigger>
-  <Name>ReloadSEDBOnJoin</Name>
-  <OnStart>false</OnStart>
-  <DayOfWeek>All</DayOfWeek>
-  <Steps>
-    <CommandStep>
-      <Delay>00:00:10</Delay>
-      <Command>!plugin reload SEDiscordBridge</Command>
-    </CommandStep>
-  </Steps>
-</AutoCommand>
-```
-The 10-second delay lets the server fully wake and the player finish connecting before the reload fires.
+The proposed Essentials AutoCommand workaround was made unnecessary by setting `PauseGameWhenEmpty=false`. Keeping the design notes here for reference in case the pause fix has unforeseen side effects:
 
-**Approach 2 — Periodic reload (fallback if Approach 1 doesn't work):**
-A `Timed` AutoCommand running `!plugin reload SEDiscordBridge` every 30 minutes. Works regardless of trigger support, costs almost nothing, but adds a worst-case 30-min lag before a dead bot recovers.
-
-**To verify before / after deploying:**
-1. Confirm Essentials in this build supports `Connect` as a CommandTrigger. If not, try `Join`. If neither works (server logs `Unknown command trigger: ...` at startup), fall back to Approach 2.
-2. Confirm the Torch reload command is `!plugin reload <Name>` vs `!plugins reload` vs the GUID form. Test from Torch console.
-3. After deployment: disconnect everyone, wait for server to pause, reconnect, watch Torch log for `Server is running command '!plugin reload SEDiscordBridge'` — this confirms the trigger fires correctly.
-
-**Caveat:** First player's join announcement may not reach Discord because the bot is mid-reload during their connect. Acceptable trade-off vs total chat outage.
-
-**Long-term:** SEDiscordBridge is delisted from torchapi.com (author appears to have abandoned it). Once a chat-bridge replacement is identified or a working fork is found, this auto-reload workaround can be removed.
+- **Approach considered:** `<CommandTrigger>PlayerCount</CommandTrigger>` with `Compare=GreaterThan, TriggerCount=0, Interval=01:00:00`, running `!plugin reload SEDiscordBridge`. The earlier "`Connect` trigger" idea in the original TODO was wrong — Essentials' `Trigger` enum only has `Disabled, GridCount, OnStart, PlayerCount, Scheduled, SimSpeed, Timed, Vote` (verified in [TorchAPI/Essentials AutoCommand.cs:252-262](https://github.com/TorchAPI/Essentials/blob/master/Essentials/AutoCommand.cs#L252-L262)). `PlayerCount > 0` is the closest equivalent — fires immediately on idle→active transition because `_nextRun` is already in the past.
+- **Why not needed now:** The bot only dies because the main thread is paused. With pause disabled, the heartbeat keeps firing.
+- **Research artifacts:** see Setup Log entry 2026-05-03 below.
 
 ## Setup Log
 
@@ -314,3 +290,11 @@ A `Timed` AutoCommand running `!plugin reload SEDiscordBridge` every 30 minutes.
   - Ore Mill: 4 per player, station only (matches refinery cap; LG only by SBC)
   - Ore Compactors: 8 per player TOTAL across both LG + SG variants, any grid
 - Limits applied in both BlockLimiter Torch plugin and BlockRestrictions mod (belt-and-suspenders)
+
+### 2026-05-03 - Share Inertia Tensor, Solar Radiation, FSZ + SEDB pause fix
+- Enabled `EnableShareInertiaTensor` (was false, now true) across all 3 SE configs
+- Enabled solar radiation: `SolarRadiationIntensity` 0 → 5 (LIGHT preset). Verified preset values via reflection on `Sandbox.Game.dll`: enum `MySolarRadiationIntensity` uses int values DISABLED=0, LIGHT=5, MEDIUM=10, HEAVY=20. Damage mechanics from `Stats.sbc`: 0-100 stat, critical at 74.5 (2 dmg/tick), damage at 100 (10 dmg/tick), decay 0.694/sec when sheltered. Atmospheres still protect.
+- **Fixed SEDB auto-reconnect issue** by disabling `PauseGameWhenEmpty`. Previous workaround idea (Essentials AutoCommand with `Connect` trigger) was technically infeasible — Connect isn't in the Essentials Trigger enum. Even `PlayerCount > 0` would have been a band-aid. Disabling pause solves it at the root and bonuses an auto-save bugfix.
+- Added FSZ - Faction Safe Zones `1507368483` (#43) — auto-spawns safe zones around faction stations when all members offline. Compensates for "no NPC pause" risk from disabling PauseGameWhenEmpty. Default settings: 60s add/remove delay, 800m enemy proximity check, 30+ block grid floor.
+- Updated MOTD with FSZ key player commands (`/checkzones`, `/factionId`, `/ownership`)
+- Added full FSZ command reference + admin commands to README under Mod Info section
