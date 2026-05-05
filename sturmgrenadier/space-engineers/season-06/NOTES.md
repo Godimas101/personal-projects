@@ -239,27 +239,57 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 
 ## Open Items
 
-### TODO: Fork SEDiscordBridge and fix the heartbeat bug at the source
+### TODO: Build + test the SEDB watchdog fix
 
-**Goal:** Self-healing Discord bridge that survives server pauses without manual reloads, without the architectural fragility of forcing the server to keep ticking.
+**Status:** Code changes done on 2026-05-05. Build + deploy + verify pending for next session.
 
-**Background:** The bot dies because DSharpPlus's heartbeat thread can't process incoming acks when the SE main thread (which the plugin processes Discord events on) is paused. Tried `PauseGameWhenEmpty=false` as a workaround on 2026-05-03 — that worked in principle but had a bad interaction with FSZ mod that boot-looped the server. Workaround reverted. Real fix is to make the plugin self-healing.
+**Repo:** [Godimas101/sedb-reloaded-again](https://github.com/Godimas101/sedb-reloaded-again)
+**Branch:** `feature/decouple-watchdog`
+**Commit:** [`e7a3fab`](https://github.com/Godimas101/sedb-reloaded-again/commit/e7a3fab) — "fix: decouple watchdog from status-update feature flag"
+**Local checkout:** `c:\Users\Chris Carpenter\VS Code Projects\mods\space-engineers-torch-plugins\sedb-reloaded-again`
 
-**Fix sketch (lowest risk first):**
-1. **Watchdog timer** — background thread that polls the DSharpPlus client's gateway connection state every 30s and triggers a full reconnect if it's dropped. Plugin keeps existing architecture, we bolt on self-healing.
-2. **Decouple Discord I/O** — move the DSharpPlus client to a dedicated worker thread with its own message queue. Heartbeat then runs unaffected by SE pause. Bigger change but more robust.
-3. **Last resort** — full rewrite. Probably overkill.
+**Diagnosis (the actual bug):** The plugin already had auto-reconnect logic in `Timer_Elapsed` (Disconnect+Connect on tick 5, full bridge recreate on tick 24). The timer driving it was started by `InitPost`, but ONLY when `Config.UseStatus = true`. Our `SEDiscordBridge.cfg` has `<UseStatus>false</UseStatus>` (chat-only, no status feature) → timer never starts → watchdog never runs → bot stays dead after gateway drops.
 
-Start with #1.
+**The fix (3 small changes, 17 insertions / 9 deletions, 2 files):**
+1. `SEDiscordBridgePlugin.InitPost` — always `StartTimer()` (was gated on UseStatus).
+2. `SEDiscordBridgePlugin.Timer_Elapsed` — gate the status-update block on UseStatus, watchdog above runs unconditionally.
+3. `DiscordBridge.RegisterDiscord` — always issue initial `ConnectAsync` (was gated on !UseStatus, meant UseStatus=true servers waited ~25s for first connect via watchdog). Reordered events-before-connect so first Ready event can't be missed.
 
-**Steps:**
-1. Fork [Bishbash777/SEDB-RELOADED](https://github.com/Bishbash777/SEDB-RELOADED)
-2. Set up build env — Torch plugin = .NET Framework, references to `Torch.dll`, `Sandbox.Game.dll`, `DSharpPlus.dll` from local Torch install
-3. Find connection lifecycle code — likely in `SEDiscordBridgePlugin.cs` or similar
-4. Add the watchdog
-5. Build, drop DLL into Torch plugins folder, deploy to test server first
+#### Build env setup (run Setup.bat once, then Visual Studio)
 
-**Acceptance:** empty the server for 10+ minutes, rejoin, chat both directions works without a manual `!plugin reload`.
+The repo has a `Setup (run before opening solution).bat` that creates two symlinks the .csproj needs to resolve DLL references:
+- `GameBinaries` → folder containing `SpaceEngineersDedicated.exe`
+- `TorchBinaries` → folder containing `Torch.Server.exe`
+
+We don't run Torch on this machine — server is on GTX. Two options for getting the DLLs:
+- **Option A (recommended):** Download Torch separately from [torchapi.com](https://torchapi.com/) and unzip somewhere local. Run Setup.bat pointing at: SE dedicated server (we have one in `D:\SteamLibrary\steamapps\common\SpaceEngineersDedicatedServer\` if installed via Steam tools, otherwise grab the one bundled with the server SDK) and the local Torch folder.
+- **Option B (slower):** sFTP the DLLs from the live GTX server into local folders, then point Setup.bat at those.
+
+After symlinks exist, open `SEDiscordBridge.sln` in Visual Studio (or build with `msbuild SEDiscordBridge.sln /p:Configuration=Release`). Output DLL: `SEDiscordBridge\bin\Release\SEDiscordBridge.dll`.
+
+#### Deploy
+
+The custom plugin replaces the official one. On the GTX server's Torch instance:
+1. Stop the server.
+2. Find the existing SEDiscordBridge plugin (likely `D:\TCAFiles\Users\chrisc8\8269743\Plugins\3cd3ba7f-c47c-4efe-8cf1-bd3f618f5b9c\SEDiscordBridge.dll` — Torch caches plugins under their GUID).
+3. Replace that DLL with our built one.
+4. Make sure `Torch.cfg` still has `<GetPluginUpdates>false</GetPluginUpdates>` (otherwise Torch will overwrite our DLL with the upstream version on next start). Already false on our server, verified 2026-05-03.
+5. Boot.
+
+#### Test plan
+
+1. **Sanity check** — boot, send a message in-game and from Discord. Both directions work? Bot ready? Confirms the build is intact and the fix didn't break the happy path.
+2. **The actual regression test** — empty the server for 12+ minutes (server pauses around 10 min idle). Rejoin. Send a chat message in-game. Should appear in `#se-in-game-chat` without a manual `!plugin reload`.
+3. **Watch the Torch log** for the timing of the recovery. Expected sequence:
+   - `SocketClose Event` (warns when Discord drops the gateway)
+   - Several ticks of silent retry counting up
+   - One of: a clean `Discord_Zombied → ReconnectAsync()`, OR `Disconnect+Connect` from tick 5 of the watchdog, OR full bridge recreate from tick 24
+   - Eventually `Discord Bridge loaded!` again or `Ready` event firing → `Ready=true`
+4. **If it doesn't recover** — pull the latest log, look for which path the watchdog took (or didn't take). The most likely regression is that DSharpPlus's `AutoReconnect=true` is somehow racing with our watchdog's manual reconnect. Easy to diagnose from logs.
+
+**Rollback plan:** If the build is broken or the fix regresses, replace our DLL with the original from the upstream `Bishbash777/SEDB-RELOADED` v2.0.5.001 release. We have the GUID-keyed slot in Torch's plugin folder so it's a 1-file swap.
+
+**Long-term:** if this works, open a PR upstream to `Bishbash777/SEDB-RELOADED` so other server admins benefit. Plugin still gets ~24k downloads on torchapi.com.
 
 ### Closed: tried PauseGameWhenEmpty=false as a workaround
 
