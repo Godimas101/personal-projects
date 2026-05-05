@@ -46,6 +46,7 @@
     <DestructibleBlocks>true</DestructibleBlocks>
     <EnableIngameScripts>true</EnableIngameScripts>
     <ViewDistance>15000</ViewDistance>
+    <EnableToolShake>false</EnableToolShake>
     <VoxelGeneratorVersion>4</VoxelGeneratorVersion>
     <EnableOxygen>true</EnableOxygen>
     <EnableOxygenPressurization>true</EnableOxygenPressurization>
@@ -182,7 +183,17 @@
     <FoodConsumptionRate>0.5</FoodConsumptionRate>
     <EnableSurvivalBuffs>true</EnableSurvivalBuffs>
     <EnableReducedStatsOnRespawn>true</EnableReducedStatsOnRespawn>
+    <ReputationDecayRate>0</ReputationDecayRate>
     <RandomizeSeed>false</RandomizeSeed>
+    <GridStorageAllowsInventory>false</GridStorageAllowsInventory>
+    <GridStorageMaxPerPlayer>100</GridStorageMaxPerPlayer>
+    <GridStorageQueueLimit>1</GridStorageQueueLimit>
+    <GridStorageRetrievalTimeMaxMinutes>30</GridStorageRetrievalTimeMaxMinutes>
+    <GridStorageRetrievalTimeMinMinutes>2</GridStorageRetrievalTimeMinMinutes>
+    <GridStorageRetrievalTimeMultiplier>1</GridStorageRetrievalTimeMultiplier>
+    <GridStorageMinutesPerPCU>0.001</GridStorageMinutesPerPCU>
+    <GridStorageExpediteFactor>0.5</GridStorageExpediteFactor>
+    <GridStorageExpediteCostPerSecond>1000</GridStorageExpediteCostPerSecond>
   </Settings>
   <Mods>
     <ModItem FriendlyName="Sturmgrenadier Core Mod">
@@ -787,5 +798,5 @@
     </ModItem>
   </Mods>
   <SessionName>Sturmgrenadier Season 06</SessionName>
-  <LastSaveTime>2026-05-03T00:14:07.8108363-04:00</LastSaveTime>
+  <LastSaveTime>2026-05-04T17:15:46.0360778-04:00</LastSaveTime>
 </MyObjectBuilder_WorldConfiguration>
