@@ -188,6 +188,7 @@ Prototech Refinery and Prototech Assembler are salvage items — no limits, but 
 | Projector | 5 | 1 | Disabled on restart |
 | Survival Kit | — | 1 | |
 | Medical Room | — | — | Static only |
+| Services Terminal | — | — | Static only — Economy 2 service block |
 | AI Blocks (combined) | 30 | — | Basic / Flight / Offensive / Defensive / Recorder — for drones + player-made weapons |
 | Event Controller | 30 | 5 | Performance-sensitive, keep counts reasonable |
 
