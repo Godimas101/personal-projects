@@ -180,7 +180,7 @@
     <SyncDistance>3000</SyncDistance>
     <ExperimentalMode>true</ExperimentalMode>
     <AdaptiveSimulationQuality>true</AdaptiveSimulationQuality>
-    <EnableVoxelHand>false</EnableVoxelHand>
+    <EnableVoxelHand>true</EnableVoxelHand>
     <RemoveOldIdentitiesH>0</RemoveOldIdentitiesH>
     <TrashRemovalEnabled>true</TrashRemovalEnabled>
     <StopGridsPeriodMin>15</StopGridsPeriodMin>
