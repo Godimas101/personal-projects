@@ -195,7 +195,7 @@
     <VoxelPlayerDistanceThreshold>5000</VoxelPlayerDistanceThreshold>
     <VoxelGridDistanceThreshold>5000</VoxelGridDistanceThreshold>
     <VoxelAgeThreshold>24</VoxelAgeThreshold>
-    <EnableResearch>true</EnableResearch>
+    <EnableResearch>false</EnableResearch>
     <EnableGoodBotHints>true</EnableGoodBotHints>
     <OptimalSpawnDistance>4000</OptimalSpawnDistance>
     <EnableAutorespawn>false</EnableAutorespawn>
