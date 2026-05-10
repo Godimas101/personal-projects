@@ -46,7 +46,6 @@
     <DestructibleBlocks>true</DestructibleBlocks>
     <EnableIngameScripts>true</EnableIngameScripts>
     <ViewDistance>15000</ViewDistance>
-    <EnableToolShake>false</EnableToolShake>
     <VoxelGeneratorVersion>4</VoxelGeneratorVersion>
     <EnableOxygen>true</EnableOxygen>
     <EnableOxygenPressurization>true</EnableOxygenPressurization>
@@ -84,7 +83,7 @@
     <SyncDistance>3000</SyncDistance>
     <ExperimentalMode>true</ExperimentalMode>
     <AdaptiveSimulationQuality>true</AdaptiveSimulationQuality>
-    <EnableVoxelHand>false</EnableVoxelHand>
+    <EnableVoxelHand>true</EnableVoxelHand>
     <RemoveOldIdentitiesH>0</RemoveOldIdentitiesH>
     <TrashRemovalEnabled>true</TrashRemovalEnabled>
     <StopGridsPeriodMin>15</StopGridsPeriodMin>
@@ -406,17 +405,17 @@
       <PublishedFileId>2825470671</PublishedFileId>
       <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem FriendlyName="3x3 XL Bay Window">
+    <ModItem FriendlyName="XL Bay Windows">
       <Name>3334727994.sbm</Name>
       <PublishedFileId>3334727994</PublishedFileId>
       <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem FriendlyName="P.O.M - XL Blocks">
+    <ModItem FriendlyName="P.O.M -  XL Blocks [Slopes Update!]">
       <Name>2943729620.sbm</Name>
       <PublishedFileId>2943729620</PublishedFileId>
       <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem FriendlyName="3x3 XL Angled Interior Wall A">
+    <ModItem FriendlyName="XL Greebling Blocks">
       <Name>3336241205.sbm</Name>
       <PublishedFileId>3336241205</PublishedFileId>
       <PublishedServiceName>Steam</PublishedServiceName>
@@ -813,5 +812,5 @@
     </ModItem>
   </Mods>
   <SessionName>SG Season 06</SessionName>
-  <LastSaveTime>2026-05-07T16:26:27.5257229-04:00</LastSaveTime>
+  <LastSaveTime>2026-05-09T10:55:08.6614072-04:00</LastSaveTime>
 </MyObjectBuilder_WorldConfiguration>
