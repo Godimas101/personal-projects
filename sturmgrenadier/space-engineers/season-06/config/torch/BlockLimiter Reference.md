@@ -308,7 +308,6 @@ Pair names TBD — verify in-game. Use SubtypeId matching:
 | ShipGrinder | Ship grinders | Yes — 5 per grid |
 | ShipGrinderReskin | Grinder reskin (Warfare 1 DLC — **upgraded by NJFL**) | Group with ShipGrinder |
 | StaticDrill | ResourceNode drills | NO — do not limit |
-| BY_ZWWHDY | Self-Maintenance Unit | Yes — 1/grid, 3/player, static only |
 
 ### Production (Station-Only)
 
@@ -395,7 +394,6 @@ Currently unlimited.
 
 ### Other Limits
 - Programmable Block: 3 per player
-- Self-Maintenance Unit: 3 per player, 1 per grid, static only
 - Projector: 5 per player, 1 per grid
 - Survival Kit: 1 per grid
 - Medical Room: static only
@@ -420,5 +418,5 @@ Currently unlimited.
 - Elindis weapons need SubtypeId matching (pair names not confirmed)
 - ClangKitchen has 8 variants — list all or use SubtypeId
 - `BasicAssembler` cannot be restricted per game engine
-- `StaticDrill` (ResourceNodes) and `BY_ZWWHDY` (Self-Maintenance Unit) are ShipWelder/Drill types — exclude from tool limits
+- `StaticDrill` (ResourceNodes) is a Drill type — exclude from tool limits
 - `CustomConsoleBlock`, `Wardrobe`, `Kit_Locker`, `VCZ_Elevator_Buttons` use Projector/MedicalRoom types but are decorative — exclude from functional limits

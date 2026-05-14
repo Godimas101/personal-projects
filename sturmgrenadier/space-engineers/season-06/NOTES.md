@@ -212,25 +212,24 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 | 21 | Grated Catwalks Expansion | 2503712170 |
 | 22 | Rebels Lights 1.2.01 | 2718175525 |
 | 23 | Aryx-Lynxon Drive Systems | 2394430829 |
-| 24 | Self-Maintenance Unit | 3515485609 |
-| 25 | AQD - Upgradeable Gyroscopes | 2621169600 |
-| 26 | AQD - Armor Expansion | 1939935505 |
-| 27 | ResourceNodes | 2493091475 |
-| 28 | Tank Tracks Framework & API | 3208995513 |
-| 29 | Tank Tracks Builder | 3209005014 |
-| 30 | Tank Tracks over Vanilla Wheels | 3209008231 |
-| 31 | AQD - Conveyor Expansion | 1864380341 |
-| 32 | Blast Door Sections Retextured | 1574837911 |
-| 33 | Rotary Airlock | 1359954841 |
-| 34 | WelderWall | 3370792625 |
-| 35 | Neon tubes + | 3373230204 |
-| 36 | VCZ Elevator v2.0 | 3030780799 |
-| 37 | Faux Ship Lights | 637514816 |
-| 38 | ARC Truss System | 3701176691 |
-| 39 | TSO - More Corridor Blocks | 3611423853 |
-| 40 | Tank Track Overlay (Variant) | 3225398014 |
-| 41 | Zkillerproxy Client | 1469072169 |
-| 42 | Compressed Ores | 2825470671 |
+| 24 | AQD - Upgradeable Gyroscopes | 2621169600 |
+| 25 | AQD - Armor Expansion | 1939935505 |
+| 26 | ResourceNodes | 2493091475 |
+| 27 | Tank Tracks Framework & API | 3208995513 |
+| 28 | Tank Tracks Builder | 3209005014 |
+| 29 | Tank Tracks over Vanilla Wheels | 3209008231 |
+| 30 | AQD - Conveyor Expansion | 1864380341 |
+| 31 | Blast Door Sections Retextured | 1574837911 |
+| 32 | Rotary Airlock | 1359954841 |
+| 33 | WelderWall | 3370792625 |
+| 34 | Neon tubes + | 3373230204 |
+| 35 | VCZ Elevator v2.0 | 3030780799 |
+| 36 | Faux Ship Lights | 637514816 |
+| 37 | ARC Truss System | 3701176691 |
+| 38 | TSO - More Corridor Blocks | 3611423853 |
+| 39 | Tank Track Overlay (Variant) | 3225398014 |
+| 40 | Zkillerproxy Client | 1469072169 |
+| 41 | Compressed Ores | 2825470671 |
 
 ## Directory Layout
 

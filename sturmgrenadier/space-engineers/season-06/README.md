@@ -143,7 +143,6 @@ Ship tools cannot be placed on stations. Use Welder Walls and Resource Nodes ins
 |-------|-----------|----------|-------|
 | Welder Wall | 60 | — | Static only |
 | Resource Nodes | 10 | — | Static only |
-| Self-Maintenance Unit | 3 | 1 | Static only |
 | Ganymede Incinerator | — | 1 | Any grid |
 
 Prototech Drills are salvage items — no limits.

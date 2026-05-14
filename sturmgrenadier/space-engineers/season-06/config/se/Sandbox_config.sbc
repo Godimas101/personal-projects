@@ -310,11 +310,7 @@
       <PublishedFileId>2394430829</PublishedFileId>
       <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <ModItem FriendlyName="Self-Maintenance Unit">
-      <Name>3515485609.sbm</Name>
-      <PublishedFileId>3515485609</PublishedFileId>
-      <PublishedServiceName>Steam</PublishedServiceName>
-    </ModItem>
+    <!-- Self-Maintenance Unit (3515485609) removed 2026-05-14 — suspected cause of save-thread hang and server crash loop -->
     <ModItem FriendlyName="AQD - Upgradeable Gyroscopes">
       <Name>2621169600.sbm</Name>
       <PublishedFileId>2621169600</PublishedFileId>
