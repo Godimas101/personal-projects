@@ -357,6 +357,9 @@ Pair names TBD — verify in-game. Use SubtypeId matching:
 | RefillStation | Refill stations | NO |
 | RefillStationInset | Inset refill stations | NO |
 | VCZ_Elevator_Buttons | Elevator buttons (MedicalRoom type) | NO |
+| STG_NanobotBase | Tiered Build And Repair — Base (LG only, ShipWelder type) | Yes — 1/static grid, stations only, 5/player umbrella |
+| STG_NanobotUpgraded | Tiered Build And Repair — Upgraded (LG + SG, ShipWelder type) | Yes — 1/grid, 5/player umbrella |
+| STG_NanobotAdvanced | Tiered Build And Repair — Advanced (LG + SG, ShipWelder type) | Yes — 1/grid, 5/player umbrella |
 
 ### Searchlights
 Currently unlimited.
@@ -402,6 +405,16 @@ Currently unlimited.
 - Ship Welders: 5 per grid
 - Ship Grinders: 5 per grid
 - Production blocks: static only
+
+### Tiered Build And Repair (Workshop `3726441712`)
+Five rules implement the tier ladder (Base ships-blocked + Base per-station + Upgraded per-grid + Advanced per-grid + combined per-player umbrella).
+
+- **Base** (`STG_NanobotBase`, LG only): 1 per static grid, blocked on ships
+- **Upgraded** (`STG_NanobotUpgraded`, LG + SG): 1 per any grid
+- **Advanced** (`STG_NanobotAdvanced`, LG + SG): 1 per any grid
+- **Combined umbrella**: 5 total Nanobot blocks per player across all tiers
+
+Per-subtype capability gating (Walk vs Fly, Weld vs Grind, janitor, idle-collect) is hard-coded in the mod itself via `TierConfig.cs` — BlockLimiter only handles placement counts and grid-type restrictions on top.
 
 ### New Limits to Consider
 - **Total weapons per grid** — umbrella cap (e.g. 30 total weapons of any type per grid)

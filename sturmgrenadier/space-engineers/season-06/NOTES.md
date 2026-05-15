@@ -185,7 +185,7 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 
 **Load order matters — this list is in the correct order. Do not reorder.**
 
-39 mods total:
+42 mods total:
 
 | # | Mod Name | Workshop ID |
 |---|----------|-------------|
@@ -230,6 +230,7 @@ Steam Workshop Collection: https://steamcommunity.com/sharedfiles/filedetails?id
 | 39 | Tank Track Overlay (Variant) | 3225398014 |
 | 40 | Zkillerproxy Client | 1469072169 |
 | 41 | Compressed Ores | 2825470671 |
+| 42 | Tiered Build And Repair | 3726441712 |
 
 ## Directory Layout
 

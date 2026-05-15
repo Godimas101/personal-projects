@@ -191,6 +191,18 @@ Prototech Refinery and Prototech Assembler are salvage items — no limits, but 
 | AI Blocks (combined) | 30 | — | Basic / Flight / Offensive / Defensive / Recorder — for drones + player-made weapons |
 | Event Controller | 30 | 5 | Performance-sensitive, keep counts reasonable |
 
+#### 🔧 Build And Repair
+
+Three-tier nanobot system from our [Tiered Build And Repair](https://steamcommunity.com/sharedfiles/filedetails?id=3726441712) mod. Each tier has hard-coded capabilities — players can't unlock features via terminal toggles or PB scripts.
+
+| Tier | Grid Type | Per Grid | Capabilities |
+|------|-----------|---------:|--------------|
+| Build And Repair | Stations only | 1 | Walk Mode, Weld only |
+| Upgraded Build And Repair | Any grid | 1 | Walk + Fly, Weld only |
+| Advanced Build And Repair | Any grid | 1 | Walk + Fly, Weld + Grind, Janitor, Idle Collect |
+
+**5 total Nanobot blocks per player across all tiers.** Scrounge enough resources to make 5 Advanced ones and you've earned them.
+
 #### ⚙️ Performance-Sensitive Blocks
 
 These cap the blocks most likely to hurt sim speed. Be reasonable — the server runs better for everyone.
@@ -290,9 +302,21 @@ Three features in one:
 - **Detach Mode** — hold Ctrl while grinding to cleanly detach a block without losing components
 - **Precision Grind** — hold secondary action to focus grinder on a single block
 
+### 🔧 [Tiered Build And Repair](https://steamcommunity.com/sharedfiles/filedetails?id=3726441712)
+
+Three-tier nanobot Build and Repair system, custom-built for SG. Hard-coded per-subtype balance — tiers can't be bypassed via terminal toggles or programmable-block scripts. Each tier shows only the controls relevant to its capabilities.
+
+| Tier | Capabilities | Cost |
+|------|--------------|------|
+| Build And Repair | Welds host grid + connected sub-grids | Standard |
+| Upgraded Build And Repair | Adds Fly Mode for nearby disconnected ships | 2× |
+| Advanced Build And Repair | Adds grinding, janitor, idle-collect | 3× + Prototech |
+
+Fork of [SKO85's Build and Repair System V2](https://steamcommunity.com/sharedfiles/filedetails/?id=2111073562), which itself continues [Sektan's original](https://steamcommunity.com/sharedfiles/filedetails?id=857053359). See [Build And Repair limits](#-build-and-repair) for grid and player caps.
+
 ## 📦 Mod Collection
 
-[Steam Workshop Collection](https://steamcommunity.com/sharedfiles/filedetails?id=3356806280) (42 mods)
+[Steam Workshop Collection](https://steamcommunity.com/sharedfiles/filedetails?id=3356806280) (43 mods)
 
 ---
 
