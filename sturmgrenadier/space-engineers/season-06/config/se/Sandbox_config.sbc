@@ -85,7 +85,7 @@
     <AdaptiveSimulationQuality>true</AdaptiveSimulationQuality>
     <EnableVoxelHand>true</EnableVoxelHand>
     <RemoveOldIdentitiesH>0</RemoveOldIdentitiesH>
-    <TrashRemovalEnabled>true</TrashRemovalEnabled>
+    <TrashRemovalEnabled>false</TrashRemovalEnabled>
     <StopGridsPeriodMin>15</StopGridsPeriodMin>
     <TrashFlagsValue>1562</TrashFlagsValue>
     <AFKTimeountMin>0</AFKTimeountMin>
@@ -310,7 +310,6 @@
       <PublishedFileId>2394430829</PublishedFileId>
       <PublishedServiceName>Steam</PublishedServiceName>
     </ModItem>
-    <!-- Self-Maintenance Unit (3515485609) removed 2026-05-14 — suspected cause of save-thread hang and server crash loop -->
     <ModItem FriendlyName="AQD - Upgradeable Gyroscopes">
       <Name>2621169600.sbm</Name>
       <PublishedFileId>2621169600</PublishedFileId>
@@ -806,7 +805,19 @@
       <PublishedServiceName>Steam</PublishedServiceName>
       <IsDependency>true</IsDependency>
     </ModItem>
+    <ModItem FriendlyName="[VSI] Recolorable Thrusters">
+      <Name>1354870812.sbm</Name>
+      <PublishedFileId>1354870812</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
+    <ModItem FriendlyName="Tiered Build And Repair">
+      <Name>3726441712.sbm</Name>
+      <PublishedFileId>3726441712</PublishedFileId>
+      <PublishedServiceName>Steam</PublishedServiceName>
+      <IsDependency>true</IsDependency>
+    </ModItem>
   </Mods>
   <SessionName>SG Season 06</SessionName>
-  <LastSaveTime>2026-05-09T10:55:08.6614072-04:00</LastSaveTime>
+  <LastSaveTime>2026-05-15T15:21:55.4919451-04:00</LastSaveTime>
 </MyObjectBuilder_WorldConfiguration>

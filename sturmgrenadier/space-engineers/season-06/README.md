@@ -27,7 +27,7 @@ Server costs are covered by community contributions. The more subscribers we hav
 ## ⏰ Server Schedule
 
 - **Auto-save:** Every 5 minutes
-- **Restart:** Every 4 hours with warnings at 15 min, 10 min, and 30 seconds
+- **Restart:** Every 4 hours with warnings at 15 min, 10 min, 5 min, 1 min, and 30 seconds
 
 ### 🧹 On Restart
 The following cleanup runs automatically:
@@ -183,7 +183,7 @@ Prototech Refinery and Prototech Assembler are salvage items — no limits, but 
 
 | Block | Per Player | Per Grid | Notes |
 |-------|-----------|----------|-------|
-| Programmable Block | 3 | — | |
+| Programmable Block | 4 | — | |
 | Projector | 5 | 1 | Disabled on restart |
 | Survival Kit | — | 1 | |
 | Medical Room | — | — | Static only |

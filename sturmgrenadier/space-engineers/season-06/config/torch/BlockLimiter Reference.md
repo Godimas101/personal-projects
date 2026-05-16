@@ -347,7 +347,7 @@ Pair names TBD — verify in-game. Use SubtypeId matching:
 
 | Pair Name | Description | Limit? |
 |-----------|-------------|--------|
-| ProgrammableBlock | Programmable blocks | Yes — 3 per player |
+| ProgrammableBlock | Programmable blocks | Yes — 4 per player |
 | Projector | Projectors | Yes — 1/grid, 5/player |
 | CustomConsoleBlock | Life'Tech console (Projector type) | NO — decorative |
 | SurvivalKit | Survival kits | Yes — 1 per grid |
@@ -396,7 +396,7 @@ Currently unlimited.
 - SG Small Railgun: 8 / 3
 
 ### Other Limits
-- Programmable Block: 3 per player
+- Programmable Block: 4 per player
 - Projector: 5 per player, 1 per grid
 - Survival Kit: 1 per grid
 - Medical Room: static only
