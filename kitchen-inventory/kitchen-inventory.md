@@ -91,9 +91,11 @@
 - Maple Syrup
 - Mayonnaise
 - Oyster Sauce
+- Rice Vinegar
 - Sriracha Sauce
 - Soy Sauce
-- Tabasco
+- Tabasco Sauce
+- Teriyaki Sauce
 - Tahini
 - Vanilla Extract
 - Walkerswood Jerk Seasoning
