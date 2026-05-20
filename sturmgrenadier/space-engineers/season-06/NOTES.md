@@ -154,6 +154,19 @@ Torch/
   - ~10% lower simulation CPU load from disabling mod API call stats
 - **Source:** https://github.com/viktor-ferenczi/se-performance-improvements
 
+### 8. ALE PCU Transferrer (`480afc34-87df-4fff-a2b5-82048e456ced`)
+- **Author:** LordTylus
+- **Version:** v1.1.11.12
+- **Purpose:** Admin grid management — transfer PCU/ownership between players, repair/recharge grids, lock grids, clean up inactive player builds, and pull usage analytics
+- **Key features:**
+  - **Ownership transfer:** `!transfer`, `!transferpcu`, `!transferowner`, `!forcetransfer` — move PCU + block ownership between players with limit enforcement
+  - **Repair & recharge:** `!repair`, `!recharge` — fix damaged/deformed blocks, refill batteries/jump drives/tanks
+  - **Grid protection:** `!protect`, `!unprotect` — lock a grid against damage or modifications
+  - **Cleanup tools:** `!gridcleanup`, `!deleteblocks`, `!seedcleanup` — remove inactive grids, reassign shared ownership, purge voxel seeds
+  - **Analytics:** `!listblocks`, `!findblock`, `!checkusage`, `!listgrids` — block/PCU usage reports per player and faction
+- **Use cases:** Fixing ownership after pasting Workshop grids, migrating player builds when someone leaves a faction, recovering accidentally-deformed bases without restore-from-backup, identifying PCU hogs
+- **Source:** https://github.com/LordTylus/SE-Torch-Plugin-ALE-PcuTransferrer
+
 ## Discord Monitoring
 
 Server status is monitored by a self-hosted instance of [DiscordGSM](https://github.com/DiscordGSM/GameServerMonitor) running on the OVH VPS (`/opt/tcs/discordgsm`). It queries the SE server via A2S protocol every 60 seconds and posts status changes to Discord via webhook.
