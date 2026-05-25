@@ -61,7 +61,8 @@ When using an AI to suggest new recipes or meals, include this in your prompt:
 | [quick-seafood-congee.md](quick-seafood-congee.md) | Creamy rice congee with tilapia, salmon, and fish balls — light but filling | 🐟 Seafood |
 | [indian-spiced-beans.md](indian-spiced-beans.md) | Warm curry-style spiced beans — great over rice or with flatbread | 🌱 Veggie |
 | [chia-pudding.md](chia-pudding.md) | Overnight chia pudding with protein powder, hemp hearts, flax, and blueberries | 🌱 Veggie |
-| [saturday-pancakes.md](saturday-pancakes.md) | Flourish protein pancakes with blueberries and maple syrup — Saturday tradition | 🥞 Breakfast |
+| [sweet-potato-edamame-protein-bars.md](sweet-potato-edamame-protein-bars.md) | Fudgy baked bars with sweet potato, edamame, egg whites & hemp — ZoRaw chocolate coating | 🌱 Veggie |
+| [saturday-pancakes.md](saturday-pancakes.md) | Flourish protein pancakes with blueberries and maple syrup — Saturday tradition | 🌱 Veggie |
 
 ---
 
