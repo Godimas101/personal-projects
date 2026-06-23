@@ -35,6 +35,7 @@
   - **Production-grade error handling** — 401/403/404 dispatch, OAuth expiry detection, GitHub pagination, MCP tool failure recovery
   - **Symlink-based deployment** — `git pull` is the entire update mechanism, no re-installation
 - **Adoption path:** suite is in active use by all 7 Prodigy QAers and their manager. Now being introduced to the broader Prodigy QA org via my manager. I am leading the rollout — teaching QAers on Village Builder, Pet Races, and Arcadia how to author the product-specific context files their teams need so the suite scales beyond me.
+- **Public walkthrough:** posted a LinkedIn article describing the skill ecosystem and workflow end-to-end — [How I Built an AI-Assisted QA Ecosystem at Prodigy](https://www.linkedin.com/posts/rustygear_how-an-ai-assisted-qa-ecosystem-i-built-at-ugcPost-7474998497478352896-hIq8/)
 
 **QA Test Case Viewer (VS Code Extension)**
 - Built a custom VS Code extension that renders the structured JSON + markdown notes prodigy-qa-skills produces into a human-readable, searchable, inline-editable interface — split-view markdown editor with live preview, heading TOC sidebar, in-source search with synced preview highlighting, document undo integration via WorkspaceEdit.
