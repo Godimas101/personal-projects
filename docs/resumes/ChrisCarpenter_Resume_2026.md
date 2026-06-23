@@ -22,8 +22,8 @@
 - **Quantified impact:**
   - **Test case writing:** 2–3 days per feature collapsed to ~30 minutes of focused review
   - **PR review + bug filing:** ≥5 hours saved per QAer per week
-  - **3 major Prodigy RPG releases** run end-to-end through `/qa-release-rpg`
-  - **Several P1 issues caught and stopped** via `/qa-pr-analysis` before they ever reached QA
+  - **Many major Prodigy RPG releases** run end-to-end through `/qa-release-rpg` (too many to easily track precisely)
+  - **5 P1 issues caught and stopped so far** via `/qa-pr-analysis` before they ever reached QA
   - **Localization testing standard:** `/qa-translation-analysis` is now the team's standard process for in-game localization QA
   - **Bug filing fully delegated:** I no longer write bug reports manually. I describe the issue in a few lines; the suite — informed by shared product context — files complete bugs with localization keys, suspected API calls, related server issues, and pattern-matched root cause hypotheses
 - **Architectural decisions that scale:**
@@ -34,17 +34,24 @@
   - **Cross-skill orchestration** — `/qa-file-bug` is a callable subroutine other skills invoke
   - **Production-grade error handling** — 401/403/404 dispatch, OAuth expiry detection, GitHub pagination, MCP tool failure recovery
   - **Symlink-based deployment** — `git pull` is the entire update mechanism, no re-installation
-- **Adoption path:** suite is now being introduced to the broader Prodigy QA org via my manager. I am leading the rollout — teaching QAers on Village Builder, Pet Races, and Arcadia how to author the product-specific context files their teams need so the suite scales beyond me.
+- **Adoption path:** suite is in active use by all 7 Prodigy QAers and their manager. Now being introduced to the broader Prodigy QA org via my manager. I am leading the rollout — teaching QAers on Village Builder, Pet Races, and Arcadia how to author the product-specific context files their teams need so the suite scales beyond me.
 
 **QA Test Case Viewer (VS Code Extension)**
 - Built a custom VS Code extension that renders the structured JSON + markdown notes prodigy-qa-skills produces into a human-readable, searchable, inline-editable interface — split-view markdown editor with live preview, heading TOC sidebar, in-source search with synced preview highlighting, document undo integration via WorkspaceEdit.
 - Closes the loop on the AI workflow for non-technical QA reviewers — lets them proof and tweak generated test cases without ever opening raw JSON.
 
 **Major Project Leadership**
-- Leading QA effort for Prodigy RPG localization: creating test plans, managing outsourcers, running bug triage, coordinating cross-department stakeholders, and planning initial public release
+- Led QA effort for Prodigy RPG localization across 5 languages (full Spanish + Portuguese, partial Japanese / German / French). Managed 3 outsource testers plus a 50-freelancer TestIO team through release. Created test plans, ran bug triage, coordinated cross-department stakeholders, and helped plan/manage initial public release.
 - Led 6-person QA team through complex Phaser-to-Pixi game engine migration, transforming inherited struggling project into organized success
+- Associate Producer at Big Viking Games — directed three separate development teams (12+ people total) on different projects across two cities, with a single shared designer across all three. Established process foundations using Atlassian and Google-centric workflows.
 - One of only 2 QA selected for Prodigy's Central QA team, led company-wide test management migration (TestRail → AIO Tests)
 - Key QA contributor on Prodigy's second-ever game launch, building workflow tools still used company-wide 5+ years later
+
+**Mentorship & QA Team Development**
+- Onboarded ~7 QA hires across my time at Big Viking Games and Prodigy Education
+- Mentored a contractor QAer at Prodigy through to a full-time hire and a promotion
+- Trained another QAer from intern level up to intermediate QA — they now work as a Sr. QAer at a mining company
+- Trained the 7-person Prodigy QA department on Claude Code skill use and AI/automation integration into their daily QA workflows
 
 **Atlassian Excellence**
 - **Company Atlassian Admin** at both Big Viking Games and Prodigy Education (6+ years) — sole/primary owner of company-wide workflows and the majority of Automation for Jira bots
@@ -107,7 +114,7 @@ Returned to RPG team with focus on AI-powered QA and automation in lean team env
 - **Built prodigy-qa-skills**, a suite of 7 Claude Code slash-command skills forming a complete AI-assisted QA workflow (PR analysis, bug filing, release cycle setup, localization, Sentry triage, structured test case authoring with AIO Tests import, feature context bundling). See KEY ACCOMPLISHMENTS for impact details and architecture.
 - **Leading rollout to broader Prodigy QA org** — teaching QAers on Village Builder, Pet Races, and Arcadia how to author the product-specific context files their teams need so the suite scales beyond me. The suite has been passed to QA leadership and is being introduced company-wide.
 - **Built QA Test Case Viewer (VS Code extension)** — companion tool that renders the suite's structured outputs into a human-readable, inline-editable interface for non-technical reviewers (split-view markdown editor, live preview, TOC sidebar, synced search).
-- **Leading Prodigy RPG Localization QA:** Creating test plans, managing outsource testing teams, running bug triage, collaborating cross-functionally for project status, and helping plan/manage initial public release.
+- **Led Prodigy RPG Localization QA (complete):** End-to-end leadership across 5 languages (full Spanish + Portuguese, partial Japanese / German / French). Managed 3 outsource testers plus a 50-freelancer TestIO team. Created test plans, ran bug triage, collaborated cross-functionally for project status, and helped plan/manage initial public release.
 - **Day-to-day workflow shift:** I no longer file bug reports manually — describe the issue in a few lines, the suite (informed by shared product context) writes the complete report with localization keys, API call hypotheses, and root cause notes. Bug-attached imagery is the one remaining manual step (MCP server limitation).
 - Leveraging AI tools (Claude, Grok) and advanced automation (n8n, Automation for Jira, GitHub Actions) to handle workloads previously requiring larger teams.
 
@@ -126,7 +133,7 @@ Selected as one of only two QA for elite Central QA team supporting company-wide
 #### Quality Assurance III - RPG / Atlassian Admin | Nov 2024 - Oct 2025
 Rejoined RPG team working on core combat systems with continued Atlassian administration responsibilities
 - Streamlined and automated workflows for multiple RPG teams
-- Onboarded new QA hires, and mentored one from a contractor to a full time employee, all the way through to them getting a promotion!
+- Onboarded new QA hires, and mentored one from a contractor to a full time employee, all the way through to them getting a promotion! (See KEY ACCOMPLISHMENTS for full mentorship summary across both companies.)
 
 **Skills:** Atlassian Admin • Automation for Jira • TestRail • Workflow Automation • Mobile Game Development
 
@@ -156,7 +163,7 @@ First experience with true live service product, including leadership on major e
 - Build master: handled all merging and deploying across various servers
 
 #### Associate Producer | London, ON | Jul 2015 - Jul 2016
-- Managed two separate teams on different projects across two cities
+- Directed three separate development teams (12+ people total) on different projects across two cities, with a single shared designer across all three teams
 - Established process foundations for growing studio using Atlassian and Google-centric workflows
 - Teams developed HTML5 games with agile methodologies
 
