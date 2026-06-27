@@ -17,25 +17,43 @@
 ## KEY ACCOMPLISHMENTS
 
 **AI-Powered QA Force-Multiplication at Prodigy**
-- Built **prodigy-qa-skills** — a complete AI-assisted QA workflow as a suite of 7 Claude Code slash-command skills (6 production, 1 in development). Created solo in response to a company-wide layoff, designed to maintain QA velocity with reduced headcount.
-- **The 7 skills:** `/qa-pr-analysis` (PR risk + bug surfacing), `/qa-release-rpg` (find release PR → analyze → create AIO Tests cycles for Stage and Prod → post Slack release summary with threaded squad breakdowns), `/qa-file-bug` (cross-skill bug-filing helper), `/qa-translation-analysis` (pt-BR/es/fr/de/ja against custom Prodigy glossary, autonomous bug filing for misses), `/qa-sentry-analysis` (pull errors/stack traces/breadcrumbs by user or issue ID, classify against known patterns, offer to file), `/qa-test-cases` (read Jira/Confluence/Figma → write structured test cases → import to AIO Tests via API with traceability links), `/qa-feature-context` (in dev — bootstrap a feature folder by pulling epic + child tickets + PRs + Figma + Confluence).
+- Built **prodigy-qa-skills** - a complete AI-assisted QA workflow as a suite of 7 production Claude Code slash-command skills, with 2 more in development. Created solo in response to a company-wide layoff, designed to maintain QA velocity with reduced headcount.
+
+- **The 7 production skills:**
+  - `/qa-feature-context` - context-building skill. The user dumps available reference material (design docs, Jira tickets, Miro boards, spreadsheets) and Claude organizes it into a working journal kept open for the project's duration. Progress, bugs, and reference material accumulate here. Lets a future session catch up quickly if the original context window is lost.
+  - `/qa-pr-analysis` - runs against every PR. Loads product-specific context (architecture notes, known risks, prior incidents), surfaces high-risk changes, suggests debug commands for testing, provides a basic testing checklist, and highlights potential bugs. Calls `/qa-translation-analysis` automatically when localization changes are detected.
+  - `/qa-file-bug` - knows the Prodigy bug templates, bug standards, and which project to file in based on the PR analyzed above. User provides only the issue description. The skill handles the rest and pauses so the user can attach screenshots or video. Callable subroutine that other skills invoke.
+  - `/qa-test-cases` - reads Jira tickets, Confluence docs, and Figma flows. Knows team test-writing standards and how to use AIO Tests. Briefs the user on its plan before writing. Output is a JSON file viewable in the companion VS Code extension (QA Test Case Viewer) before upload. ~20 minutes for a major feature.
+  - `/qa-release-rpg` - wraps PR analysis into a release workflow. Finds the day's release PR via GitHub bot signature, runs analysis across every change, creates AIO Tests cycles for Stage and Prod, posts a threaded Slack release summary with squad breakdowns, and handles release-day paperwork. Acts as on-call answerer for team members covering releases they didn't directly work on.
+  - `/qa-translation-analysis` - multilingual localization QA (pt-BR, es, fr, de, ja) against a custom Prodigy glossary. Includes grammar best practices per language and flags text overruns based on knowledge of where UI elements live and what string lengths are acceptable. Autonomous bug filing for misses. In active use by both QA and dev teams.
+  - `/qa-sentry-analysis` - pulls errors, stack traces, and breadcrumbs by user or issue ID. Classifies against known patterns. Offers to file.
+
+- **Skills in development:**
+  - **Test automation integration** - Claude generating automated test cases AND executing them via the company's in-flight test automation framework.
+  - **Knowledge re-integration** - after testing completes, sifts journal files and test cases for valuable context and feeds it back into the context library for future projects.
+
 - **Quantified impact:**
-  - **Test case writing:** 2–3 days per feature collapsed to ~30 minutes of focused review
-  - **PR review + bug filing:** ≥5 hours saved per QAer per week
+  - **Test case writing:** 2-3 days per feature collapsed to ~30 minutes of focused review
+  - **PR review + bug filing:** 5+ hours saved per QAer per week
   - **Many major Prodigy RPG releases** run end-to-end through `/qa-release-rpg` (too many to easily track precisely)
   - **5 P1 issues caught and stopped so far** via `/qa-pr-analysis` before they ever reached QA
-  - **Localization testing standard:** `/qa-translation-analysis` is now the team's standard process for in-game localization QA
-  - **Bug filing fully delegated:** I no longer write bug reports manually. I describe the issue in a few lines; the suite — informed by shared product context — files complete bugs with localization keys, suspected API calls, related server issues, and pattern-matched root cause hypotheses
+  - **Localization testing standard:** `/qa-translation-analysis` is now the team's standard process for in-game localization QA, with both QA and dev actively using it
+  - **Bug filing fully delegated:** Jira board interactions reduced to dragging tickets across columns. I describe the bug in a few lines. The suite, informed by shared product context, files the complete report with localization keys, suspected API calls, related server issues, and pattern-matched root cause hypotheses. Bug-attached imagery (screenshots, video) is the one remaining manual step.
+
+- **Philosophy:** the suite handles the typing and pattern-matching. The QAers do the investigation. AI as force-multiplier, not replacement.
+
 - **Architectural decisions that scale:**
-  - **Multi-product context system** — supports 6 Prodigy products (RPG, Village Builder, Pet Races, Arcadia, Teacher Portal, shared platform); each has its own context files
-  - **Index-based routing** — RPG's `rpg-index.md` routes skills to load only the files they need (architecture/risk for PR analysis, release/checklists for releases, overview/zone reference for test cases) — keeps Claude's context window lean
-  - **Cross-session journal** — local-only, gitignored, captures in-progress work between Claude Code sessions
-  - **Self-staleness awareness** — Repo Library Refresh Tracker flags entries due for refresh and offers to update them
-  - **Cross-skill orchestration** — `/qa-file-bug` is a callable subroutine other skills invoke
-  - **Production-grade error handling** — 401/403/404 dispatch, OAuth expiry detection, GitHub pagination, MCP tool failure recovery
-  - **Symlink-based deployment** — `git pull` is the entire update mechanism, no re-installation
-- **Adoption path:** suite is in active use by all 7 Prodigy QAers and their manager. Now being introduced to the broader Prodigy QA org via my manager. I am leading the rollout — teaching QAers on Village Builder, Pet Races, and Arcadia how to author the product-specific context files their teams need so the suite scales beyond me.
-- **Public walkthrough:** posted a LinkedIn article describing the skill ecosystem and workflow end-to-end — [How I Built an AI-Assisted QA Ecosystem at Prodigy](https://www.linkedin.com/posts/rustygear_how-an-ai-assisted-qa-ecosystem-i-built-at-ugcPost-7474998497478352896-hIq8/)
+  - **Multi-product context library** - supports 6 Prodigy products (RPG, Village Builder, Pet Races, Arcadia, Teacher Portal, shared platform). Each has its own context files. Every skill loads relevant context on invocation so that running a skill feels like asking a teammate who already knows the project.
+  - **Index-based routing** - RPG's `rpg-index.md` routes skills to load only the files they need (architecture/risk for PR analysis, release/checklists for releases, overview/zone reference for test cases). Keeps Claude's context window lean.
+  - **Cross-session journal** - local-only, gitignored, captures in-progress work between Claude Code sessions.
+  - **Self-staleness awareness** - Repo Library Refresh Tracker flags entries due for refresh and offers to update them.
+  - **Cross-skill orchestration** - `/qa-file-bug` is a callable subroutine other skills invoke.
+  - **Production-grade error handling** - 401/403/404 dispatch, OAuth expiry detection, GitHub pagination, MCP tool failure recovery.
+  - **Symlink-based deployment** - `git pull` is the entire update mechanism, no re-installation.
+
+- **Adoption path:** suite is in active use by all 7 Prodigy QAers and their manager. Now being introduced to the broader Prodigy QA org via my manager. I am leading the rollout, teaching QAers on Village Builder, Pet Races, and Arcadia how to author the product-specific context files their teams need so the suite scales beyond me.
+
+- **Public walkthrough:** posted a LinkedIn article describing the skill ecosystem and workflow end-to-end - [How I Built an AI-Assisted QA Ecosystem at Prodigy](https://www.linkedin.com/posts/rustygear_how-an-ai-assisted-qa-ecosystem-i-built-at-ugcPost-7474998497478352896-hIq8/)
 
 **QA Test Case Viewer (VS Code Extension)**
 - Built a custom VS Code extension that renders the structured JSON + markdown notes prodigy-qa-skills produces into a human-readable, searchable, inline-editable interface — split-view markdown editor with live preview, heading TOC sidebar, in-source search with synced preview highlighting, document undo integration via WorkspaceEdit.
