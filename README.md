@@ -35,9 +35,12 @@ Supporter data and branding assets for the [Godimas101 Patreon](https://www.patr
 - **[health-tracking/](health-tracking/)** — Exercise schedule, meal plan, supplement stack, weight log.
 
 ### 📄 Docs & Career
-- **[docs/resumes/](docs/resumes/)** — Master resume for tailoring targeted applications.
-- **[docs/style-guides/](docs/style-guides/)** — Shared README and tool style guides for this workspace.
-- **[docs/git-infrastructure.md](docs/git-infrastructure.md)** — Field guide to the whole git + GitHub setup across mods + TCS + personal (orgs, .github repos, workflows, boards, tokens, memory, skills, incidents).
+
+Career material, workspace infrastructure documentation, and style guides moved to a private companion repo on 2026-07-15:
+
+- **[Godimas101/personal-docs](https://github.com/Godimas101/personal-docs)** *(private)* — resumes, style guides, git-infrastructure field guide
+
+Old `docs/` history stays visible in this repo's git log if ever needed.
 
 ---
 
