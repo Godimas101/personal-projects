@@ -525,6 +525,11 @@ These references informed the style decisions above.
 | `https://www.freepik.com/icons` | icon/illustration source | useful when we need themed decorative assets | verify license/attribution and keep style consistent |
 | `https://github.com/anuraghazra/github-readme-stats` | stats and repo cards | great for profile README cards and compact portfolio signals | public endpoint can be rate-limited; prefer GitHub Actions/self-hosting if needed |
 | `https://github.com/mattrltrent/github_painter` | contribution graph art | optional personality piece for a profile README | use carefully; decorative only |
+| `https://github.com/matiassingers/awesome-readme` | curated exemplary READMEs + tools | source for changelog patterns, install-instruction structures, "Standard Readme" spec, README generators | large list — cherry-pick, don't try to adopt everything |
+| `https://github.com/abhisheknaiidu/awesome-github-profile-readme` | curated creative profile READMEs | source for hero-header ideas, typing SVGs, dynamic widgets, contribution art | most items are profile-only; screen for repo-README relevance before adopting |
+| `https://github.com/NickeManarin/ScreenToGif` | GIF recording tool (Windows-native) | standard tool for mod gameplay screenshot/GIF capture | free, open source, no telemetry concerns |
+| `https://github.com/sindresorhus/Gifski` | MP4 → high-quality GIF converter | for when recording started as a video file | native macOS; Windows version via `gifski` CLI |
+| `https://keepachangelog.com/` | changelog format spec | canonical Keep-a-Changelog format for mod repos | stable, widely recognized |
 
 ---
 
@@ -606,11 +611,149 @@ If the project is free and community-supported, add a short support note and inc
 
 ---
 
+## Game Mod READMEs — Specific Patterns
+
+Chris's mod READMEs are the primary outside-user entry point for the mod.
+Same weight as an AGENTS.md is for LLM entry into a project. Treat them
+seriously — mods without a good README don't get subscribers.
+
+### Required sections for every mod README
+
+Beyond the standard structure, mod READMEs MUST have:
+
+- **Visual proof** — at least one screenshot or GIF near the top showing the
+  mod in-engine. Players will not install what they can't see working. For
+  brand-new / scaffold projects (no gameplay yet), a design sketch or
+  intended-look image is fine as a stand-in.
+- **Compatibility** — a bullet or short table listing:
+  - Game version (SE, MW5) tested against
+  - Other required mods (with links)
+  - Known incompatibilities
+  - Load-order notes if relevant
+- **Install** — Steam Workshop link (primary) + manual install steps (fallback)
+- **Report a bug** — direct issue-create link (see the pattern below)
+- **Support** — the standard Patreon button (see [Support section](#7-support-section-when-relevant))
+
+### Report-a-bug and feature-request links
+
+Every mod README should have a prominent "Found a bug?" call to action
+pointing at a **pre-filled** GitHub issue-create URL:
+
+```md
+> Found a bug? [File a report on the project board →](https://github.com/<org>/<repo>/issues/new?template=bug_report.md&labels=bug)
+```
+
+The pre-filled URL takes these query parameters:
+
+| Param | Effect |
+|---|---|
+| `template=<file>.md` | Uses a template from `.github/ISSUE_TEMPLATE/` if it exists |
+| `labels=bug,se` | Comma-separated labels applied on create |
+| `title=<url-encoded text>` | Pre-populates the issue title |
+| `assignees=Godimas101` | Pre-assigns |
+
+Feature-request pattern:
+
+```md
+Have an idea? [Request a feature →](https://github.com/<org>/<repo>/issues/new?template=feature_request.md&labels=enhancement)
+```
+
+If the shared `<org>/.github` repo defines `ISSUE_TEMPLATE/bug_report.md` +
+`feature_request.md`, every repo in that org auto-inherits them — the
+`?template=<file>` param picks them up. Set this up once at org level;
+individual mod repos don't need their own copies.
+
+### Recording gameplay footage
+
+Chris's default toolchain for screenshots + GIFs:
+
+- **[ScreenToGif](https://github.com/NickeManarin/ScreenToGif)** — Windows-native, record → edit → export GIF. Best for short UI/mod demonstrations.
+- **[Gifski](https://github.com/sindresorhus/Gifski)** — MP4 → high-quality GIF converter. Use when starting from a gameplay recording.
+- **[vhs](https://github.com/charmbracelet/vhs)** — Terminal recording → GIF. For install/CLI walkthroughs, not gameplay.
+
+**GIF etiquette:**
+- Loop cleanly (last frame ≈ first frame)
+- Under 5 MB where possible — big GIFs hurt README load times
+- One strong GIF beats a wall of screenshots
+- Add a fallback screenshot for readers who scroll fast or block GIFs
+
+### Compatibility badges (optional but nice)
+
+Shields.io can produce version-compatibility badges:
+
+```md
+![Space Engineers](https://img.shields.io/badge/Space%20Engineers-1.207%2B-blue)
+![Steam Workshop](https://img.shields.io/badge/dynamic/xml?url=<workshop-url>&query=//votes&label=subscribers)
+```
+
+The Steam Workshop badge is nice-to-have; skip if it makes the header
+noisy. Version badges earn their place — they answer "will this work
+with my install?" at a glance.
+
+---
+
+## Changelog Patterns
+
+Not every mod repo needs a `CHANGELOG.md`, but if updates are frequent
+enough that "what changed in this version?" is a real question, add one.
+
+### Format
+
+Follow [Keep a Changelog](https://keepachangelog.com/):
+
+```md
+# Changelog
+
+## [Unreleased]
+
+### Added
+- New feature description
+
+### Fixed
+- Bug fix description
+
+## [1.4.0] — 2026-07-14
+
+### Added
+- ...
+
+### Changed
+- ...
+
+### Fixed
+- ...
+```
+
+- Newest at the top
+- `[Unreleased]` accumulates work between tagged releases
+- Categories: Added / Changed / Deprecated / Removed / Fixed / Security
+
+### Automated updates
+
+For repos on the gitpush-mod project-board system, the auto-CHANGELOG
+workflow (see `gitpush-mod/.github`) appends an entry to `[Unreleased]`
+every time a ticket closes on the mod's board. Manual edits still allowed
+— just don't touch entries the bot is about to add.
+
+---
+
+## FAQ Patterns (optional)
+
+Mods with common questions ("Does this conflict with X?", "How do I turn
+off Y?") benefit from a `## ❓ FAQ` section. Keep it near the bottom, above
+Credits / Support.
+
+Format: `### Question` header + short answer. 3-8 items max. If it grows
+past 8, split into its own doc under `docs/` and link to it.
+
+---
+
 ## Source of Truth Examples in This Workspace
 
 When in doubt, mirror the tone and structure of:
 - `n8n-projects/the-canadian-space/tcs-workflows/README.md`
-- `mods/space-engineers-mods/README.md`
+- `mods/se-infolcd-apex-update/README.md` (after 2026-07-14 rewrite pass)
+- `Godimas101/universal-audio-converter/README.md` — reference for the Patreon Support section visual treatment
 - `toolkits/space-engineers-modders-tool-kit/README.md`
 
 ---
