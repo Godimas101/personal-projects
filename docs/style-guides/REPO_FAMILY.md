@@ -4,7 +4,7 @@ This file is the **source of truth** for which `capsule-render` header family be
 
 When a new repo is created, renamed, split out, or rebranded, **update this file at the same time** as its `README.md`.
 
-**Last updated:** 2026-07-14 — mod-docs batch completed (gitpush-mod/.github + Godimas101/.github + TCS org profile rewrite + all 10 mod README rewrites + automation workflows).
+**Last updated:** 2026-07-15 — TCS arcade split (idle-launch + autodoom repos created, tcs-arcade retired); local `.github` clones consolidated under `github-settings/` sibling to `mods/`.
 
 ---
 
@@ -78,7 +78,9 @@ Palette: same as SE mods (waving industrial).
 | `The-Canadian-Space/tcs-scripts` | `rect` | Public scripts / API helpers |
 | `The-Canadian-Space/tcs-workflows` | `rect` | Private n8n workflow backups |
 | `The-Canadian-Space/tcs-webpage` | `rect` | Private site codebase (planned) |
-| `The-Canadian-Space/tcs-arcade` | `rect` | Private experiments (planned) |
+| `The-Canadian-Space/idle-launch` | `rect` (dark space → cyan → blue → purple) | First TCS arcade game — browser idle game. Split out from tcs-arcade 2026-07-15. |
+| `The-Canadian-Space/autodoom` | `rect` (dark space → doom red) | Second TCS arcade game — auto-playing Doom take, inspired by Clickpocalypse 2. Split out from tcs-arcade 2026-07-15. |
+| ~~`The-Canadian-Space/tcs-arcade`~~ | ~~`rect`~~ | **RETIRED 2026-07-15.** Archived on GitHub. Contents moved to `idle-launch/research/`. Do not create new games in a shared arcade repo — each game gets its own. |
 | `The-Canadian-Space/tcs-docs` | `rect` | Internal wiki (Access-gated) |
 | `The-Canadian-Space/tcs-public-wiki` | `rect` | Public marketing wiki |
 | `The-Canadian-Space/tcs-archive` | `rect` | Historical dev artifacts (private) |
@@ -107,6 +109,14 @@ Palette: same as SE mods (waving industrial).
 | `The-Canadian-Space/.github` | `blur` | Org profile for TCS. Updated 2026-07-14 to style-guide compliance (was previously plain text). Palette: deep space → cyan → blue → purple. |
 | `Godimas101/.github` | (special repo — no `profile/README.md`, personal profile lives at `Godimas101/Godimas101` instead) | Personal-account `.github` repo. Hosts shared workflows (`check-pat-expiration.yml`, `auto-archive-personal-projects.yml`), the PAT tracking manifest (`pats.json`), and default community health files (ISSUE_TEMPLATE, CONTRIBUTING, CODE_OF_CONDUCT) that all `Godimas101/*` repos inherit. Created 2026-07-14. |
 | `voidput/.github` | (external to Chris's control) | SC-ORG-BOT lives here; not Chris's to style |
+
+**Local checkout layout** (as of 2026-07-15): All `.github` clones consolidated under `VS Code Projects/github-settings/`:
+- `github-settings/gitpush-mod/` → `gitpush-mod/.github`
+- `github-settings/godimas-defaults/` → `Godimas101/.github`
+- `github-settings/godimas-profile/` → `Godimas101/Godimas101` (personal profile repo)
+- `github-settings/the-canadian-space/` → `The-Canadian-Space/.github`
+
+Reasoning: keeps all "GitHub settings"-flavored repos in one visually distinct top-level folder, sibling to `mods/` and `n8n-projects/` instead of scattered among them.
 
 ---
 
