@@ -37,6 +37,7 @@ Supporter data and branding assets for the [Godimas101 Patreon](https://www.patr
 ### 📄 Docs & Career
 - **[docs/resumes/](docs/resumes/)** — Master resume for tailoring targeted applications.
 - **[docs/style-guides/](docs/style-guides/)** — Shared README and tool style guides for this workspace.
+- **[docs/git-infrastructure.md](docs/git-infrastructure.md)** — Field guide to the whole git + GitHub setup across mods + TCS + personal (orgs, .github repos, workflows, boards, tokens, memory, skills, incidents).
 
 ---
 
