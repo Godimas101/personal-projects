@@ -352,7 +352,7 @@ Chris uses Claude Code's file-based memory system. Files live at `C:\Users\Chris
 - `[[feedback-ticket-body-shape]]` — ticket-filing structure
 - `[[feedback-tcs-ticket-first]]` — ticket-first rule for TCS
 - `[[feedback-token-spend-during-dev]]` + `[[feedback-workflow-efficiency]]` — how much token spend to lean into per task
-- `[[feedback-git-author-email]]` — git commits use `rustygear@hotmail.com`, NEVER `chris.carpenter@prodigygame.com`
+- `[[feedback-git-author-email]]` — commits use Chris's personal email, NEVER his work email (specific values in memory only)
 
 Full index at `~/.claude/projects/d--claude-mem/memory/MEMORY.md`.
 
