@@ -42,4 +42,4 @@ Ticket body shape: see memory `[[feedback-ticket-body-shape]]` — What/Why → 
 
 ---
 
-*Part of Chris's `Godimas101` personal repos. Companion guide: [`personal-projects/docs/git-infrastructure.md`](https://github.com/Godimas101/personal-projects/blob/main/docs/git-infrastructure.md) covers the full infrastructure.*
+*Part of Chris's `Godimas101` personal repos. Companion guide: `personal-docs/git-infrastructure.md` (private companion repo) covers the full infrastructure.*
