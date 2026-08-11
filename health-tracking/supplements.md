@@ -88,7 +88,6 @@ Daily supplement stack organized by when they are taken.
 | Magnesium Bisglycinate | Elemental magnesium 200mg |
 | Ashwagandha KSM-66 | Withanolides 15mg (5% standardization) |
 | Spermidine | Spermidine 5mg |
-| Melatonin | Melatonin 2.5mg |
 | **Daily Totals** | **Vitamin D3 ~1800 IU · Magnesium ~250mg · Spermidine ~10mg** |
 
 ---
@@ -96,7 +95,7 @@ Daily supplement stack organized by when they are taken.
 ## Before Bed
 | Brand | Supplement | Dose | Notes | Link |
 |-------|-----------|------|-------|------|
-| Bulk Supplements | Glycine | 3g (½ tsp powder) | Inhibitory amino acid that lowers core body temperature and calms the nervous system to support sleep onset and slow-wave sleep quality; also contributes to collagen synthesis and joint recovery overnight; mix into a small amount of water; naturally sweet taste | [Bulk Supplements](https://www.bulksupplements.com/en-CA/products/glycine-pills) |
+| Bulk Supplements | Glycine | 6g (½ tsp powder) | Inhibitory amino acid that lowers core body temperature and calms the nervous system to support sleep onset and slow-wave sleep quality; also contributes to collagen synthesis and joint recovery overnight; mix into a small amount of water; naturally sweet taste | [Bulk Supplements](https://www.bulksupplements.com/en-CA/products/glycine-pills) |
 
 ### Nutrient Breakdown
 
