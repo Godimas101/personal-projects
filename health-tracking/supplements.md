@@ -92,12 +92,12 @@ Daily supplement stack organized by when they are taken.
 ## Before Bed
 | Brand | Supplement | Dose | Notes | Link |
 |-------|-----------|------|-------|------|
-| Bulk Supplements | Glycine | 6g (½ tsp powder) | Inhibitory amino acid that lowers core body temperature and calms the nervous system to support sleep onset and slow-wave sleep quality; also contributes to collagen synthesis and joint recovery overnight; mix into a small amount of water; naturally sweet taste | [Bulk Supplements](https://www.bulksupplements.com/en-CA/products/glycine-pills) |
+| Bulk Supplements | Glycine | 6g (2 tsp powder) | Inhibitory amino acid that lowers core body temperature and calms the nervous system to support sleep onset and slow-wave sleep quality; also contributes to collagen synthesis and joint recovery overnight; mix into a small amount of water; naturally sweet taste | [Bulk Supplements](https://www.bulksupplements.com/en-CA/products/glycine-pills) |
 | Vibrant Naturals | Liposomal Apigenin | 60mg (3 pills) | Calming flavonoid (the one found in chamomile) that acts on GABA-A receptors to promote relaxation and sleep onset; also inhibits CD38, a major NAD+-degrading enzyme that rises with age — complements the NMN in the morning shake; liposomal form for improved absorption; vegan and third-party tested | [Amazon](https://www.amazon.ca/dp/B0FBDQ9TZC) |
 
 ### Nutrient Breakdown
 
 | Supplement | Cal | Key Nutrients / Bioactives |
 |---|---|---|
-| Glycine | ~12 | Glycine 3000mg |
+| Glycine | ~24 | Glycine 6000mg |
 | Apigenin | — | Apigenin 60mg *(3 caps × 20mg; each cap is 40mg liposomal complex at 50% apigenin)* |
