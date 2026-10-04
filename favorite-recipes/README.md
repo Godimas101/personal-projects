@@ -53,6 +53,7 @@ When using an AI to suggest new recipes or meals, include this in your prompt:
 | [air-fryer-chicken-drumsticks.md](air-fryer-chicken-drumsticks.md) | Crispy drumsticks with roasted veggies, all in the air fryer | 🍗 Chicken |
 | [chicken-salad-wraps.md](chicken-salad-wraps.md) | High-protein canned chicken salad with yogurt dressing — 10/10 protein rating | 🍗 Chicken |
 | [chicken-bone-broth-soup.md](chicken-bone-broth-soup.md) | Spiced pressure cooker soup with rice, chickpeas, red lentils & egg white powder | 🍗 Chicken |
+| [weekday-supper.md](weekday-supper.md) | Batch-cooked pan-fried chicken breasts, Montreal-spiced roasted gold potatoes & broccoli — 5 suppers at once | 🍗 Chicken |
 | [maple-ground-beef-baked-beans.md](maple-ground-beef-baked-beans.md) | Hearty maple baked beans with ground beef | 🥩 Beef |
 | [healthy-yogurt-egg-salad-wraps.md](healthy-yogurt-egg-salad-wraps.md) | High-protein egg salad with yogurt instead of mayo, for wraps | 🥚 Egg |
 | [weekend-breakfast-shake.md](weekend-breakfast-shake.md) | Longevity stack + 1960s Hercules cocktail — dual-phase protein shake | 🥚 Egg |

@@ -49,9 +49,13 @@ Workouts programmed and tracked in [Swole](https://play.google.com/store/apps/de
 
 - [Weekday Lunch](../favorite-recipes/weekday-lunch.md) — batch-prepped egg cups, spiced bean salad, frozen veg
 
-### Supper *(all days)*
+### Weekday Supper
 
-- Rotating recipe from the [favorite-recipes](../favorite-recipes/) folder — excludes breakfast/lunch recipes ([pancakes](../favorite-recipes/pancakes.md), [chia pudding](../favorite-recipes/chia-pudding.md), [weekday lunch](../favorite-recipes/weekday-lunch.md))
+- [Weekday Supper](../favorite-recipes/weekday-supper.md) — batch-cooked chicken breast, roasted gold potatoes, frozen broccoli
+
+### Weekend Supper
+
+- Rotating recipe from the [favorite-recipes](../favorite-recipes/) folder — excludes breakfast/lunch/weekday supper recipes ([pancakes](../favorite-recipes/pancakes.md), [chia pudding](../favorite-recipes/chia-pudding.md), [weekday lunch](../favorite-recipes/weekday-lunch.md), [weekday supper](../favorite-recipes/weekday-supper.md))
 
 ### Saturday Breakfast
 
@@ -71,4 +75,4 @@ Workouts programmed and tracked in [Swole](https://play.google.com/store/apps/de
 
 ### Before Bed
 
-- Glycine — see [supplements.md › Before Bed](supplements.md#before-bed)
+- Glycine + Apigenin — see [supplements.md › Before Bed](supplements.md#before-bed)

@@ -15,7 +15,6 @@ Daily supplement stack organized by when they are taken.
 | Bulk Supplements | Resveratrol | 1g (1 scoop) | Activates sirtuin longevity pathways; antioxidant with cardiovascular and anti-aging benefits; synergizes with NMN; take with dietary fat | [Bulk Supplements](https://www.bulksupplements.com/en-ca/products/resveratrol-pure) |
 | Bulk Supplements | Fisetin | 1600mg (1 scoop) | Senolytic agent that clears senescent ("zombie") cells linked to aging and chronic inflammation; taken as a 3-day blast at the start of each month only | [Bulk Supplements](https://www.bulksupplements.com/en-ca/products/fisetin-powder) |
 | Bulk Supplements | Creatine Monohydrate | 10g (2 scoops) | Supports muscle strength, power output, and lean mass retention; also has neuroprotective properties relevant to long-term brain health; stay well hydrated (3–4L/day) | [Bulk Supplements](https://www.bulksupplements.com/en-ca/products/creatine-monohydrate) |
-| — | Extra Virgin Olive Oil | 1 tbsp (14g) | Rich in oleic acid and polyphenols (oleocanthal, oleuropein) supporting cardiovascular health, inflammation reduction, and cellular longevity; also provides the dietary fat required for optimal NMN and Resveratrol absorption | — |
 
 
 ### Nutrient Breakdown
@@ -30,8 +29,7 @@ Daily supplement stack organized by when they are taken.
 | Resveratrol | — | — | — | — | Trans-resveratrol 1000mg |
 | Fisetin *(monthly blast only)* | — | — | — | — | Fisetin 1600mg |
 | Creatine | — | — | — | — | Creatine monohydrate 10g |
-| Extra Virgin Olive Oil | 120 | 0g | 14g | 0g | Oleic acid (ω-9) ~10g · Polyphenols (oleocanthal, oleuropein) · Vitamin E ~1.9mg |
-| **Shake Total** | **~320** | **~31g** | **~17.5g** | **~11g** | |
+| **Shake Total** | **~200** | **~31g** | **~3.5g** | **~11g** | |
 
 ---
 
@@ -39,7 +37,7 @@ Daily supplement stack organized by when they are taken.
 | Brand | Supplement | Dose | Notes | Link |
 |-------|-----------|------|-------|------|
 | Kirkland | Calcium Plus with D3 | 600mg / 800 IU (1 pill) | Supports bone density; take alongside K2 to ensure calcium is directed to bones rather than arterial walls; avoid pairing with zinc which competes for absorption | [Costco](https://www.costco.ca/p/-/kirkland-signature-calcium-plus-with-vitamin-d3-minerals-600-mg-800-iu-500-tablets/100291275) |
-| Kirkland | Alaskan Salmon Whole Fish Oil | 1200mg (1 pill) | Provides EPA and DHA omega-3s supporting cardiovascular health, joint lubrication, and systemic inflammation reduction; take with food for best absorption | [Costco](https://www.costco.ca/p/-/kirkland-signature-100-wild-alaskan-salmon-whole-fish-oil-320-softgels/100054345) |
+| Kirkland | Super Concentrate Omega-3 Fish Oil | 1300mg (1 pill) | Concentrated EPA and DHA omega-3s (750mg combined per softgel) supporting cardiovascular health, brain function, joint lubrication, and systemic inflammation reduction; enteric-coated to reduce fishy aftertaste; take with food for best absorption | [Costco](https://www.costco.ca/p/-/kirkland-signature-super-concentrate-omega-3-fish-oil-330-softgels/4000272606) |
 | Webber Naturals | Vitamin K2 + D3 | 120mcg / 1000 IU (1 pill) | D3 supports calcium absorption and immune function; K2 ensures calcium reaches bones rather than soft tissue; especially important in low-sunlight months | [Costco](https://www.costco.ca/p/-/webber-naturals-vitamin-k2d3-120-mcg-1000-iu-220-softgels/4000062820) |
 | Webber Naturals | Turmeric Advanced | 500mg (1 pill) | Curcumin-based anti-inflammatory supporting joint health, recovery, and longevity; bioavailability enhanced by piperine (black pepper) and dietary fat; take with food | [Costco](https://www.costco.ca/p/-/webber-naturals-turmeric-advanced-120-capsules/100427394) |
 | Freshfield | Black Seed Oil | 500mg (1 pill) | Thymoquinone-rich cold-pressed Nigella sativa oil supporting immune modulation, inflammation reduction, and cardiovascular health; vegan and third-party tested; take with food | [Amazon](https://www.amazon.ca/Freshfield-Black-Seed-Oil-Thymoquinone/dp/B08DP5HJ97/) |
@@ -56,7 +54,7 @@ Daily supplement stack organized by when they are taken.
 | Supplement | Key Nutrients / Bioactives |
 |---|---|
 | Calcium + D3 | Calcium 600mg · Vitamin D3 800 IU · Magnesium 50mg · Vitamin K1 20mcg |
-| Salmon Fish Oil | EPA 90mg · DHA 110mg |
+| Omega-3 Fish Oil | EPA 450mg · DHA 300mg |
 | Vitamin K2 + D3 | Vitamin K2 (MK-7) 120mcg · Vitamin D3 1000 IU |
 | Turmeric Advanced | Curcuminoids ~165mg (Meriva phosphatidylcholine complex — no piperine) |
 | Black Seed Oil | Thymoquinone ~8mg · Linoleic acid (ω-6) ~175mg · Oleic acid (ω-9) ~70mg |
@@ -66,7 +64,7 @@ Daily supplement stack organized by when they are taken.
 | Spermidine | Spermidine 5mg |
 | BroccoGen 10 | Sulforaphane glucosinolate 15mg |
 | Berberine | Berberine HCl 500mg |
-| **Section Total** | **Vitamin D3 1800 IU · Calcium 600mg · Magnesium 50mg · EPA 90mg · DHA 110mg** |
+| **Section Total** | **Vitamin D3 1800 IU · Calcium 600mg · Magnesium 50mg · EPA 450mg · DHA 300mg** |
 
 ---
 
@@ -77,7 +75,6 @@ Daily supplement stack organized by when they are taken.
 | Webber Naturals | Magnesium Bisglycinate | 200mg (1 pill) | Supports muscle relaxation, recovery, and sleep quality; bisglycinate form is gentle on digestion and well-absorbed; involved in 300+ enzymatic reactions including energy production | [Costco](https://www.costco.ca/webber-naturals-magnesium-bisglycinate-200-mg---300-capsules.product.4000187689.html) |
 | Webber Naturals | Ashwagandha (KSM-66) | 3600mg equivalent / 300mg extract (1 pill) | Clinically studied KSM-66 root extract; reduces cortisol and stress response, supports sleep quality, and may improve testosterone and physical performance in men; non-habit-forming | [Costco](https://www.costco.ca/webber-naturals-ashwagandha-3,600-mg,-2-x-120-vegetarian-capsules.product.100510042.html) |
 | Just Glow | Spermidine | 5mg (1 pill) | Promotes autophagy — the cellular self-cleaning process that declines with age; supports longevity and cellular renewal; split dose with morning vitamins for sustained effect | [Amazon](https://www.amazon.ca/Just-Glow-Spermidine-Supplement-Capsules/dp/B0DJHM2BZ4/) |
-| Webber Naturals | Melatonin | 2.5mg (½ pill) | Use only when needed to fall asleep; low dose minimizes morning grogginess; avoid regular nightly use to prevent dependence and preserve natural melatonin production | [Costco](https://www.costco.ca/webber-naturals-melatonin-5-mg-extra-strength-easy-dissolve,-400-sublingual-tablets.product.4000190087.html) |
 
 
 ### Nutrient Breakdown
@@ -96,9 +93,11 @@ Daily supplement stack organized by when they are taken.
 | Brand | Supplement | Dose | Notes | Link |
 |-------|-----------|------|-------|------|
 | Bulk Supplements | Glycine | 6g (½ tsp powder) | Inhibitory amino acid that lowers core body temperature and calms the nervous system to support sleep onset and slow-wave sleep quality; also contributes to collagen synthesis and joint recovery overnight; mix into a small amount of water; naturally sweet taste | [Bulk Supplements](https://www.bulksupplements.com/en-CA/products/glycine-pills) |
+| Vibrant Naturals | Liposomal Apigenin | 60mg (3 pills) | Calming flavonoid (the one found in chamomile) that acts on GABA-A receptors to promote relaxation and sleep onset; also inhibits CD38, a major NAD+-degrading enzyme that rises with age — complements the NMN in the morning shake; liposomal form for improved absorption; vegan and third-party tested | [Amazon](https://www.amazon.ca/dp/B0FBDQ9TZC) |
 
 ### Nutrient Breakdown
 
 | Supplement | Cal | Key Nutrients / Bioactives |
 |---|---|---|
 | Glycine | ~12 | Glycine 3000mg |
+| Apigenin | — | Apigenin 60mg *(3 caps × 20mg; each cap is 40mg liposomal complex at 50% apigenin)* |
