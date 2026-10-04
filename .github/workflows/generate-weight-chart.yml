@@ -25,7 +25,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.CHART_PAT }}
+          token: ${{ secrets.PAT_GODIMAS_CHART }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
