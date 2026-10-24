@@ -106,6 +106,7 @@
 
 ### Pots & Pans
 
+- Cast Iron Cauldron - 6qt
 - Cast Iron Fry Pan - 46cm
 - Cast Iron Fry Pan - 30cm
 - Non Stick Fry Pan - 9.5in
